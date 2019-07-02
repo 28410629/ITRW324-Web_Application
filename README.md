@@ -1,15 +1,15 @@
 # WeatherStation_Angular
 This is the front-end for next semester project module.
 
-
 Angular details
 ---------------
 ```powershell
- node -v
+> node -v
  v10.16.0
+> ng new WeatherStation
  Would you like to add Angular routing? Yes
  Which stylesheet format would you like to use? CSS
- ng --version
+> ng --version
 
       _                      _                 ____ _     ___
      / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
@@ -39,5 +39,5 @@ To install Node and Angular
 * Within this repository is the installation file for Windows for node, install it.
 * Afterwards open the powershell and enter this (follow on-screen instructions and select Angular 8):
 ```powershell
-$ npm install -g @angular/cli
+> npm install -g @angular/cli
 ```
