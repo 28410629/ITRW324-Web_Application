@@ -34,10 +34,27 @@ Angular details
  @schematics/update           0.800.3
  rxjs                         6.4.0
 ```
+
 To install Node and Angular
 ---------------------------
 * Within this repository is the installation file for Windows for node, install it.
 * Afterwards open the powershell and enter this (follow on-screen instructions and select Angular 8):
 ```powershell
 > npm install -g @angular/cli
+```
+
+Clone Web Application
+------------------------
+```bash
+git clone https://github.com/coenraadhuman/WeatherStation_Angular.git
+cd ./WeatherStation_Angular/WeatherStation
+npm install
+```
+
+Serve Web Application for local testing
+---------------------------------------
+* **Please note that this will fail if you did not run "npm install" to restore the node modules.**
+* Run the following command from within the WeatherStation directory within the repository.
+```bash
+ng serve --open
 ```
