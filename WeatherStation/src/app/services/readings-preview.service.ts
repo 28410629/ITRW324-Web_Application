@@ -10,7 +10,7 @@ export class ReadingsPreviewService {
   constructor(private http: HttpClient, private common: FetchJsonUtilities) {}
 
   public FetchAllReadings() {
-    return this.common.fetchJSON('http://weatherstationapi.ddns.net:5000/api/get/readings')
+    return this.common.fetchJSON('https://weatherstationapi.ddns.net:5001/api/get/readings')
       .pipe(map(responseData => {
           const data = {} as Readings;
           const readings: ReadingEntity[] = [];
