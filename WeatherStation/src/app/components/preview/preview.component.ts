@@ -25,4 +25,9 @@ export class PreviewComponent implements OnInit {
     );
   }
 
+  calculateLight(AmbientLight: string) {
+    const light = parseInt(AmbientLight, 10);
+    const value = light / 10.24;
+    return value.toFixed(2);
+  }
 }
