@@ -17,6 +17,7 @@
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" [(ngModel)]="password">
       <button class="fadeIn fourth cool-btn" (click)="onSubmit()">Login</button>
 
+    <h5 class="bs-popover-bottom" style="color: #631B1B">{{errMessage}}</h5>
 
     <div id="formFooter">
       <a class="underlineHover" href="/login">Forgot Password?</a>

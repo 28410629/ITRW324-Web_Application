@@ -11,6 +11,8 @@ export class LoginScreenComponent implements OnInit {
 
   private username;
   private password;
+  private errMessage = '';
+
   constructor(private router: Router) {
 
   }
@@ -24,6 +26,7 @@ export class LoginScreenComponent implements OnInit {
 
     if (this.username === 'admin' && this.password === 'admin') {
       this.router.navigate(['/']);
+      this.errMessage = '';
     } else {
       this.failLogin();
     }
@@ -31,7 +34,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
   failLogin() {
-
+    this.errMessage = 'Invalid login credentials';
   }
 
 }
