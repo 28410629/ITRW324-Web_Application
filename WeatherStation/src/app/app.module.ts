@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { HeaderComponent } from './components/header/header.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [FetchJsonUtilities, ReadingsPreviewService],
   bootstrap: [AppComponent]

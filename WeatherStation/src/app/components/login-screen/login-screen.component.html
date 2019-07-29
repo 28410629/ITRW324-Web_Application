@@ -12,11 +12,10 @@
       <img src="../../assets/penguin.svg" id="icon" alt="User Icon" class=""/>
     </div>
 
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="LogIn">
-    </form>
+
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" [(ngModel)]="username">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" [(ngModel)]="password">
+      <button class="fadeIn fourth cool-btn" (click)="onSubmit()">Login</button>
 
 
     <div id="formFooter">
