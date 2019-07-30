@@ -9,9 +9,9 @@ import {Router, RouterModule, Routes} from '@angular/router';
 export class LoginScreenComponent implements OnInit {
 
 
-  private username;
-  private password;
-  private errMessage = '';
+  public username;
+  public password;
+  public errMessage = '';
 
   constructor(private router: Router) {
 
