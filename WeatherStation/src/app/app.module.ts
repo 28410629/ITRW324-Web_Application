@@ -7,16 +7,26 @@ import { PreviewComponent } from './components/preview/preview.component';
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
 import { ReadingsPreviewService } from './services/readings-preview.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { LoginScreenComponent } from './components/login-screen/login-screen.component';
+import { HeaderComponent } from './components/header/header.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PreviewComponent
+    PreviewComponent,
+    HomeComponent,
+    AboutComponent,
+    LoginScreenComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [FetchJsonUtilities, ReadingsPreviewService],
   bootstrap: [AppComponent]
