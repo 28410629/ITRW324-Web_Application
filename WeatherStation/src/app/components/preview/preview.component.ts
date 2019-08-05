@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ReadingEntity} from '../../models/readings-preview.model';
-import {ReadingsPreviewService} from '../../services/readings-preview.service';
+import {LastDayReadingsService} from '../../services/lastDayReadings.service';
 
 @Component({
   selector: 'app-preview',
@@ -12,10 +12,10 @@ export class PreviewComponent implements OnInit {
   readings: ReadingEntity[] = [];
   error;
 
-  constructor(private service: ReadingsPreviewService) { }
+  constructor(private service: LastDayReadingsService) { }
 
   ngOnInit() {
-    this.service.FetchAllReadings().subscribe(
+    this.service.FetchTodayReadings().subscribe(
       data => {
         this.readings = data.readings;
       },

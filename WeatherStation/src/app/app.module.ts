@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginScreenComponent } from './components/login-screen/login-screen.component';
 import { HeaderComponent } from './components/header/header.component';
 import {FormsModule} from '@angular/forms';
+import {LastDayReadingsService} from './services/lastDayReadings.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [FetchJsonUtilities, ReadingsPreviewService],
+  providers: [FetchJsonUtilities, ReadingsPreviewService, LastDayReadingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
