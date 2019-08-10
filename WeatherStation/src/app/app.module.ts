@@ -13,6 +13,7 @@ import { LoginScreenComponent } from './components/login-screen/login-screen.com
 import { HeaderComponent } from './components/header/header.component';
 import {FormsModule} from '@angular/forms';
 import {LastDayReadingsService} from './services/lastDayReadings.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {LastDayReadingsService} from './services/lastDayReadings.service';
     HomeComponent,
     AboutComponent,
     LoginScreenComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
