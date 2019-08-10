@@ -58,3 +58,7 @@ Serve Web Application for local testing
 ```bash
 ng serve --open
 ```
+
+Resource Links
+--------------
+[Admin Template](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2)
