@@ -13,14 +13,12 @@ export class AverageReadingService {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001/api/get/averagereadings/station/day?stationid=' + stationid)
       .pipe(map(responseData => {
-          const data = {} as Readings;
           const readings: AverageReadingEntity[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
               readings.push(...responseData[key]);
             }
           }
-          data.readings = readings;
           const stringData = [readings[0].averageTemperature.toString(), readings[0].averageHumidity.toString()];
           return stringData;
         }),
