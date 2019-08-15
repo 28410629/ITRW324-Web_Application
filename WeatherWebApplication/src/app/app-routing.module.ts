@@ -9,6 +9,7 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 
+// @ts-ignore
 const routes: Routes = [
   {
     path: 'pages',
