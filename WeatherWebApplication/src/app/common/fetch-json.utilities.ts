@@ -7,7 +7,7 @@ export class FetchJsonUtilities {
   constructor(private http: HttpClient) {}
 
   public fetchJSON(url): Observable<any> {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const apiURL = url;
     return this.http.get<any>(apiURL, { headers });
   }
