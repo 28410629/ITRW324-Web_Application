@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './weather.component.html',
 })
 
-export class WeatherComponent implements OnInit{
+export class WeatherComponent implements OnInit {
 
   @Input()
   stationId: string;
