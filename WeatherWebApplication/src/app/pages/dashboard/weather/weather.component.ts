@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ngx-weather',
@@ -6,7 +6,14 @@ import { Component } from '@angular/core';
   templateUrl: './weather.component.html',
 })
 
-export class WeatherComponent {
+export class WeatherComponent implements OnInit{
+
+  @Input()
+  stationId: string;
+
+  ngOnInit() {
+    this.getJSONFromAPI();
+  }
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   getDayFromNow(daysFromNow: number) {
@@ -18,4 +25,10 @@ export class WeatherComponent {
     const d = new Date();
     return d;
   }
+
+  getJSONFromAPI() {
+
+  }
+
+
 }
