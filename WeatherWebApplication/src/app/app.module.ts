@@ -20,6 +20,8 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import {AverageReadingService} from './Services/AverageReadingService';
+import {FetchJsonUtilities} from './common/fetch-json.utilities';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +44,7 @@ import {
     }),
     CoreModule.forRoot(),
   ],
+  providers: [FetchJsonUtilities, AverageReadingService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

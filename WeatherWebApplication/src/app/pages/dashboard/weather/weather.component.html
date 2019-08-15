@@ -3,12 +3,16 @@
   <nb-card-body>
     <span class="h3 location">Morne Room Station Morne Room Station Morne Room Station</span>
     <br><br>
-    <span class="date">{{getToday() | date}}</span>
+    <span class="date">{{ getToday() | date}}</span>
+
 
     <div class="today">
-      <span class="today-temperature h1">{{temp}}&deg;</span>
+      <span class="today-temperature h1">
+        {{getAvgTemp()}}&deg;
+      </span>
       <nb-icon icon="sun-outline" pack="eva" class="today-icon"></nb-icon>
     </div>
+
 
     <div class="today-details">
       <div class="parameter">
@@ -21,7 +25,7 @@
       </div>
       <div class="parameter">
         <span class="caption parameter-name">Humidity</span>
-        <span class="parameter-value">8%</span>
+        <span class="parameter-value">{{getAvgHumid()}}%</span>
       </div>
       <div class="parameter">
         <span class="caption parameter-name">Ambient Light</span>

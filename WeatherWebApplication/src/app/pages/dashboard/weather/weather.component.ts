@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpErrorResponse} from '@angular/common/http';
-import {AverageReadingEntity} from '../../../Models/AverageReadingsModel';
 import {AverageReadingService} from '../../../Services/AverageReadingService';
 
 
@@ -14,18 +12,24 @@ import {AverageReadingService} from '../../../Services/AverageReadingService';
 export class WeatherComponent implements OnInit {
 
 
-  public readings: AverageReadingEntity[] = [];
-  public temp = '0';
-  public humid = '0';
+  readings: string[] = [];
+
+  constructor(private service: AverageReadingService) {}
 
   @Input()
   stationId: string;
 
   ngOnInit() {
-    this.getJSONFromAPI();
+    this.service.FetchAverageToday(this.stationId).subscribe(
+      data => {
+        this.readings = data; // 0=temp, 1=humid
+      },
+      error => {
+      },
+    );
+
   }
 
-  constructor(private service: AverageReadingService) {}
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   getDayFromNow(daysFromNow: number) {
@@ -38,22 +42,26 @@ export class WeatherComponent implements OnInit {
     return d;
   }
 
-  getJSONFromAPI() {
-    this.service.FetchAverageToday(this.stationId).subscribe(
-      data => {
-        this.readings = data.readings;
-      },
-      error => {
-      },
-    );
-    this.SetData();
+  getAvgTemp() {
+    let temp;
+    try {
+      temp = this.readings[0];
+      temp = temp.substr(0, temp.indexOf('.'));
+    } catch (e) {
+      return '0';
+    }
+    return temp;
   }
 
-  SetData() {
-    for (const reading in this.readings) {
-
+  getAvgHumid() {
+    let hum;
+    try {
+      hum = this.readings[1];
+      hum = hum.substr(0, hum.indexOf('.'));
+    } catch (e) {
+      return '0';
     }
-
+    return hum;
   }
 
 
