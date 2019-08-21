@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
-import {User} from '../Models/user.model';
+import {User, UserProfileData} from '../Models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -17,8 +17,9 @@ export class AuthService {
       (user) => {
         if (user) {
           this.userDetails = user;
+          this.CreateUserProfileData();
           localStorage.setItem('user', JSON.stringify(this.userDetails));
-          console.log(JSON.parse(localStorage.getItem('user')));
+          JSON.parse(localStorage.getItem('user'));
         } else {
           this.userDetails = null;
           localStorage.setItem('user', null);
@@ -33,8 +34,8 @@ export class AuthService {
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
-        this.SendVerificationMail();
         this.SetUserData(result.user);
+        this.SendVerificationMail();
       });
   }
 
@@ -53,6 +54,25 @@ export class AuthService {
     return userRef.set(userData, {
       merge: true,
     });
+  }
+
+  CreateUserProfileData() {
+    const followDoc =
+      this._firestore.collection(`usersdata`).doc(this.userDetails.uid).ref;
+
+    return followDoc.get().then((doc) => {
+      if (!doc.exists) {
+        this._firestore.collection('usersdata').doc(this.userDetails.uid).set({
+          name: this.userDetails.displayName,
+          picture: this.userDetails.photoURL,
+          uid: this.userDetails.uid,
+        });
+      }
+    });
+  }
+
+  GetUserProfileData(userid) {
+    return this._firestore.doc<UserProfileData>('usersdata/' + userid).valueChanges();
   }
 
   // Send email verification when new user sign up
