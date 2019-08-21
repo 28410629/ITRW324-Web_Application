@@ -147,9 +147,9 @@ export class WeatherComponent implements OnInit {
     try {
        name = this.statusReadings[0];
       if (name === '')
-        return this.stationId.toString();
+        return this.stationId.toString() + '  - Error';
     } catch (e) {
-      return this.stationId.toString();
+      return this.stationId.toString() + '  - Error';
     }
     return name;
   }
@@ -163,7 +163,7 @@ export class WeatherComponent implements OnInit {
 
   isDayTime() {
     const hr = (new Date()).getHours();
-    if (hr > 6 && hr < 20)
+    if (hr > 7 && hr < 18)
       return true;
     else
       return false;
