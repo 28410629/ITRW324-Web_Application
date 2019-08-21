@@ -17,11 +17,11 @@
     <div class="today-details">
       <div class="parameter">
         <span class="caption parameter-name">max</span>
-        <span class="parameter-value">23&deg;</span>
+        <span class="parameter-value">{{getMaxTemp()}}&deg;</span>
       </div>
       <div class="parameter">
         <span class="caption parameter-name">min</span>
-        <span class="parameter-value">19&deg;</span>
+        <span class="parameter-value">{{getMinTemp()}}&deg;</span>
       </div>
       <div class="parameter">
         <span class="caption parameter-name">Humidity</span>
@@ -29,7 +29,7 @@
       </div>
       <div class="parameter">
         <span class="caption parameter-name">Ambient Light</span>
-        <span class="parameter-value">87%</span>
+        <span class="parameter-value">{{getLight()}}%</span>
       </div>
     </div>
 
