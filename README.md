@@ -28,6 +28,16 @@ Serve Web Application for local testing
 npm start
 ```
 
+## Build (Publish to Github Pages)
+I, `THE BADASS`, will normally do this, but here are the steps:
+
+Within the development directory of the repository:
+```bash
+ng build --prod --output-path docs --base-href "https://anchormenstations.tech/"
+```
+1. Move all files within `docs` to **gh-pages branch.** 
+1. Make a copy of index.html and rename it to 404.html
+
 ngx-admin
 ----------
 ```
