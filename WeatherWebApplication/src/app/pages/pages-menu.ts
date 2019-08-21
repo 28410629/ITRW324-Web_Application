@@ -10,7 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'My Stations',
     icon: 'home-outline',
-    link: '/pages/iot-dashboard',
+    link: '/pages/my-stations',
   },
   // {
   //   title: 'Stuff we can steal',
