@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { FetchJsonUtilities } from '../common/fetch-json.utilities';
-import {AverageReadingEntity, Readings} from '../Models/AverageReadingsModel';
+import {AverageReadingEntity, AverageReading} from '../Models/AverageReadingsModel';
 
 @Injectable()
 export class AverageReadingService {
@@ -10,17 +10,19 @@ export class AverageReadingService {
   }
 
   public FetchAverageToday(stationid: string) {
+
     return this.common.fetchJSON(
-      'https://weatherstationapi.ddns.net:5001/api/get/averagereadings/station/day?stationid=' + stationid)
+      'https://weatherstationapi.ddns.net:5001/api/get/stationstatus/station?stationid=' + stationid)
       .pipe(map(responseData => {
+          const data = {} as AverageReading;
           const readings: AverageReadingEntity[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              readings.push(...responseData[key]);
+              readings.push(responseData[key]);
             }
           }
-          const stringData = [readings[0].averageTemperature.toString(), readings[0].averageHumidity.toString()];
-          return stringData;
+          data.avgReadings = readings;
+          return data;
         }),
         catchError(errorRes => {
           return throwError(errorRes);

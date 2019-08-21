@@ -1,60 +1,69 @@
 
-<nb-card size="medium">
-  <nb-card-body>
-    <span class="h3 location">{{stationId}}</span>
-    <br><br>
-    <span class="date">{{getToday() | date}}</span>
+  <nb-card size="medium">
+    <nb-card-body>
+      <span class="h3 location">{{getStationName()}}</span>
+      <br><br>
+      <span class="date">{{getToday() | date}}</span>
 
 
-    <div class="today">
-      <span class="today-temperature h1">
-        {{getAvgTemp()}}&deg;
-      </span>
-      <nb-icon icon="sun-outline" pack="eva" class="today-icon"></nb-icon>
-    </div>
+      <div class="today">
+        <span class="today-temperature h1">
+          {{getAvgTemp()}}&deg;
+        </span>
+        <div *ngIf="isDayTime(); then thenBlock1 else elseBlock1"></div>
+        <ng-template #thenBlock1><nb-icon icon="sun-outline" pack="eva" class="today-icon"></nb-icon></ng-template>
+        <ng-template #elseBlock1><nb-icon icon="moon-outline" pack="eva" class="today-icon"></nb-icon></ng-template>
+
+      </div>
 
 
-    <div class="today-details">
-      <div class="parameter">
-        <span class="caption parameter-name">max</span>
-        <span class="parameter-value">23&deg;</span>
+      <div class="today-details">
+        <div class="parameter">
+          <span class="caption parameter-name">min</span>
+          <span class="parameter-value">{{getMinTemp()}}&deg;</span>
+        </div>
+        <div class="parameter">
+          <span class="caption parameter-name">max</span>
+          <span class="parameter-value">{{getMaxTemp()}}&deg;</span>
+        </div>
+        <div class="parameter">
+          <span class="caption parameter-name">Humidity</span>
+          <span class="parameter-value">{{getAvgHumid()}}%</span>
+        </div>
+        <div class="parameter">
+          <span class="caption parameter-name">Light</span>
+          <span class="parameter-value">{{getLight()}}%</span>
+        </div>
       </div>
-      <div class="parameter">
-        <span class="caption parameter-name">min</span>
-        <span class="parameter-value">19&deg;</span>
-      </div>
-      <div class="parameter">
-        <span class="caption parameter-name">Humidity</span>
-        <span class="parameter-value">{{getAvgHumid()}}%</span>
-      </div>
-      <div class="parameter">
-        <span class="caption parameter-name">Ambient Light</span>
-        <span class="parameter-value">87%</span>
-      </div>
-    </div>
 
-    <div class="weekly-forecast">
-      <div class="day">
-        <span class="caption">{{getDayFromNow(1)}}</span>
-        <i class="weather-icon ion-ios-cloudy-outline"></i>
-        <span class="temperature">17&deg;</span>
+      <div class="weekly-forecast">
+        <div class="day">
+          <span class="caption">{{getDayFromNow(1)}}</span>
+          <i class="weather-icon ion-ios-cloudy-outline"></i>
+          <span class="temperature">{{getForecast1()}}&deg;</span>
+        </div>
+        <div class="day">
+          <span class="caption">{{getDayFromNow(2)}}</span>
+          <i class="weather-icon ion-ios-sunny-outline"></i>
+          <span class="temperature">{{getForecast2()}}&deg;</span>
+        </div>
+        <div class="day">
+          <span class="caption">{{getDayFromNow(3)}}</span>
+          <i class="weather-icon ion-ios-partlysunny-outline"></i>
+          <span class="temperature">{{getForecast3()}}&deg;</span>
+        </div>
+        <div class="day">
+          <span class="caption">{{getDayFromNow(4)}}</span>
+          <i class="weather-icon ion-ios-partlysunny-outline"></i>
+          <span class="temperature">{{getForecast4()}}&deg;</span>
+        </div>
       </div>
-      <div class="day">
-        <span class="caption">{{getDayFromNow(2)}}</span>
-        <i class="weather-icon ion-ios-sunny-outline"></i>
-        <span class="temperature">19&deg;</span>
-      </div>
-      <div class="day">
-        <span class="caption">{{getDayFromNow(3)}}</span>
-        <i class="weather-icon ion-ios-partlysunny-outline"></i>
-        <span class="temperature">22&deg;</span>
-      </div>
-      <div class="day">
-        <span class="caption">{{getDayFromNow(4)}}</span>
-        <i class="weather-icon ion-ios-partlysunny-outline"></i>
-        <span class="temperature">21&deg;</span>
-      </div>
-    </div>
-  </nb-card-body>
-</nb-card>
+
+      <div *ngIf="isStationOnline(); then thenBlock2 else elseBlock2"></div>
+      <ng-template #thenBlock2><span class="flair flair-no-press flair-online" title="Status"><b>Online</b></span></ng-template>
+      <ng-template #elseBlock2><span class="flair flair-no-press flair-offline" title="Status"><b>Offline</b></span></ng-template>
+
+
+    </nb-card-body>
+  </nb-card>
 

@@ -84,3 +84,42 @@
     line-height: 2.5rem;
   }
 }
+
+.flair {
+  max-width: 24px;
+  display: inline-block;
+  overflow: hidden;
+  height: 24px;
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  vertical-align: middle;
+  font-size: 16px !important;
+  -webkit-transition:all 0.1s;
+  transition: all 0.1s;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  position: relative;
+  line-height: 20px;
+}
+.flair:hover, flair:active {
+  max-width: 500px;
+  padding: 0 5px;
+  color: #fff;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.flair-no-press {
+  background:#888;
+  color:#888;
+}
+
+.flair-online {
+  background: #1c883f;
+  color: #288845;
+}
+
+.flair-offline {
+  background: #b52320;
+  color: #b52320;
+}
