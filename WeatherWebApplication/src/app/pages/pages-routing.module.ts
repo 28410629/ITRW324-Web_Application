@@ -70,7 +70,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'homepage',
       pathMatch: 'full',
     },
     {

@@ -17,8 +17,12 @@ export class AuthService {
       (user) => {
         if (user) {
           this.userDetails = user;
+          localStorage.setItem('user', JSON.stringify(this.userDetails));
+          console.log(JSON.parse(localStorage.getItem('user')));
         } else {
           this.userDetails = null;
+          localStorage.setItem('user', null);
+          JSON.parse(localStorage.getItem('user'));
         }
       },
     );
@@ -44,8 +48,8 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    }
+      emailVerified: user.emailVerified,
+    };
     return userRef.set(userData, {
       merge: true,
     });
