@@ -154,4 +154,11 @@ export class WeatherComponent implements OnInit {
     return name;
   }
 
+  isStationOnline() {
+    if (this.getAvgTemp() > 0)
+      return true;
+    else
+    return false;
+  }
+
 }

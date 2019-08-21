@@ -55,6 +55,12 @@
         <span class="temperature">{{getForecast4()}}&deg;</span>
       </div>
     </div>
+
+    <div *ngIf="isStationOnline(); then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock><span class="flair flair-no-press flair-online" title="Status">Online</span></ng-template>
+    <ng-template #elseBlock><span class="flair flair-no-press flair-offline" title="Status">Offline</span></ng-template>
+
+
   </nb-card-body>
 </nb-card>
 
