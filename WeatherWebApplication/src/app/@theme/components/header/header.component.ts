@@ -5,6 +5,8 @@ import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import {User, UserProfileData} from '../../../Models/user.model';
+import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
   selector: 'ngx-header',
@@ -15,7 +17,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
-  user: any;
+  // user: any;
+  user: UserProfileData;
+  useruid: string;
 
   themes = [
     {
@@ -45,15 +49,26 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private authService: AuthService) {
+
+    // Set uid for user
+    const storageuser: User = JSON.parse(localStorage.getItem('user'));
+    this.useruid = storageuser.uid;
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+    // this.userService.getUsers()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((users: any) => this.user = users.nick);
+
+    this.authService.GetUserProfileData(this.useruid)
+      .subscribe(
+        responseData => {
+          this.user = responseData as UserProfileData;
+        });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
