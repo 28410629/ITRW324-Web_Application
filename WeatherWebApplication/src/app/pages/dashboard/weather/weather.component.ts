@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AverageReadingService} from '../../../Services/AverageReadingService';
-import {AverageReading, AverageReadingEntity} from '../../../Models/AverageReadingsModel';
-
 
 @Component({
   selector: 'ngx-weather',
@@ -45,53 +43,45 @@ export class WeatherComponent implements OnInit {
   getAvgTemp() {
     let temp;
     try {
-      temp = this.statusReadings[1];
-      if (temp === '0')
-        return '0';
-      temp = temp.substr(0, temp.indexOf('.'));
+      temp = +this.statusReadings[1];
+      temp = Math.round(temp);
     } catch (e) {
       return '0';
     }
-    return temp;
+    return temp.toString();
   }
 
   getAvgHumid() {
     let hum;
     try {
-      hum = this.statusReadings[5];
-      if (hum === '0')
-        return '0';
-      hum = hum.substr(0, hum.indexOf('.'));
+      hum = +this.statusReadings[5];
+      hum = Math.round(hum);
     } catch (e) {
       return '0';
     }
-    return hum;
+    return hum.toString();
   }
 
   getMaxTemp() {
     let mx;
     try {
-      mx = this.statusReadings[2];
-      if (mx === '0')
-        return '0';
-      mx = mx.substr(0, mx.indexOf('.'));
+      mx = +this.statusReadings[2];
+      mx = Math.round(mx);
     } catch (e) {
       return '0';
     }
-    return mx;
+    return mx.toString();
   }
 
   getMinTemp() {
     let min;
     try {
-      min = this.statusReadings[3];
-      if (min === '0')
-        return '0';
-      min = min.substr(0, min.indexOf('.'));
+      min = +this.statusReadings[3];
+      min = Math.round(min);
     } catch (e) {
       return '0';
     }
-    return min;
+    return min.toString();
   }
 
   getLight() {
@@ -99,7 +89,7 @@ export class WeatherComponent implements OnInit {
     try {
       lig = +this.statusReadings[4];
       lig *= 1.0;
-      lig = lig / 1024.0 * 100.0
+      lig = lig / 1024.0 * 100.0;
       lig = Math.round(lig);
     } catch (e) {
       return '0';
@@ -111,15 +101,57 @@ export class WeatherComponent implements OnInit {
   getForecast1() {
     let f1;
     try {
-      f1 = this.statusReadings[3];
-      if (f1 === '0')
-        return '0';
-      f1 = f1.substr(0, f1.indexOf('.'));
+      f1 = +this.statusReadings[6];
+      f1 = Math.round(f1);
     } catch (e) {
       return '0';
     }
-    return f1;
+    return f1.toString();
   }
 
+  getForecast2() {
+    let f2;
+    try {
+      f2 = +this.statusReadings[7];
+      f2 = Math.round(f2);
+    } catch (e) {
+      return '0';
+    }
+    return f2.toString();
+  }
+
+  getForecast3() {
+    let f3;
+    try {
+      f3 = +this.statusReadings[8];
+      f3 = Math.round(f3);
+    } catch (e) {
+      return '0';
+    }
+    return f3.toString();
+  }
+
+  getForecast4() {
+    let f4;
+    try {
+      f4 = +this.statusReadings[9];
+      f4 = Math.round(f4);
+    } catch (e) {
+      return '0';
+    }
+    return f4.toString();
+  }
+
+  getStationName() {
+    let name;
+    try {
+       name = this.statusReadings[0];
+      if (name === '')
+        return 'Unknown';
+    } catch (e) {
+      return 'Unknown';
+    }
+    return name;
+  }
 
 }
