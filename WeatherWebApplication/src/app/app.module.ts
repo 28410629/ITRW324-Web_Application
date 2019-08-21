@@ -12,7 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
-  NbChatModule,
+  NbChatModule, NbCheckboxModule,
   NbDatepickerModule,
   NbDialogModule,
   NbMenuModule,
@@ -20,11 +20,31 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import {AverageReadingService} from './Services/AverageReadingService';
-import {FetchJsonUtilities} from './common/fetch-json.utilities';
+
+// firebase
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+
+// auth
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth-service.service';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { RequestPasswordComponent } from './auth/request-password/request-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { FormsModule } from '@angular/forms';
+
+// services
+import { AverageReadingService } from './Services/AverageReadingService';
+
+// common
+import { FetchJsonUtilities } from './common/fetch-json.utilities';
+import { MyStationsComponent } from './pages/my-stations/my-stations.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, RequestPasswordComponent, ResetPasswordComponent, MyStationsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -43,8 +63,13 @@ import {FetchJsonUtilities} from './common/fetch-json.utilities';
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    FormsModule,
+    NbCheckboxModule,
   ],
-  providers: [FetchJsonUtilities, AverageReadingService],
+  providers: [FetchJsonUtilities, AverageReadingService,  AuthGuard, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

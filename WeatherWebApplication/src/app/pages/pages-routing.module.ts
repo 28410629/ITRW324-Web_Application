@@ -11,11 +11,11 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
-      path: 'dashboard',
+      path: 'homepage',
       component: ECommerceComponent,
     },
     {
-      path: 'iot-dashboard',
+      path: 'my-stations',
       component: DashboardComponent,
     },
     {
@@ -70,7 +70,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'iot-dashboard',
+      redirectTo: 'homepage',
       pathMatch: 'full',
     },
     {
