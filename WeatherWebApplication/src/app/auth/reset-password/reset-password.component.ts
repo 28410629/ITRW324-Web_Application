@@ -45,7 +45,7 @@ export class ResetPasswordComponent {
     this.auth.confirmPasswordReset(this.code, this.user.password)
       .then((res) => {
         this.submitted = false;
-        this.messages = [res];
+        // this.messages = [res];
 
         this.redirectToDashboard()
       })

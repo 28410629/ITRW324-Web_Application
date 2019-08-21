@@ -39,10 +39,10 @@ export class RegisterComponent {
 
     this.auth.register(this.user.email, this.user.password, this.user.fullName, this.user.company)
       .then(() => {
-        this.submitted = false;
-        this.messages = [];
+          this.submitted = false;
+          this.messages = [];
 
-        this.redirectToDashboard();
+          this.redirectToDashboard();
       })
       .catch((err) => {
         this.submitted = false;
@@ -51,12 +51,12 @@ export class RegisterComponent {
   }
 
   loginSocial(name) {
-    if (name === "google") {
+    if (name === 'google') {
       this.loginGoogle();
-    } else if (name === "facebook") {
+    } else if (name === 'facebook') {
       this.loginFb();
     } else{
-      console.warn("No login for " + name);
+      console.warn('No login for ' + name);
     }
   }
 

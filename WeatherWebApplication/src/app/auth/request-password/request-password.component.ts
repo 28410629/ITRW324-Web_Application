@@ -38,7 +38,7 @@ export class RequestPasswordComponent {
     this.auth.requestPass(this.user.email).then(
       (res) => {
       this.submitted = false;
-      this.messages = [res];
+      // this.messages = [res];
 
       this.redirectToDashboard()
     })
