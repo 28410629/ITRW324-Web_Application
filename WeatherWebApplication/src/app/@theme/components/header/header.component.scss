@@ -10,7 +10,27 @@
   .logo-container {
     display: flex;
     align-items: center;
-    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+    // width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
+    // width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)} + 113px);
+    width: 259px;
+  }
+
+  @media screen and (max-width: 463px) {
+    .logo-container {
+      width: 240px;
+    }
+  }
+
+  @media screen and (max-width: 441px) {
+    .logo-container {
+      width: 210px;
+    }
+  }
+
+  @media screen and (max-width: 412px) {
+    .logo-container {
+      width: 166px;
+    }
   }
 
   nb-action {
@@ -44,11 +64,31 @@
 
     .logo {
       padding: 0 1.25rem;
-      font-size: 1.75rem;
+      //font-size: 1.75rem;
+      font-size: larger;
       @include nb-ltr(border-left, 1px solid nb-theme(divider-color));
       @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
       white-space: nowrap;
       text-decoration: none;
+    }
+
+    @media screen and (max-width: 463px) {
+      .logo {
+        font-size: medium;
+      }
+    }
+
+    @media screen and (max-width: 441px) {
+      .logo {
+        font-size: small;
+      }
+    }
+
+    @media screen and (max-width: 412px) {
+      .logo {
+        font-size: x-small;
+        padding-left: 10px;
+      }
     }
   }
 
@@ -64,7 +104,7 @@
 
   @include media-breakpoint-down(is) {
     nb-select {
-      display: none;
+      // display: none;
     }
   }
 }
