@@ -1,15 +1,20 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  // {
-  //   title: 'E-commerce',
-  //   icon: 'shopping-cart-outline',
-  //   link: '/pages/dashboard',
-  //   home: true,
-  // },
   {
-    title: 'My Stations',
+    title: 'Homepage',
     icon: 'home-outline',
+    link: '/pages/homepage',
+    home: true,
+  },
+  {
+    title: 'Favourite Stations',
+    icon: 'star-outline',
+    link: '/pages/my-stations',
+  },
+  {
+    title: 'Manage Favourite Stations',
+    icon: 'star-outline',
     link: '/pages/my-stations',
   },
   // {

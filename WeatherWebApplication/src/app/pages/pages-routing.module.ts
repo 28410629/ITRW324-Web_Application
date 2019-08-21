@@ -11,7 +11,7 @@ const routes: Routes = [{
   component: PagesComponent,
   children: [
     {
-      path: 'dashboard',
+      path: 'homepage',
       component: ECommerceComponent,
     },
     {
