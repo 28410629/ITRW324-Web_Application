@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AverageReadingService} from '../../../Services/AverageReadingService';
-
+import {AverageReading, AverageReadingEntity} from '../../../Models/AverageReadingsModel';
 
 
 @Component({
@@ -12,7 +12,7 @@ import {AverageReadingService} from '../../../Services/AverageReadingService';
 export class WeatherComponent implements OnInit {
 
 
-  readings: string[] = [];
+  statusReadings = [];
 
   constructor(private service: AverageReadingService) {}
 
@@ -22,7 +22,7 @@ export class WeatherComponent implements OnInit {
   ngOnInit() {
     this.service.FetchAverageToday(this.stationId).subscribe(
       data => {
-        this.readings = data; // 0=temp, 1=humid
+        this.statusReadings = data.avgReadings;
       },
       error => {
       },
@@ -45,7 +45,7 @@ export class WeatherComponent implements OnInit {
   getAvgTemp() {
     let temp;
     try {
-      temp = this.readings[0];
+      temp = this.statusReadings;
       temp = temp.substr(0, temp.indexOf('.'));
     } catch (e) {
       return '0';
@@ -56,7 +56,7 @@ export class WeatherComponent implements OnInit {
   getAvgHumid() {
     let hum;
     try {
-      hum = this.readings[1];
+      hum = this.statusReadings;
       hum = hum.substr(0, hum.indexOf('.'));
     } catch (e) {
       return '0';
