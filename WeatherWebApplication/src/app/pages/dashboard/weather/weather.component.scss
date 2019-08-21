@@ -102,7 +102,7 @@
   position: relative;
   line-height: 20px;
 }
-.flair:hover {
+.flair:hover, flair:active {
   max-width: 500px;
   padding: 0 5px;
   color: #fff;
@@ -120,6 +120,6 @@
 }
 
 .flair-offline {
-  background: #88201d;
-  color: #88201d;
+  background: #b52320;
+  color: #b52320;
 }
