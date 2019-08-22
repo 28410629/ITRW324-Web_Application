@@ -12,18 +12,9 @@
     <ngx-solar [chartValue]="solarValue"></ngx-solar>-->
 
 
-  <div class="col-xxxl-3 col-xxl-4 col-md-5">
-    <ngx-weather [stationId]="2347795"></ngx-weather>
+  <div class="col-xxxl-3 col-xxl-4 col-md-5" *ngFor="let status of statusReadings">
+    <ngx-weather [statusReadings]=status></ngx-weather>
   </div>
 
-
-  <div class="col-xxxl-3 col-xxl-4 col-md-5">
-    <ngx-weather [stationId]="10359807"></ngx-weather>
-  </div>
-
-
-  <div class="col-xxxl-3 col-xxl-4 col-md-5">
-    <ngx-weather [stationId]="10359964"></ngx-weather>
-  </div>
 
 </div>

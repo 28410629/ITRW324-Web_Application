@@ -1,7 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
+import {AverageReadingEntity} from '../../Models/AverageReadingsModel';
+import {AverageReadingService} from '../../Services/AverageReadingService';
 
 interface CardSettings {
   title: string;
@@ -14,9 +16,32 @@ interface CardSettings {
   styleUrls: ['./dashboard.component.scss'],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnDestroy {
+export class DashboardComponent implements OnDestroy, OnInit {
 
   private alive = true;
+  statusReadings: AverageReadingEntity[] = [{
+    StationName: 'billy',
+    AverageTemp: '34.3434',
+    Humidity: '23.343',
+    AmbientLight: '355.232',
+    MaxTemp: '44',
+    MinTemp: '12.33',
+    ForecastDay1: '23.34',
+    ForecastDay2: '23.34',
+    ForecastDay3: '23.34',
+    ForecastDay4: '23.34',
+  }];
+
+  ngOnInit() {
+    this.service.FetchAverageToday('2347795-10359807-10359964').subscribe(
+      data => {
+        this.statusReadings = data.avgReadings;
+      },
+      error => {
+      },
+    );
+
+  }
 
   solarValue: number;
   lightCard: CardSettings = {
@@ -79,7 +104,8 @@ export class DashboardComponent implements OnDestroy {
   };
 
   constructor(private themeService: NbThemeService,
-              private solarService: SolarData) {
+              private solarService: SolarData,
+              private service: AverageReadingService) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
@@ -91,6 +117,7 @@ export class DashboardComponent implements OnDestroy {
       .subscribe((data) => {
         this.solarValue = data;
       });
+
   }
 
   ngOnDestroy() {
