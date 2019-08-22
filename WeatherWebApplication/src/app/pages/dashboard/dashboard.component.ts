@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
@@ -15,11 +15,10 @@ interface CardSettings {
   styleUrls: ['./dashboard.component.scss'],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnDestroy {
+export class DashboardComponent implements OnDestroy, OnInit {
 
   private alive = true;
-  statusReadings: AverageReadingEntity[] = [];
-  testModel: AverageReadingEntity = {
+  statusReadings: AverageReadingEntity[] = [{
     StationName: 'billy',
     AverageTemp: '34.3434',
     Humidity: '23.343',
@@ -30,7 +29,18 @@ export class DashboardComponent implements OnDestroy {
     ForecastDay2: '23.34',
     ForecastDay3: '23.34',
     ForecastDay4: '23.34',
-  };
+  }];
+
+  ngOnInit() {
+    /*this.service.FetchAverageToday(this.stationId).subscribe(
+      data => {
+        this.statusReadings = data.avgReadings;
+      },
+      error => {
+      },
+    );*/
+
+  }
 
   solarValue: number;
   lightCard: CardSettings = {

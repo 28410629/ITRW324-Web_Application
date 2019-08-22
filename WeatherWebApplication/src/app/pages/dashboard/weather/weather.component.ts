@@ -8,23 +8,12 @@ import {AverageReadingEntity} from '../../../Models/AverageReadingsModel';
   templateUrl: './weather.component.html',
 })
 
-export class WeatherComponent implements OnInit {
+export class WeatherComponent {
 
   @Input()
   statusReadings: AverageReadingEntity;
 
   constructor(private service: AverageReadingService) {}
-
-  ngOnInit() {
-    /*this.service.FetchAverageToday(this.stationId).subscribe(
-      data => {
-        this.statusReadings = data.avgReadings;
-      },
-      error => {
-      },
-    );*/
-
-  }
 
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

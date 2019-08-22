@@ -11,10 +11,10 @@
 <!--  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
     <ngx-solar [chartValue]="solarValue"></ngx-solar>-->
 
-  <div *ngFor="let status of statusReadings">
-    <div class="col-xxxl-3 col-xxl-4 col-md-5">
-      <ngx-weather [statusReadings]=status></ngx-weather>
-    </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-md-5" *ngFor="let status of statusReadings">
+    <ngx-weather [statusReadings]=status></ngx-weather>
   </div>
+
 
 </div>
