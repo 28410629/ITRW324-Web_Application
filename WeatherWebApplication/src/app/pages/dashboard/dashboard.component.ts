@@ -3,6 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
 import {AverageReadingEntity} from '../../Models/AverageReadingsModel';
+import {AverageReadingService} from '../../Services/AverageReadingService';
 
 interface CardSettings {
   title: string;
@@ -32,13 +33,13 @@ export class DashboardComponent implements OnDestroy, OnInit {
   }];
 
   ngOnInit() {
-    /*this.service.FetchAverageToday(this.stationId).subscribe(
+    this.service.FetchAverageToday('2347795-10359807-10359964').subscribe(
       data => {
         this.statusReadings = data.avgReadings;
       },
       error => {
       },
-    );*/
+    );
 
   }
 
@@ -103,7 +104,8 @@ export class DashboardComponent implements OnDestroy, OnInit {
   };
 
   constructor(private themeService: NbThemeService,
-              private solarService: SolarData) {
+              private solarService: SolarData,
+              private service: AverageReadingService) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

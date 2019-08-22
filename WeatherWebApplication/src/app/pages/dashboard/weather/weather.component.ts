@@ -13,7 +13,7 @@ export class WeatherComponent {
   @Input()
   statusReadings: AverageReadingEntity;
 
-  constructor(private service: AverageReadingService) {}
+  constructor() {}
 
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
