@@ -19,7 +19,10 @@ export class ResetPasswordComponent {
   messages: string[] = [];
   user: any = {};
 
-  validation = {};
+  // validation = {};
+  validation = { fullName: {required: '', minLength: '', maxLength: ''},
+    email: {required: '', minLength: '', maxLength: ''},
+    password: {required: '', minLength: '', maxLength: ''}};
 
   code: string;
 
@@ -28,7 +31,7 @@ export class ResetPasswordComponent {
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.code = params['oobCode'];
-      console.log(this.code); // Print the parameter to the console. 
+      console.log(this.code); // Print the parameter to the console.
     });
 
     this.redirectDelay = this.getConfigValue('forms.resetPassword.redirectDelay');

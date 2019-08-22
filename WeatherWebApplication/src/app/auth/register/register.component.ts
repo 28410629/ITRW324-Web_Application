@@ -20,7 +20,10 @@ export class RegisterComponent {
   messages: string[] = [];
   user: any = {};
   socialLinks: NbAuthSocialLink[] = [];
-  validation = {};
+  // validation = {};
+  validation = { fullName: {required: '', minLength: '', maxLength: ''},
+    email: {required: '', minLength: '', maxLength: ''},
+    password: {required: '', minLength: '', maxLength: ''}};
 
   constructor(protected auth: AuthService,
     @Inject(NB_AUTH_OPTIONS) protected config = {},

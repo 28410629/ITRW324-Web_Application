@@ -19,7 +19,7 @@ export class LoginComponent {
   submitted: boolean = false;
   socialLinks: NbAuthSocialLink[] = [];
 
-  validation = {};
+  validation = { password: {required: '', minLength: '', maxLength: ''}};
 
   constructor(protected auth: AuthService, @Inject(NB_AUTH_OPTIONS) protected config = {}, protected router: Router) {
     this.redirectDelay = this.getConfigValue('forms.login.redirectDelay');
@@ -78,7 +78,7 @@ export class LoginComponent {
 
   redirectToDashboard() {
     setTimeout(() => {
-      this.router.navigate(['/pages/dashboard']);
+      this.router.navigate(['/pages/homepage']);
     }, this.redirectDelay);
   }
 
