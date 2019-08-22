@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AverageReadingService} from '../../../Services/AverageReadingService';
+import {AverageReadingEntity} from '../../../Models/AverageReadingsModel';
 
 @Component({
   selector: 'ngx-weather',
@@ -9,22 +10,19 @@ import {AverageReadingService} from '../../../Services/AverageReadingService';
 
 export class WeatherComponent implements OnInit {
 
-
-  statusReadings;
+  @Input()
+  statusReadings: AverageReadingEntity;
 
   constructor(private service: AverageReadingService) {}
 
-  @Input()
-  stationId: string;
-
   ngOnInit() {
-    this.service.FetchAverageToday(this.stationId).subscribe(
+    /*this.service.FetchAverageToday(this.stationId).subscribe(
       data => {
         this.statusReadings = data.avgReadings;
       },
       error => {
       },
-    );
+    );*/
 
   }
 
@@ -43,7 +41,7 @@ export class WeatherComponent implements OnInit {
   getAvgTemp() {
     let temp;
     try {
-      temp = +this.statusReadings[1];
+      temp = +this.statusReadings.AverageTemp;
       temp = Math.round(temp);
     } catch (e) {
       return '0';
@@ -54,7 +52,7 @@ export class WeatherComponent implements OnInit {
   getAvgHumid() {
     let hum;
     try {
-      hum = +this.statusReadings[5];
+      hum = +this.statusReadings.Humidity;
       hum = Math.round(hum);
     } catch (e) {
       return '0';
@@ -65,7 +63,7 @@ export class WeatherComponent implements OnInit {
   getMaxTemp() {
     let mx;
     try {
-      mx = +this.statusReadings[2];
+      mx = +this.statusReadings.MaxTemp;
       mx = Math.round(mx);
     } catch (e) {
       return '0';
@@ -76,7 +74,7 @@ export class WeatherComponent implements OnInit {
   getMinTemp() {
     let min;
     try {
-      min = +this.statusReadings[3];
+      min = +this.statusReadings.MinTemp;
       min = Math.round(min);
     } catch (e) {
       return '0';
@@ -87,7 +85,7 @@ export class WeatherComponent implements OnInit {
   getLight() {
     let lig;
     try {
-      lig = +this.statusReadings[4];
+      lig = +this.statusReadings.AmbientLight;
       lig *= 1.0;
       lig = lig / 1024.0 * 100.0;
       lig = Math.round(lig);
@@ -101,7 +99,7 @@ export class WeatherComponent implements OnInit {
   getForecast1() {
     let f1;
     try {
-      f1 = +this.statusReadings[6];
+      f1 = +this.statusReadings.ForecastDay1;
       f1 = Math.round(f1);
     } catch (e) {
       return '0';
@@ -112,7 +110,7 @@ export class WeatherComponent implements OnInit {
   getForecast2() {
     let f2;
     try {
-      f2 = +this.statusReadings[7];
+      f2 = +this.statusReadings.ForecastDay2;
       f2 = Math.round(f2);
     } catch (e) {
       return '0';
@@ -123,7 +121,7 @@ export class WeatherComponent implements OnInit {
   getForecast3() {
     let f3;
     try {
-      f3 = +this.statusReadings[8];
+      f3 = +this.statusReadings.ForecastDay3;
       f3 = Math.round(f3);
     } catch (e) {
       return '0';
@@ -134,7 +132,7 @@ export class WeatherComponent implements OnInit {
   getForecast4() {
     let f4;
     try {
-      f4 = +this.statusReadings[9];
+      f4 = +this.statusReadings.ForecastDay4;
       f4 = Math.round(f4);
     } catch (e) {
       return '0';
@@ -145,11 +143,11 @@ export class WeatherComponent implements OnInit {
   getStationName() {
     let name;
     try {
-       name = this.statusReadings[0];
+       name = this.statusReadings.StationName;
       if (name === '')
-        return this.stationId.toString() + '  - Error';
+        return 'Station X  - Error';
     } catch (e) {
-      return this.stationId.toString() + '  - Error';
+      return 'Station X  - Error';
     }
     return name;
   }

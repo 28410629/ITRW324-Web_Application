@@ -2,6 +2,7 @@ import {Component, OnDestroy} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
+import {AverageReadingEntity} from '../../Models/AverageReadingsModel';
 
 interface CardSettings {
   title: string;
@@ -17,6 +18,19 @@ interface CardSettings {
 export class DashboardComponent implements OnDestroy {
 
   private alive = true;
+  statusReadings: AverageReadingEntity[] = [];
+  testModel: AverageReadingEntity = {
+    StationName: 'billy',
+    AverageTemp: '34.3434',
+    Humidity: '23.343',
+    AmbientLight: '355.232',
+    MaxTemp: '44',
+    MinTemp: '12.33',
+    ForecastDay1: '23.34',
+    ForecastDay2: '23.34',
+    ForecastDay3: '23.34',
+    ForecastDay4: '23.34',
+  };
 
   solarValue: number;
   lightCard: CardSettings = {
@@ -91,6 +105,7 @@ export class DashboardComponent implements OnDestroy {
       .subscribe((data) => {
         this.solarValue = data;
       });
+
   }
 
   ngOnDestroy() {
