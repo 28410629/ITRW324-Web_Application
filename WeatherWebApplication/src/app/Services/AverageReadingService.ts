@@ -18,7 +18,7 @@ export class AverageReadingService {
           const readings: AverageReadingEntity[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              readings.push(responseData[key]);
+              readings.push(...responseData[key]);
             }
           }
           data.avgReadings = readings;

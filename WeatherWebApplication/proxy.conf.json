@@ -1,6 +1,6 @@
 {  "/api/*":
   {
-    "target": "https://weatherstationapi.ddns.net:5001",
+    "target": "https://weatherstationapi.ddns.net:7001",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
