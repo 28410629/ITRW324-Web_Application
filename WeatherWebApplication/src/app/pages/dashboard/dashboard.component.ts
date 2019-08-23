@@ -19,18 +19,7 @@ interface CardSettings {
 export class DashboardComponent implements OnDestroy, OnInit {
 
   private alive = true;
-  statusReadings: AverageReadingEntity[] = [{
-    StationName: 'billy',
-    AverageTemp: '34.3434',
-    Humidity: '23.343',
-    AmbientLight: '355.232',
-    MaxTemp: '44',
-    MinTemp: '12.33',
-    ForecastDay1: '23.34',
-    ForecastDay2: '23.34',
-    ForecastDay3: '23.34',
-    ForecastDay4: '23.34',
-  }];
+  statusReadings: AverageReadingEntity[] = [];
 
   ngOnInit() {
     this.service.FetchAverageToday('2347795-10359807-10359964').subscribe(
