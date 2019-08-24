@@ -12,7 +12,7 @@ export class AverageReadingService {
   public FetchAverageToday(stationid: string) {
 
     return this.common.fetchJSON(
-      'api/get/stationstatus/station?stationids=' + stationid)
+      'https://weatherstationapi.ddns.net:5001/api/get/stationstatus/station?stationids=' + stationid)
       .pipe(map(responseData => {
           const data = {} as AverageReading;
           const readings: AverageReadingEntity[] = [];
