@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
-import {AverageReadingEntity} from '../../Models/AverageReadingsModel';
-import {AverageReadingService} from '../../Services/AverageReadingService';
+import {AverageReadingEntity} from '../../models/averagereadings.model';
+import {AverageReadingService} from '../../services/AverageReadingService';
 
 interface CardSettings {
   title: string;

@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
-import {User, UserProfileData} from '../Models/user.model';
+import {User, UserProfileData} from '../models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -18,11 +18,13 @@ export class AuthService {
         if (user) {
           this.userDetails = user;
           this.CreateUserProfileData();
+          this.AssignLocalStorageUserDataJSON();
           localStorage.setItem('user', JSON.stringify(this.userDetails));
           JSON.parse(localStorage.getItem('user'));
         } else {
           this.userDetails = null;
           localStorage.setItem('user', null);
+          this.DeassignLocalStorageUserDataJSON();
           JSON.parse(localStorage.getItem('user'));
         }
       },
@@ -66,13 +68,36 @@ export class AuthService {
           name: this.userDetails.displayName,
           picture: this.userDetails.photoURL,
           uid: this.userDetails.uid,
+          favstations: new Array(String),
+          theme: 'cosmic',
         });
       }
     });
   }
 
+  AssignLocalStorageUserDataJSON() {
+    this.GetUserProfileData(this.userDetails.uid)
+      .subscribe(
+        responseData => {
+          localStorage.setItem('userdata', JSON.stringify(responseData as UserProfileData));
+          JSON.parse(localStorage.getItem('userdata'));
+        });
+  }
+
+  DeassignLocalStorageUserDataJSON() {
+    localStorage.setItem('userdata', JSON.stringify({theme: 'default'}));
+    JSON.parse(localStorage.getItem('userdata'));
+  }
+
   GetUserProfileData(userid) {
     return this._firestore.doc<UserProfileData>('usersdata/' + userid).valueChanges();
+  }
+
+  UpdateUserProfileDataTheme(newTheme: string) {
+    const userjson = JSON.parse(localStorage.getItem('userdata')) as UserProfileData;
+      this._firestore.doc('usersdata/' + userjson.uid).update({
+        theme: newTheme,
+      });
   }
 
   // Send email verification when new user sign up

@@ -5,7 +5,7 @@ import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {User, UserProfileData} from '../../../Models/user.model';
+import {User, UserProfileData} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
@@ -68,6 +68,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(
         responseData => {
           this.user = responseData as UserProfileData;
+          this.themeService.changeTheme(this.user.theme);
         });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
@@ -93,6 +94,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeTheme(themeName: string) {
     this.themeService.changeTheme(themeName);
+    this.authService.UpdateUserProfileDataTheme(themeName);
   }
 
   toggleSidebar(): boolean {
