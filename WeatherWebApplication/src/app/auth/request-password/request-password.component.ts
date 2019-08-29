@@ -1,10 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service.service';
-import {getDeepFromObject, NB_AUTH_OPTIONS, NbAuthSocialLink} from '@nebular/auth';
+import {getDeepFromObject, NB_AUTH_OPTIONS } from '@nebular/auth';
 
 @Component({
-  selector: 'app-request-password',
+  selector: 'ngx-request-password',
   styleUrls: ['./request-password.component.scss'],
   templateUrl: './request-password.component.html',
 })
@@ -33,7 +33,7 @@ export class RequestPasswordComponent {
     this.validation = this.getConfigValue('forms.validation');
   }
 
-  requestPass(){
+  requestPass() {
 
     this.errors = this.messages = [];
     this.submitted = true;
@@ -43,7 +43,7 @@ export class RequestPasswordComponent {
       this.submitted = false;
       // this.messages = [res];
 
-      this.redirectToDashboard()
+      this.redirectToDashboard();
     })
     .catch((err) => {
       this.submitted = false;
@@ -51,7 +51,7 @@ export class RequestPasswordComponent {
     });
   }
 
-  redirectToDashboard(){
+  redirectToDashboard() {
     setTimeout(() => {
       this.router.navigate(['/pages/dashboard']);
     }, this.redirectDelay);

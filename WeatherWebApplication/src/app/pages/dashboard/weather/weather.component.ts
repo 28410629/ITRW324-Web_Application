@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AverageReadingService} from '../../../services/AverageReadingService';
+import {Component, Input } from '@angular/core';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 
 @Component({
