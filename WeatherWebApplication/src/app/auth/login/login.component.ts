@@ -4,7 +4,7 @@ import { AuthService } from '../auth-service.service';
 import {getDeepFromObject, NB_AUTH_OPTIONS, NbAuthSocialLink} from '@nebular/auth';
 
 @Component({
-  selector: 'app-login',
+  selector: 'ngx-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {

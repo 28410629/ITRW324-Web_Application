@@ -5,8 +5,8 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
-import {NbMenuService} from "@nebular/theme";
-import {AuthService} from "./auth/auth-service.service";
+import {NbMenuService} from '@nebular/theme';
+import {AuthService} from './auth/auth-service.service';
 
 @Component({
   selector: 'ngx-app',
@@ -25,9 +25,12 @@ export class AppComponent implements OnInit {
 
   onContecxtItemSelection(title) {
     // this is where you call user menu items!
-    console.log(title);
+    // console.log(title);
     if (title === 'Log out') {
       this.authService.logout();
+    }
+    if (title === 'Profile') {
+
     }
   }
 

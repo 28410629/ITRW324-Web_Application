@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
-import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {User, UserProfileData} from '../../../Models/user.model';
+import {User, UserProfileData} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
@@ -47,7 +46,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
-              private userService: UserData,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
               private authService: AuthService) {
@@ -68,6 +66,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(
         responseData => {
           this.user = responseData as UserProfileData;
+          this.themeService.changeTheme(this.user.theme);
         });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
@@ -93,6 +92,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeTheme(themeName: string) {
     this.themeService.changeTheme(themeName);
+    this.authService.UpdateUserProfileDataTheme(themeName);
   }
 
   toggleSidebar(): boolean {

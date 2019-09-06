@@ -10,4 +10,6 @@ export interface UserProfileData {
   name: string;
   picture: string;
   uid: string;
+  favstations: string[];
+  theme: string;
 }

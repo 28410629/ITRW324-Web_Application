@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { FetchJsonUtilities } from '../common/fetch-json.utilities';
-import {AverageReadingEntity, AverageReading} from '../Models/AverageReadingsModel';
+import {AverageReadingEntity, AverageReading} from '../models/averagereadings.model';
 
 @Injectable()
 export class AverageReadingService {

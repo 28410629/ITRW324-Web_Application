@@ -37,14 +37,20 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { FormsModule } from '@angular/forms';
 
 // services
-import { AverageReadingService } from './Services/AverageReadingService';
+import { AverageReadingService } from './services/AverageReadingService';
 
 // common
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
 import { MyStationsComponent } from './pages/my-stations/my-stations.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, RequestPasswordComponent, ResetPasswordComponent, MyStationsComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    RequestPasswordComponent,
+    ResetPasswordComponent,
+    MyStationsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

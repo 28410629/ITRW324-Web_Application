@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AverageReadingService} from '../../../Services/AverageReadingService';
-import {AverageReadingEntity} from '../../../Models/AverageReadingsModel';
+import {Component, Input } from '@angular/core';
+import {AverageReadingEntity} from '../../../models/averagereadings.model';
 
 @Component({
   selector: 'ngx-weather',
