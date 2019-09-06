@@ -55,9 +55,7 @@ import { FetchJsonUtilities } from './common/fetch-json.utilities';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
     ThemeModule.forRoot(),
-
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -74,7 +72,7 @@ import { FetchJsonUtilities } from './common/fetch-json.utilities';
     FormsModule,
     NbCheckboxModule,
   ],
-  providers: [FetchJsonUtilities, AverageReadingService,  AuthGuard, AuthService],
+  providers: [FetchJsonUtilities, AverageReadingService, AuthGuard, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

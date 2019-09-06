@@ -140,6 +140,7 @@ import {
 } from '../user-pages/manage-favourite-stations/manage-favourite-stations.component';
 import { StationDetailComponent } from '../user-pages/station-detail/station-detail.component';
 import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-info/github-repository-info.component';
+import {UserProfileComponent} from '../user-pages/user-profile/user-profile.component';
 
 @NgModule({
   imports: [
@@ -279,6 +280,7 @@ import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-i
     ManageFavouriteStationsComponent,
     StationDetailComponent,
     GithubRepositoryInfoComponent,
+    UserProfileComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,
@@ -286,6 +288,7 @@ import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-i
     WindowFormComponent,
     NgxPopoverCardComponent,
     NgxPopoverFormComponent,
+    UserProfileComponent,
     NgxPopoverTabsComponent,
   ],
   providers: [

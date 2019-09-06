@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuService } from '@nebular/theme';
 import { AuthService } from './auth/auth-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-app',
@@ -9,7 +10,8 @@ import { AuthService } from './auth/auth-service.service';
 export class AppComponent implements OnInit {
 
   constructor(private menuService: NbMenuService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              public router: Router) {
     this.menuService.onItemClick()
       .subscribe((event) => {
         this.onContextItemSelection(event.item.title);
@@ -23,7 +25,7 @@ export class AppComponent implements OnInit {
       this.authService.logout();
     }
     if (title === 'Profile') {
-
+      this.router.navigate(['pages/user-profile/']);
     }
   }
 
