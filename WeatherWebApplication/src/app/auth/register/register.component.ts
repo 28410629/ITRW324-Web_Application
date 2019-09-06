@@ -85,7 +85,7 @@ export class RegisterComponent {
 
   redirectToDashboard() {
     setTimeout(() => {
-      this.router.navigate(['/pages/dashboard']);
+      this.router.navigate(['/pages/components']);
     }, this.redirectDelay);
   }
 

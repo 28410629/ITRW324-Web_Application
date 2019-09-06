@@ -8,6 +8,7 @@ import {NbThemeService} from '@nebular/theme';
 })
 export class HomepageComponent {
   graphdata;
+  graphoptions;
   themeSubscription: any;
 
   constructor(private theme: NbThemeService) {
@@ -48,7 +49,7 @@ export class HomepageComponent {
         }],
       };
 
-      this.options = {
+      this.graphoptions = {
         responsive: true,
         maintainAspectRatio: false,
         legend: {
