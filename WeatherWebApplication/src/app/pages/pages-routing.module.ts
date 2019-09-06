@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { GridComponent } from './dashboard/grid/grid.component';
 import { FormInputsComponent } from './dashboard/form-inputs/form-inputs.component';
@@ -32,7 +31,7 @@ const routes: Routes = [{
   children: [
     {
       path: 'homepage',
-      component: ECommerceComponent,
+      component: SpinnerComponent,
     },
     {
       path: 'my-stations',
