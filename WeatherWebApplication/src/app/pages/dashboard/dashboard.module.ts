@@ -20,7 +20,7 @@ import {
   NbCalendarKitModule,
   NbCalendarRangeModule,
   NbChatModule,
-  NbProgressBarModule, NbSpinnerModule,
+  NbProgressBarModule, NbSpinnerModule, NbDialogModule, NbWindowModule, NbTooltipModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -103,9 +103,34 @@ import {D3Component} from './d3/d3.component';
 import {ChartjsComponent} from './chartjs/chartjs.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartModule} from 'angular2-chartjs';
+import {ToastrComponent} from './modal-overlays/toastr/toastr.component';
+import {DialogComponent} from './modal-overlays/dialog/dialog.component';
+import {ShowcaseDialogComponent} from './modal-overlays/dialog/showcase-dialog/showcase-dialog.component';
+import {DialogNamePromptComponent} from './modal-overlays/dialog/dialog-name-prompt/dialog-name-prompt.component';
+import {WindowComponent} from './modal-overlays/window/window.component';
+import {WindowFormComponent} from './modal-overlays/window/window-form/window-form.component';
+import {PopoversComponent} from './modal-overlays/popovers/popovers.component';
+import {
+  NgxPopoverCardComponent,
+  NgxPopoverFormComponent,
+  NgxPopoverTabsComponent,
+} from './modal-overlays/popovers/popover-examples.component';
+import {TooltipComponent} from './modal-overlays/tooltip/tooltip.component';
 
 @NgModule({
   imports: [
+    FormsModule,
+    ThemeModule,
+    NbDialogModule.forChild(),
+    NbWindowModule.forChild(),
+    NbCardModule,
+    NbCheckboxModule,
+    NbTabsetModule,
+    NbPopoverModule,
+    NbButtonModule,
+    NbInputModule,
+    NbSelectModule,
+    NbTooltipModule,
     NgxChartsModule,
     ChartModule,
     NbCalendarModule,
@@ -212,6 +237,25 @@ import {ChartModule} from 'angular2-chartjs';
     EchartsComponent,
     D3Component,
     ChartjsComponent,
+    ToastrComponent,
+    DialogComponent,
+    ShowcaseDialogComponent,
+    DialogNamePromptComponent,
+    WindowComponent,
+    WindowFormComponent,
+    PopoversComponent,
+    NgxPopoverCardComponent,
+    NgxPopoverFormComponent,
+    NgxPopoverTabsComponent,
+    TooltipComponent,
+  ],
+  entryComponents: [
+    ShowcaseDialogComponent,
+    DialogNamePromptComponent,
+    WindowFormComponent,
+    NgxPopoverCardComponent,
+    NgxPopoverFormComponent,
+    NgxPopoverTabsComponent,
   ],
 })
 export class DashboardModule { }
