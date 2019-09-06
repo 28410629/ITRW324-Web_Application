@@ -24,11 +24,11 @@ import { ChatComponent } from './dashboard/chat/chat.component';
 import { EchartsComponent } from './dashboard/echarts/echarts.component';
 import { D3Component } from './dashboard/d3/d3.component';
 import { ChartjsComponent } from './dashboard/chartjs/chartjs.component';
-import {DialogComponent} from "./dashboard/modal-overlays/dialog/dialog.component";
-import {WindowComponent} from "./dashboard/modal-overlays/window/window.component";
-import {PopoversComponent} from "./dashboard/modal-overlays/popovers/popovers.component";
-import {TooltipComponent} from "./dashboard/modal-overlays/tooltip/tooltip.component";
-import {ToastrComponent} from "./dashboard/modal-overlays/toastr/toastr.component";
+import {DialogComponent} from './dashboard/modal-overlays/dialog/dialog.component';
+import {WindowComponent} from './dashboard/modal-overlays/window/window.component';
+import {PopoversComponent} from './dashboard/modal-overlays/popovers/popovers.component';
+import {TooltipComponent} from './dashboard/modal-overlays/tooltip/tooltip.component';
+import {ToastrComponent} from './dashboard/modal-overlays/toastr/toastr.component';
 
 const routes: Routes = [{
   path: '',
