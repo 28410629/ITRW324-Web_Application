@@ -20,7 +20,13 @@ import {
   NbCalendarKitModule,
   NbCalendarRangeModule,
   NbChatModule,
-  NbProgressBarModule, NbSpinnerModule, NbDialogModule, NbWindowModule, NbTooltipModule,
+  NbProgressBarModule,
+  NbSpinnerModule,
+  NbDialogModule,
+  NbWindowModule,
+  NbTooltipModule,
+  NbRouteTabsetModule,
+  NbStepperModule, NbAccordionModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -41,7 +47,7 @@ import { SolarComponent } from './solar/solar.component';
 import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GridComponent } from './grid/grid.component';
 import { IconsComponent } from './icons/icons.component';
 import { TypographyComponent } from './typography/typography.component';
@@ -116,19 +122,21 @@ import {
   NgxPopoverTabsComponent,
 } from './modal-overlays/popovers/popover-examples.component';
 import {TooltipComponent} from './modal-overlays/tooltip/tooltip.component';
+import {Tab1Component, Tab2Component, TabsComponent} from './layout/tabs/tabs.component';
+import {StepperComponent} from './layout/stepper/stepper.component';
+import {ListComponent} from './layout/list/list.component';
+import {
+  NewsPostPlaceholderComponent,
+} from './layout/infinite-list/news-post-placeholder/news-post-placeholder.component';
+import {InfiniteListComponent} from './layout/infinite-list/infinite-list.component';
+import {NewsPostComponent} from './layout/infinite-list/news-post/news-post.component';
+import {AccordionComponent} from './layout/accordion/accordion.component';
+import {NewsService} from './layout/news.service';
 
 @NgModule({
   imports: [
-    FormsModule,
-    ThemeModule,
     NbDialogModule.forChild(),
     NbWindowModule.forChild(),
-    NbCardModule,
-    NbCheckboxModule,
-    NbTabsetModule,
-    NbPopoverModule,
-    NbButtonModule,
-    NbInputModule,
     NbSelectModule,
     NbTooltipModule,
     NgxChartsModule,
@@ -143,7 +151,6 @@ import {TooltipComponent} from './modal-overlays/tooltip/tooltip.component';
     Ng2SmartTableModule,
     FormsModule,
     NbTabsetModule,
-    NbListModule,
     NgxEchartsModule,
     NbPopoverModule,
     NbSearchModule,
@@ -157,8 +164,12 @@ import {TooltipComponent} from './modal-overlays/tooltip/tooltip.component';
     NbCheckboxModule,
     NbRadioModule,
     NbDatepickerModule,
-    NbSelectModule,
     NbIconModule,
+    ReactiveFormsModule,
+    NbRouteTabsetModule,
+    NbStepperModule,
+    NbListModule,
+    NbAccordionModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k',
       libraries: ['places'],
@@ -248,6 +259,15 @@ import {TooltipComponent} from './modal-overlays/tooltip/tooltip.component';
     NgxPopoverFormComponent,
     NgxPopoverTabsComponent,
     TooltipComponent,
+    TabsComponent,
+    Tab1Component,
+    Tab2Component,
+    StepperComponent,
+    ListComponent,
+    NewsPostPlaceholderComponent,
+    InfiniteListComponent,
+    NewsPostComponent,
+    AccordionComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,
@@ -256,6 +276,9 @@ import {TooltipComponent} from './modal-overlays/tooltip/tooltip.component';
     NgxPopoverCardComponent,
     NgxPopoverFormComponent,
     NgxPopoverTabsComponent,
+  ],
+  providers: [
+    NewsService,
   ],
 })
 export class DashboardModule { }

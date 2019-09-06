@@ -24,11 +24,16 @@ import { ChatComponent } from './dashboard/chat/chat.component';
 import { EchartsComponent } from './dashboard/echarts/echarts.component';
 import { D3Component } from './dashboard/d3/d3.component';
 import { ChartjsComponent } from './dashboard/chartjs/chartjs.component';
-import {DialogComponent} from './dashboard/modal-overlays/dialog/dialog.component';
-import {WindowComponent} from './dashboard/modal-overlays/window/window.component';
-import {PopoversComponent} from './dashboard/modal-overlays/popovers/popovers.component';
-import {TooltipComponent} from './dashboard/modal-overlays/tooltip/tooltip.component';
-import {ToastrComponent} from './dashboard/modal-overlays/toastr/toastr.component';
+import { DialogComponent } from './dashboard/modal-overlays/dialog/dialog.component';
+import { WindowComponent } from './dashboard/modal-overlays/window/window.component';
+import { PopoversComponent } from './dashboard/modal-overlays/popovers/popovers.component';
+import { TooltipComponent } from './dashboard/modal-overlays/tooltip/tooltip.component';
+import { ToastrComponent } from './dashboard/modal-overlays/toastr/toastr.component';
+import {StepperComponent} from './dashboard/layout/stepper/stepper.component';
+import {ListComponent} from './dashboard/layout/list/list.component';
+import {InfiniteListComponent} from './dashboard/layout/infinite-list/infinite-list.component';
+import {AccordionComponent} from './dashboard/layout/accordion/accordion.component';
+import {Tab1Component, Tab2Component, TabsComponent} from './dashboard/layout/tabs/tabs.component';
 
 const routes: Routes = [{
   path: '',
@@ -77,9 +82,39 @@ const routes: Routes = [{
       component: SearchMapComponent,
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
+      path: 'stepper',
+      component: StepperComponent,
+    },
+    {
+      path: 'list',
+      component: ListComponent,
+    },
+    {
+      path: 'infinite-list',
+      component: InfiniteListComponent,
+    },
+    {
+      path: 'accordion',
+      component: AccordionComponent,
+    },
+    {
+      path: 'tabs',
+      component: TabsComponent,
+      children: [
+        {
+          path: '',
+          redirectTo: 'tab1',
+          pathMatch: 'full',
+        },
+        {
+          path: 'tab1',
+          component: Tab1Component,
+        },
+        {
+          path: 'tab2',
+          component: Tab2Component,
+        },
+      ],
     },
     {
       path: 'dialog',
