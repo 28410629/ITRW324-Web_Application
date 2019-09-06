@@ -117,11 +117,6 @@ const routes: Routes = [{
       component: ChartjsComponent,
     },
     {
-      path: 'editors',
-      loadChildren: () => import('./editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
       path: 'smart-table',
       component: SmartTableComponent,
     },
