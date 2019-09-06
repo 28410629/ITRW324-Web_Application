@@ -40,10 +40,18 @@ import { GridComponent } from './grid/grid.component';
 import { IconsComponent } from './icons/icons.component';
 import { TypographyComponent } from './typography/typography.component';
 import { SearchComponent } from './search-fields/search-fields.component';
-import {ButtonsComponent} from './buttons/buttons.component';
-import {FormInputsComponent} from './form-inputs/form-inputs.component';
-import {FormLayoutsComponent} from './form-layouts/form-layouts.component';
-import {DatepickerComponent} from './datepicker/datepicker.component';
+import { ButtonsComponent} from './buttons/buttons.component';
+import { FormInputsComponent} from './form-inputs/form-inputs.component';
+import { FormLayoutsComponent} from './form-layouts/form-layouts.component';
+import { DatepickerComponent} from './datepicker/datepicker.component';
+import { AgmCoreModule} from '@agm/core';
+import { LeafletModule} from '@asymmetrik/ngx-leaflet';
+import { GmapsComponent} from './gmaps/gmaps.component';
+import { LeafletComponent} from './leaflet/leaflet.component';
+import { BubbleMapComponent} from './bubble/bubble-map.component';
+import { SearchMapComponent} from './search-map/search-map.component';
+import { MapComponent} from './search-map/map/map.component';
+import { SearchForMapComponent } from './search-map/search/search-for-map.component';
 
 @NgModule({
   imports: [
@@ -65,6 +73,12 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
     NbDatepickerModule,
     NbSelectModule,
     NbIconModule,
+    ThemeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k',
+      libraries: ['places'],
+    }),
+    LeafletModule.forRoot(),
   ],
   declarations: [
     DashboardComponent,
@@ -91,6 +105,12 @@ import {DatepickerComponent} from './datepicker/datepicker.component';
     FormInputsComponent,
     FormLayoutsComponent,
     DatepickerComponent,
+    GmapsComponent,
+    LeafletComponent,
+    BubbleMapComponent,
+    SearchMapComponent,
+    MapComponent,
+    SearchForMapComponent,
   ],
 })
 export class DashboardModule { }

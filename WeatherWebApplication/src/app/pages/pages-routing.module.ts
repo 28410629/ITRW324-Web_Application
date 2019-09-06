@@ -10,6 +10,10 @@ import {FormInputsComponent} from './dashboard/form-inputs/form-inputs.component
 import {FormLayoutsComponent} from './dashboard/form-layouts/form-layouts.component';
 import {ButtonsComponent} from './dashboard/buttons/buttons.component';
 import {DatepickerComponent} from './dashboard/datepicker/datepicker.component';
+import {GmapsComponent} from './dashboard/gmaps/gmaps.component';
+import {LeafletComponent} from './dashboard/leaflet/leaflet.component';
+import {BubbleMapComponent} from './dashboard/bubble/bubble-map.component';
+import {SearchMapComponent} from './dashboard/search-map/search-map.component';
 
 const routes: Routes = [{
   path: '',
@@ -44,6 +48,20 @@ const routes: Routes = [{
       component: DatepickerComponent,
     },
     {
+      path: 'gmaps',
+      component: GmapsComponent,
+    },
+    {
+      path: 'leaflet',
+      component: LeafletComponent,
+    }, {
+      path: 'bubble',
+      component: BubbleMapComponent,
+    }, {
+      path: 'searchmap',
+      component: SearchMapComponent,
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
@@ -57,11 +75,6 @@ const routes: Routes = [{
       path: 'extra-components',
       loadChildren: () => import('./extra-components/extra-components.module')
         .then(m => m.ExtraComponentsModule),
-    },
-    {
-      path: 'maps',
-      loadChildren: () => import('./maps/maps.module')
-        .then(m => m.MapsModule),
     },
     {
       path: 'charts',

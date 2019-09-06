@@ -5,9 +5,9 @@ import { Location } from '../entity/Location';
 
 @Component({
   selector: 'ngx-search',
-  templateUrl: './search.component.html',
+  templateUrl: './search-for-map.component.html',
 })
-export class SearchComponent implements OnInit {
+export class SearchForMapComponent implements OnInit {
 
   @Output() positionChanged = new EventEmitter<Location>();
 
