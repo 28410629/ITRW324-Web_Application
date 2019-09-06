@@ -66,7 +66,6 @@ import { MapComponent } from './search-map/map/map.component';
 import { SearchForMapComponent } from './search-map/search/search-for-map.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { FsIconComponent, TreeGridComponent } from './tree-grid/tree-grid.component';
 import { SmartTableComponent } from './smart-table/smart-table.component';
 import { AlertComponent } from './alert/alert.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
@@ -217,9 +216,7 @@ import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-i
     MapComponent,
     SearchForMapComponent,
     NotFoundComponent,
-    FsIconComponent,
     SmartTableComponent,
-    TreeGridComponent,
     AlertComponent,
     ProgressBarComponent,
     InteractiveProgressBarComponent,

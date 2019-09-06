@@ -11,7 +11,6 @@ import { LeafletComponent } from './dashboard/leaflet/leaflet.component';
 import { BubbleMapComponent } from './dashboard/bubble/bubble-map.component';
 import { SearchMapComponent } from './dashboard/search-map/search-map.component';
 import { SmartTableComponent } from './dashboard/smart-table/smart-table.component';
-import { TreeGridComponent } from './dashboard/tree-grid/tree-grid.component';
 import { CalendarComponent } from './dashboard/calendar/calendar.component';
 import { ProgressBarComponent } from './dashboard/progress-bar/progress-bar.component';
 import { SpinnerComponent } from './dashboard/spinner/spinner.component';
@@ -181,10 +180,6 @@ const routes: Routes = [{
     {
       path: 'smart-table',
       component: SmartTableComponent,
-    },
-    {
-      path: 'tree-grid',
-      component: TreeGridComponent,
     },
     {
       path: '404',

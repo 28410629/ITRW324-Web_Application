@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -8,8 +8,12 @@ import { NbThemeService } from '@nebular/theme';
   `,
 })
 export class ChartjsMultipleXaxisComponent implements OnDestroy {
+  @Input()
   data: {};
+
+  @Input()
   options: any;
+
   themeSubscription: any;
 
   constructor(private theme: NbThemeService) {
