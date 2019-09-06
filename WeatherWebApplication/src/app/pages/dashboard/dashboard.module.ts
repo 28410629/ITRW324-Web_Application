@@ -133,6 +133,14 @@ import {NewsPostComponent} from './layout/infinite-list/news-post/news-post.comp
 import {AccordionComponent} from './layout/accordion/accordion.component';
 import {NewsService} from './layout/news.service';
 
+// User pages
+import {FavouriteStationsComponent} from '../user-pages/favourite-stations/favourite-stations.component';
+import {HomepageComponent} from '../user-pages/homepage/homepage.component';
+import {
+  ManageFavouriteStationsComponent,
+} from '../user-pages/manage-favourite-stations/manage-favourite-stations.component';
+import {StationDetailComponent} from '../user-pages/station-detail/station-detail.component';
+
 @NgModule({
   imports: [
     NbDialogModule.forChild(),
@@ -268,6 +276,10 @@ import {NewsService} from './layout/news.service';
     InfiniteListComponent,
     NewsPostComponent,
     AccordionComponent,
+    FavouriteStationsComponent,
+    HomepageComponent,
+    ManageFavouriteStationsComponent,
+    StationDetailComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,

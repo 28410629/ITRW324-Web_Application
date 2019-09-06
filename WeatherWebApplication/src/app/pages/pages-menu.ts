@@ -10,12 +10,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Favourite Stations',
     icon: 'star-outline',
-    link: '/pages/my-stations',
+    link: '/pages/favourite-stations',
   },
   {
     title: 'Manage Favourite Stations',
-    icon: 'star-outline',
-    link: '/pages/my-stations',
+    icon: 'edit-2-outline',
+    link: '/pages/manage-favourite-stations',
   },
   // {
   //   title: 'Stuff we can steal',

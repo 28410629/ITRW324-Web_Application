@@ -34,6 +34,12 @@ import {ListComponent} from './dashboard/layout/list/list.component';
 import {InfiniteListComponent} from './dashboard/layout/infinite-list/infinite-list.component';
 import {AccordionComponent} from './dashboard/layout/accordion/accordion.component';
 import {Tab1Component, Tab2Component, TabsComponent} from './dashboard/layout/tabs/tabs.component';
+import {FavouriteStationsComponent} from './user-pages/favourite-stations/favourite-stations.component';
+import {HomepageComponent} from './user-pages/homepage/homepage.component';
+import {
+  ManageFavouriteStationsComponent,
+} from './user-pages/manage-favourite-stations/manage-favourite-stations.component';
+import {StationDetailComponent} from './user-pages/station-detail/station-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -41,15 +47,19 @@ const routes: Routes = [{
   children: [
     {
       path: 'homepage',
-      component: SpinnerComponent,
+      component: HomepageComponent,
     },
     {
-      path: 'my-stations',
-      component: DashboardComponent,
+      path: 'favourite-stations',
+      component: FavouriteStationsComponent,
     },
     {
-      path: 'test',
-      component: GridComponent,
+      path: 'station-details',
+      component: StationDetailComponent,
+    },
+    {
+      path: 'manage-favourite-stations',
+      component: ManageFavouriteStationsComponent,
     },
     {
       path: 'inputs',
