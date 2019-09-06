@@ -41,7 +41,6 @@ import { AverageReadingService } from './services/AverageReadingService';
 
 // common
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
-import { MyStationsComponent } from './pages/my-stations/my-stations.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,7 @@ import { MyStationsComponent } from './pages/my-stations/my-stations.component';
     RegisterComponent,
     RequestPasswordComponent,
     ResetPasswordComponent,
-    MyStationsComponent],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
