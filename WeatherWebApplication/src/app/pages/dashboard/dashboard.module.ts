@@ -14,7 +14,7 @@ import {
   NbAlertModule,
   NbInputModule,
   NbCheckboxModule,
-  NbDatepickerModule,
+  NbDatepickerModule, NbTreeGridModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -53,9 +53,14 @@ import { SearchMapComponent} from './search-map/search-map.component';
 import { MapComponent} from './search-map/map/map.component';
 import { SearchForMapComponent } from './search-map/search/search-for-map.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {Ng2SmartTableModule} from 'ng2-smart-table';
+import {FsIconComponent, TreeGridComponent} from './tree-grid/tree-grid.component';
+import {SmartTableComponent} from './smart-table/smart-table.component';
 
 @NgModule({
   imports: [
+    NbTreeGridModule,
+    Ng2SmartTableModule,
     FormsModule,
     NbTabsetModule,
     NbListModule,
@@ -74,7 +79,6 @@ import {NotFoundComponent} from './not-found/not-found.component';
     NbDatepickerModule,
     NbSelectModule,
     NbIconModule,
-    ThemeModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCpVhQiwAllg1RAFaxMWSpQruuGARy0Y1k',
       libraries: ['places'],
@@ -113,6 +117,9 @@ import {NotFoundComponent} from './not-found/not-found.component';
     MapComponent,
     SearchForMapComponent,
     NotFoundComponent,
+    FsIconComponent,
+    SmartTableComponent,
+    TreeGridComponent,
   ],
 })
 export class DashboardModule { }

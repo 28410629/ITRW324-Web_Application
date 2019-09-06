@@ -14,6 +14,8 @@ import {GmapsComponent} from './dashboard/gmaps/gmaps.component';
 import {LeafletComponent} from './dashboard/leaflet/leaflet.component';
 import {BubbleMapComponent} from './dashboard/bubble/bubble-map.component';
 import {SearchMapComponent} from './dashboard/search-map/search-map.component';
+import {SmartTableComponent} from './dashboard/smart-table/smart-table.component';
+import {TreeGridComponent} from './dashboard/tree-grid/tree-grid.component';
 
 const routes: Routes = [{
   path: '',
@@ -87,9 +89,12 @@ const routes: Routes = [{
         .then(m => m.EditorsModule),
     },
     {
-      path: 'tables',
-      loadChildren: () => import('./tables/tables.module')
-        .then(m => m.TablesModule),
+      path: 'smart-table',
+      component: SmartTableComponent,
+    },
+    {
+      path: 'tree-grid',
+      component: TreeGridComponent,
     },
     {
       path: '404',
