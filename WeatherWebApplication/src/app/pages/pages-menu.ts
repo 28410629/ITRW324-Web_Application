@@ -24,7 +24,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Build New Station Guide',
-    icon: 'edit-2-outline',
+    icon: 'file-text-outline',
     link: '/pages/manage-favourite-stations',
   },
   // {
