@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
-import { FormInputsComponent } from './dashboard/form-inputs/form-inputs.component';
 import { FormLayoutsComponent } from './dashboard/form-layouts/form-layouts.component';
 import { ButtonsComponent } from './dashboard/buttons/buttons.component';
 import { DatepickerComponent } from './dashboard/datepicker/datepicker.component';
