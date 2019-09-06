@@ -2,9 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
-import { GridComponent } from './dashboard/grid/grid.component';
 import { FormInputsComponent } from './dashboard/form-inputs/form-inputs.component';
 import { FormLayoutsComponent } from './dashboard/form-layouts/form-layouts.component';
 import { ButtonsComponent } from './dashboard/buttons/buttons.component';
@@ -29,17 +27,17 @@ import { WindowComponent } from './dashboard/modal-overlays/window/window.compon
 import { PopoversComponent } from './dashboard/modal-overlays/popovers/popovers.component';
 import { TooltipComponent } from './dashboard/modal-overlays/tooltip/tooltip.component';
 import { ToastrComponent } from './dashboard/modal-overlays/toastr/toastr.component';
-import {StepperComponent} from './dashboard/layout/stepper/stepper.component';
-import {ListComponent} from './dashboard/layout/list/list.component';
-import {InfiniteListComponent} from './dashboard/layout/infinite-list/infinite-list.component';
-import {AccordionComponent} from './dashboard/layout/accordion/accordion.component';
-import {Tab1Component, Tab2Component, TabsComponent} from './dashboard/layout/tabs/tabs.component';
-import {FavouriteStationsComponent} from './user-pages/favourite-stations/favourite-stations.component';
-import {HomepageComponent} from './user-pages/homepage/homepage.component';
+import { StepperComponent } from './dashboard/layout/stepper/stepper.component';
+import { ListComponent } from './dashboard/layout/list/list.component';
+import { InfiniteListComponent } from './dashboard/layout/infinite-list/infinite-list.component';
+import { AccordionComponent } from './dashboard/layout/accordion/accordion.component';
+import { Tab1Component, Tab2Component, TabsComponent } from './dashboard/layout/tabs/tabs.component';
+import { FavouriteStationsComponent } from './user-pages/favourite-stations/favourite-stations.component';
+import { HomepageComponent } from './user-pages/homepage/homepage.component';
 import {
   ManageFavouriteStationsComponent,
 } from './user-pages/manage-favourite-stations/manage-favourite-stations.component';
-import {StationDetailComponent} from './user-pages/station-detail/station-detail.component';
+import { StationDetailComponent } from './user-pages/station-detail/station-detail.component';
 
 const routes: Routes = [{
   path: '',
