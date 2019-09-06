@@ -8,6 +8,26 @@
   justify-content: space-between;
   align-items: center;
 
+    @media screen and (max-width: 463px) {
+      .created-by {
+        font-size: medium;
+      }
+    }
+
+    @media screen and (max-width: 442px) {
+      .created-by {
+        font-size: small;
+      }
+    }
+
+    @media screen and (max-width: 412px) {
+      .created-by {
+        font-size: x-small;
+        padding-left: 10px;
+      }
+    }
+
+
   .socials {
     font-size: 2rem;
 

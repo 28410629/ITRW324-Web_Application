@@ -60,7 +60,7 @@ export class ResetPasswordComponent {
 
   redirectToDashboard() {
     setTimeout(() => {
-      this.router.navigate(['/pages/dashboard']);
+      this.router.navigate(['/pages/components']);
     }, this.redirectDelay);
   }
 
