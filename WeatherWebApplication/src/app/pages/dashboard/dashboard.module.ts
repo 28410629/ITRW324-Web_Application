@@ -8,7 +8,13 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbListModule,
-  NbIconModule, NbPopoverModule, NbSearchModule, NbAlertModule,
+  NbIconModule,
+  NbPopoverModule,
+  NbSearchModule,
+  NbAlertModule,
+  NbInputModule,
+  NbCheckboxModule,
+  NbDatepickerModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -34,24 +40,31 @@ import { GridComponent } from './grid/grid.component';
 import { IconsComponent } from './icons/icons.component';
 import { TypographyComponent } from './typography/typography.component';
 import { SearchComponent } from './search-fields/search-fields.component';
+import {ButtonsComponent} from './buttons/buttons.component';
+import {FormInputsComponent} from './form-inputs/form-inputs.component';
+import {FormLayoutsComponent} from './form-layouts/form-layouts.component';
+import {DatepickerComponent} from './datepicker/datepicker.component';
 
 @NgModule({
   imports: [
     FormsModule,
-    NbUserModule,
     NbTabsetModule,
-    NbActionsModule,
-    NbRadioModule,
-    NbSelectModule,
     NbListModule,
-    NbButtonModule,
     NgxEchartsModule,
-    NbCardModule,
     NbPopoverModule,
     NbSearchModule,
-    NbIconModule,
     NbAlertModule,
     ThemeModule,
+    NbInputModule,
+    NbCardModule,
+    NbButtonModule,
+    NbActionsModule,
+    NbUserModule,
+    NbCheckboxModule,
+    NbRadioModule,
+    NbDatepickerModule,
+    NbSelectModule,
+    NbIconModule,
   ],
   declarations: [
     DashboardComponent,
@@ -74,6 +87,10 @@ import { SearchComponent } from './search-fields/search-fields.component';
     IconsComponent,
     TypographyComponent,
     SearchComponent,
+    ButtonsComponent,
+    FormInputsComponent,
+    FormLayoutsComponent,
+    DatepickerComponent,
   ],
 })
 export class DashboardModule { }

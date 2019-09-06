@@ -6,6 +6,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { GridComponent } from './dashboard/grid/grid.component';
+import {FormInputsComponent} from './dashboard/form-inputs/form-inputs.component';
+import {FormLayoutsComponent} from './dashboard/form-layouts/form-layouts.component';
+import {ButtonsComponent} from './dashboard/buttons/buttons.component';
+import {DatepickerComponent} from './dashboard/datepicker/datepicker.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,14 +28,25 @@ const routes: Routes = [{
       component: GridComponent,
     },
     {
+      path: 'inputs',
+      component: FormInputsComponent,
+    },
+    {
+      path: 'layouts',
+      component: FormLayoutsComponent,
+    },
+    {
+      path: 'buttons',
+      component: ButtonsComponent,
+    },
+    {
+      path: 'datepicker',
+      component: DatepickerComponent,
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./layout/layout.module')
         .then(m => m.LayoutModule),
-    },
-    {
-      path: 'forms',
-      loadChildren: () => import('./forms/forms.module')
-        .then(m => m.FormsModule),
     },
     {
       path: 'modal-overlays',
