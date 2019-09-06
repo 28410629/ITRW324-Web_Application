@@ -6,16 +6,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { GridComponent } from './dashboard/grid/grid.component';
-import {FormInputsComponent} from './dashboard/form-inputs/form-inputs.component';
-import {FormLayoutsComponent} from './dashboard/form-layouts/form-layouts.component';
-import {ButtonsComponent} from './dashboard/buttons/buttons.component';
-import {DatepickerComponent} from './dashboard/datepicker/datepicker.component';
-import {GmapsComponent} from './dashboard/gmaps/gmaps.component';
-import {LeafletComponent} from './dashboard/leaflet/leaflet.component';
-import {BubbleMapComponent} from './dashboard/bubble/bubble-map.component';
-import {SearchMapComponent} from './dashboard/search-map/search-map.component';
-import {SmartTableComponent} from './dashboard/smart-table/smart-table.component';
-import {TreeGridComponent} from './dashboard/tree-grid/tree-grid.component';
+import { FormInputsComponent } from './dashboard/form-inputs/form-inputs.component';
+import { FormLayoutsComponent } from './dashboard/form-layouts/form-layouts.component';
+import { ButtonsComponent } from './dashboard/buttons/buttons.component';
+import { DatepickerComponent } from './dashboard/datepicker/datepicker.component';
+import { GmapsComponent } from './dashboard/gmaps/gmaps.component';
+import { LeafletComponent } from './dashboard/leaflet/leaflet.component';
+import { BubbleMapComponent } from './dashboard/bubble/bubble-map.component';
+import { SearchMapComponent } from './dashboard/search-map/search-map.component';
+import { SmartTableComponent } from './dashboard/smart-table/smart-table.component';
+import { TreeGridComponent } from './dashboard/tree-grid/tree-grid.component';
+import { CalendarComponent } from './dashboard/calendar/calendar.component';
+import { ProgressBarComponent } from './dashboard/progress-bar/progress-bar.component';
+import { SpinnerComponent } from './dashboard/spinner/spinner.component';
+import { AlertComponent } from './dashboard/alert/alert.component';
+import { CalendarKitFullCalendarShowcaseComponent } from './dashboard/calendar-kit/calendar-kit.component';
+import { ChatComponent } from './dashboard/chat/chat.component';
 
 const routes: Routes = [{
   path: '',
@@ -74,9 +80,28 @@ const routes: Routes = [{
         .then(m => m.ModalOverlaysModule),
     },
     {
-      path: 'extra-components',
-      loadChildren: () => import('./extra-components/extra-components.module')
-        .then(m => m.ExtraComponentsModule),
+      path: 'calendar',
+      component: CalendarComponent,
+    },
+    {
+      path: 'progress-bar',
+      component: ProgressBarComponent,
+    },
+    {
+      path: 'spinner',
+      component: SpinnerComponent,
+    },
+    {
+      path: 'alert',
+      component: AlertComponent,
+    },
+    {
+      path: 'calendar-kit',
+      component: CalendarKitFullCalendarShowcaseComponent,
+    },
+    {
+      path: 'chat',
+      component: ChatComponent,
     },
     {
       path: 'charts',

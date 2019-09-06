@@ -14,7 +14,13 @@ import {
   NbAlertModule,
   NbInputModule,
   NbCheckboxModule,
-  NbDatepickerModule, NbTreeGridModule,
+  NbDatepickerModule,
+  NbTreeGridModule,
+  NbCalendarModule,
+  NbCalendarKitModule,
+  NbCalendarRangeModule,
+  NbChatModule,
+  NbProgressBarModule, NbSpinnerModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -40,25 +46,48 @@ import { GridComponent } from './grid/grid.component';
 import { IconsComponent } from './icons/icons.component';
 import { TypographyComponent } from './typography/typography.component';
 import { SearchComponent } from './search-fields/search-fields.component';
-import { ButtonsComponent} from './buttons/buttons.component';
-import { FormInputsComponent} from './form-inputs/form-inputs.component';
-import { FormLayoutsComponent} from './form-layouts/form-layouts.component';
-import { DatepickerComponent} from './datepicker/datepicker.component';
-import { AgmCoreModule} from '@agm/core';
-import { LeafletModule} from '@asymmetrik/ngx-leaflet';
-import { GmapsComponent} from './gmaps/gmaps.component';
-import { LeafletComponent} from './leaflet/leaflet.component';
-import { BubbleMapComponent} from './bubble/bubble-map.component';
-import { SearchMapComponent} from './search-map/search-map.component';
-import { MapComponent} from './search-map/map/map.component';
+import { ButtonsComponent } from './buttons/buttons.component';
+import { FormInputsComponent } from './form-inputs/form-inputs.component';
+import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { DatepickerComponent } from './datepicker/datepicker.component';
+import { AgmCoreModule } from '@agm/core';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { GmapsComponent } from './gmaps/gmaps.component';
+import { LeafletComponent } from './leaflet/leaflet.component';
+import { BubbleMapComponent } from './bubble/bubble-map.component';
+import { SearchMapComponent } from './search-map/search-map.component';
+import { MapComponent } from './search-map/map/map.component';
 import { SearchForMapComponent } from './search-map/search/search-for-map.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {Ng2SmartTableModule} from 'ng2-smart-table';
-import {FsIconComponent, TreeGridComponent} from './tree-grid/tree-grid.component';
-import {SmartTableComponent} from './smart-table/smart-table.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { FsIconComponent, TreeGridComponent } from './tree-grid/tree-grid.component';
+import { SmartTableComponent } from './smart-table/smart-table.component';
+import { AlertComponent } from './alert/alert.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import {
+  InteractiveProgressBarComponent,
+} from './progress-bar/interactive-progress-bar/interactive-progress-bar.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerColorComponent } from './spinner/spinner-color/spinner-color.component';
+import { SpinnerSizesComponent } from './spinner/spinner-sizes/spinner-sizes.component';
+import { SpinnerInButtonsComponent } from './spinner/spinner-in-buttons/spinner-in-buttons.component';
+import { SpinnerInTabsComponent } from './spinner/spinner-in-tabs/spinner-in-tabs.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { DayCellComponent } from './calendar/day-cell/day-cell.component';
+import { ChatComponent } from './chat/chat.component';
+import { NebularFormInputsComponent } from './nebular-form-inputs/nebular-form-inputs.component';
+import { NebularSelectComponent } from './nebular-form-inputs/nebular-select/nebular-select.component';
+import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
+import { CalendarKitMonthCellComponent } from './calendar-kit/month-cell/month-cell.component';
 
 @NgModule({
   imports: [
+    NbCalendarModule,
+    NbCalendarKitModule,
+    NbCalendarRangeModule,
+    NbChatModule,
+    NbProgressBarModule,
+    NbSpinnerModule,
     NbTreeGridModule,
     Ng2SmartTableModule,
     FormsModule,
@@ -120,6 +149,21 @@ import {SmartTableComponent} from './smart-table/smart-table.component';
     FsIconComponent,
     SmartTableComponent,
     TreeGridComponent,
+    AlertComponent,
+    ProgressBarComponent,
+    InteractiveProgressBarComponent,
+    SpinnerComponent,
+    SpinnerColorComponent,
+    SpinnerSizesComponent,
+    SpinnerInButtonsComponent,
+    SpinnerInTabsComponent,
+    CalendarComponent,
+    DayCellComponent,
+    ChatComponent,
+    NebularFormInputsComponent,
+    NebularSelectComponent,
+    CalendarKitFullCalendarShowcaseComponent,
+    CalendarKitMonthCellComponent,
   ],
 })
 export class DashboardModule { }
