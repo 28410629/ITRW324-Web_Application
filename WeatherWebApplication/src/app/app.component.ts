@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AnalyticsService } from './@core/utils/analytics.service';
 import { NbMenuService } from '@nebular/theme';
 import { AuthService } from './auth/auth-service.service';
 
@@ -9,8 +8,7 @@ import { AuthService } from './auth/auth-service.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private analytics: AnalyticsService,
-              private menuService: NbMenuService,
+  constructor(private menuService: NbMenuService,
               private authService: AuthService) {
     this.menuService.onItemClick()
       .subscribe((event) => {
