@@ -52,6 +52,7 @@ import { BubbleMapComponent} from './bubble/bubble-map.component';
 import { SearchMapComponent} from './search-map/search-map.component';
 import { MapComponent} from './search-map/map/map.component';
 import { SearchForMapComponent } from './search-map/search/search-for-map.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -111,6 +112,7 @@ import { SearchForMapComponent } from './search-map/search/search-for-map.compon
     SearchMapComponent,
     MapComponent,
     SearchForMapComponent,
+    NotFoundComponent,
   ],
 })
 export class DashboardModule { }

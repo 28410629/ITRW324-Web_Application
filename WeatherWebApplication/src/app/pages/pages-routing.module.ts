@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
-import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { NotFoundComponent } from './dashboard/not-found/not-found.component';
 import { GridComponent } from './dashboard/grid/grid.component';
 import {FormInputsComponent} from './dashboard/form-inputs/form-inputs.component';
 import {FormLayoutsComponent} from './dashboard/form-layouts/form-layouts.component';
@@ -92,9 +92,8 @@ const routes: Routes = [{
         .then(m => m.TablesModule),
     },
     {
-      path: 'miscellaneous',
-      loadChildren: () => import('./miscellaneous/miscellaneous.module')
-        .then(m => m.MiscellaneousModule),
+      path: '404',
+      component: NotFoundComponent,
     },
     {
       path: '',
