@@ -22,6 +22,9 @@ import { SpinnerComponent } from './dashboard/spinner/spinner.component';
 import { AlertComponent } from './dashboard/alert/alert.component';
 import { CalendarKitFullCalendarShowcaseComponent } from './dashboard/calendar-kit/calendar-kit.component';
 import { ChatComponent } from './dashboard/chat/chat.component';
+import { EchartsComponent } from './dashboard/echarts/echarts.component';
+import { D3Component } from './dashboard/d3/d3.component';
+import { ChartjsComponent } from './dashboard/chartjs/chartjs.component';
 
 const routes: Routes = [{
   path: '',
@@ -104,9 +107,14 @@ const routes: Routes = [{
       component: ChatComponent,
     },
     {
-      path: 'charts',
-      loadChildren: () => import('./charts/charts.module')
-        .then(m => m.ChartsModule),
+      path: 'echarts',
+      component: EchartsComponent,
+    }, {
+      path: 'd3',
+      component: D3Component,
+    }, {
+      path: 'chartjs',
+      component: ChartjsComponent,
     },
     {
       path: 'editors',
