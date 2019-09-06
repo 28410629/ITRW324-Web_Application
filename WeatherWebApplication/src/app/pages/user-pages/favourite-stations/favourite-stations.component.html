@@ -1,1 +1,5 @@
-<h1>Favourite Stations!</h1>
+<div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-md-5" *ngFor="let status of statusReadings">
+    <ngx-weather [statusReadings]=status></ngx-weather>
+  </div>
+</div>
