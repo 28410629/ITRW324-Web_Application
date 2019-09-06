@@ -50,6 +50,10 @@ Never start from scratch again - integrate backend API bundles.
 * [ngx-admin installation](https://akveo.github.io/ngx-admin/docs/getting-started/installation-guidelines#install-ngxadmin)
 * [ngx-admin documentation](https://akveo.github.io/ngx-admin/docs/getting-started/what-is-ngxadmin)
 
+Eva Icon Set Names
+------------------
+* [https://akveo.github.io/eva-icons/#/][https://akveo.github.io/eva-icons/#/]
+
 Resolve Node.js Errors
 ----------------------
 https://stackoverflow.com/questions/47714946/angular-cli-installation-fails-at-step-fetchmetadata-sill-resolvewithnewmodule/47715378#47715378 

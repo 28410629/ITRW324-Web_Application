@@ -17,6 +17,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'edit-2-outline',
     link: '/pages/manage-favourite-stations',
   },
+  {
+    title: 'Register New Station',
+    icon: 'plus-outline',
+    link: '/pages/manage-favourite-stations',
+  },
+  {
+    title: 'Build New Station Guide',
+    icon: 'edit-2-outline',
+    link: '/pages/manage-favourite-stations',
+  },
   // {
   //   title: 'Stuff we can steal',
   //   group: true,
