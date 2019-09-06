@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngx-favourite-stations',
+  selector: 'ngx-station-detail',
   templateUrl: 'station-detail.component.html',
   styleUrls: ['station-detail.component.scss'],
 })

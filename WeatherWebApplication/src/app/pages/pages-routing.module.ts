@@ -38,6 +38,7 @@ import {
   ManageFavouriteStationsComponent,
 } from './user-pages/manage-favourite-stations/manage-favourite-stations.component';
 import { StationDetailComponent } from './user-pages/station-detail/station-detail.component';
+import { GithubRepositoryInfoComponent } from './user-pages/github-repository-info/github-repository-info.component';
 
 const routes: Routes = [{
   path: '',
@@ -60,8 +61,8 @@ const routes: Routes = [{
       component: ManageFavouriteStationsComponent,
     },
     {
-      path: 'inputs',
-      component: FormInputsComponent,
+      path: 'github-repository-info',
+      component: GithubRepositoryInfoComponent,
     },
     {
       path: 'layouts',

@@ -139,7 +139,8 @@ import {HomepageComponent} from '../user-pages/homepage/homepage.component';
 import {
   ManageFavouriteStationsComponent,
 } from '../user-pages/manage-favourite-stations/manage-favourite-stations.component';
-import {StationDetailComponent} from '../user-pages/station-detail/station-detail.component';
+import { StationDetailComponent } from '../user-pages/station-detail/station-detail.component';
+import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-info/github-repository-info.component';
 
 @NgModule({
   imports: [
@@ -280,6 +281,7 @@ import {StationDetailComponent} from '../user-pages/station-detail/station-detai
     HomepageComponent,
     ManageFavouriteStationsComponent,
     StationDetailComponent,
+    GithubRepositoryInfoComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,
