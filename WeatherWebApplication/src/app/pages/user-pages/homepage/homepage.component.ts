@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
-import {takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-homepage',

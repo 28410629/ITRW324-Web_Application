@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AverageReadingService} from '../../../services/AverageReadingService';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-favourite-stations',
