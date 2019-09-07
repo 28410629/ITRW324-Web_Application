@@ -1,5 +1,6 @@
 import {Component, Input } from '@angular/core';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ngx-weather',
@@ -12,7 +13,10 @@ export class WeatherComponent {
   @Input()
   statusReadings: AverageReadingEntity;
 
-  constructor() {}
+  @Input()
+  stationid;
+
+  constructor(public router: Router) {}
 
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -153,6 +157,14 @@ export class WeatherComponent {
       return true;
     else
       return false;
+  }
+
+  openStationDetail() {
+    this.router.navigate(['pages/station-details/']);
+  }
+
+  reloadStationSummary() {
+    this.router.navigate(['pages/station-details/']);
   }
 
 }

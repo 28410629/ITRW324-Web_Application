@@ -15,17 +15,20 @@
       </div>
 
       <div class="visited-pages-count">
-        <div class="caption">Pages Visit</div>
+        <div class="caption">Average</div>
         <div class="value">{{ item.pagesVisitCount }}</div>
       </div>
 
-      <div class="visited-percentages">
-        <div class="caption">New visits, %</div>
-        <div class="delta value" [class.up]="item.deltaUp" [class.down]="!item.deltaUp">
-          <nb-icon [icon]="item.deltaUp ? 'arrow-up' : 'arrow-down'" pack="eva"></nb-icon>
-          {{ item.newVisits }}%
-        </div>
+      <div class="visited-pages-count">
+        <div class="caption">Min</div>
+        <div class="value">{{ item.pagesVisitCount }}</div>
       </div>
+
+      <div class="visited-pages-count">
+        <div class="caption">Max</div>
+        <div class="value">{{ item.pagesVisitCount }}</div>
+      </div>
+
 
     </nb-list-item>
   </nb-list>

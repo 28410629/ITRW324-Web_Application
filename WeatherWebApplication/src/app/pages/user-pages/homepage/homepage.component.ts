@@ -107,10 +107,10 @@ export class HomepageComponent {
   }
 
   getUserActivity(period: string) {
-    this.userActivityService.getUserActivityData(period)
-      .pipe(takeWhile(() => this.alive))
-      .subscribe(userActivityData => {
-        this.userActivity = userActivityData;
-      });
+    // this.userActivityService.getUserActivityData(period)
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe(userActivityData => {
+    //     this.userActivity = userActivityData;
+    //   });
   }
 }

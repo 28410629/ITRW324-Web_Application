@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
+import {User} from '../../../models/user.model';
 
 @Component({
   selector: 'ngx-user-profile',
@@ -6,7 +7,15 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['user-profile.component.scss'],
 })
 export class UserProfileComponent {
-  @Input() title: string;
 
-  constructor() {}
+  cardHeader;
+  isLoaded: boolean = false;
+  useruid;
+
+  constructor() {
+    const storageuser: User = JSON.parse(localStorage.getItem('user'));
+    this.useruid = storageuser.uid;
+    this.cardHeader = this.useruid;
+    this.isLoaded = true;
+  }
 }

@@ -1,5 +1,11 @@
-<div class="row">
+<nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isLoaded">
+  <nb-card-body>
+    Loading content.
+  </nb-card-body>
+</nb-card>
+
+<div class="row" *ngIf="isLoaded">
   <div class="col-xxxl-3 col-xxl-4 col-md-5" *ngFor="let status of statusReadings">
-    <ngx-weather [statusReadings]=status></ngx-weather>
+    <ngx-weather [statusReadings]=status [stationid]="status.StationName"></ngx-weather>
   </div>
 </div>
