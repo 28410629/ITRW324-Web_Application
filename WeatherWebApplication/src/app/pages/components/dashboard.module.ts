@@ -35,8 +35,6 @@ import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { TemperatureDraggerComponent } from './temperature/temperature-dragger/temperature-dragger.component';
-import { ElectricityComponent } from './electricity/electricity.component';
-import { ElectricityChartComponent } from './electricity/electricity-chart/electricity-chart.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SolarComponent } from './solar/solar.component';
 import { TrafficComponent } from './traffic/traffic.component';
@@ -125,6 +123,7 @@ import {InfiniteListComponent} from './layout/infinite-list/infinite-list.compon
 import {NewsPostComponent} from './layout/infinite-list/news-post/news-post.component';
 import {AccordionComponent} from './layout/accordion/accordion.component';
 import {NewsService} from './layout/news.service';
+import {SensorLocationDetailsComponent} from './sensor-location-details/sensor-location-details.component';
 
 // User pages
 import {FavouriteStationsComponent} from '../user-pages/favourite-stations/favourite-stations.component';
@@ -135,6 +134,7 @@ import {
 import { StationDetailComponent } from '../user-pages/station-detail/station-detail.component';
 import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-info/github-repository-info.component';
 import {UserProfileComponent} from '../user-pages/user-profile/user-profile.component';
+
 
 @NgModule({
   imports: [
@@ -184,8 +184,6 @@ import {UserProfileComponent} from '../user-pages/user-profile/user-profile.comp
     StatusCardComponent,
     TemperatureDraggerComponent,
     TemperatureComponent,
-    ElectricityComponent,
-    ElectricityChartComponent,
     WeatherComponent,
     SolarComponent,
     TrafficComponent,
@@ -269,6 +267,7 @@ import {UserProfileComponent} from '../user-pages/user-profile/user-profile.comp
     StationDetailComponent,
     GithubRepositoryInfoComponent,
     UserProfileComponent,
+    SensorLocationDetailsComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,

@@ -4,7 +4,7 @@ import { NbThemeService } from '@nebular/theme';
 @Component({
   selector: 'ngx-chartjs-multiple-xaxis',
   template: `
-    <chart type="line" [data]="data" [options]="options"></chart>
+    <chart type="line" [data]="data" [options]="options" style="height: 100%"></chart>
   `,
 })
 export class ChartjsMultipleXaxisComponent implements OnDestroy {

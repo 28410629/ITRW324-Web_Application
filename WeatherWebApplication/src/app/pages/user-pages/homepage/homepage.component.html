@@ -1,8 +1,56 @@
-<div class="col-lg-6">
-  <nb-card>
-    <nb-card-header>Multiple x-axis</nb-card-header>
-    <nb-card-body>
-      <ngx-chartjs-multiple-xaxis [data]="graphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
-    </nb-card-body>
-  </nb-card>
+<!--AIR PRESSURE FOR A LOCATION-->
+<div class="row">
+  <div class="col-xxl-4">
+    <ngx-sensor-location-details [headerName]="'Air Pressure Details'"></ngx-sensor-location-details>
+  </div>
+  <div class="col-xxl-8">
+    <nb-card size="medium">
+      <nb-card-header>Air Pressure Chart</nb-card-header>
+      <nb-card-body>
+        <ngx-chartjs-multiple-xaxis [data]="graphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<!--HUMIDITY FOR A LOCATION-->
+<div class="row">
+  <div class="col-xxl-4">
+    <ngx-sensor-location-details [headerName]="'Humidity Details'"></ngx-sensor-location-details>
+  </div>
+  <div class="col-xxl-8">
+    <nb-card size="medium">
+      <nb-card-header>Humidity Chart</nb-card-header>
+      <nb-card-body>
+        <ngx-chartjs-multiple-xaxis [data]="graphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<!--LIGHT READING FOR A LOCATION-->
+<div class="row">
+  <div class="col-xxl-4">
+    <ngx-sensor-location-details [headerName]="'Light Reading Details'"></ngx-sensor-location-details>
+  </div>
+  <div class="col-xxl-8">
+    <nb-card size="medium">
+      <nb-card-header>Light Reading Chart</nb-card-header>
+      <nb-card-body>
+        <ngx-chartjs-multiple-xaxis [data]="graphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<!--TEMPERATURE FOR A LOCATION-->
+<div class="row">
+  <div class="col-xxl-4">
+    <ngx-sensor-location-details [headerName]="'Temperature Details'"></ngx-sensor-location-details>
+  </div>
+  <div class="col-xxl-8">
+    <nb-card size="medium">
+      <nb-card-header>Temperature Chart</nb-card-header>
+      <nb-card-body>
+        <ngx-chartjs-multiple-xaxis [data]="graphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>
