@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {User} from '../../../models/user.model';
+import {User, UserProfileData} from '../../../models/user.model';
+import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
   selector: 'ngx-user-profile',
@@ -10,12 +11,26 @@ export class UserProfileComponent {
 
   cardHeader;
   isLoaded: boolean = false;
+
+  user: User;
+  userProfile: UserProfileData;
+  // user inputs
+  name;
+  email;
   useruid;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     const storageuser: User = JSON.parse(localStorage.getItem('user'));
-    this.useruid = storageuser.uid;
-    this.cardHeader = this.useruid;
+    this.user = storageuser;
+    this.useruid = this.user.uid;
+    this.getUserData();
+  }
+
+  getUserData() {
+    this.authService.GetUserProfileData(this.useruid).
+    subscribe(x => {
+      this.userProfile = x;
+    });
     this.isLoaded = true;
   }
 }
