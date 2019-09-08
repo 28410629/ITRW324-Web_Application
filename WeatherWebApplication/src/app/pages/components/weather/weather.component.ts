@@ -160,7 +160,7 @@ export class WeatherComponent {
   }
 
   openStationDetail() {
-    this.router.navigate(['pages/station-details/']);
+    this.router.navigate(['pages/station-details/' + this.stationid + '/']);
   }
 
   reloadStationSummary() {

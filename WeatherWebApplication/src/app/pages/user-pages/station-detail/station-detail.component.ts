@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ngx-station-detail',
@@ -7,14 +8,26 @@ import {NbThemeService} from '@nebular/theme';
   styleUrls: ['station-detail.component.scss'],
 })
 export class StationDetailComponent {
+
+  // graph variables
   graphdata;
   graphoptions;
   themeSubscription: any;
-  type = 'month';
-  types = ['week', 'month', 'year'];
 
-  constructor(private theme: NbThemeService) {
+  // time series selection
+  type = 'day';
+  types = ['day', 'week', 'month', 'year'];
 
+  // need for REST request
+  stationid;
+
+  constructor(private route: ActivatedRoute,
+              private theme: NbThemeService) {
+
+    // station id
+    this.stationid = this.route.snapshot.params.stationid;
+
+    // graphs details
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
       const colors: any = config.variables;
