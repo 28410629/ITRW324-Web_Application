@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
 import {ActivatedRoute} from '@angular/router';
+import {StationDetailService} from '../../../services/station-detail.service';
+import {StationDetailReading} from '../../../models/station-detail.model';
 
 @Component({
   selector: 'ngx-station-detail',
@@ -9,10 +11,32 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class StationDetailComponent {
 
+  // loader
+  isLoaded = false;
+
   // graph variables
-  graphdata;
+  airgraphdata;
+  humgraphdata;
+  tempgraphdata;
+  lightgraphdata;
   graphoptions;
   themeSubscription: any;
+
+  // raw data
+  json: StationDetailReading[];
+  labels: string[] = [];
+  tempdataavg: number[] = [];
+  airdataavg: number[] = [];
+  humdataavg: number[] = [];
+  lightdataavg: number[] = [];
+  tempdatamin: number[] = [];
+  airdatamin: number[] = [];
+  humdatamin: number[] = [];
+  lightdatamin: number[] = [];
+  tempdatamax: number[] = [];
+  airdatamax: number[] = [];
+  humdatamax: number[] = [];
+  lightdatamax: number[] = [];
 
   // time series selection
   type = 'day';
@@ -22,10 +46,45 @@ export class StationDetailComponent {
   stationid;
 
   constructor(private route: ActivatedRoute,
-              private theme: NbThemeService) {
+              private theme: NbThemeService,
+              private service: StationDetailService) {
 
     // station id
     this.stationid = this.route.snapshot.params.stationid;
+
+    // get data for graph
+    this.service.FetchDayStationDetails(this.stationid)
+      .subscribe(data => {
+        this.json = data.StationDetailReadings;
+
+        for (let i = 0; i < this.json.length; i++) {
+          // label
+          this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
+          // temperature
+          this.tempdataavg.push(Number(this.json[i].temperatureReadingAverage));
+          // air
+          this.airdataavg.push(Number(this.json[i].airPressureReadingAverage));
+          // humidity
+          this.humdataavg.push(Number(this.json[i].humiditiyReadingAverage));
+          // light
+          this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage));
+
+          this.tempdatamin.push(Number(this.json[i].temperatureReadingMin));
+          // air
+          this.airdatamin.push(Number(this.json[i].airPressureReadingMin));
+          // humidity
+          this.humdatamin.push(Number(this.json[i].humiditiyReadingMin));
+          // light
+          this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin));
+
+          this.tempdatamax.push(Number(this.json[i].temperatureReadingMax));
+          // air
+          this.airdatamax.push(Number(this.json[i].airPressureReadingMax));
+          // humidity
+          this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
+          // light
+          this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax));
+        }
 
     // graphs details
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
@@ -33,35 +92,139 @@ export class StationDetailComponent {
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
 
-      this.graphdata = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      this.airgraphdata = {
+        labels: this.labels,
         datasets: [{
-          label: 'dataset - big points',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
+          label: 'Air Average',
+          data: this.airdataavg,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
           fill: false,
-          borderDash: [5, 5],
-          pointRadius: 8,
+
+          pointRadius: 4,
           pointHoverRadius: 10,
-        }, {
-          label: 'dataset - individual point sizes',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.dangerLight,
-          backgroundColor: colors.dangerLight,
+        },
+          {
+            label: 'Air Min',
+            data: this.airdatamin,
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'Air Max',
+            data: this.airdatamax,
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          }],
+      };
+
+      this.tempgraphdata = {
+        labels: this.labels,
+        datasets: [{
+          label: 'Temp Average',
+          data: this.tempdataavg,
+          borderColor: colors.primary,
+          backgroundColor: colors.primary,
           fill: false,
-          borderDash: [5, 5],
-          pointRadius: 8,
+
+          pointRadius: 4,
           pointHoverRadius: 10,
-        }, {
-          label: 'Eon Test',
-          data: [this.random(), this.random(), this.random(), this.random(), this.random(), this.random()],
-          borderColor: colors.info,
-          backgroundColor: colors.info,
+        },
+          {
+            label: 'Temp Min',
+            data: this.tempdatamin,
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'Temp Max',
+            data: this.tempdatamax,
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          }],
+      };
+
+      this.humgraphdata = {
+        labels: this.labels,
+        datasets: [{
+          label: 'Hum Average',
+          data: this.humdataavg,
+          borderColor: colors.primary,
+          backgroundColor: colors.primary,
           fill: false,
-          pointRadius: 8,
+
+          pointRadius: 4,
           pointHoverRadius: 10,
-        }],
+        },
+          {
+            label: 'Hum Min',
+            data: this.humdatamin,
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'Hum Max',
+            data: this.humdatamax,
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          }],
+      };
+
+      this.lightgraphdata = {
+        labels: this.labels,
+        datasets: [{
+          label: 'Light Average',
+          data: this.lightdataavg,
+          borderColor: colors.primary,
+          backgroundColor: colors.primary,
+          fill: false,
+          pointRadius: 4,
+          pointHoverRadius: 10,
+        },
+          {
+            label: 'Air Min',
+            data: this.lightdatamin,
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'Air Max',
+            data: this.lightdatamax,
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          }],
       };
 
       this.graphoptions = {
@@ -82,7 +245,7 @@ export class StationDetailComponent {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Month',
+                labelString: this.type,
               },
               gridLines: {
                 display: true,
@@ -111,7 +274,9 @@ export class StationDetailComponent {
           ],
         },
       };
+      this.isLoaded = true;
     });
+  });
   }
 
   private random() {

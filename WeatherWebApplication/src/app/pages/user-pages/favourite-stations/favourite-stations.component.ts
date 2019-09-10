@@ -11,6 +11,9 @@ export class FavouriteStationsComponent implements OnInit {
 
   statusReadings: AverageReadingEntity[] = [];
   isLoaded: boolean = false;
+  // time series selection
+  type = 'day';
+  types = ['day', 'week', 'month', 'year'];
 
   constructor(private service: AverageReadingService) {}
 
@@ -25,5 +28,12 @@ export class FavouriteStationsComponent implements OnInit {
     );
   }
 
+  getUserActivity(period: string) {
+    // this.userActivityService.getUserActivityData(period)
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe(userActivityData => {
+    //     this.userActivity = userActivityData;
+    //   });
+  }
 
 }
