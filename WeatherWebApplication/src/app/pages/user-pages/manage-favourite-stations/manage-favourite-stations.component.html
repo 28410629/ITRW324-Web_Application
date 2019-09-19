@@ -13,7 +13,7 @@
   </nb-card>
 
   <div style="display: inline-block;" *ngFor="let status of statusReadings">
-    <ngx-weather [statusReadings]=status [stationid]="status.StationName" [isSelectable]="true"></ngx-weather>
+    <ngx-weather [statusReadings]=status [stationid]="status.StationName" [isSelectable]="true" (updateFavs)="updateFavStations($event)"></ngx-weather>
   </div>
 
 </div>
