@@ -279,10 +279,6 @@ export class StationDetailComponent {
   });
   }
 
-  private random() {
-    return Math.round(Math.random() * 100);
-  }
-
   getUserActivity(period: string) {
     // this.userActivityService.getUserActivityData(period)
     //   .pipe(takeWhile(() => this.alive))
