@@ -12,6 +12,7 @@ import {finalize} from 'rxjs/operators';
 export class UserProfileComponent {
 
   // Photo upload
+  otherProgress = false;
   ref;
   task;
   uploadProgress;
@@ -45,6 +46,7 @@ export class UserProfileComponent {
   }
 
   uploadPhoto(event) {
+    this.otherProgress = true;
     this.ref = this.afStorage.ref('users/' + this.user.uid + '/' + event.target.files[0].name);
     this.task = this.ref.put(event.target.files[0]);
 
@@ -53,7 +55,8 @@ export class UserProfileComponent {
       finalize(() => {
         this.ref.getDownloadURL().subscribe(downloadURL => {
           this.photoURL = downloadURL;
-          this.uploadProgress = 0;
+          this.submitChanges();
+          this.otherProgress = false;
         });
       }),
     ).subscribe();
@@ -64,6 +67,7 @@ export class UserProfileComponent {
     subscribe(x => {
       this.name = x.displayName;
       this.email = x.email;
+      this.photoURL = x.photoURL;
     });
     this.isLoaded = true;
   }
