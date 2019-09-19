@@ -127,13 +127,17 @@ import {SensorLocationDetailsComponent} from './sensor-location-details/sensor-l
 
 // User pages
 import {FavouriteStationsComponent} from '../user-pages/favourite-stations/favourite-stations.component';
-import {HomepageComponent} from '../user-pages/homepage/homepage.component';
+import {LocationOverviewComponent} from '../user-pages/location-overview/location-overview.component';
 import {
   ManageFavouriteStationsComponent,
 } from '../user-pages/manage-favourite-stations/manage-favourite-stations.component';
 import { StationDetailComponent } from '../user-pages/station-detail/station-detail.component';
 import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-info/github-repository-info.component';
 import {UserProfileComponent} from '../user-pages/user-profile/user-profile.component';
+import {RawReadingsComponent} from '../user-pages/raw-readings/raw-readings.component';
+import {HomepageComponent} from '../user-pages/homepage/homepage.component';
+import {RegisterNewStationComponent} from '../user-pages/register-new-station/register-new-station.component';
+import {BuildNewStationComponent} from '../user-pages/build-new-station/build-new-station.component';
 
 
 @NgModule({
@@ -262,12 +266,16 @@ import {UserProfileComponent} from '../user-pages/user-profile/user-profile.comp
     NewsPostComponent,
     AccordionComponent,
     FavouriteStationsComponent,
-    HomepageComponent,
+    LocationOverviewComponent,
     ManageFavouriteStationsComponent,
     StationDetailComponent,
     GithubRepositoryInfoComponent,
     UserProfileComponent,
+    RawReadingsComponent,
     SensorLocationDetailsComponent,
+    HomepageComponent,
+    RegisterNewStationComponent,
+    BuildNewStationComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,

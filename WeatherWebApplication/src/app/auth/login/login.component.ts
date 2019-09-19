@@ -78,7 +78,7 @@ export class LoginComponent {
 
   redirectToDashboard() {
     setTimeout(() => {
-      this.router.navigate(['/pages/homepage']);
+      this.router.navigate(['/pages/location-overview']);
     }, this.redirectDelay);
   }
 

@@ -21,6 +21,16 @@ export class PagesComponent {
       home: true,
     },
     {
+      title: 'Location Overview',
+      icon: 'globe-2-outline',
+      link: '/pages/location-overview',
+    },
+    {
+      title: 'Raw Readings',
+      icon: 'archive-outline',
+      link: '/pages/raw-readings',
+    },
+    {
       title: 'Favourite Stations',
       icon: 'star-outline',
       link: '/pages/favourite-stations',
@@ -33,12 +43,12 @@ export class PagesComponent {
     {
       title: 'Register New Station',
       icon: 'plus-outline',
-      link: '/pages/manage-favourite-stations',
+      link: '/pages/register-new-station',
     },
     {
       title: 'Build New Station Guide',
       icon: 'file-text-outline',
-      link: '/pages/manage-favourite-stations',
+      link: '/pages/build-new-station',
     },
   ];
 }
