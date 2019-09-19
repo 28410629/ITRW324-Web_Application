@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { MENU_ITEMS } from './pages-menu';
+import { NbMenuItem } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-pages',
@@ -14,5 +13,32 @@ import { MENU_ITEMS } from './pages-menu';
 })
 export class PagesComponent {
 
-  menu = MENU_ITEMS;
+  menu: NbMenuItem[] = [
+    {
+      title: 'Homepage',
+      icon: 'home-outline',
+      link: '/pages/homepage',
+      home: true,
+    },
+    {
+      title: 'Favourite Stations',
+      icon: 'star-outline',
+      link: '/pages/favourite-stations',
+    },
+    {
+      title: 'Manage Favourite Stations',
+      icon: 'edit-2-outline',
+      link: '/pages/manage-favourite-stations',
+    },
+    {
+      title: 'Register New Station',
+      icon: 'plus-outline',
+      link: '/pages/manage-favourite-stations',
+    },
+    {
+      title: 'Build New Station Guide',
+      icon: 'file-text-outline',
+      link: '/pages/manage-favourite-stations',
+    },
+  ];
 }

@@ -2,6 +2,7 @@
   <nb-card size="medium">
     <nb-card-body>
       <span class="h3 location">{{getStationName()}}</span>
+
       <br><br>
       <span class="date">{{getToday() | date}}</span>
 
@@ -63,7 +64,10 @@
       <ng-template #thenBlock2><span class="flair flair-no-press flair-online" title="Status"><b>Online</b></span></ng-template>
       <ng-template #elseBlock2><span class="flair flair-no-press flair-offline" title="Status"><b>Offline</b></span></ng-template>
 
-
+      <div class="buttons-row" style="margin-top:2px">
+        <button nbButton shape="round" size="small" status="danger" outline (click)="reloadStationSummary()" style="float: right">Reload</button>
+        <button nbButton shape="round" size="small" status="info" outline (click)="openStationDetail()" style="float: right">Details</button>
+      </div>
     </nb-card-body>
   </nb-card>
 

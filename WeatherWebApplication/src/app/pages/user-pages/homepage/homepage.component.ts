@@ -10,6 +10,8 @@ export class HomepageComponent {
   graphdata;
   graphoptions;
   themeSubscription: any;
+  type = 'month';
+  types = ['week', 'month', 'year'];
 
   constructor(private theme: NbThemeService) {
 
@@ -101,5 +103,13 @@ export class HomepageComponent {
 
   private random() {
     return Math.round(Math.random() * 100);
+  }
+
+  getUserActivity(period: string) {
+    // this.userActivityService.getUserActivityData(period)
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe(userActivityData => {
+    //     this.userActivity = userActivityData;
+    //   });
   }
 }
