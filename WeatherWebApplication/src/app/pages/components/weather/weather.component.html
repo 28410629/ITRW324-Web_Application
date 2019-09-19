@@ -3,8 +3,8 @@
     <nb-card-body>
 
       <div *ngIf="isSelectable">
-      <nb-checkbox status="success" (checkedChange)="toggle($event)">
-        <div *ngIf="checked; then thenBlock else elseBlock"></div>
+      <nb-checkbox [checked]="checkForFav()" status="success" (checkedChange)="toggle($event)">
+        <div *ngIf="checkForFav(); then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>Added</ng-template>
         <ng-template #elseBlock>Add to favourites</ng-template>
       </nb-checkbox>

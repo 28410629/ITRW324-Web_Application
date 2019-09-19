@@ -67,7 +67,12 @@ export class AuthService {
         photoURL: photourl,
       });
   }
-
+  UpdateUserFavourites(newFavs: Number[]) {
+    const userjson = JSON.parse(localStorage.getItem('user'));
+    this._firestore.doc('users/' + userjson.uid).update({
+      favStations: newFavs,
+    });
+  }
   // Send email verification when new user sign up
   SendVerificationMail() {
     return this._firebaseAuth.auth.currentUser.sendEmailVerification()
