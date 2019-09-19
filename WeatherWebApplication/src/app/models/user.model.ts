@@ -4,12 +4,6 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean;
-}
-
-export interface UserProfileData {
-  name: string;
-  picture: string;
-  uid: string;
-  favstations: string[];
+  favStations: number[];
   theme: string;
 }

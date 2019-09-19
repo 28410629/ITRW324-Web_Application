@@ -4,7 +4,7 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {User, UserProfileData} from '../../../models/user.model';
+import {User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   // user: any;
-  user: UserProfileData;
+  user: User;
   useruid: string;
 
   themes = [
@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
-          this.user = responseData as UserProfileData;
+          this.user = responseData;;
           this.themeService.changeTheme(this.user.theme);
         });
 

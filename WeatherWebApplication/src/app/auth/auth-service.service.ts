@@ -4,12 +4,11 @@ import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
-import {User, UserProfileData} from '../models/user.model';
+import {User} from '../models/user.model';
 
 @Injectable()
 export class AuthService {
   public user: Observable<firebase.User>;
-  public userDetails: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth,
               private router: Router,
@@ -18,86 +17,49 @@ export class AuthService {
     this.user.subscribe(
       (user) => {
         if (user) {
-          this.userDetails = user;
-          this.CreateUserProfileData();
-          this.AssignLocalStorageUserDataJSON();
-          localStorage.setItem('user', JSON.stringify(this.userDetails));
+          localStorage.setItem('user', JSON.stringify(this.user));
           JSON.parse(localStorage.getItem('user'));
         } else {
-          this.userDetails = null;
           localStorage.setItem('user', null);
-          this.DeassignLocalStorageUserDataJSON();
           JSON.parse(localStorage.getItem('user'));
         }
       },
     );
   }
 
-  register(email, password, fullName, company) {
+  register(email, password, fullName) {
     return this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise */
-        this.SetUserData(result.user);
-        this.SendVerificationMail();
+        this.SetUserData(result.user, fullName);
       });
   }
 
   /* Setting up user data when sign in with username/password,
  sign up with username/password and sign in with social auth
  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user) {
+  SetUserData(user, name) {
     const userRef: AngularFirestoreDocument<any> = this._firestore.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: name,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      favStations: null,
+      theme: 'cosmic',
     };
     return userRef.set(userData, {
       merge: true,
     });
   }
 
-  CreateUserProfileData() {
-    const followDoc =
-      this._firestore.collection(`usersdata`).doc(this.userDetails.uid).ref;
-
-    return followDoc.get().then((doc) => {
-      if (!doc.exists) {
-        this._firestore.collection('usersdata').doc(this.userDetails.uid).set({
-          name: this.userDetails.displayName,
-          picture: this.userDetails.photoURL,
-          uid: this.userDetails.uid,
-          favstations: new Array(String),
-          theme: 'cosmic',
-        });
-      }
-    });
-  }
-
-  AssignLocalStorageUserDataJSON() {
-    this.GetUserProfileData(this.userDetails.uid)
-      .subscribe(
-        responseData => {
-          localStorage.setItem('userdata', JSON.stringify(responseData as UserProfileData));
-          JSON.parse(localStorage.getItem('userdata'));
-        });
-  }
-
-  DeassignLocalStorageUserDataJSON() {
-    localStorage.setItem('userdata', JSON.stringify({theme: 'default'}));
-    JSON.parse(localStorage.getItem('userdata'));
-  }
-
   GetUserProfileData(userid) {
-    return this._firestore.doc<UserProfileData>('usersdata/' + userid).valueChanges();
+    return this._firestore.doc<User>('users/' + userid).valueChanges();
   }
 
   UpdateUserProfileDataTheme(newTheme: string) {
-    const userjson = JSON.parse(localStorage.getItem('userdata')) as UserProfileData;
-      this._firestore.doc('usersdata/' + userjson.uid).update({
+    const userjson = JSON.parse(localStorage.getItem('user'));
+      this._firestore.doc('users/' + userjson.uid).update({
         theme: newTheme,
       });
   }
@@ -137,12 +99,13 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    if (this.userDetails == null) {
+    if (this.user == null) {
       return false;
     } else {
       return true;
     }
   }
+
   logout() {
     this._firebaseAuth.auth.signOut()
       .then((res) => this.router.navigate(['/auth/login']));

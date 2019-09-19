@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {User, UserProfileData} from '../../../models/user.model';
+import {User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class UserProfileComponent {
   isLoaded: boolean = false;
 
   user: User;
-  userProfile: UserProfileData;
+  userProfile: User;
   // user inputs
   name;
   email;
@@ -29,7 +29,8 @@ export class UserProfileComponent {
   getUserData() {
     this.authService.GetUserProfileData(this.useruid).
     subscribe(x => {
-      this.userProfile = x;
+      this.name = x.displayName;
+      this.email = x.email;
     });
     this.isLoaded = true;
   }

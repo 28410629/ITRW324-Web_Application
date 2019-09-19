@@ -40,11 +40,10 @@ export class RegisterComponent {
     this.errors = this.messages = [];
     this.submitted = true;
 
-    this.auth.register(this.user.email, this.user.password, this.user.fullName, this.user.company)
+    this.auth.register(this.user.email, this.user.password, this.user.fullName)
       .then(() => {
           this.submitted = false;
           this.messages = [];
-
           this.redirectToDashboard();
       })
       .catch((err) => {
@@ -53,39 +52,9 @@ export class RegisterComponent {
       });
   }
 
-  loginSocial(name) {
-    if (name === 'google') {
-      this.loginGoogle();
-    } else if (name === 'facebook') {
-      this.loginFb();
-    } else {
-      console.warn('No login for ' + name);
-    }
-  }
-
-  loginGoogle() {
-    this.auth.signInWithGoogle()
-      .then((success) => {
-        this.redirectToDashboard();
-      })
-      .catch((err) => {
-        this.errors = [err];
-      });
-  }
-
-  loginFb() {
-    this.auth.signInWithFacebook()
-      .then((success) => {
-        this.redirectToDashboard();
-      })
-      .catch((err) => {
-        this.errors = [err];
-      });
-  }
-
   redirectToDashboard() {
     setTimeout(() => {
-      this.router.navigate(['/pages/components']);
+      this.router.navigate(['/pages/homepage']);
     }, this.redirectDelay);
   }
 
