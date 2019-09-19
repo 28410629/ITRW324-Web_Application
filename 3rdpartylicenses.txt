@@ -89,6 +89,8 @@ MIT
 
 @angular/fire/firestore
 
+@angular/fire/storage
+
 @angular/forms
 MIT
 
@@ -337,6 +339,9 @@ Apache-2.0
 Apache-2.0
 
 @firebase/logger
+Apache-2.0
+
+@firebase/storage
 Apache-2.0
 
 @firebase/util
@@ -1405,6 +1410,8 @@ firebase/app
 firebase/auth
 
 firebase/firestore
+
+firebase/storage
 
 intersection-observer
 W3C-20150513
