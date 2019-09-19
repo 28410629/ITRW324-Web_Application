@@ -1,1 +1,19 @@
-<h1>Select Favourite Stations!</h1>
+<nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isLoaded">
+  <nb-card-body>
+    Loading content.
+  </nb-card-body>
+</nb-card>
+
+<div *ngIf="isLoaded">
+  <nb-card>
+    <nb-card-header>Select your favorite stations</nb-card-header>
+    <nb-card-body>
+      <button nbButton shape= "round" style="width: 100px" size= "small" status= "danger" outline style="float: left" (click)="getData()">Reload Data</button>
+    </nb-card-body>
+  </nb-card>
+
+  <div style="display: inline-block;" *ngFor="let status of statusReadings">
+    <ngx-weather [statusReadings]=status [stationid]="status.StationName"></ngx-weather>
+  </div>
+
+</div>
