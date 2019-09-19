@@ -1,9 +1,16 @@
 
-  <nb-card size="medium">
+  <nb-card>
     <nb-card-body>
-      <span class="h3 location">{{getStationName()}}</span>
 
-      <br><br>
+      <div *ngIf="isSelectable">
+      <nb-checkbox status="success" (checkedChange)="toggle($event)">
+        <div *ngIf="checked; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>Added</ng-template>
+        <ng-template #elseBlock>Add to favourites</ng-template>
+      </nb-checkbox>
+      </div>
+
+      <span class="h3 location">{{getStationName()}}</span>
       <span class="date">{{getToday() | date}}</span>
 
 
@@ -14,11 +21,10 @@
         <div *ngIf="isDayTime(); then thenBlock1 else elseBlock1"></div>
         <ng-template #thenBlock1><nb-icon icon="sun-outline" pack="eva" class="today-icon"></nb-icon></ng-template>
         <ng-template #elseBlock1><nb-icon icon="moon-outline" pack="eva" class="today-icon"></nb-icon></ng-template>
-
       </div>
 
 
-      <div class="today-details">
+      <div class="today-details row">
         <div class="parameter">
           <span class="caption parameter-name">min</span>
           <span class="parameter-value">{{getMinTemp()}}&deg;</span>
@@ -36,7 +42,7 @@
           <span class="parameter-value">{{getLight()}}%</span>
         </div>
       </div>
-
+      <br>
       <div class="weekly-forecast">
         <div class="day">
           <span class="caption">{{getDayFromNow(1)}}</span>
@@ -60,14 +66,16 @@
         </div>
       </div>
 
+
+
+
+      <button nbButton shape="round" size="small" status="info" outline (click)="openStationDetail()" style="float: right">Details</button>
+
+
       <div *ngIf="isStationOnline(); then thenBlock2 else elseBlock2"></div>
-      <ng-template #thenBlock2><span class="flair flair-no-press flair-online" title="Status"><b>Online</b></span></ng-template>
+      <ng-template #thenBlock2><span class="flair flair-no-press flair-online" title="Status" ><b>Online</b></span></ng-template>
       <ng-template #elseBlock2><span class="flair flair-no-press flair-offline" title="Status"><b>Offline</b></span></ng-template>
 
-      <div class="buttons-row" style="margin-top:2px">
-        <button nbButton shape="round" size="small" status="danger" outline (click)="reloadStationSummary()" style="float: right">Reload</button>
-        <button nbButton shape="round" size="small" status="info" outline (click)="openStationDetail()" style="float: right">Details</button>
-      </div>
     </nb-card-body>
   </nb-card>
 
