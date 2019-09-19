@@ -42,6 +42,7 @@ export class AuthService {
  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user, name) {
     const userRef: AngularFirestoreDocument<any> = this._firestore.doc(`users/${user.uid}`);
+    const num: number[] = [];
     const userData: User = {
       uid: user.uid,
       email: user.email,
@@ -49,7 +50,7 @@ export class AuthService {
       photoURL:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3-pAMsgi3CZrot52SIgT8Ub0hQNpDZ5ZVkT-Pef7usIaGtNXAg',
       emailVerified: user.emailVerified,
-      favStations: null,
+      favStations: num,
       theme: 'cosmic',
     };
     return userRef.set(userData, {

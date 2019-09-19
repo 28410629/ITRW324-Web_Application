@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BuildNewStationComponent {
   constructor() {}
+  GoToPage(url: string) {
+    // window.open('www.github.com');
+  }
 }
