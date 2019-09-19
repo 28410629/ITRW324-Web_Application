@@ -13,6 +13,7 @@ export class ManageFavouriteStationsComponent implements OnInit {
 
   statusReadings: AverageReadingEntity[] = [];
   isLoaded: boolean = false;
+  firstLoad: boolean = true;
   // time series selection
   type = 'day';
   types = ['day', 'week', 'month', 'year'];
@@ -29,7 +30,9 @@ export class ManageFavouriteStationsComponent implements OnInit {
         responseData => {
           this.user = responseData;
           this.favStations = this.user.favStations;
-          this.getData();
+          if (this.firstLoad) {
+            this.getData();
+          }
         });
   }
   getData() {
@@ -38,12 +41,20 @@ export class ManageFavouriteStationsComponent implements OnInit {
       data => {
         this.statusReadings = data.avgReadings;
         this.isLoaded = true;
+        this.firstLoad = false;
       },
       error => {
+        this.firstLoad = true;
+        this.getData();
       },
     );
   }
   updateFavStations(newFavs: number) {
-    console.log(newFavs);
+    if (this.favStations.includes(Number(newFavs))) { // remove station from favourites
+      this.favStations.splice(this.favStations.indexOf(Number(newFavs)), 1);
+    } else {
+      this.favStations.push(Number(newFavs));
+    }
+    this.authService.UpdateUserFavourites(this.favStations);
   }
 }

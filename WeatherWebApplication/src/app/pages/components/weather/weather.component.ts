@@ -20,8 +20,11 @@ export class WeatherComponent {
   isSelectable = false;
   @Output() updateFavs = new EventEmitter();
   checked;
+  @Input()
+  listOfFavs = [];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+  }
 
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -175,5 +178,8 @@ export class WeatherComponent {
 
   _sendDataToParent() {
     this.updateFavs.emit(this.stationid);
+  }
+  checkForFav() {
+    return this.listOfFavs.includes(Number(this.stationid));
   }
 }
