@@ -4,21 +4,16 @@
   </nb-card-body>
 </nb-card>
 
-<div class="row" *ngIf="isLoaded">
-  <div class="row">
-    <div class="col-xxl-12">
+<div *ngIf="isLoaded">
       <nb-card>
         <nb-card-header>Station Details</nb-card-header>
         <nb-card-body>
-          Select Time Span :
-          <nb-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
-            <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
-          </nb-select>
-          <button nbButton shape="round" size="small" status="danger" outline style="float: right">Reload Data</button>
+          <button nbButton shape= "round" style="width: 100px" size= "small" status= "danger" outline style="float: left" (click)="getData()">Reload Data</button>
         </nb-card-body>
       </nb-card>
+
+    <div style="display: inline-block;" *ngFor="let status of statusReadings">
+      <ngx-weather [statusReadings]=status [stationid]="status.StationName"></ngx-weather>
     </div>
-  <div class="col-xxxl-3 col-xxl-4 col-md-5" *ngFor="let status of statusReadings">
-    <ngx-weather [statusReadings]=status [stationid]="status.StationName"></ngx-weather>
-  </div>
+
 </div>
