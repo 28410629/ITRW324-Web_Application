@@ -10,11 +10,7 @@
       <nb-card>
         <nb-card-header>Station Details</nb-card-header>
         <nb-card-body>
-          Select Time Span :
-          <nb-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
-            <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
-          </nb-select>
-          <button nbButton shape="round" size="small" status="danger" outline style="float: right">Reload Data</button>
+          <button nbButton shape= "round" size= "small" status= "danger" outline style="float: left">Reload Data</button>
         </nb-card-body>
       </nb-card>
     </div>
