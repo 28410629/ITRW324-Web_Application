@@ -4,11 +4,12 @@ import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs/Observable';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
-import {User} from '../models/user.model';
+import {FirebaseUser, User} from '../models/user.model';
 
 @Injectable()
 export class AuthService {
   public user: Observable<firebase.User>;
+  userDetails: FirebaseUser;
 
   constructor(private _firebaseAuth: AngularFireAuth,
               private router: Router,
@@ -17,9 +18,11 @@ export class AuthService {
     this.user.subscribe(
       (user) => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(this.user));
+          this.userDetails = user;
+          localStorage.setItem('user', JSON.stringify(this.userDetails));
           JSON.parse(localStorage.getItem('user'));
         } else {
+          this.userDetails = null;
           localStorage.setItem('user', null);
           JSON.parse(localStorage.getItem('user'));
         }
@@ -43,7 +46,8 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: name,
-      photoURL: user.photoURL,
+      photoURL:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3-pAMsgi3CZrot52SIgT8Ub0hQNpDZ5ZVkT-Pef7usIaGtNXAg',
       emailVerified: user.emailVerified,
       favStations: null,
       theme: 'cosmic',

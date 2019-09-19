@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userPictureOnly: boolean = false;
   // user: any;
   user: User;
+  displayUser = { name: 'Loading...',
+    picture:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3-pAMsgi3CZrot52SIgT8Ub0hQNpDZ5ZVkT-Pef7usIaGtNXAg'}
   useruid: string;
 
   themes = [
@@ -65,7 +68,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
-          this.user = responseData;;
+          this.user = responseData;
+          this.displayUser = { name: responseData.displayName, picture: responseData.photoURL};
           this.themeService.changeTheme(this.user.theme);
         });
 

@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth-service.service';
 import {getDeepFromObject, NB_AUTH_OPTIONS, NbAuthSocialLink} from '@nebular/auth';
 
-
-
 @Component({
   selector: 'ngx-register',
   styleUrls: ['./register.component.scss'],
@@ -32,7 +30,6 @@ export class RegisterComponent {
     this.redirectDelay = this.getConfigValue('forms.register.redirectDelay');
     this.showMessages = this.getConfigValue('forms.register.showMessages');
     this.socialLinks = this.getConfigValue('forms.register.socialLinks');
-
     this.validation = this.getConfigValue('forms.validation');
   }
 
