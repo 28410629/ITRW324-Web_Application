@@ -1,7 +1,20 @@
 import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 
-import { SmartTableData } from '../../../@core/data/smart-table';
+interface TreeNode<T> {
+  data: T;
+  children?: TreeNode<T>[];
+  expanded?: boolean;
+}
+
+interface FSEntry {
+  Entry;
+  Date;
+  Air_Pressure;
+  Ambient_Light;
+  Humidity;
+  Temperature;
+}
 
 @Component({
   selector: 'ngx-raw-readings',
@@ -9,62 +22,49 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   styleUrls: ['./raw-readings.component.scss'],
 })
 export class RawReadingsComponent {
+  customColumn = 'Entry';
+  defaultColumns = [ 'Date', 'Air_Pressure', 'Ambient_Light', 'Humidity', 'Temperature' ];
+  allColumns = [ this.customColumn, ...this.defaultColumns ];
 
-  settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-      },
-      firstName: {
-        title: 'First Name',
-        type: 'string',
-      },
-      lastName: {
-        title: 'Last Name',
-        type: 'string',
-      },
-      username: {
-        title: 'Username',
-        type: 'string',
-      },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
-        type: 'number',
-      },
-    },
-  };
+  dataSource: NbTreeGridDataSource<FSEntry>;
 
-  source: LocalDataSource = new LocalDataSource();
+  sortColumn: string;
+  sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private service: SmartTableData) {
-    const data = this.service.getData();
-    this.source.load(data);
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+    this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
+  updateSort(sortRequest: NbSortRequest): void {
+    this.sortColumn = sortRequest.column;
+    this.sortDirection = sortRequest.direction;
+  }
+
+  getSortDirection(column: string): NbSortDirection {
+    if (this.sortColumn === column) {
+      return this.sortDirection;
     }
+    return NbSortDirection.NONE;
+  }
+
+  private data: TreeNode<FSEntry>[] = [
+    {
+      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
+        Air_Pressure: 'dir', Humidity: true, Temperature: true },
+    },
+    {
+      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
+        Air_Pressure: 'dir', Humidity: true, Temperature: true },
+    },
+    {
+      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
+        Air_Pressure: 'dir', Humidity: true, Temperature: true },
+    },
+  ];
+
+  getShowOn(index: number) {
+    const minWithForMultipleColumns = 400;
+    const nextColumnStep = 100;
+    return minWithForMultipleColumns + (nextColumnStep * index);
   }
 }
