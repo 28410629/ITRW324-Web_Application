@@ -70,7 +70,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         responseData => {
           this.user = responseData;
           this.displayUser = { name: responseData.displayName, picture: responseData.photoURL};
-          this.themeService.changeTheme(this.user.theme);
+          if (this.user.theme !== null) {
+            this.themeService.changeTheme(this.user.theme);
+          }
         });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
