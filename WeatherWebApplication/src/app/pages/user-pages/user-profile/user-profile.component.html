@@ -8,8 +8,8 @@
   <nb-card-header>User Profile</nb-card-header>
   <nb-card-body>
     <input type="text" nbInput fullWidth placeholder="Display Name" [ngModel]="name">
-    <input type="text" nbInput fullWidth disabled placeholder="Email Address">
-    <input type="text" nbInput fullWidth disabled placeholder="User UID">
+    <input type="text" nbInput fullWidth disabled placeholder="Email Address" [ngModel]="email">
+    <input type="text" nbInput fullWidth disabled placeholder="User UID" [ngModel]="useruid">
   </nb-card-body>
   <nb-card-footer>
     <button nbButton status="primary" outline>Update Profile Details</button>

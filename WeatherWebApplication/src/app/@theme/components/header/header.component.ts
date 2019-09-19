@@ -4,7 +4,7 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import {User, UserProfileData} from '../../../models/user.model';
+import {User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
@@ -17,7 +17,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
   // user: any;
-  user: UserProfileData;
+  user: User;
+  displayUser = { name: 'Loading...',
+    picture:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3-pAMsgi3CZrot52SIgT8Ub0hQNpDZ5ZVkT-Pef7usIaGtNXAg'};
   useruid: string;
 
   themes = [
@@ -65,7 +68,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
-          this.user = responseData as UserProfileData;
+          this.user = responseData;
+          this.displayUser = { name: responseData.displayName, picture: responseData.photoURL};
           this.themeService.changeTheme(this.user.theme);
         });
 

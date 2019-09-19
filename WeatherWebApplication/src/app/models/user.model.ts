@@ -4,12 +4,14 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean;
+  favStations: number[];
+  theme: string;
 }
 
-export interface UserProfileData {
-  name: string;
-  picture: string;
+export interface FirebaseUser {
   uid: string;
-  favstations: string[];
-  theme: string;
+  email: string;
+  displayName: string;
+  photoURL: string;
+  emailVerified: boolean;
 }
