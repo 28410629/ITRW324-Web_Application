@@ -41,6 +41,7 @@ import { AverageReadingService } from './services/AverageReadingService';
 
 // common
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
+import {StationDetailService} from './services/station-detail.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { FetchJsonUtilities } from './common/fetch-json.utilities';
     FormsModule,
     NbCheckboxModule,
   ],
-  providers: [FetchJsonUtilities, AverageReadingService, AuthGuard, AuthService],
+  providers: [FetchJsonUtilities, AverageReadingService, AuthGuard, AuthService, StationDetailService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

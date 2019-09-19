@@ -1,11 +1,6 @@
 <nb-card size="medium">
 
-  <nb-card-header>
-    <span>{{ headerName }}</span>
-    <nb-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
-      <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
-    </nb-select>
-  </nb-card-header>
+  <nb-card-header>{{ headerName }}</nb-card-header>
 
   <nb-list class="user-activity-list">
     <nb-list-item *ngFor="let item of userActivity">
@@ -15,7 +10,7 @@
       </div>
 
       <div class="visited-pages-count">
-        <div class="caption">Average</div>
+        <div class="caption">Measured</div>
         <div class="value">{{ item.pagesVisitCount }}</div>
       </div>
 
