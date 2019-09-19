@@ -1,4 +1,4 @@
-import {Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {Router} from '@angular/router';
 
@@ -18,10 +18,13 @@ export class WeatherComponent {
 
   @Input()
   isSelectable = false;
-
+  @Output() updateFavs = new EventEmitter();
   checked;
+  @Input()
+  listOfFavs = [];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+  }
 
 
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -170,7 +173,13 @@ export class WeatherComponent {
 
   toggle(checked: boolean) {
     this.checked = checked;
+    this._sendDataToParent();
   }
 
-
+  _sendDataToParent() {
+    this.updateFavs.emit(this.stationid);
+  }
+  checkForFav() {
+    return this.listOfFavs.includes(Number(this.stationid));
+  }
 }
