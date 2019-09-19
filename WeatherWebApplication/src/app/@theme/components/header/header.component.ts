@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   user: User;
   displayUser = { name: 'Loading...',
     picture:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3-pAMsgi3CZrot52SIgT8Ub0hQNpDZ5ZVkT-Pef7usIaGtNXAg'}
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv3-pAMsgi3CZrot52SIgT8Ub0hQNpDZ5ZVkT-Pef7usIaGtNXAg'};
   useruid: string;
 
   themes = [
