@@ -22,6 +22,16 @@ interface FSEntry {
   styleUrls: ['./raw-readings.component.scss'],
 })
 export class RawReadingsComponent {
+  station = 'month';
+  stations = ['week', 'month', 'year'];
+
+  time = 'month';
+  times = ['week', 'month', 'year'];
+
+  isMainLoaded: boolean = true;
+  isContentLoaded: boolean = true;
+  loaderContentTag: string = 'Waiting for user selection.';
+
   customColumn = 'Entry';
   defaultColumns = [ 'Date', 'Air_Pressure', 'Ambient_Light', 'Humidity', 'Temperature' ];
   allColumns = [ this.customColumn, ...this.defaultColumns ];
@@ -53,11 +63,11 @@ export class RawReadingsComponent {
         Air_Pressure: 'dir', Humidity: true, Temperature: true },
     },
     {
-      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
+      data: { Entry: 'Projects1', Date: '1.8 MB', Ambient_Light: 5,
         Air_Pressure: 'dir', Humidity: true, Temperature: true },
     },
     {
-      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
+      data: { Entry: 'Projects23', Date: '1.8 MB', Ambient_Light: 5,
         Air_Pressure: 'dir', Humidity: true, Temperature: true },
     },
   ];
@@ -66,5 +76,9 @@ export class RawReadingsComponent {
     const minWithForMultipleColumns = 400;
     const nextColumnStep = 100;
     return minWithForMultipleColumns + (nextColumnStep * index);
+  }
+
+  getData() {
+
   }
 }

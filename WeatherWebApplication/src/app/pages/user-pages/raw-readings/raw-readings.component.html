@@ -1,33 +1,71 @@
-<nb-card>
+<nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isMainLoaded">
   <nb-card-body>
-
-    <label class="search-label" for="search">Search:</label>
-    <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
-
-    <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
-
-      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-
-      <ng-container [nbTreeGridColumnDef]="customColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
-          {{customColumn}}
-        </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-          {{row.data[customColumn]}}
-        </td>
-      </ng-container>
-
-      <ng-container *ngFor="let column of defaultColumns; let index = index"
-                    [nbTreeGridColumnDef]="column"
-                    [showOn]="getShowOn(index)">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
-          {{column}}
-        </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
-      </ng-container>
-
-    </table>
-
+    Loading content.
   </nb-card-body>
 </nb-card>
+
+<div *ngIf="isMainLoaded">
+  <div class="row" >
+    <div class="col-xxl-12">
+      <nb-card>
+        <nb-card-header>Raw Readings</nb-card-header>
+        <nb-card-body style="padding-bottom: 6px">
+          <div class="test">
+            <span style="margin-right: 10px">Select Station :</span>
+            <nb-select style="margin-right: 10px" [selected]="station" (selectedChange)="station = $event">
+              <nb-option *ngFor="let s of stations" [value]="s">{{ s }}</nb-option>
+            </nb-select>
+          </div>
+          <div class="test">
+            <span style="margin-right: 10px">Select Time Period :</span>
+            <nb-select style="margin-right: 10px" [selected]="time" (selectedChange)="time = $event">
+              <nb-option *ngFor="let t of times" [value]="t">{{ t }}</nb-option>
+            </nb-select>
+          </div>
+          <button nbButton shape="round" size="small" status="danger" outline style="float: right">Get Data</button>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+
+  <nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isContentLoaded">
+    <nb-card-body>
+      {{ loaderContentTag }}
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card *ngIf="isContentLoaded">
+    <nb-card-body>
+
+      <label class="search-label" for="search">Search table:</label>
+      <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+
+      <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+        <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+        <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+        <ng-container [nbTreeGridColumnDef]="customColumn">
+          <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
+            {{customColumn}}
+          </th>
+          <td nbTreeGridCell *nbTreeGridCellDef="let row">
+            {{row.data[customColumn]}}
+          </td>
+        </ng-container>
+
+        <ng-container *ngFor="let column of defaultColumns; let index = index"
+                      [nbTreeGridColumnDef]="column"
+                      [showOn]="getShowOn(index)">
+          <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+            {{column}}
+          </th>
+          <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
+        </ng-container>
+
+      </table>
+
+    </nb-card-body>
+  </nb-card>
+</div>
+
