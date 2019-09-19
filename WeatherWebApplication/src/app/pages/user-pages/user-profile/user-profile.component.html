@@ -7,11 +7,19 @@
 <nb-card *ngIf="isLoaded">
   <nb-card-header>User Profile</nb-card-header>
   <nb-card-body>
+    <img src="{{ photoURL }}" class="avatar rounded-circle" width="200" height="200" style="margin-top: 10px">
+    <div class="input-group">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" (change)="uploadPhoto($event)">
+        <label class="custom-file-label" for="inputGroupFile04"></label>
+      </div>
+    </div>
+    <progress style="margin: 8px" max="100" [value]="(uploadProgress | async)">{{uploadProgress | async}}%</progress>
     <input type="text" nbInput fullWidth placeholder="Display Name" [ngModel]="name">
     <input type="text" nbInput fullWidth disabled placeholder="Email Address" [ngModel]="email">
     <input type="text" nbInput fullWidth disabled placeholder="User UID" [ngModel]="useruid">
   </nb-card-body>
   <nb-card-footer>
-    <button nbButton status="primary" outline>Update Profile Details</button>
+    <button nbButton status="primary" outline (click)="submitChanges()">Update Profile Details</button>
   </nb-card-footer>
 </nb-card>
