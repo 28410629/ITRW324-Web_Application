@@ -7,11 +7,23 @@
 <nb-card *ngIf="isLoaded">
   <nb-card-header>User Profile</nb-card-header>
   <nb-card-body>
+    <div class="text-center">
+      <img src="{{ photoURL }}" class="avatar rounded-circle" width="200" height="200" style="margin-top: 10px">
+    </div>
+    <div>
+      <input type="file" (change)="uploadPhoto($event)">
+    </div>
+    <div *ngIf="!otherProgress">
+      <nb-progress-bar [value]="0" status="primary">0%</nb-progress-bar>
+    </div>
+    <div *ngIf="otherProgress">
+      <nb-progress-bar [value]="(uploadProgress | async)" status="primary">{{uploadProgress | async}}%</nb-progress-bar>
+    </div>
     <input type="text" nbInput fullWidth placeholder="Display Name" [ngModel]="name">
     <input type="text" nbInput fullWidth disabled placeholder="Email Address" [ngModel]="email">
     <input type="text" nbInput fullWidth disabled placeholder="User UID" [ngModel]="useruid">
   </nb-card-body>
   <nb-card-footer>
-    <button nbButton status="primary" outline>Update Profile Details</button>
+    <button nbButton status="primary" outline (click)="submitChanges()">Update Profile Details</button>
   </nb-card-footer>
 </nb-card>

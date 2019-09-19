@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AverageReadingService} from '../../../services/AverageReadingService';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {AuthService} from '../../../auth/auth-service.service';

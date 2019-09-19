@@ -61,10 +61,10 @@ export class AuthService {
     return this._firestore.doc<User>('users/' + userid).valueChanges();
   }
 
-  UpdateUserProfileDataTheme(newTheme: string) {
-    const userjson = JSON.parse(localStorage.getItem('user'));
-      this._firestore.doc('users/' + userjson.uid).update({
-        theme: newTheme,
+  UpdateUserProfile(userid, name, photourl) {
+      this._firestore.doc('users/' + userid).update({
+        displayName: name,
+        photoURL: photourl,
       });
   }
   UpdateUserFavourites(newFavs: Number[]) {

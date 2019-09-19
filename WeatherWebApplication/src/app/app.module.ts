@@ -24,7 +24,7 @@ import {
 // firebase
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 
 // auth
@@ -42,6 +42,7 @@ import { AverageReadingService } from './services/AverageReadingService';
 // common
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
 import {StationDetailService} from './services/station-detail.service';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -70,10 +71,17 @@ import {StationDetailService} from './services/station-detail.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     FormsModule,
     NbCheckboxModule,
   ],
-  providers: [FetchJsonUtilities, AverageReadingService, AuthGuard, AuthService, StationDetailService],
+  providers: [
+    FetchJsonUtilities,
+    AverageReadingService,
+    AuthGuard,
+    AuthService,
+    StationDetailService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
