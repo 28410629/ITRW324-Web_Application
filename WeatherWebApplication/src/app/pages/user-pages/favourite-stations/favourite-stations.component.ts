@@ -18,6 +18,11 @@ export class FavouriteStationsComponent implements OnInit {
   constructor(private service: AverageReadingService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
+    this.isLoaded = false;
     this.service.FetchAverageToday('2347795-10359807-10359964').subscribe(
       data => {
         this.statusReadings = data.avgReadings;
@@ -27,7 +32,6 @@ export class FavouriteStationsComponent implements OnInit {
       },
     );
   }
-
   getUserActivity(period: string) {
     // this.userActivityService.getUserActivityData(period)
     //   .pipe(takeWhile(() => this.alive))
