@@ -16,6 +16,11 @@ export class WeatherComponent {
   @Input()
   stationid;
 
+  @Input()
+  isSelectable = false;
+
+  checked;
+
   constructor(public router: Router) {}
 
 
@@ -161,6 +166,10 @@ export class WeatherComponent {
 
   openStationDetail() {
     this.router.navigate(['pages/station-details/' + this.stationid + '/']);
+  }
+
+  toggle(checked: boolean) {
+    this.checked = checked;
   }
 
 

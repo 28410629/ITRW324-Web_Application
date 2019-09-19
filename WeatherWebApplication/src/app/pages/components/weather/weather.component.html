@@ -1,7 +1,16 @@
 
   <nb-card>
     <nb-card-body>
-      <span class="h3">{{getStationName()}}</span>
+
+      <div *ngIf="isSelectable">
+      <nb-checkbox status="success" (checkedChange)="toggle($event)">
+        <div *ngIf="checked; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>Added</ng-template>
+        <ng-template #elseBlock>Add to favourites</ng-template>
+      </nb-checkbox>
+      </div>
+
+      <span class="h3 location">{{getStationName()}}</span>
       <span class="date">{{getToday() | date}}</span>
 
 
