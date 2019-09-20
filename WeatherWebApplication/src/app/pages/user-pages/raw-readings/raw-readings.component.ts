@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import {StationListService} from '../../../services/station-list.service';
+import {Station} from '../../../models/station-list.model';
 
 interface TreeNode<T> {
   data: T;
@@ -22,11 +24,12 @@ interface FSEntry {
   styleUrls: ['./raw-readings.component.scss'],
 })
 export class RawReadingsComponent {
-  station = 'month';
-  stations = ['week', 'month', 'year'];
+  stationlist: Station[];
+  station = '';
+  stations = [];
 
-  time = 'month';
-  times = ['week', 'month', 'year'];
+  time = 'day';
+  times = ['day', 'week', 'month', 'year'];
 
   isMainLoaded: boolean = true;
   isContentLoaded: boolean = true;
@@ -41,8 +44,10 @@ export class RawReadingsComponent {
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
+              private stationService: StationListService) {
+    // this.dataSource = this.dataSourceBuilder.create(this.data);
+    this.getStationList();
   }
 
   updateSort(sortRequest: NbSortRequest): void {
@@ -78,7 +83,26 @@ export class RawReadingsComponent {
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
 
-  getData() {
+  getStationList() {
+    this.isMainLoaded = false;
+    this.stationService.FetchStationList()
+      .subscribe(data => {
+        this.stationlist = data.stations;
+        if (data.stations != null) {
+          this.station = this.stationlist[0].stationId.toString();
+          this.stationlist.forEach(x => {
+            this.stations.push(x.stationId.toString());
+          });
+          this.isMainLoaded = true;
+        } else {
+          this.getStationList();
+        }
+      });
+  }
 
+  getStationRawReadings(stationid, timespan) {
+    this.isContentLoaded = false;
+    this.dataSource = this.dataSourceBuilder.create(this.data);
+    this.isContentLoaded = true;
   }
 }
