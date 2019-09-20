@@ -35,24 +35,25 @@ export class RawReadingsComponent {
         type: 'string',
       },
       ambient: {
-        title: 'Ambient Light %',
+        title: 'Ambient Light: %',
         type: 'number',
       },
       air: {
-        title: 'Air Pressure ()',
+        title: 'Air Pressure: Pa',
         type: 'number',
       },
       humidity: {
-        title: 'Humidity %',
+        title: 'Humidity: %',
         type: 'number',
       },
       temperature: {
-        title: 'Temperature °C',
+        title: 'Temperature: °C',
         type: 'number',
       },
     },
   };
 
+  tablename;
   tabledata;
   source: LocalDataSource = new LocalDataSource();
   tempdate: Date;
@@ -83,6 +84,7 @@ export class RawReadingsComponent {
   getStationRawReadings(stationid, timespan) {
     this.isContentLoaded = false;
     this.loaderContentTag = 'Loading content.';
+    this.tablename = 'Loading content.';
     switch (timespan) {
       case this.times[0]: {
         this.rawReadingService.FetchDayStationRawReadings(stationid)
@@ -145,7 +147,7 @@ export class RawReadingsComponent {
         {
           entry: ++i,
           date: this.tempdate.toDateString() + ' - ' + this.tempdate.toLocaleTimeString(),
-          ambient: (x.ambient_Light / 1024).toPrecision(2),
+          ambient: (x.ambient_Light / 10.24).toFixed(2),
           air: x.air_Pressure,
           humidity: x.humidity,
           temperature: x.temperature,
@@ -153,14 +155,15 @@ export class RawReadingsComponent {
     });
     this.source = new LocalDataSource();
     this.source.load(this.tabledata);
+    this.tablename = this.getName(this.station, this.time);
     this.isContentLoaded = true;
   }
 
   getName(stationid, time): string {
-    const name = 'not found.'
+    let name = 'Not found.';
     this.stationlist.forEach(x => {
       if (x.stationId.toString() === stationid.toString()) {
-        return 'Station ' + x.stationId + ' (\'' + x.nickName + '\') raw readings : last ' + time;
+        name = 'Station ' + x.stationId + ' (\'' + x.nickName + '\') : last ' + time + ' raw readings.';
       }
     });
     return name;
