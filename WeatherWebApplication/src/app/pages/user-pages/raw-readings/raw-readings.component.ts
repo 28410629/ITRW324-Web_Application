@@ -35,7 +35,7 @@ export class RawReadingsComponent {
         type: 'string',
       },
       ambient: {
-        title: 'Ambient Light (%)',
+        title: 'Ambient Light %',
         type: 'number',
       },
       air: {
@@ -43,11 +43,11 @@ export class RawReadingsComponent {
         type: 'number',
       },
       humidity: {
-        title: 'Humidity (%)',
+        title: 'Humidity %',
         type: 'number',
       },
       temperature: {
-        title: 'Temperature (°C)',
+        title: 'Temperature °C',
         type: 'number',
       },
     },
@@ -55,6 +55,7 @@ export class RawReadingsComponent {
 
   tabledata;
   source: LocalDataSource = new LocalDataSource();
+  tempdate: Date;
 
   constructor(private stationService: StationListService,
               private rawReadingService: RawReadingsService) {
@@ -139,11 +140,12 @@ export class RawReadingsComponent {
     this.tabledata = [];
     let i = 0;
     data.Readings.forEach(x => {
+      this.tempdate = new Date(x.date);
       this.tabledata.push(
         {
           entry: ++i,
-          date: x.date.getDate() + ' ' + x.date.getTime(),
-          ambient: x.ambient_Light / 1024,
+          date: this.tempdate.toDateString() + ' - ' + this.tempdate.toLocaleTimeString(),
+          ambient: (x.ambient_Light / 1024).toPrecision(2),
           air: x.air_Pressure,
           humidity: x.humidity,
           temperature: x.temperature,
@@ -152,6 +154,16 @@ export class RawReadingsComponent {
     this.source = new LocalDataSource();
     this.source.load(this.tabledata);
     this.isContentLoaded = true;
+  }
+
+  getName(stationid, time): string {
+    const name = 'not found.'
+    this.stationlist.forEach(x => {
+      if (x.stationId.toString() === stationid.toString()) {
+        return 'Station ' + x.stationId + ' (\'' + x.nickName + '\') raw readings : last ' + time;
+      }
+    });
+    return name;
   }
 
   onDeleteConfirm(event): void {
