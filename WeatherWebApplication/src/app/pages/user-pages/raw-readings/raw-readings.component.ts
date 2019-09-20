@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import {StationListService} from '../../../services/station-list.service';
 import {Station} from '../../../models/station-list.model';
+import {RawReadingsService} from '../../../services/raw-readings.service';
+import {RawReading} from '../../../models/raw-readings.model';
 
 interface TreeNode<T> {
   data: T;
@@ -40,13 +42,14 @@ export class RawReadingsComponent {
   allColumns = [ this.customColumn, ...this.defaultColumns ];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
+  private data: TreeNode<FSEntry>[] = [];
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
-              private stationService: StationListService) {
-    // this.dataSource = this.dataSourceBuilder.create(this.data);
+              private stationService: StationListService,
+              private rawReadingService: RawReadingsService) {
     this.getStationList();
   }
 
@@ -61,21 +64,6 @@ export class RawReadingsComponent {
     }
     return NbSortDirection.NONE;
   }
-
-  private data: TreeNode<FSEntry>[] = [
-    {
-      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
-        Air_Pressure: 'dir', Humidity: true, Temperature: true },
-    },
-    {
-      data: { Entry: 'Projects1', Date: '1.8 MB', Ambient_Light: 5,
-        Air_Pressure: 'dir', Humidity: true, Temperature: true },
-    },
-    {
-      data: { Entry: 'Projects23', Date: '1.8 MB', Ambient_Light: 5,
-        Air_Pressure: 'dir', Humidity: true, Temperature: true },
-    },
-  ];
 
   getShowOn(index: number) {
     const minWithForMultipleColumns = 400;
@@ -102,6 +90,75 @@ export class RawReadingsComponent {
 
   getStationRawReadings(stationid, timespan) {
     this.isContentLoaded = false;
+    switch (timespan) {
+      case this.times[0]: {
+        this.rawReadingService.FetchDayStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              let i = 0;
+              data.Readings.forEach(x =>
+                this.data.push({
+                  data: { Entry: ++i, Date: x.date, Ambient_Light: x.ambient_Light,
+                    Air_Pressure: x.air_Pressure, Humidity: x.humidity, Temperature: x.temperature },
+                }));
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      case this.times[1]: {
+        this.rawReadingService.FetchWeekStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              let i = 0;
+              data.Readings.forEach(x =>
+                this.data.push({
+                  data: { Entry: ++i, Date: x.date, Ambient_Light: x.ambient_Light,
+                    Air_Pressure: x.air_Pressure, Humidity: x.humidity, Temperature: x.temperature },
+                }));
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      case this.times[2]: {
+        this.rawReadingService.FetchMonthStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              let i = 0;
+              data.Readings.forEach(x =>
+                this.data.push({
+                  data: { Entry: ++i, Date: x.date, Ambient_Light: x.ambient_Light,
+                    Air_Pressure: x.air_Pressure, Humidity: x.humidity, Temperature: x.temperature },
+                }));
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      case this.times[3]: {
+        this.rawReadingService.FetchYearStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              let i = 0;
+              data.Readings.forEach(x =>
+                this.data.push({
+                  data: { Entry: ++i, Date: x.date, Ambient_Light: x.ambient_Light,
+                    Air_Pressure: x.air_Pressure, Humidity: x.humidity, Temperature: x.temperature },
+                }));
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      default: {
+        break;
+      }
+    }
     this.dataSource = this.dataSourceBuilder.create(this.data);
     this.isContentLoaded = true;
   }
