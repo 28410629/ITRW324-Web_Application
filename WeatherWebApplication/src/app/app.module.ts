@@ -43,6 +43,8 @@ import { AverageReadingService } from './services/AverageReadingService';
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
 import {StationDetailService} from './services/station-detail.service';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {StationListService} from './services/station-list.service';
+import {RawReadingsService} from './services/raw-readings.service';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     AuthGuard,
     AuthService,
     StationDetailService,
+    StationListService,
+    RawReadingsService,
   ],
   bootstrap: [AppComponent],
 })

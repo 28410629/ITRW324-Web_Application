@@ -1,20 +1,9 @@
 import { Component } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
-
-interface TreeNode<T> {
-  data: T;
-  children?: TreeNode<T>[];
-  expanded?: boolean;
-}
-
-interface FSEntry {
-  Entry;
-  Date;
-  Air_Pressure;
-  Ambient_Light;
-  Humidity;
-  Temperature;
-}
+import { LocalDataSource } from 'ng2-smart-table';
+import {Station} from '../../../models/station-list.model';
+import {StationListService} from '../../../services/station-list.service';
+import {RawReadingsService} from '../../../services/raw-readings.service';
+import {RawReadings} from '../../../models/raw-readings.model';
 
 @Component({
   selector: 'ngx-raw-readings',
@@ -22,63 +11,169 @@ interface FSEntry {
   styleUrls: ['./raw-readings.component.scss'],
 })
 export class RawReadingsComponent {
-  station = 'month';
-  stations = ['week', 'month', 'year'];
 
-  time = 'month';
-  times = ['week', 'month', 'year'];
+  stationlist: Station[];
+  station = '';
+  stations = [];
 
-  isMainLoaded: boolean = true;
-  isContentLoaded: boolean = true;
+  time = 'day';
+  times = ['day', 'week', 'month', 'year'];
+
+  isMainLoaded: boolean = false;
+  isContentLoaded: boolean = false;
   loaderContentTag: string = 'Waiting for user selection.';
 
-  customColumn = 'Entry';
-  defaultColumns = [ 'Date', 'Air_Pressure', 'Ambient_Light', 'Humidity', 'Temperature' ];
-  allColumns = [ this.customColumn, ...this.defaultColumns ];
+  settings = {
+    actions: false,
+    columns: {
+      entry: {
+        title: 'Entry',
+        type: 'number',
+      },
+      date: {
+        title: 'Date',
+        type: 'string',
+      },
+      ambient: {
+        title: 'Ambient Light: %',
+        type: 'number',
+      },
+      air: {
+        title: 'Air Pressure: Pa',
+        type: 'number',
+      },
+      humidity: {
+        title: 'Humidity: %',
+        type: 'number',
+      },
+      temperature: {
+        title: 'Temperature: °C',
+        type: 'number',
+      },
+    },
+  };
 
-  dataSource: NbTreeGridDataSource<FSEntry>;
+  tablename;
+  tabledata;
+  source: LocalDataSource = new LocalDataSource();
+  tempdate: Date;
 
-  sortColumn: string;
-  sortDirection: NbSortDirection = NbSortDirection.NONE;
+  constructor(private stationService: StationListService,
+              private rawReadingService: RawReadingsService) {
+    this.getStationList();
+  }
+    // this.source.load(data);
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+  getStationList() {
+    this.isMainLoaded = false;
+    this.stationService.FetchStationList()
+      .subscribe(data => {
+        this.stationlist = data.stations;
+        if (data.stations != null) {
+          this.station = this.stationlist[0].stationId.toString();
+          this.stationlist.forEach(x => {
+            this.stations.push(x.stationId.toString());
+          });
+          this.isMainLoaded = true;
+        } else {
+          this.getStationList();
+        }
+      });
   }
 
-  updateSort(sortRequest: NbSortRequest): void {
-    this.sortColumn = sortRequest.column;
-    this.sortDirection = sortRequest.direction;
-  }
-
-  getSortDirection(column: string): NbSortDirection {
-    if (this.sortColumn === column) {
-      return this.sortDirection;
+  getStationRawReadings(stationid, timespan) {
+    this.isContentLoaded = false;
+    this.loaderContentTag = 'Loading content.';
+    this.tablename = 'Loading content.';
+    switch (timespan) {
+      case this.times[0]: {
+        this.rawReadingService.FetchDayStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              this.processData(data);
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      case this.times[1]: {
+        this.rawReadingService.FetchWeekStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              this.processData(data);
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      case this.times[2]: {
+        this.rawReadingService.FetchMonthStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              this.processData(data);
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      case this.times[3]: {
+        this.rawReadingService.FetchYearStationRawReadings(stationid)
+          .subscribe(data => {
+            if (data.Readings != null) {
+              this.processData(data);
+            } else {
+              this.getStationRawReadings(stationid, timespan);
+            }
+          });
+        break;
+      }
+      default: {
+        this.isContentLoaded = false;
+        this.loaderContentTag = 'Error occurred, try again.';
+        break;
+      }
     }
-    return NbSortDirection.NONE;
   }
 
-  private data: TreeNode<FSEntry>[] = [
-    {
-      data: { Entry: 'Projects', Date: '1.8 MB', Ambient_Light: 5,
-        Air_Pressure: 'dir', Humidity: true, Temperature: true },
-    },
-    {
-      data: { Entry: 'Projects1', Date: '1.8 MB', Ambient_Light: 5,
-        Air_Pressure: 'dir', Humidity: true, Temperature: true },
-    },
-    {
-      data: { Entry: 'Projects23', Date: '1.8 MB', Ambient_Light: 5,
-        Air_Pressure: 'dir', Humidity: true, Temperature: true },
-    },
-  ];
-
-  getShowOn(index: number) {
-    const minWithForMultipleColumns = 400;
-    const nextColumnStep = 100;
-    return minWithForMultipleColumns + (nextColumnStep * index);
+  processData(data: RawReadings) {
+    this.tabledata = [];
+    let i = 0;
+    data.Readings.forEach(x => {
+      this.tempdate = new Date(x.date);
+      this.tabledata.push(
+        {
+          entry: ++i,
+          date: this.tempdate.toDateString() + ' - ' + this.tempdate.toLocaleTimeString(),
+          ambient: (x.ambient_Light / 10.24).toFixed(2),
+          air: x.air_Pressure,
+          humidity: x.humidity,
+          temperature: x.temperature,
+        });
+    });
+    this.source = new LocalDataSource();
+    this.source.load(this.tabledata);
+    this.tablename = this.getName(this.station, this.time);
+    this.isContentLoaded = true;
   }
 
-  getData() {
+  getName(stationid, time): string {
+    let name = 'Not found.';
+    this.stationlist.forEach(x => {
+      if (x.stationId.toString() === stationid.toString()) {
+        name = 'Station ' + x.stationId + ' (\'' + x.nickName + '\') : last ' + time + ' raw readings.';
+      }
+    });
+    return name;
+  }
 
+  onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      event.confirm.resolve();
+    } else {
+      event.confirm.reject();
+    }
   }
 }
