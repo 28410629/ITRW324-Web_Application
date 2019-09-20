@@ -3,6 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import {Station} from '../../../models/station-list.model';
 import {StationListService} from '../../../services/station-list.service';
 import {RawReadingsService} from '../../../services/raw-readings.service';
+import {RawReadings} from '../../../models/raw-readings.model';
 
 @Component({
   selector: 'ngx-raw-readings',
@@ -31,22 +32,22 @@ export class RawReadingsComponent {
       },
       date: {
         title: 'Date',
-        type: 'daterange',
+        type: 'string',
       },
       ambient: {
-        title: 'Ambient Light',
+        title: 'Ambient Light (%)',
         type: 'number',
       },
       air: {
-        title: 'Air Pressure',
+        title: 'Air Pressure ()',
         type: 'number',
       },
       humidity: {
-        title: 'Humidity',
+        title: 'Humidity (%)',
         type: 'number',
       },
       temperature: {
-        title: 'Temperature',
+        title: 'Temperature (°C)',
         type: 'number',
       },
     },
@@ -86,22 +87,7 @@ export class RawReadingsComponent {
         this.rawReadingService.FetchDayStationRawReadings(stationid)
           .subscribe(data => {
             if (data.Readings != null) {
-              this.tabledata = [];
-              let i = 0;
-              data.Readings.forEach(x => {
-                this.tabledata.push(
-                  {
-                    entry: ++i,
-                    date: x.date,
-                    ambient: x.ambient_Light,
-                    air: x.air_Pressure,
-                    humidity: x.humidity,
-                    temperature: x.temperature,
-                  });
-              });
-              this.source = new LocalDataSource();
-              this.source.load(this.tabledata);
-              this.isContentLoaded = true;
+              this.processData(data);
             } else {
               this.getStationRawReadings(stationid, timespan);
             }
@@ -112,20 +98,7 @@ export class RawReadingsComponent {
         this.rawReadingService.FetchWeekStationRawReadings(stationid)
           .subscribe(data => {
             if (data.Readings != null) {
-              this.tabledata = [];
-              let i = 0;
-              data.Readings.forEach(x => {
-                this.tabledata.push(
-                  {
-                    entry: ++i,
-                    date: x.date,
-                    ambient: x.ambient_Light,
-                    air: x.air_Pressure,
-                    humidity: x.humidity,
-                    temperature: x.temperature,
-                  });
-              });
-              this.isContentLoaded = true;
+              this.processData(data);
             } else {
               this.getStationRawReadings(stationid, timespan);
             }
@@ -136,22 +109,7 @@ export class RawReadingsComponent {
         this.rawReadingService.FetchMonthStationRawReadings(stationid)
           .subscribe(data => {
             if (data.Readings != null) {
-              this.tabledata = [];
-              let i = 0;
-              data.Readings.forEach(x => {
-                this.tabledata.push(
-                  {
-                    entry: ++i,
-                    date: x.date,
-                    ambient: x.ambient_Light,
-                    air: x.air_Pressure,
-                    humidity: x.humidity,
-                    temperature: x.temperature,
-                  });
-              });
-              this.source = new LocalDataSource();
-              this.source.load(this.tabledata);
-              this.isContentLoaded = true;
+              this.processData(data);
             } else {
               this.getStationRawReadings(stationid, timespan);
             }
@@ -162,22 +120,7 @@ export class RawReadingsComponent {
         this.rawReadingService.FetchYearStationRawReadings(stationid)
           .subscribe(data => {
             if (data.Readings != null) {
-              this.tabledata = [];
-              let i = 0;
-              data.Readings.forEach(x => {
-                this.tabledata.push(
-                  {
-                    entry: ++i,
-                    date: x.date,
-                    ambient: x.ambient_Light,
-                    air: x.air_Pressure,
-                    humidity: x.humidity,
-                    temperature: x.temperature,
-                  });
-              });
-              this.source = new LocalDataSource();
-              this.source.load(this.tabledata);
-              this.isContentLoaded = true;
+              this.processData(data);
             } else {
               this.getStationRawReadings(stationid, timespan);
             }
@@ -190,6 +133,25 @@ export class RawReadingsComponent {
         break;
       }
     }
+  }
+
+  processData(data: RawReadings) {
+    this.tabledata = [];
+    let i = 0;
+    data.Readings.forEach(x => {
+      this.tabledata.push(
+        {
+          entry: ++i,
+          date: x.date.getDate() + ' ' + x.date.getTime(),
+          ambient: x.ambient_Light / 1024,
+          air: x.air_Pressure,
+          humidity: x.humidity,
+          temperature: x.temperature,
+        });
+    });
+    this.source = new LocalDataSource();
+    this.source.load(this.tabledata);
+    this.isContentLoaded = true;
   }
 
   onDeleteConfirm(event): void {
