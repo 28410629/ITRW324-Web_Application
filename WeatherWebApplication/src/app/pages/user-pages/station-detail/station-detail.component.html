@@ -32,7 +32,7 @@
     <!--AIR PRESSURE FOR A LOCATION-->
     <div class="row">
       <div class="col-xxl-4">
-        <ngx-sensor-location-details [headerName]="'Air Pressure Details'"></ngx-sensor-location-details>
+        <ngx-sensor-location-details [headerName]="'Air Pressure Details'" [data]="pressSide"></ngx-sensor-location-details>
       </div>
       <div class="col-xxl-8">
         <nb-card size="medium">
@@ -46,7 +46,7 @@
     <!--HUMIDITY FOR A LOCATION-->
     <div class="row">
       <div class="col-xxl-4">
-        <ngx-sensor-location-details [headerName]="'Humidity Details'"></ngx-sensor-location-details>
+        <ngx-sensor-location-details [headerName]="'Humidity Details'" [data]="humSide"></ngx-sensor-location-details>
       </div>
       <div class="col-xxl-8">
         <nb-card size="medium">
@@ -60,7 +60,7 @@
     <!--LIGHT READING FOR A LOCATION-->
     <div class="row">
       <div class="col-xxl-4">
-        <ngx-sensor-location-details [headerName]="'Light Reading Details'"></ngx-sensor-location-details>
+        <ngx-sensor-location-details [headerName]="'Light Reading Details'" [data]="lightSide"></ngx-sensor-location-details>
       </div>
       <div class="col-xxl-8">
         <nb-card size="medium">
@@ -74,7 +74,7 @@
     <!--TEMPERATURE FOR A LOCATION-->
     <div class="row">
       <div class="col-xxl-4">
-        <ngx-sensor-location-details [headerName]="'Temperature Details'"></ngx-sensor-location-details>
+        <ngx-sensor-location-details [headerName]="'Temperature Details'" [data]="tempSide"></ngx-sensor-location-details>
       </div>
       <div class="col-xxl-8">
         <nb-card size="medium">

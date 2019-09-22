@@ -15,6 +15,12 @@ export class StationDetailComponent {
   isMainLoaded: boolean = true;
   isContentLoaded: boolean = false;
 
+  // side information
+  tempSide = [];
+  humSide = [];
+  lightSide = [];
+  pressSide = [];
+
   // graph variables
   airgraphdata;
   humgraphdata;
@@ -115,24 +121,22 @@ export class StationDetailComponent {
       switch (this.time) {
         case this.times[0]: {
           this.labels.push(new Date(this.json[i].readingTime).toLocaleTimeString());
-          this.graphlabel = 'Time';
+          this.graphlabel = 'Hourly readings for today.';
           break;
         }
         case this.times[1]: {
-          this.labels.push(new Date(this.json[i].readingTime).getDay().toString());
-          this.graphlabel = 'Day of ' + new Date(this.json[i].readingTime).getMonth() + ' '
-            + new Date(this.json[i].readingTime).getFullYear();
+          this.labels.push(new Date(this.json[i].readingTime).toLocaleDateString());
+          this.graphlabel = 'Daily readings for last week.';
           break;
         }
         case this.times[2]: {
-          this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
-          this.graphlabel = 'Day of ' + new Date(this.json[i].readingTime).getMonth() + ' '
-            + new Date(this.json[i].readingTime).getFullYear();
+          this.labels.push(new Date(this.json[i].readingTime).toLocaleDateString());
+          this.graphlabel = 'Daily readings for last month.';
           break;
         }
         case this.times[3]: {
-          this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
-          this.graphlabel = 'Month of ' + new Date(this.json[i].readingTime).getFullYear();
+          this.labels.push(new Date(this.json[i].readingTime).getMonth().toString());
+          this.graphlabel = 'Monthly readings for last year.';
           break;
         }
         default: {
@@ -165,6 +169,61 @@ export class StationDetailComponent {
       this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
       // light
       this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax));
+
+      // label
+      let sidedate;
+
+      switch (this.time) {
+        case this.times[0]: {
+          sidedate = new Date(this.json[i].readingTime).toLocaleTimeString();
+          break;
+        }
+        case this.times[1]: {
+          sidedate = new Date(this.json[i].readingTime).toDateString();
+          break;
+        }
+        case this.times[2]: {
+          sidedate = new Date(this.json[i].readingTime).toDateString();
+          break;
+        }
+        case this.times[3]: {
+          sidedate = new Date(this.json[i].readingTime).toDateString();
+          break;
+        }
+        default: {
+          sidedate = 'e';
+          break;
+        }
+      }
+
+      // temp side
+      this.tempSide.push({
+        data: sidedate,
+        average: Number(this.json[i].temperatureReadingAverage).toFixed(2),
+        min: Number(this.json[i].temperatureReadingMin).toFixed(2),
+        max: Number(this.json[i].temperatureReadingMax).toFixed(2),
+      });
+      // light side
+      this.lightSide.push({
+        data: sidedate,
+        average: Number(this.json[i].ambientLightReadingAverage).toFixed(2),
+        min: Number(this.json[i].ambientLightReadingMin).toFixed(2),
+        max: Number(this.json[i].ambientLightReadingMax).toFixed(2),
+      });
+      // hum side
+      this.humSide.push({
+        data: sidedate,
+        average: Number(this.json[i].humiditiyReadingAverage).toFixed(2),
+        min: Number(this.json[i].humiditiyReadingMin).toFixed(2),
+        max: Number(this.json[i].humiditiyReadingMax).toFixed(2),
+      });
+      // press side
+      this.pressSide.push({
+        data: sidedate,
+        average: Number(this.json[i].airPressureReadingAverage).toFixed(2),
+        min: Number(this.json[i].airPressureReadingMin).toFixed(2),
+        max: Number(this.json[i].airPressureReadingMax).toFixed(2),
+      });
     }
   }
 
@@ -328,7 +387,7 @@ export class StationDetailComponent {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: this.time,
+                labelString: this.graphlabel,
               },
               gridLines: {
                 display: true,
@@ -375,5 +434,9 @@ export class StationDetailComponent {
     this.airdatamax = [];
     this.humdatamax = [];
     this.lightdatamax = [];
+    this.tempSide = [];
+    this.humSide = [];
+    this.lightSide = [];
+    this.pressSide = [];
   }
 }
