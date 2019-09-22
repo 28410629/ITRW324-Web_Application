@@ -1,78 +1,92 @@
-<nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isLoaded">
+<nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isMainLoaded">
   <nb-card-body>
     Loading content.
   </nb-card-body>
 </nb-card>
-<div *ngIf="isLoaded">
-  <div class="row">
+
+<div *ngIf="isMainLoaded">
+  <div class="row" >
     <div class="col-xxl-12">
       <nb-card>
         <nb-card-header>Station Details</nb-card-header>
-        <nb-card-body>
-          Select Time Span :
-          <nb-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
-            <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
-          </nb-select>
-          <button nbButton shape="round" size="small" status="danger" outline style="float: right">Reload Data</button>
+        <nb-card-body style="padding-bottom: 6px">
+          <div class="test">
+            <span style="margin-right: 10px">Select Time Period :</span>
+            <nb-select style="margin-right: 10px" [selected]="time" (selectedChange)="time = $event">
+              <nb-option *ngFor="let t of times" [value]="t">{{ t }}</nb-option>
+            </nb-select>
+          </div>
+          <button nbButton shape="round" size="small" status="danger" outline style="float: right" (click)="getGraphJson(time)">Get Data</button>
         </nb-card-body>
       </nb-card>
     </div>
   </div>
-  <!--AIR PRESSURE FOR A LOCATION-->
-  <div class="row">
-    <div class="col-xxl-4">
-      <ngx-sensor-location-details [headerName]="'Air Pressure Details'"></ngx-sensor-location-details>
+
+  <nb-card [nbSpinner]="true" nbSpinnerStatus="danger" *ngIf="!isContentLoaded">
+    <nb-card-body>
+      Loading content.
+    </nb-card-body>
+  </nb-card>
+
+  <div *ngIf="isContentLoaded">
+    <!--AIR PRESSURE FOR A LOCATION-->
+    <div class="row">
+      <div class="col-xxl-4">
+        <ngx-sensor-location-details [headerName]="'Air Pressure Details'"></ngx-sensor-location-details>
+      </div>
+      <div class="col-xxl-8">
+        <nb-card size="medium">
+          <nb-card-header>Air Pressure Chart</nb-card-header>
+          <nb-card-body>
+            <ngx-chartjs-multiple-xaxis [data]="airgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+          </nb-card-body>
+        </nb-card>
+      </div>
     </div>
-    <div class="col-xxl-8">
-      <nb-card size="medium">
-        <nb-card-header>Air Pressure Chart</nb-card-header>
-        <nb-card-body>
-          <ngx-chartjs-multiple-xaxis [data]="airgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
-        </nb-card-body>
-      </nb-card>
+    <!--HUMIDITY FOR A LOCATION-->
+    <div class="row">
+      <div class="col-xxl-4">
+        <ngx-sensor-location-details [headerName]="'Humidity Details'"></ngx-sensor-location-details>
+      </div>
+      <div class="col-xxl-8">
+        <nb-card size="medium">
+          <nb-card-header>Humidity Chart</nb-card-header>
+          <nb-card-body>
+            <ngx-chartjs-multiple-xaxis [data]="humgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    <!--LIGHT READING FOR A LOCATION-->
+    <div class="row">
+      <div class="col-xxl-4">
+        <ngx-sensor-location-details [headerName]="'Light Reading Details'"></ngx-sensor-location-details>
+      </div>
+      <div class="col-xxl-8">
+        <nb-card size="medium">
+          <nb-card-header>Light Reading Chart</nb-card-header>
+          <nb-card-body>
+            <ngx-chartjs-multiple-xaxis [data]="lightgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+    <!--TEMPERATURE FOR A LOCATION-->
+    <div class="row">
+      <div class="col-xxl-4">
+        <ngx-sensor-location-details [headerName]="'Temperature Details'"></ngx-sensor-location-details>
+      </div>
+      <div class="col-xxl-8">
+        <nb-card size="medium">
+          <nb-card-header>Temperature Chart</nb-card-header>
+          <nb-card-body>
+            <ngx-chartjs-multiple-xaxis [data]="tempgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
+          </nb-card-body>
+        </nb-card>
+      </div>
     </div>
   </div>
-  <!--HUMIDITY FOR A LOCATION-->
-  <div class="row">
-    <div class="col-xxl-4">
-      <ngx-sensor-location-details [headerName]="'Humidity Details'"></ngx-sensor-location-details>
-    </div>
-    <div class="col-xxl-8">
-      <nb-card size="medium">
-        <nb-card-header>Humidity Chart</nb-card-header>
-        <nb-card-body>
-          <ngx-chartjs-multiple-xaxis [data]="humgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
-  <!--LIGHT READING FOR A LOCATION-->
-  <div class="row">
-    <div class="col-xxl-4">
-      <ngx-sensor-location-details [headerName]="'Light Reading Details'"></ngx-sensor-location-details>
-    </div>
-    <div class="col-xxl-8">
-      <nb-card size="medium">
-        <nb-card-header>Light Reading Chart</nb-card-header>
-        <nb-card-body>
-          <ngx-chartjs-multiple-xaxis [data]="lightgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
-  <!--TEMPERATURE FOR A LOCATION-->
-  <div class="row">
-    <div class="col-xxl-4">
-      <ngx-sensor-location-details [headerName]="'Temperature Details'"></ngx-sensor-location-details>
-    </div>
-    <div class="col-xxl-8">
-      <nb-card size="medium">
-        <nb-card-header>Temperature Chart</nb-card-header>
-        <nb-card-body>
-          <ngx-chartjs-multiple-xaxis [data]="tempgraphdata" [options]="graphoptions"></ngx-chartjs-multiple-xaxis>
-        </nb-card-body>
-      </nb-card>
-    </div>
-  </div>
+
 </div>
+
 
