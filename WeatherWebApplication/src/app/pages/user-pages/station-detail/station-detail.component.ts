@@ -29,6 +29,9 @@ export class StationDetailComponent {
   graphoptions;
   themeSubscription: any;
   graphlabel;
+  monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
   // raw data
   json: StationDetailReading[];
@@ -117,25 +120,27 @@ export class StationDetailComponent {
 
   processJson() {
     for (let i = 0; i < this.json.length; i++) {
+      const date = new Date(this.json[i].readingTime);
+
       // label
       switch (this.time) {
         case this.times[0]: {
-          this.labels.push(new Date(this.json[i].readingTime).toLocaleTimeString());
+          this.labels.push(date.toLocaleTimeString());
           this.graphlabel = 'Hourly readings for today.';
           break;
         }
         case this.times[1]: {
-          this.labels.push(new Date(this.json[i].readingTime).toLocaleDateString());
+          this.labels.push(date.toLocaleDateString());
           this.graphlabel = 'Daily readings for last week.';
           break;
         }
         case this.times[2]: {
-          this.labels.push(new Date(this.json[i].readingTime).toLocaleDateString());
+          this.labels.push(date.toLocaleDateString());
           this.graphlabel = 'Daily readings for last month.';
           break;
         }
         case this.times[3]: {
-          this.labels.push(new Date(this.json[i].readingTime).getMonth().toString());
+          this.labels.push(this.monthNames[date.getMonth()] + ' ' + date.getFullYear());
           this.graphlabel = 'Monthly readings for last year.';
           break;
         }
@@ -175,19 +180,19 @@ export class StationDetailComponent {
 
       switch (this.time) {
         case this.times[0]: {
-          sidedate = new Date(this.json[i].readingTime).toLocaleTimeString();
+          sidedate = date.toLocaleTimeString();
           break;
         }
         case this.times[1]: {
-          sidedate = new Date(this.json[i].readingTime).toDateString();
+          sidedate = date.toDateString();
           break;
         }
         case this.times[2]: {
-          sidedate = new Date(this.json[i].readingTime).toDateString();
+          sidedate = date.toDateString();
           break;
         }
         case this.times[3]: {
-          sidedate = new Date(this.json[i].readingTime).toDateString();
+          sidedate = this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
           break;
         }
         default: {
