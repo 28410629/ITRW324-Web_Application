@@ -30,8 +30,7 @@ export class StationDetailComponent {
   themeSubscription: any;
   graphlabel;
   monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
+    'July', 'August', 'September', 'October', 'November', 'December'];
 
   // raw data
   json: StationDetailReading[];
