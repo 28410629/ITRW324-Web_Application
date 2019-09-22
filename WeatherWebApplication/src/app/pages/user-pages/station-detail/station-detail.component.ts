@@ -22,6 +22,7 @@ export class StationDetailComponent {
   lightgraphdata;
   graphoptions;
   themeSubscription: any;
+  graphlabel;
 
   // raw data
   json: StationDetailReading[];
@@ -111,7 +112,35 @@ export class StationDetailComponent {
   processJson() {
     for (let i = 0; i < this.json.length; i++) {
       // label
-      this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
+      switch (this.time) {
+        case this.times[0]: {
+          this.labels.push(new Date(this.json[i].readingTime).toLocaleTimeString());
+          this.graphlabel = 'Time';
+          break;
+        }
+        case this.times[1]: {
+          this.labels.push(new Date(this.json[i].readingTime).getDay().toString());
+          this.graphlabel = 'Day of ' + new Date(this.json[i].readingTime).getMonth() + ' '
+            + new Date(this.json[i].readingTime).getFullYear();
+          break;
+        }
+        case this.times[2]: {
+          this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
+          this.graphlabel = 'Day of ' + new Date(this.json[i].readingTime).getMonth() + ' '
+            + new Date(this.json[i].readingTime).getFullYear();
+          break;
+        }
+        case this.times[3]: {
+          this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
+          this.graphlabel = 'Month of ' + new Date(this.json[i].readingTime).getFullYear();
+          break;
+        }
+        default: {
+          this.labels.push('e');
+          break;
+        }
+      }
+
       // temperature
       this.tempdataavg.push(Number(this.json[i].temperatureReadingAverage));
       // air
