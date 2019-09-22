@@ -12,7 +12,14 @@ import {StationDetailReading} from '../../../models/station-detail.model';
 export class StationDetailComponent {
 
   // loader
-  isLoaded = false;
+  isMainLoaded: boolean = true;
+  isContentLoaded: boolean = false;
+
+  // side information
+  tempSide = [];
+  humSide = [];
+  lightSide = [];
+  pressSide = [];
 
   // graph variables
   airgraphdata;
@@ -21,6 +28,9 @@ export class StationDetailComponent {
   lightgraphdata;
   graphoptions;
   themeSubscription: any;
+  graphlabel;
+  monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
 
   // raw data
   json: StationDetailReading[];
@@ -39,8 +49,8 @@ export class StationDetailComponent {
   lightdatamax: number[] = [];
 
   // time series selection
-  type = 'day';
-  types = ['day', 'week', 'month', 'year'];
+  time = 'day';
+  times = ['day', 'week', 'month', 'year'];
 
   // need for REST request
   stationid;
@@ -52,40 +62,176 @@ export class StationDetailComponent {
     // station id
     this.stationid = this.route.snapshot.params.stationid;
 
+    this.getGraphJson(this.time);
+  }
+
+  getGraphJson(time) {
+    this.isContentLoaded = false;
     // get data for graph
-    this.service.FetchDayStationDetails(this.stationid)
-      .subscribe(data => {
-        this.json = data.StationDetailReadings;
+    switch (time) {
+      case this.times[0]: {
+        this.service.FetchDayStationDetails(this.stationid)
+          .subscribe(data => {
+            this.json = data.StationDetailReadings;
+            this.resetArray();
+            this.processJson();
+            this.updateGraphs();
+          });
+        break;
+      }
+      case this.times[1]: {
+        this.service.FetchWeekStationDetails(this.stationid)
+          .subscribe(data => {
+            this.json = data.StationDetailReadings;
+            this.resetArray();
+            this.processJson();
+            this.updateGraphs();
+          });
+        break;
+      }
+      case this.times[2]: {
+        this.service.FetchMonthStationDetails(this.stationid)
+          .subscribe(data => {
+            this.json = data.StationDetailReadings;
+            this.resetArray();
+            this.processJson();
+            this.updateGraphs();
+          });
+        break;
+      }
+      case this.times[3]: {
+        this.service.FetchYearStationDetails(this.stationid)
+          .subscribe(data => {
+            this.json = data.StationDetailReadings;
+            this.resetArray();
+            this.processJson();
+            this.updateGraphs();
+          });
+        break;
+      }
+      default: {
+        this.isContentLoaded = false;
+        // this.loaderContentTag = 'Error occurred, try again.';
+        break;
+      }
+    }
+  }
 
-        for (let i = 0; i < this.json.length; i++) {
-          // label
-          this.labels.push(new Date(this.json[i].readingTime).getHours().toString());
-          // temperature
-          this.tempdataavg.push(Number(this.json[i].temperatureReadingAverage));
-          // air
-          this.airdataavg.push(Number(this.json[i].airPressureReadingAverage));
-          // humidity
-          this.humdataavg.push(Number(this.json[i].humiditiyReadingAverage));
-          // light
-          this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage));
+  processJson() {
+    for (let i = 0; i < this.json.length; i++) {
+      const date = new Date(this.json[i].readingTime);
 
-          this.tempdatamin.push(Number(this.json[i].temperatureReadingMin));
-          // air
-          this.airdatamin.push(Number(this.json[i].airPressureReadingMin));
-          // humidity
-          this.humdatamin.push(Number(this.json[i].humiditiyReadingMin));
-          // light
-          this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin));
-
-          this.tempdatamax.push(Number(this.json[i].temperatureReadingMax));
-          // air
-          this.airdatamax.push(Number(this.json[i].airPressureReadingMax));
-          // humidity
-          this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
-          // light
-          this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax));
+      // label
+      switch (this.time) {
+        case this.times[0]: {
+          this.labels.push(date.toLocaleTimeString());
+          this.graphlabel = 'Hourly readings for today.';
+          break;
         }
+        case this.times[1]: {
+          this.labels.push(date.toLocaleDateString());
+          this.graphlabel = 'Daily readings for last week.';
+          break;
+        }
+        case this.times[2]: {
+          this.labels.push(date.toLocaleDateString());
+          this.graphlabel = 'Daily readings for last month.';
+          break;
+        }
+        case this.times[3]: {
+          this.labels.push(this.monthNames[date.getMonth()] + ' ' + date.getFullYear());
+          this.graphlabel = 'Monthly readings for last year.';
+          break;
+        }
+        default: {
+          this.labels.push('e');
+          break;
+        }
+      }
 
+      // temperature
+      this.tempdataavg.push(Number(this.json[i].temperatureReadingAverage));
+      // air
+      this.airdataavg.push(Number(this.json[i].airPressureReadingAverage));
+      // humidity
+      this.humdataavg.push(Number(this.json[i].humiditiyReadingAverage));
+      // light
+      this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage));
+
+      this.tempdatamin.push(Number(this.json[i].temperatureReadingMin));
+      // air
+      this.airdatamin.push(Number(this.json[i].airPressureReadingMin));
+      // humidity
+      this.humdatamin.push(Number(this.json[i].humiditiyReadingMin));
+      // light
+      this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin));
+
+      this.tempdatamax.push(Number(this.json[i].temperatureReadingMax));
+      // air
+      this.airdatamax.push(Number(this.json[i].airPressureReadingMax));
+      // humidity
+      this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
+      // light
+      this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax));
+
+      // label
+      let sidedate;
+
+      switch (this.time) {
+        case this.times[0]: {
+          sidedate = date.toLocaleTimeString();
+          break;
+        }
+        case this.times[1]: {
+          sidedate = date.toDateString();
+          break;
+        }
+        case this.times[2]: {
+          sidedate = date.toDateString();
+          break;
+        }
+        case this.times[3]: {
+          sidedate = this.monthNames[date.getMonth()] + ' ' + date.getFullYear();
+          break;
+        }
+        default: {
+          sidedate = 'e';
+          break;
+        }
+      }
+
+      // temp side
+      this.tempSide.push({
+        data: sidedate,
+        average: Number(this.json[i].temperatureReadingAverage).toFixed(2),
+        min: Number(this.json[i].temperatureReadingMin).toFixed(2),
+        max: Number(this.json[i].temperatureReadingMax).toFixed(2),
+      });
+      // light side
+      this.lightSide.push({
+        data: sidedate,
+        average: Number(this.json[i].ambientLightReadingAverage).toFixed(2),
+        min: Number(this.json[i].ambientLightReadingMin).toFixed(2),
+        max: Number(this.json[i].ambientLightReadingMax).toFixed(2),
+      });
+      // hum side
+      this.humSide.push({
+        data: sidedate,
+        average: Number(this.json[i].humiditiyReadingAverage).toFixed(2),
+        min: Number(this.json[i].humiditiyReadingMin).toFixed(2),
+        max: Number(this.json[i].humiditiyReadingMax).toFixed(2),
+      });
+      // press side
+      this.pressSide.push({
+        data: sidedate,
+        average: Number(this.json[i].airPressureReadingAverage).toFixed(2),
+        min: Number(this.json[i].airPressureReadingMin).toFixed(2),
+        max: Number(this.json[i].airPressureReadingMax).toFixed(2),
+      });
+    }
+  }
+
+  updateGraphs() {
     // graphs details
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
@@ -245,7 +391,7 @@ export class StationDetailComponent {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: this.type,
+                labelString: this.graphlabel,
               },
               gridLines: {
                 display: true,
@@ -274,16 +420,27 @@ export class StationDetailComponent {
           ],
         },
       };
-      this.isLoaded = true;
+      this.isContentLoaded = true;
     });
-  });
   }
 
-  getUserActivity(period: string) {
-    // this.userActivityService.getUserActivityData(period)
-    //   .pipe(takeWhile(() => this.alive))
-    //   .subscribe(userActivityData => {
-    //     this.userActivity = userActivityData;
-    //   });
+  resetArray() {
+    this.labels = [];
+    this.tempdataavg = [];
+    this.airdataavg = [];
+    this.humdataavg = [];
+    this.lightdataavg = [];
+    this.tempdatamin = [];
+    this.airdatamin = [];
+    this.humdatamin = [];
+    this.lightdatamin = [];
+    this.tempdatamax = [];
+    this.airdatamax = [];
+    this.humdatamax = [];
+    this.lightdatamax = [];
+    this.tempSide = [];
+    this.humSide = [];
+    this.lightSide = [];
+    this.pressSide = [];
   }
 }

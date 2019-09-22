@@ -3,25 +3,25 @@
   <nb-card-header>{{ headerName }}</nb-card-header>
 
   <nb-list class="user-activity-list">
-    <nb-list-item *ngFor="let item of userActivity">
+    <nb-list-item *ngFor="let item of data">
 
       <div class="visited-date">
-        {{ item.date }}
+        {{ item.data }}
       </div>
 
       <div class="visited-pages-count">
-        <div class="caption">Measured</div>
-        <div class="value">{{ item.pagesVisitCount }}</div>
+        <div class="caption">Average</div>
+        <div class="value">{{ item.average }}</div>
       </div>
 
       <div class="visited-pages-count">
         <div class="caption">Min</div>
-        <div class="value">{{ item.pagesVisitCount }}</div>
+        <div class="value">{{ item.min }}</div>
       </div>
 
       <div class="visited-pages-count">
         <div class="caption">Max</div>
-        <div class="value">{{ item.pagesVisitCount }}</div>
+        <div class="value">{{ item.max }}</div>
       </div>
 
 
