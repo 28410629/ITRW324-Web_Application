@@ -3,6 +3,7 @@ import {NbThemeService} from '@nebular/theme';
 import {ActivatedRoute} from '@angular/router';
 import {StationDetailService} from '../../../services/station-detail.service';
 import {StationDetailReading} from '../../../models/station-detail.model';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'ngx-station-detail',
@@ -10,6 +11,9 @@ import {StationDetailReading} from '../../../models/station-detail.model';
   styleUrls: ['station-detail.component.scss'],
 })
 export class StationDetailComponent {
+
+  // time zone for header
+  timezone;
 
   // loader
   isMainLoaded: boolean = true;
@@ -61,6 +65,9 @@ export class StationDetailComponent {
 
     // station id
     this.stationid = this.route.snapshot.params.stationid;
+
+    // time zone header
+    this.timezone = moment.tz.guess(true);
 
     this.getGraphJson(this.time);
   }
@@ -119,12 +126,14 @@ export class StationDetailComponent {
 
   processJson() {
     for (let i = 0; i < this.json.length; i++) {
-      const date = new Date(this.json[i].readingTime);
+      const zone = moment.tz.guess(true);
+      const time = moment(this.json[i].readingTime + '+00:00').tz(zone);
+      const date = new Date(time.format());
 
       // label
       switch (this.time) {
         case this.times[0]: {
-          this.labels.push(date.toLocaleTimeString());
+          this.labels.push(time.format('HH:mm'));
           this.graphlabel = 'Hourly readings for today.';
           break;
         }
@@ -156,7 +165,7 @@ export class StationDetailComponent {
       // humidity
       this.humdataavg.push(Number(this.json[i].humiditiyReadingAverage));
       // light
-      this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage));
+      this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage) / 10.24);
 
       this.tempdatamin.push(Number(this.json[i].temperatureReadingMin));
       // air
@@ -164,7 +173,7 @@ export class StationDetailComponent {
       // humidity
       this.humdatamin.push(Number(this.json[i].humiditiyReadingMin));
       // light
-      this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin));
+      this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin) / 10.24);
 
       this.tempdatamax.push(Number(this.json[i].temperatureReadingMax));
       // air
@@ -172,7 +181,7 @@ export class StationDetailComponent {
       // humidity
       this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
       // light
-      this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax));
+      this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax) / 10.24);
 
       // label
       let sidedate;
@@ -210,9 +219,9 @@ export class StationDetailComponent {
       // light side
       this.lightSide.push({
         data: sidedate,
-        average: Number(this.json[i].ambientLightReadingAverage).toFixed(2),
-        min: Number(this.json[i].ambientLightReadingMin).toFixed(2),
-        max: Number(this.json[i].ambientLightReadingMax).toFixed(2),
+        average: (Number(this.json[i].ambientLightReadingAverage) / 10.24).toFixed(2),
+        min: (Number(this.json[i].ambientLightReadingMin) / 10.24).toFixed(2),
+        max: (Number(this.json[i].ambientLightReadingMax) / 10.24).toFixed(2),
       });
       // hum side
       this.humSide.push({
@@ -351,26 +360,27 @@ export class StationDetailComponent {
           pointRadius: 4,
           pointHoverRadius: 10,
         },
-          {
-            label: 'Air Min',
-            data: this.lightdatamin,
-            borderColor: colors.info,
-            backgroundColor: colors.info,
-            fill: false,
-
-            pointRadius: 4,
-            pointHoverRadius: 10,
-          },
-          {
-            label: 'Air Max',
-            data: this.lightdatamax,
-            borderColor: colors.dangerLight,
-            backgroundColor: colors.dangerLight,
-            fill: false,
-
-            pointRadius: 4,
-            pointHoverRadius: 10,
-          }],
+          // {
+          //   label: 'Air Min',
+          //   data: this.lightdatamin,
+          //   borderColor: colors.info,
+          //   backgroundColor: colors.info,
+          //   fill: false,
+          //
+          //   pointRadius: 4,
+          //   pointHoverRadius: 10,
+          // },
+          // {
+          //   label: 'Air Max',
+          //   data: this.lightdatamax,
+          //   borderColor: colors.dangerLight,
+          //   backgroundColor: colors.dangerLight,
+          //   fill: false,
+          //
+          //   pointRadius: 4,
+          //   pointHoverRadius: 10,
+          // }
+          ],
       };
 
       this.graphoptions = {
