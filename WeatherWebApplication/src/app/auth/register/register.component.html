@@ -1,5 +1,6 @@
 <nb-auth-block>
-  <h2 class="title">Sign Up</h2>
+  <h2 class="title">Anchormen Stations</h2>
+  <small class="form-text sub-title">Hello! Sign up with your email address.</small>
   <form (ngSubmit)="register()" #form="ngForm">
     <div *ngIf="errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
       <div><strong>Oh snap!</strong></div>
@@ -102,27 +103,29 @@
         Password does not match the confirm password.
       </small>
     </div>
-    <div class="form-group accept-group col-sm-12" *ngIf="getConfigValue('forms.register.terms')">
+    <div class="form-group accept-group col-sm-12 text-center" *ngIf="getConfigValue('forms.register.terms')">
       <nb-checkbox name="terms" [(ngModel)]="user.terms" [required]="getConfigValue('forms.register.terms')">
         Agree to <a href="#" target="_blank"><strong>Terms & Conditions</strong></a>
       </nb-checkbox>
     </div>
-    <button [disabled]="submitted || !form.valid" class="btn btn-block btn-hero-success"
-            [class.btn-pulse]="submitted">
-      Register
-    </button>
+    <div class="text-center">
+      <button nbButton status="primary" size="medium" [nbSpinner]="loadingMediumGroup" nbSpinnerStatus="primary" nbSpinnerSize="tiny" nbSpinnerMessage=""
+              [disabled]="submitted || !form.valid" [class.btn-pulse]="submitted">
+        Register
+      </button>
+    </div>
   </form>
   <div class="links">
-    <ng-container *ngIf="socialLinks && socialLinks.length > 0">
-      <small class="form-text">Or connect with:</small>
-      <div class="socials">
-        <ng-container *ngFor="let socialLink of socialLinks">
-<!--        <a (click)="loginSocial(socialLink.name)"-->
-<!--              [attr.class]="socialLink.icon"-->
-<!--              [class.with-icon]="socialLink.icon" style="cursor: pointer;">{{ socialLink.title }}</a>-->
-        </ng-container>
-      </div>
-    </ng-container>
+<!--    <ng-container *ngIf="socialLinks && socialLinks.length > 0">-->
+<!--      <small class="form-text">Or connect with:</small>-->
+<!--      <div class="socials">-->
+<!--        <ng-container *ngFor="let socialLink of socialLinks">-->
+<!--&lt;!&ndash;        <a (click)="loginSocial(socialLink.name)"&ndash;&gt;-->
+<!--&lt;!&ndash;              [attr.class]="socialLink.icon"&ndash;&gt;-->
+<!--&lt;!&ndash;              [class.with-icon]="socialLink.icon" style="cursor: pointer;">{{ socialLink.title }}</a>&ndash;&gt;-->
+<!--        </ng-container>-->
+<!--      </div>-->
+<!--    </ng-container>-->
     <small class="form-text">
       Already have an account? <a routerLink="../login"><strong>Sign in</strong></a>
     </small>

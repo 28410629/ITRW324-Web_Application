@@ -10,6 +10,8 @@ import {getDeepFromObject, NB_AUTH_OPTIONS } from '@nebular/auth';
 })
 export class RequestPasswordComponent {
 
+  loadingMediumGroup: boolean = false;
+
   redirectDelay: number = 0;
   showMessages: any = {};
 
@@ -34,7 +36,7 @@ export class RequestPasswordComponent {
   }
 
   requestPass() {
-
+    this.loadingMediumGroup = true;
     this.errors = this.messages = [];
     this.submitted = true;
 
@@ -46,6 +48,7 @@ export class RequestPasswordComponent {
       this.redirectToDashboard();
     })
     .catch((err) => {
+      this.loadingMediumGroup = false;
       this.submitted = false;
       this.errors = [err];
     });

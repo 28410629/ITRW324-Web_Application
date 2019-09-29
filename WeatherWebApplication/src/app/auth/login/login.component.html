@@ -1,7 +1,7 @@
 
     <nb-auth-block>
       <h2 class="title">Anchormen Stations</h2>
-      <small class="form-text sub-title">Hello! Sign in with your email</small>
+      <small class="form-text sub-title">Hello! Sign in with your email address.</small>
       <form (ngSubmit)="loginEmail()" #form="ngForm" autocomplete="nope">
         <div *ngIf="errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
           <div><strong>Oh snap!</strong></div>

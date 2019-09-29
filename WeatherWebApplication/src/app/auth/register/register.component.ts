@@ -10,6 +10,8 @@ import {getDeepFromObject, NB_AUTH_OPTIONS, NbAuthSocialLink} from '@nebular/aut
 })
 export class RegisterComponent {
 
+  loadingMediumGroup: boolean = false;
+
   redirectDelay: number = 0;
   showMessages: any = {};
 
@@ -34,6 +36,7 @@ export class RegisterComponent {
   }
 
   register(): void {
+    this.loadingMediumGroup = true;
     this.errors = this.messages = [];
     this.submitted = true;
 
@@ -44,6 +47,7 @@ export class RegisterComponent {
           this.redirectToDashboard();
       })
       .catch((err) => {
+        this.loadingMediumGroup = false;
         this.submitted = false;
         this.errors = [err];
       });
