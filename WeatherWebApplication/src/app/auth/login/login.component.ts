@@ -9,6 +9,8 @@ import {getDeepFromObject, NB_AUTH_OPTIONS, NbAuthSocialLink} from '@nebular/aut
 })
 export class LoginComponent {
 
+  loadingMediumGroup: boolean = false;
+
   redirectDelay: number = 0;
 
   errors: string[] = [];
@@ -29,6 +31,7 @@ export class LoginComponent {
   }
 
   loginEmail() {
+    this.loadingMediumGroup = true;
     this.errors = this.messages = [];
     this.submitted = true;
 
@@ -40,6 +43,7 @@ export class LoginComponent {
         this.redirectToDashboard();
       })
       .catch((err) => {
+        this.loadingMediumGroup = false;
         this.submitted = false;
         this.errors = [err];
       });

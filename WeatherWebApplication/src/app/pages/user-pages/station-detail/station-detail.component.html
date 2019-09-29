@@ -8,8 +8,11 @@
   <div class="row" >
     <div class="col-xxl-12">
       <nb-card>
-        <nb-card-header>Station Details (Time Zone: {{ timezone }})</nb-card-header>
+        <nb-card-header>Station Details</nb-card-header>
         <nb-card-body style="padding-bottom: 6px">
+          <div style="margin-bottom: 10px">
+            Time Zone Detected: {{ timezone }}
+          </div>
           <div class="test">
             <span style="margin-right: 10px">Select Time Period :</span>
             <nb-select style="margin-right: 10px" [selected]="time" (selectedChange)="time = $event">

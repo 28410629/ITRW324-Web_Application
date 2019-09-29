@@ -10,6 +10,9 @@
       <nb-card>
         <nb-card-header>Raw Readings</nb-card-header>
         <nb-card-body style="padding-bottom: 6px">
+          <div style="margin-bottom: 10px">
+            Time Zone Detected: {{ timezone }}
+          </div>
           <div class="test">
             <span style="margin-right: 10px">Select Station :</span>
             <nb-select style="margin-right: 10px" [selected]="station" (selectedChange)="station = $event">

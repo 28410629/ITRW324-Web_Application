@@ -12,11 +12,12 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
+  NbButtonModule,
   NbChatModule, NbCheckboxModule,
   NbDatepickerModule,
   NbDialogModule,
   NbMenuModule,
-  NbSidebarModule,
+  NbSidebarModule, NbSpinnerModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
@@ -76,6 +77,8 @@ import {RawReadingsService} from './services/raw-readings.service';
     AngularFireStorageModule,
     FormsModule,
     NbCheckboxModule,
+    NbButtonModule,
+    NbSpinnerModule,
   ],
   providers: [
     FetchJsonUtilities,
