@@ -360,26 +360,24 @@ export class StationDetailComponent {
           pointRadius: 4,
           pointHoverRadius: 10,
         },
-          // {
-          //   label: 'Air Min',
-          //   data: this.lightdatamin,
-          //   borderColor: colors.info,
-          //   backgroundColor: colors.info,
-          //   fill: false,
-          //
-          //   pointRadius: 4,
-          //   pointHoverRadius: 10,
-          // },
-          // {
-          //   label: 'Air Max',
-          //   data: this.lightdatamax,
-          //   borderColor: colors.dangerLight,
-          //   backgroundColor: colors.dangerLight,
-          //   fill: false,
-          //
-          //   pointRadius: 4,
-          //   pointHoverRadius: 10,
-          // }
+          {
+            label: 'Air Min',
+            data: this.lightdatamin,
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'Air Max',
+            data: this.lightdatamax,
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
           ],
       };
 
