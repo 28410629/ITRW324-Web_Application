@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { FetchJsonUtilities } from '../common/fetch-json.utilities';
 import { StationDetailModel, StationDetailReading } from '../models/station-detail.model';
 
+
 @Injectable()
 export class StationDetailService {
   constructor(private common: FetchJsonUtilities) {
@@ -11,7 +12,8 @@ export class StationDetailService {
   public FetchDayStationDetails(stationID: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/day?StationId=' + stationID)
+      'api/get/temperaturereadingsovertime/station/day?StationId=' + stationID
+      + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];
@@ -28,7 +30,8 @@ export class StationDetailService {
   public FetchWeekStationDetails(stationID: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/week?StationId=' + stationID)
+      'api/get/temperaturereadingsovertime/station/week?StationId=' + stationID
+      + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];
@@ -45,7 +48,8 @@ export class StationDetailService {
   public FetchMonthStationDetails(stationID: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/month?StationId=' + stationID)
+      'api/get/temperaturereadingsovertime/station/month?StationId=' + stationID
+      + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];
@@ -62,7 +66,8 @@ export class StationDetailService {
   public FetchYearStationDetails(stationID: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/year?StationId=' + stationID)
+      'api/get/temperaturereadingsovertime/station/year?StationId=' + stationID
+      + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];

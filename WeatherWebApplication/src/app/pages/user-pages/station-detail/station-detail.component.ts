@@ -126,10 +126,8 @@ export class StationDetailComponent {
 
   processJson() {
     for (let i = 0; i < this.json.length; i++) {
-      const zone = moment.tz.guess(true);
-      const time = moment(this.json[i].readingTime + '+00:00').tz(zone);
+      const time = moment(this.json[i].readingTime + '+00:00').tz(this.timezone);
       const date = new Date(time.format());
-
       // label
       switch (this.time) {
         case this.times[0]: {
@@ -237,7 +235,7 @@ export class StationDetailComponent {
         min: Number(this.json[i].airPressureReadingMin).toFixed(2),
         max: Number(this.json[i].airPressureReadingMax).toFixed(2),
       });
-    }
+    } // end of for loop
   }
 
   updateGraphs() {
