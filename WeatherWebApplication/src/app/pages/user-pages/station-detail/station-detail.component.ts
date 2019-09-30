@@ -126,10 +126,8 @@ export class StationDetailComponent {
 
   processJson() {
     for (let i = 0; i < this.json.length; i++) {
-      const zone = moment.tz.guess(true);
-      const time = moment(this.json[i].readingTime + '+00:00').tz(zone);
+      const time = moment(this.json[i].readingTime + '+00:00').tz(this.timezone);
       const date = new Date(time.format());
-
       // label
       switch (this.time) {
         case this.times[0]: {
@@ -237,7 +235,7 @@ export class StationDetailComponent {
         min: Number(this.json[i].airPressureReadingMin).toFixed(2),
         max: Number(this.json[i].airPressureReadingMax).toFixed(2),
       });
-    }
+    } // end of for loop
   }
 
   updateGraphs() {
@@ -360,26 +358,24 @@ export class StationDetailComponent {
           pointRadius: 4,
           pointHoverRadius: 10,
         },
-          // {
-          //   label: 'Air Min',
-          //   data: this.lightdatamin,
-          //   borderColor: colors.info,
-          //   backgroundColor: colors.info,
-          //   fill: false,
-          //
-          //   pointRadius: 4,
-          //   pointHoverRadius: 10,
-          // },
-          // {
-          //   label: 'Air Max',
-          //   data: this.lightdatamax,
-          //   borderColor: colors.dangerLight,
-          //   backgroundColor: colors.dangerLight,
-          //   fill: false,
-          //
-          //   pointRadius: 4,
-          //   pointHoverRadius: 10,
-          // }
+          {
+            label: 'Air Min',
+            data: this.lightdatamin,
+            borderColor: colors.info,
+            backgroundColor: colors.info,
+            fill: false,
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
+          {
+            label: 'Air Max',
+            data: this.lightdatamax,
+            borderColor: colors.dangerLight,
+            backgroundColor: colors.dangerLight,
+            fill: false,
+            pointRadius: 4,
+            pointHoverRadius: 10,
+          },
           ],
       };
 

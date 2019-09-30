@@ -4,6 +4,7 @@ import {Station} from '../../../models/station-list.model';
 import {StationListService} from '../../../services/station-list.service';
 import {RawReadingsService} from '../../../services/raw-readings.service';
 import {RawReadings} from '../../../models/raw-readings.model';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'ngx-raw-readings',
@@ -11,6 +12,8 @@ import {RawReadings} from '../../../models/raw-readings.model';
   styleUrls: ['./raw-readings.component.scss'],
 })
 export class RawReadingsComponent {
+
+  timezone;
 
   stationlist: Station[];
   station = '';
@@ -61,6 +64,7 @@ export class RawReadingsComponent {
   constructor(private stationService: StationListService,
               private rawReadingService: RawReadingsService) {
     this.getStationList();
+    this.timezone = moment.tz.guess(true);
   }
     // this.source.load(data);
 
@@ -142,7 +146,8 @@ export class RawReadingsComponent {
     this.tabledata = [];
     let i = 0;
     data.Readings.forEach(x => {
-      this.tempdate = new Date(x.date);
+      const time = moment(x.date + '+00:00').tz(this.timezone);
+      this.tempdate = new Date(time.format());
       this.tabledata.push(
         {
           entry: ++i,
