@@ -13,12 +13,14 @@
           <div style="margin-bottom: 10px">
             Time Zone Detected: {{ timezone }}
           </div>
+
           <div class="test">
-            <span style="margin-right: 10px">Selected Location :</span>
+            <span style="margin-right: 10px">Selected Province :</span>
             <nb-select style="margin-right: 10px" [selected]="stationid" (selectedChange)="stationid = $event">
-              <nb-option *ngFor="let s of stations" [value]="s">{{ s }}</nb-option>
+              <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>
+
           <div class="test">
             <span style="margin-right: 10px">Select Time Period :</span>
             <nb-select style="margin-right: 10px" [selected]="time" (selectedChange)="time = $event">

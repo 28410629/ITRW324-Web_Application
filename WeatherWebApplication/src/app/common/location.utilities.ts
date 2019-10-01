@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Countries, Country} from '../models/location.model';
 
 @Injectable()
-export class FetchJsonUtilities {
+export class LocationUtilities {
 
   countryZA: Country = {country: 'South Africa', province: [
       {

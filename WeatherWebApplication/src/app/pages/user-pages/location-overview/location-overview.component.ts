@@ -6,6 +6,7 @@ import {LocalDataSource} from 'ng2-smart-table';
 import {StationListService} from '../../../services/station-list.service';
 import {StationDetailService} from '../../../services/station-detail.service';
 import * as moment from 'moment-timezone';
+import {LocationUtilities} from '../../../common/location.utilities';
 
 @Component({
   selector: 'ngx-location-overview',
@@ -52,9 +53,8 @@ export class LocationOverviewComponent {
 
   timezone;
 
-  stationlist: Station[];
-  stationid = '';
-  stations = [];
+  provinces;
+  cities;
 
   isMainLoaded: boolean = false;
   isContentLoaded: boolean = false;
@@ -97,7 +97,8 @@ export class LocationOverviewComponent {
 
   constructor(private stationService: StationListService,
               private theme: NbThemeService,
-              private service: StationDetailService) {
+              private service: StationDetailService,
+              private locationUtil: LocationUtilities) {
     // get available stations
     this.getStationList();
 
@@ -502,13 +503,4 @@ export class LocationOverviewComponent {
     this.pressSide = [];
   }
 
-  getName(stationid, time): string {
-    let name = 'Not found.';
-    this.stationlist.forEach(x => {
-      if (x.stationId.toString() === stationid.toString()) {
-        name = 'Station ' + x.stationId + ' (\'' + x.nickName + '\') : last ' + time + ' raw readings.';
-      }
-    });
-    return name;
-  }
 }
