@@ -53,8 +53,11 @@ export class LocationOverviewComponent {
 
   timezone;
 
+  countries;
   provinces;
+  selectedProvince;
   cities;
+  selecteCity;
 
   isMainLoaded: boolean = false;
   isContentLoaded: boolean = false;
@@ -89,7 +92,6 @@ export class LocationOverviewComponent {
       },
     },
   };
-
   tablename;
   tabledata;
   source: LocalDataSource = new LocalDataSource();
@@ -100,28 +102,17 @@ export class LocationOverviewComponent {
               private service: StationDetailService,
               private locationUtil: LocationUtilities) {
     // get available stations
-    this.getStationList();
+    this.getLocationList();
 
     // time zone header
     this.timezone = moment.tz.guess(true);
   }
   // this.source.load(data);
 
-  getStationList() {
-    this.isMainLoaded = false;
-    this.stationService.FetchStationList()
-      .subscribe(data => {
-        this.stationlist = data.stations;
-        if (data.stations != null) {
-          this.stationid = this.stationlist[0].stationId.toString();
-          this.stationlist.forEach(x => {
-            this.stations.push(x.stationId.toString());
-          });
-          this.isMainLoaded = true;
-        } else {
-          this.getStationList();
-        }
-      });
+  getLocationList() {
+    this.countries = this.locationUtil.getCountry();
+    this.provinces = this.locationUtil.getProvinceList(this.countries[0]);
+    this.selectedProvince = this.provinces[0];
   }
 
   getGraphJson(time) {

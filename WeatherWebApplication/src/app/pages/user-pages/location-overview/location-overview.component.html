@@ -15,8 +15,15 @@
           </div>
 
           <div class="test">
+            <span style="margin-right: 10px">Selected Country :</span>
+            <nb-select style="margin-right: 10px">
+              <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
+            </nb-select>
+          </div>
+
+          <div class="test">
             <span style="margin-right: 10px">Selected Province :</span>
-            <nb-select style="margin-right: 10px" [selected]="stationid" (selectedChange)="stationid = $event">
+            <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="selectedProvince = $event">
               <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>
