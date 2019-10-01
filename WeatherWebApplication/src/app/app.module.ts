@@ -46,6 +46,8 @@ import {StationDetailService} from './services/station-detail.service';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {StationListService} from './services/station-list.service';
 import {RawReadingsService} from './services/raw-readings.service';
+import {LocationUtilities} from './common/location.utilities';
+import {LocationSservice} from './services/location.sservice';
 
 @NgModule({
   declarations: [
@@ -82,12 +84,14 @@ import {RawReadingsService} from './services/raw-readings.service';
   ],
   providers: [
     FetchJsonUtilities,
+    LocationUtilities,
     AverageReadingService,
     AuthGuard,
     AuthService,
     StationDetailService,
     StationListService,
     RawReadingsService,
+    LocationSservice,
   ],
   bootstrap: [AppComponent],
 })

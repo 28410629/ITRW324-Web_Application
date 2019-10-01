@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Countries, Country} from '../models/location.model';
 
 @Injectable()
-export class FetchJsonUtilities {
+export class LocationUtilities {
 
   countryZA: Country = {country: 'South Africa', province: [
       {
@@ -20,7 +20,10 @@ export class FetchJsonUtilities {
         province: 'Eastern Cape',
         cities: [
           {
-            city: '',
+            city: 'Port Elizabeth',
+          },
+          {
+            city: 'Alice',
           },
         ],
       },
@@ -28,7 +31,10 @@ export class FetchJsonUtilities {
         province: 'Free State',
         cities: [
           {
-            city: '',
+            city: 'Bloemfontein',
+          },
+          {
+            city: 'Parys',
           },
         ],
       },
@@ -36,7 +42,10 @@ export class FetchJsonUtilities {
         province: 'Western Cape',
         cities: [
           {
-            city: '',
+            city: 'Bellville',
+          },
+          {
+            city: 'Cape Town',
           },
         ],
       },
@@ -44,7 +53,10 @@ export class FetchJsonUtilities {
         province: 'Limpopo',
         cities: [
           {
-            city: '',
+            city: 'Musina',
+          },
+          {
+            city: 'Sibasa',
           },
         ],
       },
@@ -63,7 +75,10 @@ export class FetchJsonUtilities {
         province: 'KwaZulu-Natal',
         cities: [
           {
-            city: '',
+            city: 'Durban',
+          },
+          {
+            city: 'Pinetown',
           },
         ],
       },
@@ -71,7 +86,10 @@ export class FetchJsonUtilities {
         province: 'Mpumalanga',
         cities: [
           {
-            city: '',
+            city: 'Nelspruit',
+          },
+          {
+            city: 'Secunda',
           },
         ],
       },
@@ -79,11 +97,14 @@ export class FetchJsonUtilities {
         province: 'Gauteng',
         cities: [
           {
-            city: '',
+            city: 'Benoni',
           },
-        ],
-      },
-    ]};
+          {
+            city: 'Johannesburg',
+          },
+      ],
+    },
+  ]};
   countries: Countries = {Countries: [this.countryZA]};
   constructor() {}
 

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
-import {StationDetailReading} from '../../../models/station-detail.model';
-import {Station} from '../../../models/station-list.model';
 import {LocalDataSource} from 'ng2-smart-table';
-import {StationListService} from '../../../services/station-list.service';
-import {StationDetailService} from '../../../services/station-detail.service';
 import * as moment from 'moment-timezone';
+import {LocationUtilities} from '../../../common/location.utilities';
+import {LocationSservice} from '../../../services/location.sservice';
+import {Reading} from '../../../models/location-overview.model';
 
 @Component({
   selector: 'ngx-location-overview',
@@ -31,7 +30,7 @@ export class LocationOverviewComponent {
     'July', 'August', 'September', 'October', 'November', 'December'];
 
   // raw data
-  json: StationDetailReading[];
+  json: Reading[];
   labels: string[] = [];
   tempdataavg: number[] = [];
   airdataavg: number[] = [];
@@ -52,9 +51,12 @@ export class LocationOverviewComponent {
 
   timezone;
 
-  stationlist: Station[];
-  stationid = '';
-  stations = [];
+  countries;
+  selectedCountry;
+  provinces;
+  selectedProvince;
+  cities;
+  selecteCity;
 
   isMainLoaded: boolean = false;
   isContentLoaded: boolean = false;
@@ -89,38 +91,34 @@ export class LocationOverviewComponent {
       },
     },
   };
-
   tablename;
   tabledata;
   source: LocalDataSource = new LocalDataSource();
   tempdate: Date;
 
-  constructor(private stationService: StationListService,
-              private theme: NbThemeService,
-              private service: StationDetailService) {
+  constructor(private theme: NbThemeService,
+              private service: LocationSservice,
+              private locationUtil: LocationUtilities) {
     // get available stations
-    this.getStationList();
+    this.getLocationList();
 
     // time zone header
     this.timezone = moment.tz.guess(true);
   }
   // this.source.load(data);
 
-  getStationList() {
-    this.isMainLoaded = false;
-    this.stationService.FetchStationList()
-      .subscribe(data => {
-        this.stationlist = data.stations;
-        if (data.stations != null) {
-          this.stationid = this.stationlist[0].stationId.toString();
-          this.stationlist.forEach(x => {
-            this.stations.push(x.stationId.toString());
-          });
-          this.isMainLoaded = true;
-        } else {
-          this.getStationList();
-        }
-      });
+  getLocationList() {
+    this.countries = this.locationUtil.getCountry();
+    this.selectedCountry = this.countries[0];
+    this.provinces = this.locationUtil.getProvinceList(this.countries[0]);
+    this.selectedProvince = this.provinces[0];
+    this.populateCities(this.provinces[0]);
+    this.isMainLoaded = true;
+  }
+  populateCities(name) {
+    this.selectedProvince = name;
+    this.cities = this.locationUtil.getCityList(this.countries[0], this.selectedProvince);
+    this.selecteCity = this.cities[0];
   }
 
   getGraphJson(time) {
@@ -129,42 +127,58 @@ export class LocationOverviewComponent {
     // get data for graph
     switch (time) {
       case this.times[0]: {
-        this.service.FetchDayStationDetails(this.stationid)
+        this.service.FetchDailyLocationData(this.selectedProvince, this.selecteCity)
           .subscribe(data => {
-            this.json = data.StationDetailReadings;
-            this.resetArray();
-            this.processJson();
-            this.updateGraphs();
+            if (data.found === 1) {
+              this.json = data.readings;
+              this.resetArray();
+              this.processJson();
+              this.updateGraphs();
+            } else {
+              this.loaderContentTag = 'Location not found. Oops.';
+            }
           });
         break;
       }
       case this.times[1]: {
-        this.service.FetchWeekStationDetails(this.stationid)
+        this.service.FetchWeeklyLocationData(this.selectedProvince, this.selecteCity)
           .subscribe(data => {
-            this.json = data.StationDetailReadings;
-            this.resetArray();
-            this.processJson();
-            this.updateGraphs();
+            if (data.found === 1) {
+              this.json = data.readings;
+              this.resetArray();
+              this.processJson();
+              this.updateGraphs();
+            } else {
+              this.loaderContentTag = 'Location not found. Oops.';
+            }
           });
         break;
       }
       case this.times[2]: {
-        this.service.FetchMonthStationDetails(this.stationid)
+        this.service.FetchMonthlyLocationData(this.selectedProvince, this.selecteCity)
           .subscribe(data => {
-            this.json = data.StationDetailReadings;
-            this.resetArray();
-            this.processJson();
-            this.updateGraphs();
+            if (data.found === 1) {
+              this.json = data.readings;
+              this.resetArray();
+              this.processJson();
+              this.updateGraphs();
+            } else {
+              this.loaderContentTag = 'Location not found. Oops.';
+            }
           });
         break;
       }
       case this.times[3]: {
-        this.service.FetchYearStationDetails(this.stationid)
+        this.service.FetchYearlyLocationData(this.selectedProvince, this.selecteCity)
           .subscribe(data => {
-            this.json = data.StationDetailReadings;
-            this.resetArray();
-            this.processJson();
-            this.updateGraphs();
+            if (data.found === 1) {
+              this.json = data.readings;
+              this.resetArray();
+              this.processJson();
+              this.updateGraphs();
+            } else {
+              this.loaderContentTag = 'Location not found. Oops.';
+            }
           });
         break;
       }
@@ -213,7 +227,7 @@ export class LocationOverviewComponent {
       // air
       this.airdataavg.push(Number(this.json[i].airPressureReadingAverage));
       // humidity
-      this.humdataavg.push(Number(this.json[i].humiditiyReadingAverage));
+      this.humdataavg.push(Number(this.json[i].humidityReadingAverage));
       // light
       this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage) / 10.24);
 
@@ -221,7 +235,7 @@ export class LocationOverviewComponent {
       // air
       this.airdatamin.push(Number(this.json[i].airPressureReadingMin));
       // humidity
-      this.humdatamin.push(Number(this.json[i].humiditiyReadingMin));
+      this.humdatamin.push(Number(this.json[i].humidityReadingAverage));
       // light
       this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin) / 10.24);
 
@@ -229,7 +243,7 @@ export class LocationOverviewComponent {
       // air
       this.airdatamax.push(Number(this.json[i].airPressureReadingMax));
       // humidity
-      this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
+      this.humdatamax.push(Number(this.json[i].humidityReadingAverage));
       // light
       this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax) / 10.24);
 
@@ -276,9 +290,9 @@ export class LocationOverviewComponent {
       // hum side
       this.humSide.push({
         data: sidedate,
-        average: Number(this.json[i].humiditiyReadingAverage).toFixed(2),
-        min: Number(this.json[i].humiditiyReadingMin).toFixed(2),
-        max: Number(this.json[i].humiditiyReadingMax).toFixed(2),
+        average: Number(this.json[i].humidityReadingAverage).toFixed(2),
+        min: Number(this.json[i].humidityReadingAverage).toFixed(2),
+        max: Number(this.json[i].humidityReadingAverage).toFixed(2),
       });
       // press side
       this.pressSide.push({
@@ -502,13 +516,4 @@ export class LocationOverviewComponent {
     this.pressSide = [];
   }
 
-  getName(stationid, time): string {
-    let name = 'Not found.';
-    this.stationlist.forEach(x => {
-      if (x.stationId.toString() === stationid.toString()) {
-        name = 'Station ' + x.stationId + ' (\'' + x.nickName + '\') : last ' + time + ' raw readings.';
-      }
-    });
-    return name;
-  }
 }
