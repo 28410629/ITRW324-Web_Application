@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
 import {StationDetailReading} from '../../../models/station-detail.model';
-import {Station} from '../../../models/station-list.model';
 import {LocalDataSource} from 'ng2-smart-table';
-import {StationListService} from '../../../services/station-list.service';
 import {StationDetailService} from '../../../services/station-detail.service';
 import * as moment from 'moment-timezone';
 import {LocationUtilities} from '../../../common/location.utilities';
@@ -97,8 +95,7 @@ export class LocationOverviewComponent {
   source: LocalDataSource = new LocalDataSource();
   tempdate: Date;
 
-  constructor(private stationService: StationListService,
-              private theme: NbThemeService,
+  constructor(private theme: NbThemeService,
               private service: StationDetailService,
               private locationUtil: LocationUtilities) {
     // get available stations
