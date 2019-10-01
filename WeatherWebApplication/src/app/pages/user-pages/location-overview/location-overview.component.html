@@ -30,7 +30,7 @@
 
           <div class="test">
             <span style="margin-right: 10px">Selected City :</span>
-            <nb-select style="margin-right: 10px" [selected]="selectedCity" (selectedChange)="selectedCity = $event">
+            <nb-select style="margin-right: 10px" [(ngModel)] = "selectedCity" (selectedChange)="selectedCity = $event">
               <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>
