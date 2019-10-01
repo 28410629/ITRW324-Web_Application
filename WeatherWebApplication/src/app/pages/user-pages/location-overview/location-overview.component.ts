@@ -56,7 +56,7 @@ export class LocationOverviewComponent {
   provinces;
   selectedProvince;
   cities;
-  selecteCity;
+  selectedCity;
 
   isMainLoaded: boolean = false;
   isContentLoaded: boolean = false;
@@ -91,10 +91,9 @@ export class LocationOverviewComponent {
       },
     },
   };
-  tablename;
-  tabledata;
+
   source: LocalDataSource = new LocalDataSource();
-  tempdate: Date;
+
 
   constructor(private theme: NbThemeService,
               private service: LocationSservice,
@@ -118,7 +117,7 @@ export class LocationOverviewComponent {
   populateCities(name) {
     this.selectedProvince = name;
     this.cities = this.locationUtil.getCityList(this.countries[0], this.selectedProvince);
-    this.selecteCity = this.cities[0];
+    this.selectedCity = this.cities[0];
   }
 
   getGraphJson(time) {
@@ -127,7 +126,7 @@ export class LocationOverviewComponent {
     // get data for graph
     switch (time) {
       case this.times[0]: {
-        this.service.FetchDailyLocationData(this.selectedProvince, this.selecteCity)
+        this.service.FetchDailyLocationData(this.selectedProvince, this.selectedCity)
           .subscribe(data => {
             if (data.found === 1) {
               this.json = data.readings;
@@ -141,7 +140,7 @@ export class LocationOverviewComponent {
         break;
       }
       case this.times[1]: {
-        this.service.FetchWeeklyLocationData(this.selectedProvince, this.selecteCity)
+        this.service.FetchWeeklyLocationData(this.selectedProvince, this.selectedCity)
           .subscribe(data => {
             if (data.found === 1) {
               this.json = data.readings;
@@ -155,7 +154,7 @@ export class LocationOverviewComponent {
         break;
       }
       case this.times[2]: {
-        this.service.FetchMonthlyLocationData(this.selectedProvince, this.selecteCity)
+        this.service.FetchMonthlyLocationData(this.selectedProvince, this.selectedCity)
           .subscribe(data => {
             if (data.found === 1) {
               this.json = data.readings;
@@ -169,7 +168,7 @@ export class LocationOverviewComponent {
         break;
       }
       case this.times[3]: {
-        this.service.FetchYearlyLocationData(this.selectedProvince, this.selecteCity)
+        this.service.FetchYearlyLocationData(this.selectedProvince, this.selectedCity)
           .subscribe(data => {
             if (data.found === 1) {
               this.json = data.readings;
