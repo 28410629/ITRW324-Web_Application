@@ -15,6 +15,7 @@ import { HomepageComponent } from './user-pages/homepage/homepage.component';
 import { RawReadingsComponent } from './user-pages/raw-readings/raw-readings.component';
 import {RegisterNewStationComponent} from './user-pages/register-new-station/register-new-station.component';
 import {BuildNewStationComponent} from './user-pages/build-new-station/build-new-station.component';
+import {StationsDetailComponent} from './user-pages/stations-detail/stations-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,6 +32,10 @@ const routes: Routes = [{
     {
       path: 'station-details/:stationid',
       component: StationDetailComponent,
+    },
+    {
+      path: 'station-details',
+      component: StationsDetailComponent,
     },
     {
       path: 'manage-favourite-stations',
@@ -66,7 +71,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'location-overview',
+      redirectTo: 'homepage',
       pathMatch: 'full',
     },
     {

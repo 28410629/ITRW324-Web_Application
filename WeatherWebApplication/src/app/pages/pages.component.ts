@@ -26,7 +26,12 @@ export class PagesComponent {
       link: '/pages/location-overview',
     },
     {
-      title: 'Raw Readings',
+      title: 'Station Details',
+      icon: 'activity-outline',
+      link: '/pages/station-details',
+    },
+    {
+      title: 'Station Raw Readings',
       icon: 'archive-outline',
       link: '/pages/raw-readings',
     },

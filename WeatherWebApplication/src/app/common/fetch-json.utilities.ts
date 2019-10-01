@@ -15,6 +15,6 @@ export class FetchJsonUtilities {
 
   public fetchLocalDateTime(): string {
     return moment(new Date()).tz('Atlantic/Azores').format().toString();
-    // return moment(new Date()).format().toString();
+    // returns +00:00 time.
   }
 }

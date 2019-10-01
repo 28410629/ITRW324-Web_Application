@@ -1,0 +1,12 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  .test {
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+}

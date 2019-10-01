@@ -138,6 +138,7 @@ import {RawReadingsComponent} from '../user-pages/raw-readings/raw-readings.comp
 import {HomepageComponent} from '../user-pages/homepage/homepage.component';
 import {RegisterNewStationComponent} from '../user-pages/register-new-station/register-new-station.component';
 import {BuildNewStationComponent} from '../user-pages/build-new-station/build-new-station.component';
+import {StationsDetailComponent} from '../user-pages/stations-detail/stations-detail.component';
 
 
 @NgModule({
@@ -276,6 +277,7 @@ import {BuildNewStationComponent} from '../user-pages/build-new-station/build-ne
     HomepageComponent,
     RegisterNewStationComponent,
     BuildNewStationComponent,
+    StationsDetailComponent,
   ],
   entryComponents: [
     ShowcaseDialogComponent,

@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
-import {NbThemeService} from '@nebular/theme';
-import {StationDetailReading} from '../../../models/station-detail.model';
+import { LocalDataSource } from 'ng2-smart-table';
 import {Station} from '../../../models/station-list.model';
-import {LocalDataSource} from 'ng2-smart-table';
 import {StationListService} from '../../../services/station-list.service';
-import {StationDetailService} from '../../../services/station-detail.service';
 import * as moment from 'moment-timezone';
+import {NbThemeService} from '@nebular/theme';
+import {StationDetailService} from '../../../services/station-detail.service';
+import {StationDetailReading} from '../../../models/station-detail.model';
 
 @Component({
-  selector: 'ngx-location-overview',
-  templateUrl: 'location-overview.component.html',
-  styleUrls: ['location-overview.component.scss'],
+  selector: 'ngx-raw-readings',
+  templateUrl: './stations-detail.component.html',
+  styleUrls: ['./stations-detail.component.scss'],
 })
-export class LocationOverviewComponent {
+export class StationsDetailComponent {
+
   // side information
   tempSide = [];
   humSide = [];
@@ -104,7 +105,7 @@ export class LocationOverviewComponent {
     // time zone header
     this.timezone = moment.tz.guess(true);
   }
-  // this.source.load(data);
+    // this.source.load(data);
 
   getStationList() {
     this.isMainLoaded = false;
