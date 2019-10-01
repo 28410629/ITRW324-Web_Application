@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
-import { SolarData } from '../../@core/data/solar';
 import {AverageReadingEntity} from '../../models/averagereadings.model';
 import {AverageReadingService} from '../../services/AverageReadingService';
 
@@ -93,20 +92,12 @@ export class DashboardComponent implements OnDestroy, OnInit {
   };
 
   constructor(private themeService: NbThemeService,
-              private solarService: SolarData,
               private service: AverageReadingService) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.statusCards = this.statusCardsByThemes[theme.name];
     });
-
-    this.solarService.getSolarData()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((data) => {
-        this.solarValue = data;
-      });
-
   }
 
   ngOnDestroy() {

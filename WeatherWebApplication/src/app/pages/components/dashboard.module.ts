@@ -33,12 +33,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
-import { TemperatureComponent } from './temperature/temperature.component';
-import { TemperatureDraggerComponent } from './temperature/temperature-dragger/temperature-dragger.component';
 import { WeatherComponent } from './weather/weather.component';
-import { SolarComponent } from './solar/solar.component';
-import { TrafficComponent } from './traffic/traffic.component';
-import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { GridComponent } from './grid/grid.component';
 import { IconsComponent } from './icons/icons.component';
@@ -58,7 +53,6 @@ import { MapComponent } from './search-map/map/map.component';
 import { SearchForMapComponent } from './search-map/search/search-for-map.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { SmartTableComponent } from './smart-table/smart-table.component';
 import { AlertComponent } from './alert/alert.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import {
@@ -187,12 +181,7 @@ import {StationsDetailComponent} from '../user-pages/stations-detail/stations-de
   declarations: [
     DashboardComponent,
     StatusCardComponent,
-    TemperatureDraggerComponent,
-    TemperatureComponent,
     WeatherComponent,
-    SolarComponent,
-    TrafficComponent,
-    TrafficChartComponent,
     GridComponent,
     IconsComponent,
     TypographyComponent,
@@ -208,7 +197,6 @@ import {StationsDetailComponent} from '../user-pages/stations-detail/stations-de
     MapComponent,
     SearchForMapComponent,
     NotFoundComponent,
-    SmartTableComponent,
     AlertComponent,
     ProgressBarComponent,
     InteractiveProgressBarComponent,
