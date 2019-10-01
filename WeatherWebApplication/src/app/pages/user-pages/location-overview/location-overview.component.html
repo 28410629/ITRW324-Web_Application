@@ -16,14 +16,14 @@
 
           <div class="test">
             <span style="margin-right: 10px">Selected Country :</span>
-            <nb-select style="margin-right: 10px">
+            <nb-select style="margin-right: 10px" [selected]="selectedCountry" (selectedChange)="selectedCountry = $event">
               <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>
 
           <div class="test">
             <span style="margin-right: 10px">Selected Province :</span>
-            <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="selectedProvince = $event, populateCities()">
+            <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="populateCities($event)">
               <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>

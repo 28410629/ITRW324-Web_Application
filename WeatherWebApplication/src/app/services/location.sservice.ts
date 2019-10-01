@@ -2,77 +2,106 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { FetchJsonUtilities } from '../common/fetch-json.utilities';
 import {Station, StationList} from '../models/station-list.model';
+import {LocationOverview, Reading} from '../models/location-overview.model';
 
 @Injectable()
 export class LocationSservice {
   constructor(private common: FetchJsonUtilities) {
   }
 
-  public FetchWeeklyLocationData(province: string, city: string, date: Date) {
+  public FetchWeeklyLocationData(province: string, city: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001' +
-      '/api/get/locationreadings/location/week?Province=' + province + '&City=' + city + '&Date=' + date)
+      '/api/get/locationreadings/location/week?Province='
+      + province + '&City=' + city + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
-        const data = {} as StationList;
-        const stations: Station[] = [];
+        let found;
+        const data = {} as LocationOverview;
+        const stations: Reading[] = [];
         for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            stations.push(...responseData[key]);
+          if (key === 'found') {
+            found = responseData[key];
+          } else {
+            if (responseData.hasOwnProperty(key)) {
+              stations.push(...responseData[key]);
+            }
           }
         }
-        data.stations = stations;
+        data.found = found;
+        data.readings = stations;
         return data;
       }));
   }
-  public FetchDailyLocationData(province: string, city: string, date: Date) {
+  public FetchDailyLocationData(province: string, city: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001' +
-      '/api/get/locationreadings/location/day?Province=' + province + '&City=' + city + '&Date=' + date)
+      '/api/get/locationreadings/location/day?Province=' + province + '&City='
+      + city + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
-        const data = {} as StationList;
-        const stations: Station[] = [];
+        let found;
+        const data = {} as LocationOverview;
+        const stations: Reading[] = [];
         for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            stations.push(...responseData[key]);
+          if (key === 'found') {
+            found = responseData[key];
+          } else {
+            if (responseData.hasOwnProperty(key)) {
+              stations.push(...responseData[key]);
+            }
           }
         }
-        data.stations = stations;
-        return data;
-      }));
-
-
-  }
-  public FetchMonthlyLocationData(province: string, city: string, date: Date) {
-    return this.common.fetchJSON(
-      'https://weatherstationapi.ddns.net:5001' +
-      '/api/get/locationreadings/location/month?Province=' + province + '&City=' + city + '&Date=' + date)
-      .pipe(map(responseData => {
-        const data = {} as StationList;
-        const stations: Station[] = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            stations.push(...responseData[key]);
-          }
-        }
-        data.stations = stations;
+        data.found = found;
+        data.readings = stations;
         return data;
       }));
 
 
   }
-  public FetchYearlyLocationData(province: string, city: string, date: Date) {
+  public FetchMonthlyLocationData(province: string, city: string) {
     return this.common.fetchJSON(
       'https://weatherstationapi.ddns.net:5001' +
-      '/api/get/locationreadings/location/year?Province=' + province + '&City=' + city + '&Date=' + date)
+      '/api/get/locationreadings/location/month?Province=' + province +
+      '&City=' + city + '&Date=' + this.common.fetchLocalDateTime())
       .pipe(map(responseData => {
-        const data = {} as StationList;
-        const stations: Station[] = [];
+        let found;
+        const data = {} as LocationOverview;
+        const stations: Reading[] = [];
         for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            stations.push(...responseData[key]);
+          if (key === 'found') {
+            found = responseData[key];
+          } else {
+            if (responseData.hasOwnProperty(key)) {
+              stations.push(...responseData[key]);
+            }
           }
         }
-        data.stations = stations;
+        data.found = found;
+        data.readings = stations;
+        return data;
+      }));
+
+
+  }
+  public FetchYearlyLocationData(province: string, city: string) {
+    return this.common.fetchJSON(
+      'https://weatherstationapi.ddns.net:5001' +
+      '/api/get/locationreadings/location/year?Province=' + province +
+      '&City=' + city + '&Date=' + this.common.fetchLocalDateTime())
+      .pipe(map(responseData => {
+        let found;
+        const data = {} as LocationOverview;
+        const stations: Reading[] = [];
+        for (const key in responseData) {
+          if (key === 'found') {
+            found = responseData[key];
+          } else {
+            if (responseData.hasOwnProperty(key)) {
+              stations.push(...responseData[key]);
+            }
+          }
+        }
+        data.found = found;
+        data.readings = stations;
         return data;
       }));
 

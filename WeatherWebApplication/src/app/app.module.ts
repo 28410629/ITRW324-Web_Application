@@ -47,6 +47,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {StationListService} from './services/station-list.service';
 import {RawReadingsService} from './services/raw-readings.service';
 import {LocationUtilities} from './common/location.utilities';
+import {LocationSservice} from './services/location.sservice';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import {LocationUtilities} from './common/location.utilities';
     StationDetailService,
     StationListService,
     RawReadingsService,
+    LocationSservice,
   ],
   bootstrap: [AppComponent],
 })
