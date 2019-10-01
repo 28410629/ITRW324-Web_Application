@@ -248,7 +248,7 @@ export class StationDetailComponent {
       this.airgraphdata = {
         labels: this.labels,
         datasets: [{
-          label: 'Air Average',
+          label: 'Air Pressure Average',
           data: this.airdataavg,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
@@ -258,7 +258,7 @@ export class StationDetailComponent {
           pointHoverRadius: 10,
         },
           {
-            label: 'Air Min',
+            label: 'Air Pressure Min',
             data: this.airdatamin,
             borderColor: colors.info,
             backgroundColor: colors.info,
@@ -268,7 +268,7 @@ export class StationDetailComponent {
             pointHoverRadius: 10,
           },
           {
-            label: 'Air Max',
+            label: 'Air Pressure Max',
             data: this.airdatamax,
             borderColor: colors.dangerLight,
             backgroundColor: colors.dangerLight,
@@ -282,7 +282,7 @@ export class StationDetailComponent {
       this.tempgraphdata = {
         labels: this.labels,
         datasets: [{
-          label: 'Temp Average',
+          label: 'Temperature Average',
           data: this.tempdataavg,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
@@ -292,7 +292,7 @@ export class StationDetailComponent {
           pointHoverRadius: 10,
         },
           {
-            label: 'Temp Min',
+            label: 'Temperature Min',
             data: this.tempdatamin,
             borderColor: colors.info,
             backgroundColor: colors.info,
@@ -302,7 +302,7 @@ export class StationDetailComponent {
             pointHoverRadius: 10,
           },
           {
-            label: 'Temp Max',
+            label: 'Temperature Max',
             data: this.tempdatamax,
             borderColor: colors.dangerLight,
             backgroundColor: colors.dangerLight,
@@ -316,7 +316,7 @@ export class StationDetailComponent {
       this.humgraphdata = {
         labels: this.labels,
         datasets: [{
-          label: 'Hum Average',
+          label: 'Humidity Average',
           data: this.humdataavg,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
@@ -326,7 +326,7 @@ export class StationDetailComponent {
           pointHoverRadius: 10,
         },
           {
-            label: 'Hum Min',
+            label: 'Humidity Min',
             data: this.humdatamin,
             borderColor: colors.info,
             backgroundColor: colors.info,
@@ -336,7 +336,7 @@ export class StationDetailComponent {
             pointHoverRadius: 10,
           },
           {
-            label: 'Hum Max',
+            label: 'Humidity Max',
             data: this.humdatamax,
             borderColor: colors.dangerLight,
             backgroundColor: colors.dangerLight,
@@ -350,7 +350,7 @@ export class StationDetailComponent {
       this.lightgraphdata = {
         labels: this.labels,
         datasets: [{
-          label: 'Light Average',
+          label: 'Ambient Light Average',
           data: this.lightdataavg,
           borderColor: colors.primary,
           backgroundColor: colors.primary,
@@ -359,7 +359,7 @@ export class StationDetailComponent {
           pointHoverRadius: 10,
         },
           {
-            label: 'Air Min',
+            label: 'Ambient Light Min',
             data: this.lightdatamin,
             borderColor: colors.info,
             backgroundColor: colors.info,
@@ -368,7 +368,7 @@ export class StationDetailComponent {
             pointHoverRadius: 10,
           },
           {
-            label: 'Air Max',
+            label: 'Ambient Light Max',
             data: this.lightdatamax,
             borderColor: colors.dangerLight,
             backgroundColor: colors.dangerLight,
