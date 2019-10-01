@@ -23,15 +23,15 @@
 
           <div class="test">
             <span style="margin-right: 10px">Selected Province :</span>
-            <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="selectedProvince = $event">
+            <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="selectedProvince = $event, populateCities()">
               <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>
 
           <div class="test">
-            <span style="margin-right: 10px">Select Time Period :</span>
-            <nb-select style="margin-right: 10px" [selected]="time" (selectedChange)="time = $event">
-              <nb-option *ngFor="let t of times" [value]="t">{{ t }}</nb-option>
+            <span style="margin-right: 10px">Selected City :</span>
+            <nb-select style="margin-right: 10px" [selected]="selecteCity" (selectedChange)="selecteCity = $event">
+              <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
             </nb-select>
           </div>
 
@@ -41,6 +41,8 @@
               <nb-option *ngFor="let t of times" [value]="t">{{ t }}</nb-option>
             </nb-select>
           </div>
+
+
 
           <button nbButton shape="round" size="small" status="danger" outline style="float: right" (click)="getGraphJson(time)">Get Data</button>
         </nb-card-body>

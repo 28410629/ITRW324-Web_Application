@@ -112,6 +112,11 @@ export class LocationOverviewComponent {
   getLocationList() {
     this.countries = this.locationUtil.getCountry();
     this.provinces = this.locationUtil.getProvinceList(this.countries[0]);
+    this.selectedProvince = this.provinces[0];
+    this.populateCities();
+  }
+  populateCities() {
+    this.cities = this.locationUtil.getCityList(this.countries[0], this.selectedProvince);
   }
 
   getGraphJson(time) {
