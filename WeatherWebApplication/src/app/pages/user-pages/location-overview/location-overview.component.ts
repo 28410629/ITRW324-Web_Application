@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
-import {StationDetailReading} from '../../../models/station-detail.model';
 import {LocalDataSource} from 'ng2-smart-table';
-import {StationDetailService} from '../../../services/station-detail.service';
 import * as moment from 'moment-timezone';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {LocationSservice} from '../../../services/location.sservice';
