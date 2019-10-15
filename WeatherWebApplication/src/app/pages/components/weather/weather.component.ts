@@ -100,7 +100,7 @@ export class WeatherComponent {
     let f1;
     try {
       f1 = +this.statusReadings.ForecastDay1;
-      f1 = Math.round(f1);
+      f1 = Math.round(f1 * 10) / 10;
     } catch (e) {
       return '0';
     }
@@ -111,7 +111,7 @@ export class WeatherComponent {
     let f2;
     try {
       f2 = +this.statusReadings.ForecastDay2;
-      f2 = Math.round(f2);
+      f2 = Math.round(f2 * 10) / 10;
     } catch (e) {
       return '0';
     }
@@ -122,7 +122,7 @@ export class WeatherComponent {
     let f3;
     try {
       f3 = +this.statusReadings.ForecastDay3;
-      f3 = Math.round(f3);
+      f3 = Math.round(f3 * 10) / 10;
     } catch (e) {
       return '0';
     }
@@ -133,7 +133,7 @@ export class WeatherComponent {
     let f4;
     try {
       f4 = +this.statusReadings.ForecastDay4;
-      f4 = Math.round(f4);
+      f4 = Math.round(f4 * 10) / 10;
     } catch (e) {
       return '0';
     }
