@@ -14,9 +14,6 @@ export class WeatherComponent implements OnInit {
   statusReadings: AverageReadingEntity;
 
   @Input()
-  stationid;
-
-  @Input()
   isSelectable = false;
   @Output() updateFavs = new EventEmitter();
   checked;
@@ -170,7 +167,7 @@ export class WeatherComponent implements OnInit {
   }
 
   openStationDetail() {
-    this.router.navigate(['pages/station-details/' + this.stationid + '/']);
+    this.router.navigate(['pages/station-details/' + this.statusReadings.stationName + '/']);
   }
 
   toggle(checked: boolean) {
@@ -179,9 +176,9 @@ export class WeatherComponent implements OnInit {
   }
 
   _sendDataToParent() {
-    this.updateFavs.emit(this.stationid);
+    this.updateFavs.emit(this.statusReadings.stationName);
   }
   checkForFav() {
-    return this.listOfFavs.includes(Number(this.stationid));
+    return this.listOfFavs.includes(Number(this.statusReadings.stationName));
   }
 }
