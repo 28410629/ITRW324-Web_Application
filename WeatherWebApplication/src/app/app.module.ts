@@ -38,7 +38,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { FormsModule } from '@angular/forms';
 
 // services
-import { AverageReadingService } from './services/AverageReadingService';
+import { StationStatusService } from './services/station-status.service';
 
 // common
 import { FetchJsonUtilities } from './common/fetch-json.utilities';
@@ -47,7 +47,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {StationListService} from './services/station-list.service';
 import {RawReadingsService} from './services/raw-readings.service';
 import {LocationUtilities} from './common/location.utilities';
-import {LocationSservice} from './services/location.sservice';
+import {LocationService} from './services/location.service';
 
 @NgModule({
   declarations: [
@@ -85,13 +85,13 @@ import {LocationSservice} from './services/location.sservice';
   providers: [
     FetchJsonUtilities,
     LocationUtilities,
-    AverageReadingService,
+    StationStatusService,
     AuthGuard,
     AuthService,
     StationDetailService,
     StationListService,
     RawReadingsService,
-    LocationSservice,
+    LocationService,
   ],
   bootstrap: [AppComponent],
 })

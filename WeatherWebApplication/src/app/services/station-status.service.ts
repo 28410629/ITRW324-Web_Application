@@ -5,14 +5,13 @@ import { FetchJsonUtilities } from '../common/fetch-json.utilities';
 import {AverageReadingEntity, AverageReading} from '../models/averagereadings.model';
 
 @Injectable()
-export class AverageReadingService {
+export class StationStatusService {
   constructor(private common: FetchJsonUtilities) {
   }
 
-  public FetchAverageToday(stationid: string) {
-
-    return this.common.fetchJSON(
-      'https://weatherstationapi.ddns.net:5001/api/get/stationstatus/station?stationids=' + stationid)
+  public FetchAverageToday(stationids: string) {
+    return this.common.FetchJsonWithDate(
+      'https://weatherstationapi.ddns.net:5001/api/get/stationstatus/station?stationids=' + stationids)
       .pipe(map(responseData => {
           const data = {} as AverageReading;
           const readings: AverageReadingEntity[] = [];

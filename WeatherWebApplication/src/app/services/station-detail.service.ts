@@ -10,10 +10,9 @@ export class StationDetailService {
   }
 
   public FetchDayStationDetails(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/day?StationId=' + stationID
-      + '&Date=' + this.common.fetchLocalDateTime())
+      'api/get/stationdetail/station/day?StationId=' + stationID)
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];
@@ -28,10 +27,9 @@ export class StationDetailService {
   }
 
   public FetchWeekStationDetails(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/week?StationId=' + stationID
-      + '&Date=' + this.common.fetchLocalDateTime())
+      'api/get/stationdetail/station/week?StationId=' + stationID)
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];
@@ -46,10 +44,9 @@ export class StationDetailService {
   }
 
   public FetchMonthStationDetails(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/month?StationId=' + stationID
-      + '&Date=' + this.common.fetchLocalDateTime())
+      'api/get/stationdetail/station/month?StationId=' + stationID)
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];
@@ -64,10 +61,9 @@ export class StationDetailService {
   }
 
   public FetchYearStationDetails(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
-      'api/get/temperaturereadingsovertime/station/year?StationId=' + stationID
-      + '&Date=' + this.common.fetchLocalDateTime())
+      'api/get/stationdetail/station/year?StationId=' + stationID)
       .pipe(map(responseData => {
         const data = {} as StationDetailModel;
         const readings: StationDetailReading[] = [];

@@ -9,7 +9,7 @@ export class StationListService {
   }
 
   public FetchStationList() {
-    return this.common.fetchJSON(
+    return this.common.FetchJson(
       'https://weatherstationapi.ddns.net:5001/api/get/stationlist/all')
       .pipe(map(responseData => {
         const data = {} as StationList;
