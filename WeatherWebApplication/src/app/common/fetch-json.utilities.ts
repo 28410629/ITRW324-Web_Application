@@ -7,13 +7,19 @@ import * as moment from 'moment-timezone';
 export class FetchJsonUtilities {
   constructor(private http: HttpClient) {}
 
-  public fetchJSON(url): Observable<any> {
+  public FetchJson(url): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const apiURL = url;
     return this.http.get<any>(apiURL, { headers });
   }
 
-  public fetchLocalDateTime(): string {
+  public FetchJsonWithDate(url): Observable<any> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const apiURL = url + '&Date=' + this.FetchLocalDateTime();
+    return this.http.get<any>(apiURL, { headers });
+  }
+
+  private FetchLocalDateTime(): string {
     return moment(new Date()).tz('Atlantic/Azores').format().toString();
     // returns +00:00 time.
   }

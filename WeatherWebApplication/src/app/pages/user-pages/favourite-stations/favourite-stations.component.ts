@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AverageReadingService} from '../../../services/AverageReadingService';
+import {StationStatusService} from '../../../services/station-status.service';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
@@ -20,7 +20,7 @@ export class FavouriteStationsComponent implements OnInit {
   user: User;
   useruid: string;
   favStations: Number[] = [];
-  constructor(private service: AverageReadingService,  private authService: AuthService) {
+  constructor(private service: StationStatusService, private authService: AuthService) {
     const storageuser: User = JSON.parse(localStorage.getItem('user'));
     this.useruid = storageuser.uid;
   }

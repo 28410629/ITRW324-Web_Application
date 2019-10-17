@@ -9,7 +9,7 @@ export class RawReadingsService {
   }
 
   public FetchDayStationRawReadings(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
       'api/get/rawreadings/station/day?StationId=' + stationID)
       .pipe(map(responseData => {
@@ -26,7 +26,7 @@ export class RawReadingsService {
   }
 
   public FetchWeekStationRawReadings(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
       'api/get/rawreadings/station/week?StationId=' + stationID)
       .pipe(map(responseData => {
@@ -43,7 +43,7 @@ export class RawReadingsService {
   }
 
   public FetchMonthStationRawReadings(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
       'api/get/rawreadings/station/month?StationId=' + stationID)
       .pipe(map(responseData => {
@@ -60,7 +60,7 @@ export class RawReadingsService {
   }
 
   public FetchYearStationRawReadings(stationID: string) {
-    return this.common.fetchJSON(
+    return this.common.FetchJsonWithDate(
       'https://weatherstationapi.ddns.net:5001/' +
       'api/get/rawreadings/station/year?StationId=' + stationID)
       .pipe(map(responseData => {

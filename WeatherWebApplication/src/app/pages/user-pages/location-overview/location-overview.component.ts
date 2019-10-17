@@ -3,7 +3,7 @@ import {NbThemeService} from '@nebular/theme';
 import {LocalDataSource} from 'ng2-smart-table';
 import * as moment from 'moment-timezone';
 import {LocationUtilities} from '../../../common/location.utilities';
-import {LocationSservice} from '../../../services/location.sservice';
+import {LocationService} from '../../../services/location.service';
 import {Reading} from '../../../models/location-overview.model';
 
 @Component({
@@ -96,7 +96,7 @@ export class LocationOverviewComponent {
 
 
   constructor(private theme: NbThemeService,
-              private service: LocationSservice,
+              private service: LocationService,
               private locationUtil: LocationUtilities) {
     // get available stations
     this.getLocationList();

@@ -1,4 +1,4 @@
-<nb-card>
+<nb-card class="not_this_card">
   <nb-card-header>
     Github Repositories
   </nb-card-header>
@@ -7,46 +7,97 @@
 <div class="row">
 
   <div class="col-sm">
-    <nb-card  status="info" class="">
-      <nb-card-header>
-        Station Units Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
-      </nb-card-header>
-      <nb-card-body>
-        Repository for the micro-controllers that are used to make a Low Cost Weather Station, written in C++.
-        The components needed found in the sidebar.
-      </nb-card-body>
-      <nb-card-footer>
-        <a style="float: right" href="https://github.com/coenraadhuman/WeatherStation_Unit">Go to Repository</a>
-      </nb-card-footer>
-    </nb-card>
+    <nb-flip-card>
+      <nb-card-front>
+        <nb-card  status="info">
+          <nb-card-header>
+            Station Units Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
+          </nb-card-header>
+          <nb-card-body>
+            Repository for Weather Station Units
+          </nb-card-body>
+          <nb-card-footer>
+            <a>More Info</a>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-front>
+      <nb-card-back>
+        <nb-card  status="info">
+          <nb-card-header>
+            Station Units Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
+          </nb-card-header>
+          <nb-card-body>
+            Repository for the micro-controllers that are used to make a Low Cost Weather Station, written in C++.
+            The components needed found in the sidebar.
+          </nb-card-body>
+          <nb-card-footer>
+            <a style="float: left" href="https://github.com/coenraadhuman/WeatherStation_Unit">Go to Repository</a>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-back>
+    </nb-flip-card>
   </div>
 
   <div class="col-sm">
-    <nb-card status="success" class="cards">
-      <nb-card-header>
-        Station Frontend Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
-      </nb-card-header>
-      <nb-card-body>
-        Repository for Angular front-end used to display Anchormenstations website and data retrieved from the weather stations.
-      </nb-card-body>
-      <nb-card-footer>
-        <a style="float: right" href="https://github.com/coenraadhuman/WeatherStation_Angular">Go to Repository</a>
-      </nb-card-footer>
-    </nb-card>
+    <nb-flip-card>
+      <nb-card-front>
+        <nb-card  status="success">
+          <nb-card-header>
+            Station Frontend Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
+          </nb-card-header>
+          <nb-card-body>
+            Repository for Weather Station Frontend
+          </nb-card-body>
+          <nb-card-footer>
+            <a>More Info</a>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-front>
+      <nb-card-back>
+        <nb-card  status="success">
+          <nb-card-header>
+            SStation Frontend Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
+          </nb-card-header>
+          <nb-card-body>
+            Repository for Angular front-end used to display Anchormenstations website and data retrieved from the weather stations.
+          </nb-card-body>
+          <nb-card-footer>
+            <a style="float: left" href="https://github.com/coenraadhuman/WeatherStation_Angular">Go to Repository</a>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-back>
+    </nb-flip-card>
   </div>
 
   <div class="col-sm">
-    <nb-card status="warning" class="cards">
-      <nb-card-header>
-        Station Backend Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
-      </nb-card-header>
-      <nb-card-body>
-        Repository for Dotnet Core API backend used to process readings retrieved from weather stations and, using entity framework as the structure.
-      </nb-card-body>
-      <nb-card-footer>
-        <a style="float: right" href="https://github.com/coenraadhuman/WeatherStation_API">Go to Repository</a>
-      </nb-card-footer>
-    </nb-card>
+    <nb-flip-card>
+      <nb-card-front>
+        <nb-card  status="warning">
+          <nb-card-header>
+            Station Backend Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
+          </nb-card-header>
+          <nb-card-body>
+            Repository for Weather Station Backend
+          </nb-card-body>
+          <nb-card-footer>
+            <a>More Info</a>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-front>
+      <nb-card-back>
+        <nb-card  status="warning">
+          <nb-card-header>
+            Station Backend Repositories <a target="_blank" class="ion ion-social-github" style="float: right"></a>
+          </nb-card-header>
+          <nb-card-body>
+            Repository for Dotnet Core API backend used to process readings retrieved from weather stations and, using entity framework as the structure.
+          </nb-card-body>
+          <nb-card-footer>
+            <a style="float: left" href="https://github.com/coenraadhuman/WeatherStation_API">Go to Repository</a>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-back>
+    </nb-flip-card>
   </div>
 
 </div>
