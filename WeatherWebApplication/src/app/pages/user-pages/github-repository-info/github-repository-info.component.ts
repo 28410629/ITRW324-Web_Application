@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['github-repository-info.component.scss'],
 })
 export class GithubRepositoryInfoComponent {
-  constructor() {}
+  constructor() {
+  }
 }
