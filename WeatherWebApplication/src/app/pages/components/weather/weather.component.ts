@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {Router} from '@angular/router';
 
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './weather.component.html',
 })
 
-export class WeatherComponent {
+export class WeatherComponent implements OnInit {
 
   @Input()
   statusReadings: AverageReadingEntity;
@@ -22,11 +22,13 @@ export class WeatherComponent {
   checked;
   @Input()
   listOfFavs = [];
-
+  isLoaded = false;
   constructor(public router: Router) {
   }
 
-
+  ngOnInit() {
+    this.isLoaded = true;
+  }
   private weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   getDayFromNow(daysFromNow: number) {
     const date = new Date();
@@ -41,7 +43,7 @@ export class WeatherComponent {
   getAvgTemp() {
     let temp;
     try {
-      temp = +this.statusReadings.AverageTemp;
+      temp = +this.statusReadings.averageTemp;
       temp = Math.round(temp);
     } catch (e) {
       return '0';
@@ -52,7 +54,7 @@ export class WeatherComponent {
   getAvgHumid() {
     let hum;
     try {
-      hum = +this.statusReadings.Humidity;
+      hum = +this.statusReadings.humidity;
       hum = Math.round(hum);
     } catch (e) {
       return '0';
@@ -63,7 +65,7 @@ export class WeatherComponent {
   getMaxTemp() {
     let mx;
     try {
-      mx = +this.statusReadings.MaxTemp;
+      mx = +this.statusReadings.maxTemp;
       mx = Math.round(mx);
     } catch (e) {
       return '0';
@@ -74,7 +76,7 @@ export class WeatherComponent {
   getMinTemp() {
     let min;
     try {
-      min = +this.statusReadings.MinTemp;
+      min = +this.statusReadings.minTemp;
       min = Math.round(min);
     } catch (e) {
       return '0';
@@ -85,7 +87,7 @@ export class WeatherComponent {
   getLight() {
     let lig;
     try {
-      lig = +this.statusReadings.AmbientLight;
+      lig = +this.statusReadings.ambientLight;
       lig *= 1.0;
       lig = lig / 1024.0 * 100.0;
       lig = Math.round(lig);
@@ -99,7 +101,7 @@ export class WeatherComponent {
   getForecast1() {
     let f1;
     try {
-      f1 = +this.statusReadings.ForecastDay1;
+      f1 = +this.statusReadings.forecastDay1;
       f1 = Math.round(f1 * 10) / 10;
     } catch (e) {
       return '0';
@@ -110,7 +112,7 @@ export class WeatherComponent {
   getForecast2() {
     let f2;
     try {
-      f2 = +this.statusReadings.ForecastDay2;
+      f2 = +this.statusReadings.forecastDay2;
       f2 = Math.round(f2 * 10) / 10;
     } catch (e) {
       return '0';
@@ -121,7 +123,7 @@ export class WeatherComponent {
   getForecast3() {
     let f3;
     try {
-      f3 = +this.statusReadings.ForecastDay3;
+      f3 = +this.statusReadings.forecastDay3;
       f3 = Math.round(f3 * 10) / 10;
     } catch (e) {
       return '0';
@@ -132,7 +134,7 @@ export class WeatherComponent {
   getForecast4() {
     let f4;
     try {
-      f4 = +this.statusReadings.ForecastDay4;
+      f4 = +this.statusReadings.forecastDay4;
       f4 = Math.round(f4 * 10) / 10;
     } catch (e) {
       return '0';
@@ -143,7 +145,7 @@ export class WeatherComponent {
   getStationName() {
     let name;
     try {
-       name = this.statusReadings.StationName;
+       name = this.statusReadings.stationName;
       if (name === '')
         return 'Station X  - Error';
     } catch (e) {
