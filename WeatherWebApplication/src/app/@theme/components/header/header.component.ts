@@ -99,7 +99,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription != null) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   changeTheme(themeName: string) {

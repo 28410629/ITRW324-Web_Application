@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StationStatusService} from '../../../services/station-status.service';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -10,8 +11,9 @@ import {AuthService} from '../../../auth/auth-service.service';
   templateUrl: 'favourite-stations.component.html',
   styleUrls: ['favourite-stations.component.scss'],
 })
-export class FavouriteStationsComponent implements OnInit {
-
+export class FavouriteStationsComponent implements OnInit, OnDestroy {
+  userSubscription: Subscription;
+  loaderMessage: string = 'Loading content.';
   statusReadings: AverageReadingEntity[] = [];
   isLoaded: boolean = false;
   // time series selection
@@ -26,13 +28,16 @@ export class FavouriteStationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.authService.GetUserProfileData(this.useruid)
+    this.userSubscription = this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
           this.user = responseData;
-          this.favStations = this.user.favStations;
-          this.getData();
+          this.favStations = responseData.favStations;
+          if (responseData.favStations.length > 0) {
+            this.getData();
+          } else {
+            this.loaderMessage = 'No favourite stations selected.';
+          }
         });
   }
 
@@ -55,7 +60,12 @@ export class FavouriteStationsComponent implements OnInit {
     } else {
       this.isLoaded = true;
     }
+  }
 
+  ngOnDestroy(): void {
+    if (this.userSubscription != null) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
 }

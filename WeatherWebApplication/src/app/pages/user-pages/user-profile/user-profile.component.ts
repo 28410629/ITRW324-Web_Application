@@ -78,6 +78,8 @@ export class UserProfileComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription != null) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }

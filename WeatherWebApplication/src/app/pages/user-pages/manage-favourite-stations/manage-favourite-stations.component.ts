@@ -1,16 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StationStatusService} from '../../../services/station-status.service';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {AuthService} from '../../../auth/auth-service.service';
 import {User} from '../../../models/user.model';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'ngx-manage-favourite-stations',
   templateUrl: 'manage-favourite-stations.component.html',
   styleUrls: ['manage-favourite-stations.component.scss'],
 })
-export class ManageFavouriteStationsComponent implements OnInit {
-
+export class ManageFavouriteStationsComponent implements OnInit, OnDestroy {
+  loaderMessage: string = 'Loading user settings.';
+  userSubscription: Subscription;
   statusReadings: AverageReadingEntity[] = [];
   isLoaded: boolean = false;
   firstLoad: boolean = true;
@@ -25,9 +27,10 @@ export class ManageFavouriteStationsComponent implements OnInit {
     this.useruid = storageuser.uid;
   }
   ngOnInit(): void {
-    this.authService.GetUserProfileData(this.useruid)
+    this.userSubscription = this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
+          this.loaderMessage = 'Loading content.';
           this.user = responseData;
           this.favStations = this.user.favStations;
           if (this.firstLoad) {
@@ -56,5 +59,11 @@ export class ManageFavouriteStationsComponent implements OnInit {
       this.favStations.push(Number(newFavs));
     }
     this.authService.UpdateUserFavourites(this.favStations);
+  }
+
+  ngOnDestroy() {
+    if (this.userSubscription != null) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }
