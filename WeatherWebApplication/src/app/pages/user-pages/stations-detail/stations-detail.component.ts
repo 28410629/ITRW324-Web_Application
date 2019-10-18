@@ -214,7 +214,7 @@ export class StationsDetailComponent {
       // air
       this.airdataavg.push(Number(this.json[i].airPressureReadingAverage));
       // humidity
-      this.humdataavg.push(Number(this.json[i].humiditiyReadingAverage));
+      this.humdataavg.push(Number(this.json[i].humidityReadingAverage));
       // light
       this.lightdataavg.push(Number(this.json[i].ambientLightReadingAverage) / 10.24);
 
@@ -222,7 +222,7 @@ export class StationsDetailComponent {
       // air
       this.airdatamin.push(Number(this.json[i].airPressureReadingMin));
       // humidity
-      this.humdatamin.push(Number(this.json[i].humiditiyReadingMin));
+      this.humdatamin.push(Number(this.json[i].humidityReadingMin));
       // light
       this.lightdatamin.push(Number(this.json[i].ambientLightReadingMin) / 10.24);
 
@@ -230,7 +230,7 @@ export class StationsDetailComponent {
       // air
       this.airdatamax.push(Number(this.json[i].airPressureReadingMax));
       // humidity
-      this.humdatamax.push(Number(this.json[i].humiditiyReadingMax));
+      this.humdatamax.push(Number(this.json[i].humidityReadingMax));
       // light
       this.lightdatamax.push(Number(this.json[i].ambientLightReadingMax) / 10.24);
 
@@ -277,9 +277,9 @@ export class StationsDetailComponent {
       // hum side
       this.humSide.push({
         data: sidedate,
-        average: Number(this.json[i].humiditiyReadingAverage).toFixed(2),
-        min: Number(this.json[i].humiditiyReadingMin).toFixed(2),
-        max: Number(this.json[i].humiditiyReadingMax).toFixed(2),
+        average: Number(this.json[i].humidityReadingAverage).toFixed(2),
+        min: Number(this.json[i].humidityReadingMin).toFixed(2),
+        max: Number(this.json[i].humidityReadingMax).toFixed(2),
       });
       // press side
       this.pressSide.push({
