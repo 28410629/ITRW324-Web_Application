@@ -114,7 +114,7 @@ export class LocationUtilities {
     this.countries.Countries.forEach(x => {
       arr.push(x.country);
     });
-    return arr;
+    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));
   }
 
   public getProvinceList(selectedCountry): string[] {
@@ -126,7 +126,7 @@ export class LocationUtilities {
         });
       }
     });
-    return arr;
+    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));;
   }
 
   public getCityList(selectedCountry, selectedProvince): string[] {
@@ -142,6 +142,6 @@ export class LocationUtilities {
         });
       }
     });
-    return arr;
+    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));;
   }
 }
