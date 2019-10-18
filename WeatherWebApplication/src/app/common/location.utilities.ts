@@ -126,7 +126,7 @@ export class LocationUtilities {
         });
       }
     });
-    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));;
+    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));
   }
 
   public getCityList(selectedCountry, selectedProvince): string[] {
@@ -142,6 +142,6 @@ export class LocationUtilities {
         });
       }
     });
-    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));;
+    return arr.sort((a, b) => (a > b) ? 1 : ((b > a) ? -1 : 0));
   }
 }
