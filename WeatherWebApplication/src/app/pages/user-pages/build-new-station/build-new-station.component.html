@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
 <div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
+  <nb-card class="w3-left w3-animate-bottom " style="width: 100%">
     <nb-card-header>
       Weather Station Installation Guide
     </nb-card-header>
@@ -8,28 +10,23 @@
       An easy to build and install guide to build your own cheap Weather Station
     </nb-card-body>
   </nb-card>
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
+</div>
+<div class="row w3-container">
+  <nb-card class="w3-left w3-animate-bottom" style="width: 100%" [size]="'medium'">
     <nb-card-header>
       Hardware-Requirements
     </nb-card-header>
     <nb-card-body>
-      <ul>
-        <li>Veraboard</li>
-        <li>NodeMCU ESP8266 E-12</li>
-        <li>BME280 Sensor</li>
-        <li>TEMT6000 Light Sensor</li>
-        <li>18650 TP4056 Lithium Battery Charger</li>
-        <li>Solar Panel (0.66W, 5.5V, 120mAh)</li>
-        <li>NCR18650A Battery (3.6V, 3100mAh)</li>
-        <li>8 jumper cables</li>
-        <li>2 copper wires</li>
-        <li>7 male header pins</li>
-        <li>Soldering Iron & Soldering</li>
-        <li>Computer thats not completely shyt</li>
-        <li>Working Internet</li>
-      </ul>
+      <nb-list>
+        <nb-list-item *ngFor="let hComp of hardwareComponents">
+          {{ hComp }}
+          <nb-checkbox style="float: right"></nb-checkbox>
+        </nb-list-item>
+      </nb-list>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Skill-Requirements
@@ -43,6 +40,8 @@
       </ul>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Time-Requirements
@@ -54,6 +53,8 @@
       </ul>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Software-Requirements
@@ -64,6 +65,8 @@
       </ul>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Hardware Installation
@@ -72,7 +75,8 @@
       Please se attached figure for any reference to NodeMCU orientation:
       <br>
       <br>
-      <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png">
+      <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png"
+           style="width: 100px; height: 100px">
       <ul>
         <br>
         <li>Solder 4 male header pins to BME Sensor</li>
@@ -101,6 +105,8 @@
       </ul>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card>
     <nb-card-header>
       Script Flashing
@@ -123,6 +129,8 @@
       </ul>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Battery Installation
@@ -130,6 +138,8 @@
     <nb-card-body>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Veraboard Installation
@@ -137,6 +147,8 @@
     <nb-card-body>
     </nb-card-body>
   </nb-card>
+</div>
+<div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
       Casing Installation
