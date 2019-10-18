@@ -15,7 +15,7 @@ import {
   NbButtonModule,
   NbCheckboxModule,
   NbDatepickerModule,
-  NbDialogModule,
+  NbDialogModule, NbIconModule,
   NbMenuModule,
   NbSidebarModule,
   NbSpinnerModule,
@@ -50,6 +50,7 @@ import {RawReadingsService} from './services/raw-readings.service';
 import {LocationUtilities} from './common/location.utilities';
 import {LocationService} from './services/location.service';
 import {RouteLoaderService} from './loader/route-loader.service';
+import {WelcomeComponent} from './auth/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import {RouteLoaderService} from './loader/route-loader.service';
     RegisterComponent,
     RequestPasswordComponent,
     ResetPasswordComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,7 @@ import {RouteLoaderService} from './loader/route-loader.service';
     NbCheckboxModule,
     NbButtonModule,
     NbSpinnerModule,
+    NbIconModule,
   ],
   providers: [
     FetchJsonUtilities,

@@ -16,6 +16,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
 import {RequestPasswordComponent} from './auth/request-password/request-password.component';
 import {RouteLoaderService} from './loader/route-loader.service';
+import {WelcomeComponent} from './auth/welcome/welcome.component';
 
 // @ts-ignore
 const routes: Routes = [
@@ -32,7 +33,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: LoginComponent,
+        component: WelcomeComponent,
       },
       {
         path: 'login',

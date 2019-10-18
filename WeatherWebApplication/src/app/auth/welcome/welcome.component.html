@@ -1,0 +1,24 @@
+<nb-auth-block>
+  <h2 class="title">Welcome to Anchormen Stations</h2>
+  <div class="text-center">
+    <nb-icon icon="sun-outline" style="font-size: 3rem;"></nb-icon>
+    <nb-icon icon="thermometer-plus-outline" style="font-size: 3rem;"></nb-icon>
+    <nb-icon icon="umbrella-outline" style="font-size: 3rem;"></nb-icon>
+  </div>
+  <div class="text-center" style="margin-top: 10px">
+    <p>This project aims to create a community of weather enthusiasts that would like to build their own cheap weather station by using our free tools and guides.</p>
+  </div>
+  <div class="text-center">
+    <button (click)="redirectToRegister()" nbButton status="primary" size="medium" [nbSpinner]="loadingMediumGroup" nbSpinnerStatus="primary" nbSpinnerSize="tiny" nbSpinnerMessage="">
+      Join Now!
+    </button>
+  </div>
+  <div class="text-center" style="margin-top: 10px">
+    <p>or</p>
+  </div>
+  <div class="text-center">
+    <button (click)="redirectToLogin()" nbButton status="primary" size="medium" [nbSpinner]="loadingMediumGroup" nbSpinnerStatus="primary" nbSpinnerSize="tiny" nbSpinnerMessage="">
+      Login
+    </button>
+  </div>
+</nb-auth-block>
