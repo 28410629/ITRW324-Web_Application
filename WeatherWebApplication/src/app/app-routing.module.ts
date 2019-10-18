@@ -15,12 +15,14 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {ResetPasswordComponent} from './auth/reset-password/reset-password.component';
 import {RequestPasswordComponent} from './auth/request-password/request-password.component';
+import {RouteLoaderService} from './loader/route-loader.service';
 
 // @ts-ignore
 const routes: Routes = [
   {
     path: 'pages',
     canActivate: [AuthGuard],
+    resolve: { message: RouteLoaderService },
     loadChildren: () => import('app/pages/pages.module')
       .then(m => m.PagesModule),
   },
