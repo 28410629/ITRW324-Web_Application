@@ -3,8 +3,8 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import {User} from '../../../models/user.model';
+import {Subject, Subscription} from 'rxjs';
+import {FirebaseUser, User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
@@ -13,6 +13,8 @@ import {AuthService} from '../../../auth/auth-service.service';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+
+  userSubscription: Subscription;
 
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = false;
@@ -54,7 +56,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private authService: AuthService) {
 
     // Set uid for user
-    const storageuser: User = JSON.parse(localStorage.getItem('user'));
+    const storageuser: FirebaseUser = JSON.parse(localStorage.getItem('user'));
+    const userdata: User = JSON.parse(localStorage.getItem('userdata'));
+    this.displayUser = { name: userdata.displayName, picture: userdata.photoURL};
+    this.themeService.changeTheme(userdata.theme);
     this.useruid = storageuser.uid;
   }
 
@@ -65,7 +70,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     //   .pipe(takeUntil(this.destroy$))
     //   .subscribe((users: any) => this.user = users.nick);
 
-    this.authService.GetUserProfileData(this.useruid)
+    this.userSubscription = this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
           this.user = responseData;
@@ -94,6 +99,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+    if (this.userSubscription != null) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   changeTheme(themeName: string) {

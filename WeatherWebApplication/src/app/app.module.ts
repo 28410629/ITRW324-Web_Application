@@ -13,11 +13,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
   NbButtonModule,
-  NbChatModule, NbCheckboxModule,
+  NbCheckboxModule,
   NbDatepickerModule,
-  NbDialogModule,
+  NbDialogModule, NbIconModule,
   NbMenuModule,
-  NbSidebarModule, NbSpinnerModule,
+  NbSidebarModule,
+  NbSpinnerModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
@@ -48,6 +49,8 @@ import {StationListService} from './services/station-list.service';
 import {RawReadingsService} from './services/raw-readings.service';
 import {LocationUtilities} from './common/location.utilities';
 import {LocationService} from './services/location.service';
+import {RouteLoaderService} from './loader/route-loader.service';
+import {WelcomeComponent} from './auth/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,7 @@ import {LocationService} from './services/location.service';
     RegisterComponent,
     RequestPasswordComponent,
     ResetPasswordComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,9 +73,6 @@ import {LocationService} from './services/location.service';
     NbDialogModule.forRoot(),
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
-    NbChatModule.forRoot({
-      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
-    }),
     CoreModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -81,6 +82,7 @@ import {LocationService} from './services/location.service';
     NbCheckboxModule,
     NbButtonModule,
     NbSpinnerModule,
+    NbIconModule,
   ],
   providers: [
     FetchJsonUtilities,
@@ -92,6 +94,7 @@ import {LocationService} from './services/location.service';
     StationListService,
     RawReadingsService,
     LocationService,
+    RouteLoaderService,
   ],
   bootstrap: [AppComponent],
 })
