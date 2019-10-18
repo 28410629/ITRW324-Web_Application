@@ -3,17 +3,17 @@ export interface StationDetailModel {
 }
 export interface  StationDetailReading {
   stationId: number;
-  temperatureReadingAverage: string;
-  temperatureReadingMin: string;
-  temperatureReadingMax: string;
-  humiditiyReadingAverage: string;
-  humiditiyReadingMin: string;
-  humiditiyReadingMax: string;
-  airPressureReadingAverage: string;
-  airPressureReadingMin: string;
-  airPressureReadingMax: string;
-  ambientLightReadingAverage: string;
-  ambientLightReadingMin: string;
-  ambientLightReadingMax: string;
-  readingTime: string;
+  temperatureReadingAverage: number;
+  temperatureReadingMin: number;
+  temperatureReadingMax: number;
+  humidityReadingAverage: number;
+  humidityReadingMin: number;
+  humidityReadingMax: number;
+  airPressureReadingAverage: number;
+  airPressureReadingMin: number;
+  airPressureReadingMax: number;
+  ambientLightReadingAverage: number;
+  ambientLightReadingMin: number;
+  ambientLightReadingMax: number;
+  readingTime: Date;
 }
