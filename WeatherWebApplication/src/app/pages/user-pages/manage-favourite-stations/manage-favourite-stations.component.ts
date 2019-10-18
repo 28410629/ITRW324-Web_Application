@@ -3,6 +3,8 @@ import {StationStatusService} from '../../../services/station-status.service';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {AuthService} from '../../../auth/auth-service.service';
 import {User} from '../../../models/user.model';
+import {StationListService} from '../../../services/station-list.service';
+import {Station} from '../../../models/station-list.model';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -20,9 +22,14 @@ export class ManageFavouriteStationsComponent implements OnInit, OnDestroy {
   type = 'day';
   types = ['day', 'week', 'month', 'year'];
   user: User;
+  stationlist: Station[];
+  station = '';
+  stations = [];
   useruid: string;
   favStations: Number[] = [];
-  constructor(private service: StationStatusService, private authService: AuthService) {
+  constructor(private service: StationStatusService,
+              private authService: AuthService,
+              private stationService: StationListService) {
     const storageuser: User = JSON.parse(localStorage.getItem('user'));
     this.useruid = storageuser.uid;
   }
@@ -34,13 +41,34 @@ export class ManageFavouriteStationsComponent implements OnInit, OnDestroy {
           this.user = responseData;
           this.favStations = this.user.favStations;
           if (this.firstLoad) {
-            this.getData();
+            this.getStationList();
           }
         });
   }
+  getStationList() {
+    this.isLoaded = false;
+    this.stationService.FetchStationList()
+      .subscribe(data => {
+        this.stationlist = data.stations;
+        if (data.stations != null) {
+          this.station = this.stationlist[0].stationId.toString();
+          this.stationlist.forEach(x => {
+            this.stations.push(x.stationId.toString());
+          });
+          this.getData();
+        } else {
+          this.getStationList();
+        }
+      });
+  }
   getData() {
     this.isLoaded = false;
-    this.service.FetchAverageToday('2347795-10359807-10359964').subscribe( // update this to ALL STATIONS in future
+    let StationString = '';
+    for (let i = 0; i < this.stations.length; i++) {
+      StationString = StationString + this.stations[i] + '-';
+    }
+    StationString = StationString.substr(0, StationString.lastIndexOf('-'));
+    this.service.FetchAverageToday(StationString).subscribe( // update this to ALL STATIONS in future
       data => {
         this.statusReadings = data.avgReadings;
         this.isLoaded = true;
