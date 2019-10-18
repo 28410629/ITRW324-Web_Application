@@ -4,17 +4,22 @@
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom " style="width: 100%">
     <nb-card-header>
-      Weather Station Installation Guide
+      <h3>Weather Station Installation Guide</h3>
     </nb-card-header>
     <nb-card-body>
       An easy to build and install guide to build your own cheap Weather Station
     </nb-card-body>
   </nb-card>
 </div>
+<nb-card>
+  <nb-card-body>
+    <nb-progress-bar [value]="50" status="primary" [displayValue]="true"></nb-progress-bar>
+  </nb-card-body>
+</nb-card>
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%" [size]="'medium'">
     <nb-card-header>
-      Hardware-Requirements
+      <h3>Hardware-Requirements</h3>
     </nb-card-header>
     <nb-card-body>
       <nb-list>
@@ -29,7 +34,7 @@
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
-      Skill-Requirements
+      <h3>Skill-Requirements</h3>
     </nb-card-header>
     <nb-card-body>
       <ul>
@@ -44,7 +49,7 @@
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
-      Time-Requirements
+      <h3>Time-Requirements</h3>
     </nb-card-header>
     <nb-card-body>
       <ul>
@@ -57,11 +62,98 @@
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
-      Software-Requirements
+      <h3>Software-Requirements</h3>
     </nb-card-header>
     <nb-card-body>
+      <nb-list>
+        <nb-list-item>
+          Arduino IDE
+          <nb-checkbox style="float: right"></nb-checkbox>
+        </nb-list-item>
+      </nb-list>
+    </nb-card-body>
+  </nb-card>
+</div>
+<div class="row w3-container">
+  <nb-card class="w3-left w3-animate-bottom" style="width: 100%" [size]="'medium'">
+    <nb-card-header>
+      <h3>Hardware Installation</h3>
+    </nb-card-header>
+    <nb-card-body>
+      Please se attached figure for any reference to NodeMCU orientation:
+      <br>
+      <br>
+      <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png"
+           style="width: 350px; height: 350px">
       <ul>
-        <li>Arduino IDE</li>
+        <br>
+        <br>
+        <nb-card-header>
+          <h3>Step 1: Soldering Sensors</h3>
+        </nb-card-header>
+        <nb-list>
+          <nb-list-item *ngFor="let steps of hardwareInstallationStep1">
+            {{ steps }}
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+        </nb-list>
+        <br>
+        <nb-card-header>
+          <h3>Step 2: Connecting Sensors</h3>
+        </nb-card-header>
+        <br>
+        After soldering is done:
+        <br>
+        <br>
+        <nb-list>
+          <nb-list-item *ngFor="let steps of hardwareInstallationStep2">
+            {{ steps }}
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+        </nb-list>
+        <br>
+        <nb-card-header>
+          <h3>Step 2-A: Connecting BME280-Sensors</h3>
+        </nb-card-header>
+        <br>
+        After connecting jumpers, on BME280 Sensor connect:
+        <br>
+        <br>
+        <nb-list>
+          <nb-list-item *ngFor="let steps of hardwareInstallationStep2A">
+            {{ steps }}
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+        </nb-list>
+        <br>
+        <nb-card-header>
+          <h3>Step 2-B: Connecting TEMT6000 Light Sensor</h3>
+        </nb-card-header>
+        <br>
+        Afterwards, on TEMT6000 Light Sensor connect:
+        <br>
+        <br>
+        <nb-list>
+          <nb-list-item *ngFor="let steps of hardwareInstallationStep2B">
+            {{ steps }}
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+        </nb-list>
+
+        <br>
+        <nb-card-header>
+          <h3>Step 2-C: Enabling Deepsleep</h3>
+        </nb-card-header>
+        <br>
+        Afterwards, to enable deepsleep for minimizing battery consumption:
+        <br>
+        <br>
+        <nb-list>
+          <nb-list-item>
+            Connect D0 pin on left side of the NodeMCu to AST pin on right side of the NodeMCU
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+        </nb-list>
       </ul>
     </nb-card-body>
   </nb-card>
@@ -69,61 +161,35 @@
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
     <nb-card-header>
-      Hardware Installation
+      <h3>Script Flashing</h3>
     </nb-card-header>
     <nb-card-body>
-      Please se attached figure for any reference to NodeMCU orientation:
-      <br>
-      <br>
-      <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png"
-           style="width: 100px; height: 100px">
-      <ul>
-        <br>
-        <li>Solder 4 male header pins to BME Sensor</li>
-        <li>Solder 3 male header pins to TEMT Light Sensor</li>
-        <li>After soldering is done, connect 4 jumpers to BME Sensor and 3 to TEMT Light Sensor</li>
-        <br>
-        <li>After connecting jumpers, on BME280 Sensor connect:</li>
-        <ul>
-          <li>Connect VIN (VCC) pin on BME Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU</li>
-          <li>Connect GND pin on BME Sensor to GND pin on the right side of the NodeMCU</li>
-          <li>Connect SCL pin on BME Sensor to D1 pin on the right side of the NodeMCU</li>
-          <li>Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU </li>
-        </ul>
-        <br>
-        <li>Afterwards, on TEMT6000 Light Sensor connect:</li>
-        <ul>
-          <li>Connect S pin on TEMT Sensor to A000 pin on the left side of the NodeMCU</li>
-          <li>Connect G pin on TEMT Sensor to GND pin on the right side of the NodeMCU</li>
-          <li>Connect V pin on TEMT Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU</li>
-        </ul>
-        <br>
-        <li>Afterwards, to enable deepsleep for minimizing battery consumption:</li>
-        <ul>
-          <li>Connect D0 pin on left side of the NodeMCu to AST pin on right side of the NodeMCU</li>
-        </ul>
-      </ul>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card>
-    <nb-card-header>
-      Script Flashing
-    </nb-card-header>
-    <nb-card-body>
+      <nb-card-header>
+        <h3>Initial Setup:</h3>
+      </nb-card-header>
       <ul>
         <li>Install Arduino IDE, found here(link)</li>
         <li>Download Weather Station Unit script found here(link)</li>
         <li>Edit script with your personal bank account info, Account number, password, secrets and so on</li>
         <li>Connect Unit and Computer with USB, having data over USB</li>
         <br>
-        <li>In ArduinoIDE: </li>
-        <ul>
-          <li>Set port to COM5</li>
-          <li>Download necessary libraries</li>
-          <li>Compile and upload script to Unit</li>
-        </ul>
+        <nb-card-header>
+          <h3>ArduinoIDE flashing:</h3>
+        </nb-card-header>
+        <nb-list>
+          <nb-list-item>
+            Set port to COM5
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+          <nb-list-item>
+            Download necessary libraries
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+          <nb-list-item>
+            Compile and upload script to Unit
+            <nb-checkbox style="float: right"></nb-checkbox>
+          </nb-list-item>
+        </nb-list>
         <br>
         <li>Unit will now send JSON to our server</li>
       </ul>
