@@ -13,7 +13,7 @@
 </div>
 <nb-card>
   <nb-card-body>
-    <nb-progress-bar [value]="50" status="primary" [displayValue]="true"></nb-progress-bar>
+    <nb-progress-bar [value]="percentageComplete" status="primary" [displayValue]="true"></nb-progress-bar>
   </nb-card-body>
 </nb-card>
 <div class="row w3-container">
@@ -25,7 +25,7 @@
       <nb-list>
         <nb-list-item *ngFor="let hComp of hardwareComponents">
           {{ hComp }}
-          <nb-checkbox style="float: right"></nb-checkbox>
+          <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
         </nb-list-item>
       </nb-list>
     </nb-card-body>
@@ -94,7 +94,7 @@
         <nb-list>
           <nb-list-item *ngFor="let steps of hardwareInstallationStep1">
             {{ steps }}
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -108,7 +108,7 @@
         <nb-list>
           <nb-list-item *ngFor="let steps of hardwareInstallationStep2">
             {{ steps }}
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -122,7 +122,7 @@
         <nb-list>
           <nb-list-item *ngFor="let steps of hardwareInstallationStep2A">
             {{ steps }}
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -136,7 +136,7 @@
         <nb-list>
           <nb-list-item *ngFor="let steps of hardwareInstallationStep2B">
             {{ steps }}
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
         </nb-list>
 
@@ -151,7 +151,7 @@
         <nb-list>
           <nb-list-item>
             Connect D0 pin on left side of the NodeMCu to AST pin on right side of the NodeMCU
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
         </nb-list>
       </ul>
@@ -179,15 +179,15 @@
         <nb-list>
           <nb-list-item>
             Set port to COM5
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Download necessary libraries
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Compile and upload script to Unit
-            <nb-checkbox style="float: right"></nb-checkbox>
+            <nb-checkbox style="float: right" (checkedChange)="toggle($event)"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>

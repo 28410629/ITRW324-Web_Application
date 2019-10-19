@@ -12,6 +12,12 @@ export class BuildNewStationComponent {
   hardwareInstallationStep2A: string[] = [];
   hardwareInstallationStep2B: string[] = [];
 
+  checked: boolean;
+
+  progressBarValue: number;
+  percentageComplete: number;
+
+
   constructor() {
 
     this.hardwareComponents.push('Veraboard', 'NodeMCU ESP8266 E-12', 'BME280 Sensor', 'TEMT6000 Light Sensor',
@@ -35,8 +41,25 @@ export class BuildNewStationComponent {
       'Connect G pin on TEMT Sensor to GND pin on the right side of the NodeMCU',
       'Connect V pin on TEMT Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU');
 
+    this.progressBarValue = 0;
+    this.checked = false;
+    this.percentageComplete = 0;
+  }
+  updateProgressbar() {
 
   }
+
+  toggle(checked: boolean) {
+    this.checked = checked;
+    // this._sendDataToParent();
+    if (this.checked === true) {
+      this.percentageComplete = this.percentageComplete + 1;
+    } else {
+      this.percentageComplete = this.percentageComplete - 1;
+    }
+  }
+
+
   /*GoToPage(url: string) {
     window.open('www.github.com');
   }*/
