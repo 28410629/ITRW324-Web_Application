@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
       this.sidebarService.collapse('menu-sidebar');
     }
     if (title === 'Log out') {
+      localStorage.setItem('userdata', JSON.stringify(null));
       this.authService.logout();
     }
     if (title === 'Profile') {
