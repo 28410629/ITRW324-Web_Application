@@ -13,10 +13,11 @@ export class BuildNewStationComponent implements OnInit {
   hardwareInstallationStep2A: string[] = [];
   hardwareInstallationStep2B: string[] = [];*/
 
-  checkBoxArray: {
+  /*checkBoxArray: {
     checkBoxId: number;
     checked: boolean;
-  }[] = [];
+  }[] = [];*/
+  checkBoxArray: boolean[] = [];
 
   checked: boolean;
 
@@ -61,21 +62,23 @@ export class BuildNewStationComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 0; i < 29; i++) {
-      this.checkBoxArray.push({
+      this.checkBoxArray[i] = false;
+      /*this.checkBoxArray.push({
         checkBoxId: this.checkBoxId = this.GetCheckBoxId(),
         checked: this.checked,
-      });
+      });*/
     }
+    this.checkBoxArray[0] = true;
   }
 
-  Toggle(event) {
-    this.checked = event.target.checked;
+  Toggle(checked: boolean, id: number) {
+    this.checked = checked;
     if (this.checked === true) {
-      this.percentageComplete = this.percentageComplete + ((1 / 29) * 100);
-      this.UpdateCheckBoxes(event.target.id, true);
+      this.percentageComplete = this.percentageComplete + ((1 / this.checkBoxArray.length) * 100);
+       this.UpdateCheckBoxes(id, true);
     } else {
-      this.percentageComplete = this.percentageComplete - ((1 / 29) * 100);
-      this.UpdateCheckBoxes(event.target.id, false);
+      this.percentageComplete = this.percentageComplete - ((1 / this.checkBoxArray.length) * 100);
+       this.UpdateCheckBoxes(id, false);
     }
     //
   }
@@ -83,18 +86,24 @@ export class BuildNewStationComponent implements OnInit {
   UpdateCheckBoxes(id: number, good: boolean) {
     if (good === true) {
       for (let i = 0; i < this.checkBoxArray.length; i++) {
-          if (this.checkBoxArray[i].checkBoxId === (+id + +1)) {
+        if (id === i) {
+          this.checkBoxArray[i] = true;
+        }
+          /*if (this.checkBoxArray[i].checkBoxId === (+id + +1)) {
             this.checkBoxArray[i].checked = true;
-          }
+          }*/
         }
     }else {
       for (let i = 0; i < this.checkBoxArray.length; i++) {
-          if (this.checkBoxArray[i].checkBoxId === (+id + +1)) {
-            this.checkBoxArray[i].checked = false;
+        if (id === i) {
+          this.checkBoxArray[i] = false;
+        }
+          /*if (this.checkBoxArray[i].checkBoxId === (+id + +1)) {
+            this.checkBoxArray[i].checked = false;*/
           }
       }
-      }
-    }
+    console.log(this.checkBoxArray);
+  }
 
   GetCheckBoxId() {
       this.checkBoxId += 1;
@@ -103,13 +112,28 @@ export class BuildNewStationComponent implements OnInit {
   /*GoToPage(url: string) {
     window.open('www.github.com');
   }*/
-/*  showId(event) {
+  showId(event) {
     this.shittyId = event.target.id;
     console.log(this.shittyId);
   }
 
-  testCheck(event) {
-    console.log(event.target.id );
+  getData() {
 
-  }*/
+  }
+
+  saveToFirebase() {
+    // call method to save aray to fb
+    console.log(this.checkBoxArray);
+    this.updateProgressBar();
+  }
+
+  updateProgressBar() {
+    let counter = 0;
+    for (let i = 0; i < this.checkBoxArray.length; i++) {
+      if (this.checkBoxArray[i] === true) {
+        counter += 1;
+      }
+    }
+    this.percentageComplete = ((counter / this.checkBoxArray.length) * 100);
+  }
 }

@@ -4,7 +4,7 @@
 
 <nb-card>
   <nb-card-body>
-    <nb-progress-bar [value]="percentageComplete" status="primary" [displayValue]="true"></nb-progress-bar>
+    <nb-progress-bar [value]="percentageComplete" status="primary"></nb-progress-bar>
   </nb-card-body>
 </nb-card>
 <div class="row w3-container">
@@ -26,11 +26,11 @@
       <nb-list>
         <nb-list-item>
           Veraboard
-          <input type="checkbox" [id]="0" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[0]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           NodeMCU ESP8266 E-12
-          <input type="checkbox" [id]="'1'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[1]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           BME280 Sensor
