@@ -1,1 +1,77 @@
-<h1>Register a new station!</h1>
+<div class="row" >
+  <div class="col-xxl-12">
+    <nb-card status="info">
+      <nb-card-header>Select Location Of Station</nb-card-header>
+      <nb-card-body style="padding-bottom: 6px">
+
+        <div class="test">
+          <span style="margin-right: 10px">Selected Country :</span>
+          <nb-select style="margin-right: 10px" [selected]="selectedCountry" (selectedChange)="selectedCountry = $event">
+            <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
+          </nb-select>
+        </div>
+
+        <div class="test">
+          <span style="margin-right: 10px">Selected Province :</span>
+          <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="populateCities($event)">
+            <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
+          </nb-select>
+        </div>
+
+        <div class="test">
+          <span style="margin-right: 10px">Selected City :</span>
+          <nb-select style="margin-right: 10px" [(ngModel)] = "selectedCity" (selectedChange)="selectedCity = $event">
+            <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
+          </nb-select>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row" >
+  <div class="col-xxl-12">
+    <nb-card status="info">
+      <nb-card-header>Select Location Of Station</nb-card-header>
+      <nb-card-body style="padding-bottom: 6px">
+
+        <div class="test">
+          <span style="margin-right: 10px">Selected Country :</span>
+          <nb-select style="margin-right: 10px" [selected]="selectedCountry" (selectedChange)="selectedCountry = $event">
+            <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
+          </nb-select>
+        </div>
+
+        <div class="test">
+          <span style="margin-right: 10px">Selected Province :</span>
+          <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="populateCities($event)">
+            <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
+          </nb-select>
+        </div>
+
+        <div class="test">
+          <span style="margin-right: 10px">Selected City :</span>
+          <nb-select style="margin-right: 10px" [(ngModel)] = "selectedCity" (selectedChange)="selectedCity = $event">
+            <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
+          </nb-select>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+<div class="row" >
+  <div class="col-xxl-12">
+    <nb-card status="info">
+      <nb-card-header>Choose Station Nickname</nb-card-header>
+      <nb-card-body style="padding-bottom: 6px">
+
+        <div class="test">
+          <span style="margin-right: 10px">Enter Nickname : </span>
+          <input type="text" nbInput shape="rectangle" placeholder="Awesome House Weather Station!">
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
