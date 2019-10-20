@@ -1,6 +1,11 @@
 @import '../../../@theme/styles/themes';
 
 @include nb-install-component() {
-
-
+  .float_on_screen {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
 }
+
+

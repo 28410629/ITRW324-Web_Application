@@ -2,11 +2,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<nb-card>
-  <nb-card-body>
-    <nb-progress-bar [value]="percentageComplete" status="primary"></nb-progress-bar>
-  </nb-card-body>
-</nb-card>
+
+<div class="float_on_screen">
+  <nb-card>
+    <nb-card-body>
+      <nb-progress-bar [value]="percentageComplete" status="primary"></nb-progress-bar>
+    </nb-card-body>
+  </nb-card>
+</div>
 <div class="row w3-container">
   <nb-card class="w3-left w3-animate-bottom " style="width: 100%">
     <nb-card-header>
@@ -34,47 +37,47 @@
         </nb-list-item>
         <nb-list-item>
           BME280 Sensor
-          <input type="checkbox" [id]="'2'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[2]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           TEMT6000 Light Sensor
-          <input type="checkbox" [id]="'3'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[3]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           18650 TP4056 Lithium Battery Charger
-          <input type="checkbox" [id]="'4'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[4]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           Solar Panel (0.66W, 5.5V, 120mAh)
-          <input type="checkbox" [id]="'5'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[5]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           NCR18650A Battery (3.6V, 3100mAh)
-          <input type="checkbox" [id]="'6'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[6]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           8 jumper cables
-          <input type="checkbox" [id]="'7'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[7]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           2 copper wires
-          <input type="checkbox" [id]="'8'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[8]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           7 male header pins
-          <input type="checkbox" [id]="'9'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[9]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           Soldering Iron & Soldering
-          <input type="checkbox" [id]="'10'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[10]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           Computer thats not completely shyt
-          <input type="checkbox" [id]="'11'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[11]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
         <nb-list-item>
           Working Internet
-          <input type="checkbox" [id]="'12'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[12]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
       </nb-list>
     </nb-card-body>
@@ -117,7 +120,7 @@
       <nb-list>
         <nb-list-item>
           Arduino IDE
-          <input type="checkbox" [id]="'13'" style="float: right" (click)="Toggle($event)">
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[13]" (checkedChange)="saveToFirebase()"></nb-checkbox>
         </nb-list-item>
       </nb-list>
     </nb-card-body>
@@ -143,11 +146,11 @@
         <nb-list>
           <nb-list-item>
             Solder 4 male header pins to BME Sensor
-            <input type="checkbox" [id]="'14'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[14]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Solder 3 male header pins to TEMT Light Sensor
-            <input type="checkbox" [id]="'15'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[15]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -161,11 +164,11 @@
         <nb-list>
           <nb-list-item>
             Connect 4 jumpers to BME Sensor and 3 to TEMT Light Sensor
-            <input type="checkbox" [id]="'16'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[16]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Solder 3 male header pins to TEMT Light Sensor
-            <input type="checkbox" [id]="'17'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -179,19 +182,19 @@
         <nb-list>
           <nb-list-item>
             Connect VIN (VCC) pin on BME Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
-            <input type="checkbox" [id]="'18'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[18]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Connect GND pin on BME Sensor to GND pin on the right side of the NodeMCU
-            <input type="checkbox" [id]="'19'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[19]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Connect SCL pin on BME Sensor to D1 pin on the right side of the NodeMCU
-            <input type="checkbox" [id]="'20'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[20]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU
-            <input type="checkbox" [id]="'21'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[21]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -205,18 +208,17 @@
         <nb-list>
           <nb-list-item>
             Connect S pin on TEMT Sensor to A000 pin on the left side of the NodeMCU
-            <input type="checkbox" [id]="'22'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[22]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Connect G pin on TEMT Sensor to GND pin on the right side of the NodeMCU
-            <input type="checkbox" [id]="'23'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[23]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Connect V pin on TEMT Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
-            <input type="checkbox" [id]="'24'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[24]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
         </nb-list>
-
         <br>
         <nb-card-header>
           <h3>Step 2-C: Enabling Deepsleep</h3>
@@ -228,7 +230,7 @@
         <nb-list>
           <nb-list-item>
             Connect D0 pin on left side of the NodeMCu to AST pin on right side of the NodeMCU
-            <input type="checkbox" [id]="'25'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[25]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
         </nb-list>
       </ul>
@@ -256,15 +258,15 @@
         <nb-list>
           <nb-list-item>
             Set port to COM5
-            <input type="checkbox" [id]="'26'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[26]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Download necessary libraries
-            <input type="checkbox" [id]="'27'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[27]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
           <nb-list-item>
             Compile and upload script to Unit
-            <input type="checkbox" [id]="'28'" style="float: right" (click)="Toggle($event)">
+            <nb-checkbox  style="float: right" [(checked)]="checkBoxArray[28]" (checkedChange)="saveToFirebase()"></nb-checkbox>
           </nb-list-item>
         </nb-list>
         <br>
@@ -279,6 +281,12 @@
       Battery Installation
     </nb-card-header>
     <nb-card-body>
+      <nb-list>
+        <nb-list-item>
+          Install Battery
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[29]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+        </nb-list-item>
+      </nb-list>
     </nb-card-body>
   </nb-card>
 </div>
@@ -288,6 +296,12 @@
       Veraboard Installation
     </nb-card-header>
     <nb-card-body>
+      <nb-list>
+        <nb-list-item>
+          Install to Veraboard
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[30]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+        </nb-list-item>
+      </nb-list>
     </nb-card-body>
   </nb-card>
 </div>
@@ -297,6 +311,12 @@
       Casing Installation
     </nb-card-header>
     <nb-card-body>
+      <nb-list>
+        <nb-list-item>
+          Install in Casing
+          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[31]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+        </nb-list-item>
+      </nb-list>
     </nb-card-body>
   </nb-card>
 </div>
