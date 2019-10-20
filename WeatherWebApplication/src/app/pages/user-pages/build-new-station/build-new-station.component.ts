@@ -47,4 +47,11 @@ export class BuildNewStationComponent implements OnInit, OnDestroy {
     }
     this.percentageComplete = ((counter / this.checkBoxArray.length) * 100);
   }
+
+  ResetProgress() {
+    for (let i = 0; i < this.checkBoxArray.length; i++) {
+      this.checkBoxArray[i] = false;
+    }
+    this.saveToFirebase();
+  }
 }
