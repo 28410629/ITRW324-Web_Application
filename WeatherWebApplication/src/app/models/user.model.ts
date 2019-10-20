@@ -5,6 +5,7 @@ export interface User {
   photoURL: string;
   emailVerified: boolean;
   favStations: number[];
+  checkBoxArray: boolean[];
   theme: string;
 }
 
