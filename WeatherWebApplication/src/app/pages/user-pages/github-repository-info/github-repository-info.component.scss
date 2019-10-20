@@ -1,11 +1,7 @@
 @import '../../../@theme/styles/themes';
 
 @include nb-install-component() {
-  nb-card {
+  nb-card.set_size {
     height: 250px;
-  }
-
-  nb-card.not_this_card {
-    height: 55px;
   }
 }

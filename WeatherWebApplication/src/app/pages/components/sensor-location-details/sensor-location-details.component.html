@@ -3,7 +3,7 @@
   <nb-card-header>{{ headerName }}</nb-card-header>
 
   <nb-list class="user-activity-list">
-    <nb-list-item *ngFor="let item of data">
+    <nb-list-item *ngFor="let item of data; index as i" [ngStyle]="{'border-top': i === 0 ? '0px' : '1px' }">
 
       <div class="visited-date">
         {{ item.data }}
