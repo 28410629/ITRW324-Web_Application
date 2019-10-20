@@ -1,10 +1,9 @@
 @import '../../../@theme/styles/themes';
 
 @include nb-install-component() {
-  .float_on_screen {
-    position: -webkit-sticky;
+  nb-card.float_on_screen {
     position: sticky;
-    top: 0;
+    top: 100px;
   }
 }
 
