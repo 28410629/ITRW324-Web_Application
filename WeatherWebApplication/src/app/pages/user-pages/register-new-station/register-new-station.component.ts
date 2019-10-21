@@ -8,6 +8,7 @@ import {ToastService} from '../../../services/toast.service';
   styleUrls: ['register-new-station.component.scss'],
 })
 export class RegisterNewStationComponent {
+  // location
   countries;
   selectedCountry;
   provinces;
@@ -16,6 +17,8 @@ export class RegisterNewStationComponent {
   selectedCity;
   // response
   success: boolean = false;
+  // spinner
+  loading: boolean = false;
   constructor(private locationUtil: LocationUtilities,
               private toastService: ToastService) {
     // get available stations
@@ -34,7 +37,10 @@ export class RegisterNewStationComponent {
     this.selectedCity = this.cities[0];
   }
   saveStation() {
-    this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
+    if (!this.loading) {
+      this.loading = true;
+      this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
+    }
   }
   onClose() {
     this.success = false;
