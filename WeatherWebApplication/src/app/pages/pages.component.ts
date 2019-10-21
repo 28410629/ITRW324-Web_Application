@@ -46,13 +46,23 @@ export class PagesComponent {
       link: '/pages/manage-favourite-stations',
     },
     {
-      title: 'Register New Station',
+      title: 'Register Your Station',
       icon: 'plus-outline',
+      link: '/pages/register-new-station',
+    },
+    {
+      title: 'Manage Your Stations',
+      icon: 'edit-2-outline',
       link: '/pages/register-new-station',
     },
     {
       title: 'Build New Station Guide',
       icon: 'file-text-outline',
+      link: '/pages/build-new-station',
+    },
+    {
+      title: 'API Documentation',
+      icon: 'flip-2-outline',
       link: '/pages/build-new-station',
     },
   ];
