@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {AuthService} from '../../../auth/auth-service.service';
 import {Subscription} from 'rxjs';
 import {User} from '../../../models/user.model';
+import {ToastService} from '../../../services/toast.service';
 
 @Component({
   selector: 'ngx-build-new-station',
@@ -14,7 +15,8 @@ export class BuildNewStationComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   useruid: string;
   user: User;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private toastService: ToastService) {
     this.percentageComplete = 0;
     const storageuser: User = JSON.parse(localStorage.getItem('user'));
     if (storageuser.uid === null) {
@@ -58,5 +60,6 @@ export class BuildNewStationComponent implements OnInit, OnDestroy {
       this.checkBoxArray[i] = false;
     }
     this.saveToFirebase();
+    this.toastService.ShowInfoToast('Build New Station Guide', 'Progressed cleared.');
   }
 }

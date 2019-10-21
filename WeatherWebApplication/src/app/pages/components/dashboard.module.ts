@@ -64,6 +64,7 @@ import { RegisterNewStationComponent } from '../user-pages/register-new-station/
 import { BuildNewStationComponent } from '../user-pages/build-new-station/build-new-station.component';
 import { StationsDetailComponent } from '../user-pages/stations-detail/stations-detail.component';
 import { ManageYourStationsComponent } from '../user-pages/manage-your-stations/manage-your-stations.component';
+import {ApiDocumentationComponent} from '../user-pages/api-documentation/api-documentation.component';
 
 
 @NgModule({
@@ -133,6 +134,7 @@ import { ManageYourStationsComponent } from '../user-pages/manage-your-stations/
     BuildNewStationComponent,
     StationsDetailComponent,
     ManageYourStationsComponent,
+    ApiDocumentationComponent,
   ],
   entryComponents: [
     UserProfileComponent,

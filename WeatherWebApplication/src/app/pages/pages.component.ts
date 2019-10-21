@@ -53,7 +53,7 @@ export class PagesComponent {
     {
       title: 'Manage Your Stations',
       icon: 'edit-2-outline',
-      link: '/pages/register-new-station',
+      link: '/pages/manage-your-stations',
     },
     {
       title: 'Build New Station Guide',
@@ -63,7 +63,7 @@ export class PagesComponent {
     {
       title: 'API Documentation',
       icon: 'flip-2-outline',
-      link: '/pages/build-new-station',
+      link: '/pages/api-documentation',
     },
   ];
 }
