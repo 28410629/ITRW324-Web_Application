@@ -16,6 +16,8 @@ import { RawReadingsComponent } from './user-pages/raw-readings/raw-readings.com
 import {RegisterNewStationComponent} from './user-pages/register-new-station/register-new-station.component';
 import {BuildNewStationComponent} from './user-pages/build-new-station/build-new-station.component';
 import {StationsDetailComponent} from './user-pages/stations-detail/stations-detail.component';
+import {ManageYourStationsComponent} from './user-pages/manage-your-stations/manage-your-stations.component';
+import {ApiDocumentationComponent} from './user-pages/api-documentation/api-documentation.component';
 
 const routes: Routes = [{
   path: '',
@@ -54,8 +56,16 @@ const routes: Routes = [{
       component: UserProfileComponent,
     },
     {
+      path: 'api-documentation',
+      component: ApiDocumentationComponent,
+    },
+    {
       path: 'build-new-station',
       component: BuildNewStationComponent,
+    },
+    {
+      path: 'manage-your-stations',
+      component: ManageYourStationsComponent,
     },
     {
       path: 'raw-readings',

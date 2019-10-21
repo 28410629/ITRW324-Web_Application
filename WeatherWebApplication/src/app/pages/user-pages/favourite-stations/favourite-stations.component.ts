@@ -4,6 +4,7 @@ import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {User} from '../../../models/user.model';
 import {AuthService} from '../../../auth/auth-service.service';
 import {Subscription} from 'rxjs';
+import {ToastService} from '../../../services/toast.service';
 
 
 @Component({
@@ -22,7 +23,9 @@ export class FavouriteStationsComponent implements OnInit, OnDestroy {
   user: User;
   useruid: string;
   favStations: Number[] = [];
-  constructor(private service: StationStatusService, private authService: AuthService) {
+  constructor(private service: StationStatusService,
+              private authService: AuthService,
+              private toastService: ToastService) {
     const storageuser: User = JSON.parse(localStorage.getItem('user'));
     this.useruid = storageuser.uid;
   }
@@ -36,7 +39,8 @@ export class FavouriteStationsComponent implements OnInit, OnDestroy {
           if (responseData.favStations.length > 0) {
             this.getData();
           } else {
-            this.loaderMessage = 'No favourite stations selected.';
+            this.loaderMessage = 'No favourite stations.';
+            this.toastService.ShowFailedToast('Favourite Stations', 'No favourite stations.');
           }
         });
   }

@@ -4,10 +4,10 @@ import {ToastService} from '../../../services/toast.service';
 
 @Component({
   selector: 'ngx-register-new-station',
-  templateUrl: 'register-new-station.component.html',
-  styleUrls: ['register-new-station.component.scss'],
+  templateUrl: 'api-documentation.component.html',
+  styleUrls: ['api-documentation.component.scss'],
 })
-export class RegisterNewStationComponent {
+export class ApiDocumentationComponent {
   // location
   countries;
   selectedCountry;

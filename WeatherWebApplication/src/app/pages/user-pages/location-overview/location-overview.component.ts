@@ -5,6 +5,7 @@ import * as moment from 'moment-timezone';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {LocationService} from '../../../services/location.service';
 import {Reading} from '../../../models/location-overview.model';
+import {ToastService} from '../../../services/toast.service';
 
 @Component({
   selector: 'ngx-location-overview',
@@ -97,7 +98,8 @@ export class LocationOverviewComponent {
 
   constructor(private theme: NbThemeService,
               private service: LocationService,
-              private locationUtil: LocationUtilities) {
+              private locationUtil: LocationUtilities,
+              private toastService: ToastService) {
     // get available stations
     this.getLocationList();
 
@@ -134,7 +136,8 @@ export class LocationOverviewComponent {
               this.processJson();
               this.updateGraphs();
             } else {
-              this.loaderContentTag = 'Location not found. Oops.';
+              this.loaderContentTag = 'Location not found.';
+              this.toastService.ShowFailedToast('Location Overview', 'Location not found.');
             }
           });
         break;
@@ -148,7 +151,8 @@ export class LocationOverviewComponent {
               this.processJson();
               this.updateGraphs();
             } else {
-              this.loaderContentTag = 'Location not found. Oops.';
+              this.loaderContentTag = 'Location not found.';
+              this.toastService.ShowFailedToast('Location Overview', 'Location not found.');
             }
           });
         break;
@@ -162,7 +166,8 @@ export class LocationOverviewComponent {
               this.processJson();
               this.updateGraphs();
             } else {
-              this.loaderContentTag = 'Location not found. Oops.';
+              this.loaderContentTag = 'Location not found.';
+              this.toastService.ShowFailedToast('Location Overview', 'Location not found.');
             }
           });
         break;
@@ -176,14 +181,15 @@ export class LocationOverviewComponent {
               this.processJson();
               this.updateGraphs();
             } else {
-              this.loaderContentTag = 'Location not found. Oops.';
+              this.loaderContentTag = 'Location not found.';
+              this.toastService.ShowFailedToast('Location Overview', 'Location not found.');
             }
           });
         break;
       }
       default: {
         this.isContentLoaded = false;
-        // this.loaderContentTag = 'Error occurred, try again.';
+        this.toastService.ShowFailedToast('Location Overview', 'Error occurred, contact developer.');
         break;
       }
     }

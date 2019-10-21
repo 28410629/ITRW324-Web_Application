@@ -1,324 +1,322 @@
-<div #myDiv>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
-
-<div>
-  <nb-card >
-    <nb-card-body>
-      <nb-progress-bar [value]="percentageComplete" status="primary"></nb-progress-bar>
-      <button (click)="ResetProgress()">Press me</button>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom " style="width: 100%">
-    <nb-card-header>
-      <h3>Weather Station Installation Guide</h3>
-    </nb-card-header>
-    <nb-card-body>
-      An easy to build and install guide to build your own cheap Weather Station
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%" [size]="'medium'">
-    <nb-card-header>
-      <h3>Hardware-Requirements</h3>
-    </nb-card-header>
-    <nb-card-body>
-      <nb-list>
-        <nb-list-item>
-          Veraboard
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[0]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          NodeMCU ESP8266 E-12
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[1]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          BME280 Sensor
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[2]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          TEMT6000 Light Sensor
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[3]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          18650 TP4056 Lithium Battery Charger
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[4]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          Solar Panel (0.66W, 5.5V, 120mAh)
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[5]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          NCR18650A Battery (3.6V, 3100mAh)
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[6]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          8 jumper cables
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[7]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          2 copper wires
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[8]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          7 male header pins
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[9]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          Soldering Iron & Soldering
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[10]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          Computer thats not completely shyt
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[11]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-        <nb-list-item>
-          Working Internet
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[12]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-      </nb-list>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      <h3>Skill-Requirements</h3>
-    </nb-card-header>
-    <nb-card-body>
-      <ul>
-        <li>Skill level needed: Beginner</li>
-        <li>Intelligence level: Slightly above primate</li>
-        <li>Technological hardware know-how</li>
-        <li>Should be able to read</li>
-      </ul>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      <h3>Time-Requirements</h3>
-    </nb-card-header>
-    <nb-card-body>
-      <ul>
-        <li>Month for hardware delivery</li>
-        <li>Half a day for installation</li>
-      </ul>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      <h3>Software-Requirements</h3>
-    </nb-card-header>
-    <nb-card-body>
-      <nb-list>
-        <nb-list-item>
-          Arduino IDE
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[13]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-      </nb-list>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%" [size]="'medium'">
-    <nb-card-header>
-      <h3>Hardware Installation</h3>
-    </nb-card-header>
-    <nb-card-body>
-      Please se attached figure for any reference to NodeMCU orientation:
-      <br>
-      <br>
-      <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png"
-           style="width: 350px; height: 350px">
-      <ul>
-        <br>
-        <br>
-        <nb-card-header>
-          <h3>Step 1: Soldering Sensors</h3>
-        </nb-card-header>
-        <nb-list>
-          <nb-list-item>
-            Solder 4 male header pins to BME Sensor
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[14]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Solder 3 male header pins to TEMT Light Sensor
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[15]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-        </nb-list>
-        <br>
-        <nb-card-header>
-          <h3>Step 2: Connecting Sensors</h3>
-        </nb-card-header>
-        <br>
-        After soldering is done:
-        <br>
-        <br>
-        <nb-list>
-          <nb-list-item>
-            Connect 4 jumpers to BME Sensor and 3 to TEMT Light Sensor
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[16]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Solder 3 male header pins to TEMT Light Sensor
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-        </nb-list>
-        <br>
-        <nb-card-header>
-          <h3>Step 2-A: Connecting BME280-Sensors</h3>
-        </nb-card-header>
-        <br>
-        After connecting jumpers, on BME280 Sensor connect:
-        <br>
-        <br>
-        <nb-list>
-          <nb-list-item>
-            Connect VIN (VCC) pin on BME Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[18]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Connect GND pin on BME Sensor to GND pin on the right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[19]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Connect SCL pin on BME Sensor to D1 pin on the right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[20]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[21]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-        </nb-list>
-        <br>
-        <nb-card-header>
-          <h3>Step 2-B: Connecting TEMT6000 Light Sensor</h3>
-        </nb-card-header>
-        <br>
-        Afterwards, on TEMT6000 Light Sensor connect:
-        <br>
-        <br>
-        <nb-list>
-          <nb-list-item>
-            Connect S pin on TEMT Sensor to A000 pin on the left side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[22]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Connect G pin on TEMT Sensor to GND pin on the right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[23]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Connect V pin on TEMT Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[24]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-        </nb-list>
-        <br>
-        <nb-card-header>
-          <h3>Step 2-C: Enabling Deepsleep</h3>
-        </nb-card-header>
-        <br>
-        Afterwards, to enable deepsleep for minimizing battery consumption:
-        <br>
-        <br>
-        <nb-list>
-          <nb-list-item>
-            Connect D0 pin on left side of the NodeMCu to AST pin on right side of the NodeMCU
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[25]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-        </nb-list>
-      </ul>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      <h3>Script Flashing</h3>
-    </nb-card-header>
-    <nb-card-body>
+<div class="row">
+  <div class="col-xxl-12">
+    <nb-card>
       <nb-card-header>
-        <h3>Initial Setup:</h3>
+        Build New Station Guide
       </nb-card-header>
-      <ul>
-        <li>Install Arduino IDE, found here(link)</li>
-        <li>Download Weather Station Unit script found here(link)</li>
-        <li>Edit script with your personal bank account info, Account number, password, secrets and so on</li>
-        <li>Connect Unit and Computer with USB, having data over USB</li>
-        <br>
-        <nb-card-header>
-          <h3>ArduinoIDE flashing:</h3>
-        </nb-card-header>
-        <nb-list>
-          <nb-list-item>
-            Set port to COM5
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[26]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Download necessary libraries
-            <nb-checkbox style="float: right" [(checked)]="checkBoxArray[27]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-          <nb-list-item>
-            Compile and upload script to Unit
-            <nb-checkbox  style="float: right" [(checked)]="checkBoxArray[28]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-          </nb-list-item>
-        </nb-list>
-        <br>
-        <li>Unit will now send JSON to our server</li>
-      </ul>
-    </nb-card-body>
-  </nb-card>
+      <nb-card-body>
+        <p>An easy to build and install guide to build your own cheap Weather Station.</p>
+        <div>
+          <p><b>Progress :</b></p>
+          <nb-progress-bar [value]="percentageComplete" status="primary"></nb-progress-bar>
+        </div>
+        <div style="margin-top: 15px">
+          <button nbButton (click)="ResetProgress()">Clear Progress</button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      Battery Installation
-    </nb-card-header>
-    <nb-card-body>
-      <nb-list>
-        <nb-list-item>
-          Install Battery
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[29]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-      </nb-list>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      Veraboard Installation
-    </nb-card-header>
-    <nb-card-body>
-      <nb-list>
-        <nb-list-item>
-          Install to Veraboard
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[30]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-      </nb-list>
-    </nb-card-body>
-  </nb-card>
-</div>
-<div class="row w3-container">
-  <nb-card class="w3-left w3-animate-bottom" style="width: 100%">
-    <nb-card-header>
-      Casing Installation
-    </nb-card-header>
-    <nb-card-body>
-      <nb-list>
-        <nb-list-item>
-          Install in Casing
-          <nb-checkbox style="float: right" [(checked)]="checkBoxArray[31]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-        </nb-list-item>
-      </nb-list>
-    </nb-card-body>
-  </nb-card>
-</div>
+<div class="row">
+  <div class="col-xxl-12">
+    <nb-card>
+      <nb-card-header>
+        Guide
+      </nb-card-header>
+      <nb-card-body>
+        <nb-accordion>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Hardware-Requirements
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <p>These are the items you need to build the station with:</p>
+              <nb-list>
+                <nb-list-item>
+                  Veraboard
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[0]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  NodeMCU ESP8266 E-12
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[1]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  BME280 Sensor
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[2]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  TEMT6000 Light Sensor
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[3]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  18650 TP4056 Lithium Battery Charger
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[4]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Solar Panel (0.66W, 5.5V, 120mAh)
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[5]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  NCR18650A Battery (3.6V, 3100mAh)
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[6]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  8 jumper cables
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[7]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  2 copper wires
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[8]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  7 male header pins
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[9]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Soldering Iron & Soldering
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[10]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Computer thats not completely shyt
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[11]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Working Internet
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[12]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+              </nb-list>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Skill-Requirements
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ul>
+                <li>Skill level needed: Beginner</li>
+                <li>Intelligence level: Slightly above primate</li>
+                <li>Technological hardware know-how</li>
+                <li>Should be able to read</li>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Time-Requirements
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ul>
+                <li>Month for hardware delivery</li>
+                <li>Half a day for installation</li>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Software-Requirements
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <nb-list>
+                <nb-list-item>
+                  Arduino IDE
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[13]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+              </nb-list>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Hardware Installation
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              Please se attached figure for any reference to NodeMCU orientation:
+              <br>
+              <br>
+              <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png"
+                   style="width: 350px; height: 350px">
+              <ul>
+                <br>
+                <br>
+                <nb-card-header>
+                  <h3>Step 1: Soldering Sensors</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    Solder 4 male header pins to BME Sensor
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[14]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Solder 3 male header pins to TEMT Light Sensor
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[15]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <br>
+                <nb-card-header>
+                  <h3>Step 2: Connecting Sensors</h3>
+                </nb-card-header>
+                <br>
+                After soldering is done:
+                <br>
+                <br>
+                <nb-list>
+                  <nb-list-item>
+                    Connect 4 jumpers to BME Sensor and 3 to TEMT Light Sensor
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[16]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Solder 3 male header pins to TEMT Light Sensor
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <br>
+                <nb-card-header>
+                  <h3>Step 2-A: Connecting BME280-Sensors</h3>
+                </nb-card-header>
+                <br>
+                After connecting jumpers, on BME280 Sensor connect:
+                <br>
+                <br>
+                <nb-list>
+                  <nb-list-item>
+                    Connect VIN (VCC) pin on BME Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[18]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Connect GND pin on BME Sensor to GND pin on the right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[19]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Connect SCL pin on BME Sensor to D1 pin on the right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[20]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[21]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <br>
+                <nb-card-header>
+                  <h3>Step 2-B: Connecting TEMT6000 Light Sensor</h3>
+                </nb-card-header>
+                <br>
+                Afterwards, on TEMT6000 Light Sensor connect:
+                <br>
+                <br>
+                <nb-list>
+                  <nb-list-item>
+                    Connect S pin on TEMT Sensor to A000 pin on the left side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[22]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Connect G pin on TEMT Sensor to GND pin on the right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[23]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Connect V pin on TEMT Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[24]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <br>
+                <nb-card-header>
+                  <h3>Step 2-C: Enabling Deepsleep</h3>
+                </nb-card-header>
+                <br>
+                Afterwards, to enable deepsleep for minimizing battery consumption:
+                <br>
+                <br>
+                <nb-list>
+                  <nb-list-item>
+                    Connect D0 pin on left side of the NodeMCu to AST pin on right side of the NodeMCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[25]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Microcontroller Flashing - Initial Setup
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ul>
+                <li>Install Arduino IDE, found here(link)</li>
+                <li>Download Weather Station Unit script found here(link)</li>
+                <li>Edit script with your personal bank account info, Account number, password, secrets and so on</li>
+                <li>Connect Unit and Computer with USB, having data over USB</li>
+                <br>
+                <nb-card-header>
+                  <h3>ArduinoIDE flashing:</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    Set port to COM5
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[26]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Download necessary libraries
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[27]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Compile and upload script to Unit
+                    <nb-checkbox  style="float: right" [(checked)]="checkBoxArray[28]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <br>
+                <li>Unit will now send JSON to our server</li>
+              </ul>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Battery Installation
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <nb-list>
+                <nb-list-item>
+                  Install Battery
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[29]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+              </nb-list>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Veroboard Installation
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <nb-list>
+                <nb-list-item>
+                  Install to Veraboard
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[30]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+              </nb-list>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Casing Installation
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <nb-list>
+                <nb-list-item>
+                  Install in Casing
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[31]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+              </nb-list>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+
+        </nb-accordion>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>
