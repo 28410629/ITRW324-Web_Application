@@ -51,6 +51,8 @@ import {LocationUtilities} from './common/location.utilities';
 import {LocationService} from './services/location.service';
 import {RouteLoaderService} from './loader/route-loader.service';
 import {WelcomeComponent} from './auth/welcome/welcome.component';
+import {ToastService} from './services/toast.service';
+import {RegisterNewStationService} from './services/register-new-station.service';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,8 @@ import {WelcomeComponent} from './auth/welcome/welcome.component';
     RawReadingsService,
     LocationService,
     RouteLoaderService,
+    ToastService,
+    RegisterNewStationService,
   ],
   bootstrap: [AppComponent],
 })

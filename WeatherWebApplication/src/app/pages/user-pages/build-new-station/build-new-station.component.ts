@@ -17,7 +17,12 @@ export class BuildNewStationComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) {
     this.percentageComplete = 0;
     const storageuser: User = JSON.parse(localStorage.getItem('user'));
-    this.useruid = storageuser.uid;
+    if (storageuser.uid === null) {
+      this.user = JSON.parse(localStorage.getItem('userdata'));
+      this.useruid = this.user.uid;
+    } else {
+      this.useruid = storageuser.uid;
+    }
   }
 
   ngOnInit(): void {

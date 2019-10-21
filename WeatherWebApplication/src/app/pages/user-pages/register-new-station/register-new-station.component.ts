@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {LocationUtilities} from '../../../common/location.utilities';
+import {ToastService} from '../../../services/toast.service';
 
 @Component({
   selector: 'ngx-register-new-station',
@@ -13,12 +14,13 @@ export class RegisterNewStationComponent {
   selectedProvince;
   cities;
   selectedCity;
-  constructor(private locationUtil: LocationUtilities) {
+  // response
+  success: boolean = false;
+  constructor(private locationUtil: LocationUtilities,
+              private toastService: ToastService) {
     // get available stations
     this.getLocationList();
   }
-  // this.source.load(data);
-
   getLocationList() {
     this.countries = this.locationUtil.getCountry();
     this.selectedCountry = this.countries[0];
@@ -30,5 +32,11 @@ export class RegisterNewStationComponent {
     this.selectedProvince = name;
     this.cities = this.locationUtil.getCityList(this.countries[0], this.selectedProvince);
     this.selectedCity = this.cities[0];
+  }
+  saveStation() {
+    this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
+  }
+  onClose() {
+    this.success = false;
   }
 }
