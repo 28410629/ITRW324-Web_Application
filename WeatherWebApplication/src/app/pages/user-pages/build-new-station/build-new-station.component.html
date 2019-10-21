@@ -5,12 +5,12 @@
         Build New Station Guide
       </nb-card-header>
       <nb-card-body>
-        <p>An easy to build and install guide to build your own cheap Weather Station</p>
+        <p>An easy to build and install guide to build your own cheap Weather Station.</p>
         <div>
           <p><b>Progress :</b></p>
           <nb-progress-bar [value]="percentageComplete" status="primary"></nb-progress-bar>
         </div>
-        <div style="margin-top: 10px">
+        <div style="margin-top: 15px">
           <button nbButton (click)="ResetProgress()">Clear Progress</button>
         </div>
       </nb-card-body>
@@ -31,6 +31,7 @@
               Hardware-Requirements
             </nb-accordion-item-header>
             <nb-accordion-item-body>
+              <p>These are the items you need to build the station with:</p>
               <nb-list>
                 <nb-list-item>
                   Veraboard

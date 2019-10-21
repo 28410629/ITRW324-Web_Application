@@ -26,13 +26,12 @@ import {
   NbWindowModule,
   NbTooltipModule,
   NbRouteTabsetModule,
-  NbStepperModule, NbAccordionModule,
+  NbStepperModule,
+  NbAccordionModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
-
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
-
 import { WeatherComponent } from './weather/weather.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
@@ -58,12 +57,13 @@ import {
 } from '../user-pages/manage-favourite-stations/manage-favourite-stations.component';
 import { StationDetailComponent } from '../user-pages/station-detail/station-detail.component';
 import { GithubRepositoryInfoComponent } from '../user-pages/github-repository-info/github-repository-info.component';
-import {UserProfileComponent} from '../user-pages/user-profile/user-profile.component';
-import {RawReadingsComponent} from '../user-pages/raw-readings/raw-readings.component';
-import {HomepageComponent} from '../user-pages/homepage/homepage.component';
-import {RegisterNewStationComponent} from '../user-pages/register-new-station/register-new-station.component';
-import {BuildNewStationComponent} from '../user-pages/build-new-station/build-new-station.component';
-import {StationsDetailComponent} from '../user-pages/stations-detail/stations-detail.component';
+import { UserProfileComponent } from '../user-pages/user-profile/user-profile.component';
+import { RawReadingsComponent } from '../user-pages/raw-readings/raw-readings.component';
+import { HomepageComponent } from '../user-pages/homepage/homepage.component';
+import { RegisterNewStationComponent } from '../user-pages/register-new-station/register-new-station.component';
+import { BuildNewStationComponent } from '../user-pages/build-new-station/build-new-station.component';
+import { StationsDetailComponent } from '../user-pages/stations-detail/stations-detail.component';
+import { ManageYourStationsComponent } from '../user-pages/manage-your-stations/manage-your-stations.component';
 
 
 @NgModule({
@@ -132,6 +132,7 @@ import {StationsDetailComponent} from '../user-pages/stations-detail/stations-de
     RegisterNewStationComponent,
     BuildNewStationComponent,
     StationsDetailComponent,
+    ManageYourStationsComponent,
   ],
   entryComponents: [
     UserProfileComponent,
