@@ -15,9 +15,7 @@ export class ManageYourStationsComponent {
   selectedProvince;
   cities;
   selectedCity;
-  // response
   success: boolean = false;
-  // spinner
   loading: boolean = false;
   constructor(private locationUtil: LocationUtilities,
               private toastService: ToastService) {

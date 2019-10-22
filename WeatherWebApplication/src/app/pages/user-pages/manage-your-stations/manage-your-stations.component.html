@@ -5,79 +5,46 @@
     </nb-card>
   </div>
 </div>
+
 <div class="row" >
-  <div class="col-xxl-12">
+  <div class="col-md-4">
     <nb-card status="info">
-      <nb-card-header>Enter Station ID</nb-card-header>
+      <nb-card-header>Station ID</nb-card-header>
       <nb-card-body style="padding-bottom: 6px">
 
         <div class="test">
-          <span style="margin-right: 10px">Enter ID : </span>
-          <input type="text" nbInput shape="rectangle" placeholder="92347859" nbTooltip="This is the chip ID of the ESP8266 microcontroller." nbTooltipPlacement="top">
-        </div>
-
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
-<div class="row" >
-  <div class="col-xxl-12">
-    <nb-card status="success">
-      <nb-card-header>Select Location Of Station</nb-card-header>
-      <nb-card-body style="padding-bottom: 6px">
-
-        <div class="test">
-          <span style="margin-right: 10px">Selected Country :</span>
+          <span style="margin-right: 10px">Country :</span>
           <nb-select style="margin-right: 10px" [selected]="selectedCountry" (selectedChange)="selectedCountry = $event">
             <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
           </nb-select>
         </div>
 
         <div class="test">
-          <span style="margin-right: 10px">Selected Province :</span>
+          <span style="margin-right: 10px">Province :</span>
           <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="populateCities($event)">
             <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
           </nb-select>
         </div>
 
         <div class="test">
-          <span style="margin-right: 10px">Selected City :</span>
+          <span style="margin-right: 10px">City :</span>
           <nb-select style="margin-right: 10px" [(ngModel)] = "selectedCity" (selectedChange)="selectedCity = $event">
             <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
           </nb-select>
         </div>
 
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
-<div class="row" >
-  <div class="col-xxl-12">
-    <nb-card status="warning">
-      <nb-card-header>Choose Station Nickname</nb-card-header>
-      <nb-card-body style="padding-bottom: 6px">
-
         <div class="test">
-          <span style="margin-right: 10px">Enter Nickname : </span>
+          <span style="margin-right: 10px">Nickname : </span>
           <input type="text" nbInput shape="rectangle" placeholder="Awesome Station!">
         </div>
 
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
-<div class="row" >
-  <div class="col-xxl-12">
-    <nb-card status="danger">
-      <nb-card-header>Save New Station To System</nb-card-header>
-      <nb-card-body style="padding-bottom: 6px">
-
         <div class="test">
-          <button (click)="saveStation()" nbButton shape="round" size="small" status="danger" outline style="float: right"
-                  [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="small" nbSpinnerMessage="">Save</button>
+          <button (click)="saveStation()" nbButton shape="round" size="small" status="danger" outline style=";"
+                  [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="small" nbSpinnerMessage="">Update Station Details</button>
         </div>
 
       </nb-card-body>
     </nb-card>
   </div>
 </div>
+
