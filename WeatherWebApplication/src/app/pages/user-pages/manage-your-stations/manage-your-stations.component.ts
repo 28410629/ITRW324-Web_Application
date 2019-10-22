@@ -11,8 +11,7 @@ import {Station} from '../../../models/station-list.model';
   templateUrl: 'manage-your-stations.component.html',
   styleUrls: ['manage-your-stations.component.scss'],
 })
-export class ManageYourStationsComponent implements OnInit{
-
+export class ManageYourStationsComponent implements OnInit {
   userSubscription: Subscription;
   user: User;
   myStations: Number[] = [];
