@@ -80,12 +80,12 @@ export class UpdatestationComponent implements OnInit {
         .subscribe(data => {
           if (data.success) {
             this.toastService.ShowSuccessToast('Deleted Station Successfully', 'Successfully deleted your station.');
-            this.refreshData();
           } else {
             this.toastService.ShowFailedToast('Failed To Delete Station', 'Failed to delete your station.');
           }
           this.loading = false;
           this.deleteSubscription.unsubscribe();
+          this.refreshData();
         });
     }
     refreshData() {

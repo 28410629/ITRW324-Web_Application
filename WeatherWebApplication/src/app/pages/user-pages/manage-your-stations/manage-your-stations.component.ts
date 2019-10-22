@@ -62,17 +62,26 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
   }
   setUserStations() {
     for (let x = 0; x < this.stationlist.length; x++) {
-      if (this.myStations.includes(this.stationlist[x].stationId))
-        this.userOwnedStations.push(this.stationlist[x]);
+      if (this.myStations.includes(this.stationlist[x].stationId)) {
+        let canAdd = true;
+        for (let i = 0; i < this.userOwnedStations.length; i++) {
+          if (this.userOwnedStations[i].stationId === this.stationlist[x].stationId)
+            canAdd = false;
+        }
+        if (canAdd)
+          this.userOwnedStations.push(this.stationlist[x]);
+      }
     }
   }
   refreshMyData(event) {
     this.stationlist = [];
     this.myStations = [];
     this.userOwnedStations = [];
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription != null)
+      this.userSubscription.unsubscribe();
+    if (this.favSubscription != null)
+      this.favSubscription.unsubscribe();
     this.updateFavStations(event);
-    this.getData();
   }
   updateFavStations(newFav: Number) {
     if (this.favSubscription != null)
@@ -87,10 +96,11 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
             this.favStations.splice(this.favStations.indexOf(newFav), 1);
           }
           this.authService.UpdateUserFavourites(this.favStations);
-          if (this.myStationsMaintain.includes(newFav)) { // remove station from favourites
-            this.favStations.splice(this.myStationsMaintain.indexOf(newFav), 1);
+          if (this.myStationsMaintain.includes(newFav)) { // remove station from owned
+            this.myStationsMaintain.splice(this.myStationsMaintain.indexOf(newFav), 1);
           }
           this.authService.UpdateUserOwnedStations(this.myStationsMaintain);
+          this.getData();
         });
   }
 }
