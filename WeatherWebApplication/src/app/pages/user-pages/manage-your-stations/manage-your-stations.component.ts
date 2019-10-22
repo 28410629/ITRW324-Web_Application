@@ -20,6 +20,7 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
   stationlist: Station[] = [];
   userOwnedStations: Station[] = [];
   favStations: Number[] = [];
+  myStationsMaintain: Number[] = [];
   constructor(private authService: AuthService,
               private toastService: ToastService,
               private stationService: StationListService) {
@@ -41,7 +42,7 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
       .subscribe(
         responseData => {
           this.myStations = responseData.myStations;
-          if (responseData.myStations) {
+          if (responseData.myStations.length > 0) {
             this.getStationList();
           } else {
             this.toastService.ShowFailedToast('Your Stations', 'You have no stations.');
@@ -81,10 +82,15 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
         responseData => {
           this.user = responseData;
           this.favStations = this.user.favStations;
+          this.myStationsMaintain = this.user.myStations;
           if (this.favStations.includes(newFav)) { // remove station from favourites
             this.favStations.splice(this.favStations.indexOf(newFav), 1);
           }
           this.authService.UpdateUserFavourites(this.favStations);
+          if (this.myStationsMaintain.includes(newFav)) { // remove station from favourites
+            this.favStations.splice(this.myStationsMaintain.indexOf(newFav), 1);
+          }
+          this.authService.UpdateUserOwnedStations(this.myStationsMaintain);
         });
   }
 }
