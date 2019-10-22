@@ -25,9 +25,9 @@ export class ManageStationsService {
       }));
   }
   public EditStation(province: string, city: string, stationid: string, nickname) {
-    console.log('https://weatherstationapi.ddns.net:5001' +
-      '/api/get/managestations/edit?Province='
-      + province + '&City=' + city + '&StationId=' + stationid + '&Nickname=' + nickname);
+    // console.log('https://weatherstationapi.ddns.net:5001' +
+    //  '/api/get/managestations/edit?Province='
+    //  + province + '&City=' + city + '&StationId=' + stationid + '&Nickname=' + nickname);
     return this.common.FetchJson(
       'https://weatherstationapi.ddns.net:5001' +
       '/api/get/managestations/edit?Province='
