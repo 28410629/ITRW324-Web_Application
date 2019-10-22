@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {LocationUtilities} from '../../../common/location.utilities';
 import {ToastService} from '../../../services/toast.service';
 import {LocalDataSource} from 'ng2-smart-table';
 
@@ -38,7 +37,7 @@ export class ApiDocumentationComponent {
   };
   constructor(private toastService: ToastService) {
     // get available stations
-    this.toastService.ShowSuccessToast('API Routes', 'We like tinkers and developers, this is for you!')
+    this.toastService.ShowSuccessToast('API Routes', 'We like tinkers and developers, this is for you!');
     this.loadTableData();
   }
   loadTableData() {
