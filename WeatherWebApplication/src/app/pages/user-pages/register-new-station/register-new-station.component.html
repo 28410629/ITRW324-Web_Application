@@ -13,7 +13,7 @@
 
         <div class="test">
           <span style="margin-right: 10px">Enter ID : </span>
-          <input type="text" nbInput shape="rectangle" placeholder="92347859" nbTooltip="This is the chip ID of the ESP8266 microcontroller." nbTooltipPlacement="top">
+          <input [(ngModel)]="stationid" type="text" nbInput shape="rectangle" placeholder="92347859" nbTooltip="This is the chip ID of the ESP8266 microcontroller." nbTooltipPlacement="top">
         </div>
 
       </nb-card-body>
@@ -59,7 +59,7 @@
 
         <div class="test">
           <span style="margin-right: 10px">Enter Nickname : </span>
-          <input type="text" nbInput shape="rectangle" placeholder="Awesome Station!">
+          <input [(ngModel)]="nickname" type="text" nbInput shape="rectangle" placeholder="Awesome Station!">
         </div>
 
       </nb-card-body>

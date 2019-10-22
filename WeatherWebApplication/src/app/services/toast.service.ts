@@ -5,7 +5,7 @@ import {NbToastrService} from '@nebular/theme';
 export class ToastService {
   toastPosition = 'top-right';
 
-  constructor( private toastrService: NbToastrService) {
+  constructor(private toastService: NbToastrService) {
   }
 
   public ShowSuccessToast(title, message) {
@@ -21,21 +21,21 @@ export class ToastService {
   }
 
   private SuccessToast(position, title, message) {
-    this.toastrService.show(
+    this.toastService.show(
       message,
       title,
       { position: position, status: 'success' });
   }
 
   private FailedToast(position, title, message) {
-    this.toastrService.show(
+    this.toastService.show(
       message,
       title,
       { position: position, status: 'warning' });
   }
 
   private InfoToast(position, title, message) {
-    this.toastrService.show(
+    this.toastService.show(
       message,
       title,
       { position: position, status: 'info' });
