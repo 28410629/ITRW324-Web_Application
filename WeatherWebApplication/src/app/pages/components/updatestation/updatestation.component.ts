@@ -31,6 +31,9 @@ export class UpdatestationComponent implements OnInit {
 
   ngOnInit() {
     this.isLoaded = true;
+    this.selectedProvince = this.myStation.province;
+    this.populateCities(this.selectedProvince);
+    this.selectedCity = this.myStation.city;
   }
 
   getLocationList() {
