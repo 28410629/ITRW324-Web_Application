@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {Router} from '@angular/router';
+import {ToastService} from '../../../services/toast.service';
 
 @Component({
   selector: 'ngx-weather',
@@ -20,7 +21,8 @@ export class WeatherComponent implements OnInit {
   @Input()
   listOfFavs = [];
   isLoaded = false;
-  constructor(public router: Router) {
+  constructor(public router: Router,
+              private toastService: ToastService) {
   }
 
   ngOnInit() {
@@ -172,6 +174,12 @@ export class WeatherComponent implements OnInit {
 
   toggle(checked: boolean) {
     this.checked = checked;
+    if (checked)
+      this.toastService.ShowSuccessToast('Added A Favorite Station',
+      'Successfully added a favorite station in the system.');
+    else
+      this.toastService.ShowFailedToast('Removed A Favorite Station',
+        'Successfully removed a favorite station in the system.');
     this._sendDataToParent();
   }
 
