@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {ToastService} from '../../../services/toast.service';
 import {Station} from '../../../models/station-list.model';
+import {ManageStationsService} from '../../../services/manage-stations.service';
 
 @Component({
   selector: 'ngx-updatestations',
@@ -23,14 +24,17 @@ export class UpdatestationComponent implements OnInit {
   loading: boolean = false;
   @Input()
   myStation: Station;
+  stationNickname = '';
   constructor(public router: Router,
               private locationUtil: LocationUtilities,
-              private toastService: ToastService) {
+              private toastService: ToastService,
+              private manageService: ManageStationsService) {
     this.getLocationList();
   }
 
   ngOnInit() {
     this.isLoaded = true;
+    this.stationNickname = this.myStation.nickName;
     this.selectedProvince = this.myStation.province;
     this.populateCities(this.selectedProvince);
     this.selectedCity = this.myStation.city;
@@ -51,7 +55,11 @@ export class UpdatestationComponent implements OnInit {
   updateStation() {
     if (!this.loading) {
       this.loading = true;
-      this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
+      this.manageService.EditStation(this.selectedProvince,
+        this.selectedCity,
+        this.myStation.stationId.toString(),
+        this.stationNickname);
+      this.toastService.ShowSuccessToast('Updated Your Station', 'Successfully updated your station in the system.');
     }
   }
   onClose() {
