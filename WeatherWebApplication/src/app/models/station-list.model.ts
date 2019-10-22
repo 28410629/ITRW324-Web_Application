@@ -7,4 +7,6 @@ export interface Station {
   userId: number;
   locationId: number;
   nickName: string;
+  province: string;
+  city: string;
 }

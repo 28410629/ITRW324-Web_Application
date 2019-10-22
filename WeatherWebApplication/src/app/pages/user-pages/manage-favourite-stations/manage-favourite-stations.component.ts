@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StationStatusService} from '../../../services/station-status.service';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {AuthService} from '../../../auth/auth-service.service';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs';
   templateUrl: 'manage-favourite-stations.component.html',
   styleUrls: ['manage-favourite-stations.component.scss'],
 })
-export class ManageFavouriteStationsComponent implements OnInit, OnDestroy {
+export class ManageFavouriteStationsComponent implements OnInit {
   loaderMessage: string = 'Loading user settings.';
   userSubscription: Subscription;
   statusReadings: AverageReadingEntity[] = [];
@@ -87,11 +87,5 @@ export class ManageFavouriteStationsComponent implements OnInit, OnDestroy {
       this.favStations.push(Number(newFavs));
     }
     this.authService.UpdateUserFavourites(this.favStations);
-  }
-
-  ngOnDestroy() {
-    if (this.userSubscription != null) {
-      this.userSubscription.unsubscribe();
-    }
   }
 }

@@ -43,6 +43,7 @@ export class AuthService {
   SetUserData(user, name) {
     const userRef: AngularFirestoreDocument<any> = this._firestore.doc(`users/${user.uid}`);
     const num: number[] = [];
+    const myStationArray: number[] = [];
     const cbxArray: boolean[] = [];
     for (let i = 0; i < 33; i++) {
       cbxArray[i] = false;
@@ -56,6 +57,7 @@ export class AuthService {
       emailVerified: user.emailVerified,
       favStations: num,
       checkBoxArray: cbxArray,
+      myStations: myStationArray,
       theme: 'cosmic',
     };
     return userRef.set(userData, {
@@ -90,6 +92,12 @@ export class AuthService {
     const userjson = JSON.parse(localStorage.getItem('user'));
     this._firestore.doc('users/' + userjson.uid).update({
       checkBoxArray: cbxProg,
+    });
+  }
+  UpdateUserOwnedStations(stations: Number[]) {
+    const userjson = JSON.parse(localStorage.getItem('user'));
+    this._firestore.doc('users/' + userjson.uid).update({
+      myStations: stations,
     });
   }
   // Send email verification when new user sign up
