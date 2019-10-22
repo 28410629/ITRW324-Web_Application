@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {ToastService} from '../../../services/toast.service';
+import {Station} from '../../../models/station-list.model';
 
 @Component({
   selector: 'ngx-updatestations',
@@ -20,6 +21,8 @@ export class UpdatestationComponent implements OnInit {
   selectedCity;
   success: boolean = false;
   loading: boolean = false;
+  @Input()
+  myStation: Station;
   constructor(public router: Router,
               private locationUtil: LocationUtilities,
               private toastService: ToastService) {

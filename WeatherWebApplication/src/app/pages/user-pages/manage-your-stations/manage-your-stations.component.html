@@ -5,10 +5,9 @@
     </nb-card>
   </div>
 </div>
-
 <div class="row" >
-
-  <ngx-updatestations></ngx-updatestations>
-
+  <div *ngFor="let station of userOwnedStations">
+    <ngx-updatestations [myStation]="station"></ngx-updatestations>
+  </div>
 </div>
 

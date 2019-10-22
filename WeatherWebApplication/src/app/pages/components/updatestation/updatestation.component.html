@@ -1,6 +1,6 @@
 <div class="col-md-4">
   <nb-card status="info" style=" width: 290px">
-    <nb-card-header>Station ID</nb-card-header>
+    <nb-card-header>Station ID: {{myStation.stationId}}</nb-card-header>
     <nb-card-body style="padding-bottom: 6px; width: 265px">
       <div class="col-sm-6">
         <div class="test row">
@@ -23,7 +23,7 @@
         </div>
         <div class="test row">
           <span style="margin-right: 10px">Nickname : </span><p></p>
-          <input type="text" nbInput shape="rectangle">
+          <input type="text" [value]="myStation.nickName" nbInput shape="rectangle">
         </div>
         <p></p>
         <div class="test row" style="margin-left: auto; margin-right: auto;">
