@@ -7,44 +7,43 @@
 </div>
 
 <div class="row" >
+
   <div class="col-md-4">
     <nb-card status="info">
       <nb-card-header>Station ID</nb-card-header>
       <nb-card-body style="padding-bottom: 6px">
-
+        <div class="col-sm-6">
         <div class="test">
-          <span style="margin-right: 10px">Country :</span>
+          <span style="margin-right: 10px">Country :</span><p></p>
           <nb-select style="margin-right: 10px" [selected]="selectedCountry" (selectedChange)="selectedCountry = $event">
             <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
           </nb-select>
         </div>
-
         <div class="test">
-          <span style="margin-right: 10px">Province :</span>
+          <span style="margin-right: 10px">Province :</span><p></p>
           <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="populateCities($event)">
             <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
           </nb-select>
         </div>
-
         <div class="test">
-          <span style="margin-right: 10px">City :</span>
+          <span style="margin-right: 10px">City :</span><p></p>
           <nb-select style="margin-right: 10px" [(ngModel)] = "selectedCity" (selectedChange)="selectedCity = $event">
             <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
           </nb-select>
         </div>
-
         <div class="test">
-          <span style="margin-right: 10px">Nickname : </span>
-          <input type="text" nbInput shape="rectangle" placeholder="Awesome Station!">
+          <span style="margin-right: 10px">Nickname : </span><p></p>
+          <input type="text" nbInput shape="rectangle">
         </div>
-
-        <div class="test">
-          <button (click)="saveStation()" nbButton shape="round" size="small" status="danger" outline style=";"
+          <p></p>
+        <div class="test col-sm-2">
+          <button (click)="saveStation()" nbButton shape="round" size="medium" status="danger" outline style="float: right"
                   [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="small" nbSpinnerMessage="">Update Station Details</button>
         </div>
-
+        </div>
       </nb-card-body>
     </nb-card>
   </div>
+
 </div>
 
