@@ -65,6 +65,7 @@ import { BuildNewStationComponent } from '../user-pages/build-new-station/build-
 import { StationsDetailComponent } from '../user-pages/stations-detail/stations-detail.component';
 import { ManageYourStationsComponent } from '../user-pages/manage-your-stations/manage-your-stations.component';
 import {ApiDocumentationComponent} from '../user-pages/api-documentation/api-documentation.component';
+import {UpdatestationComponent} from './updatestation/updatestation.component';
 
 
 @NgModule({
@@ -113,6 +114,7 @@ import {ApiDocumentationComponent} from '../user-pages/api-documentation/api-doc
   declarations: [
     DashboardComponent,
     WeatherComponent,
+    UpdatestationComponent,
     NotFoundComponent,
     ChartjsBarComponent,
     ChartjsLineComponent,

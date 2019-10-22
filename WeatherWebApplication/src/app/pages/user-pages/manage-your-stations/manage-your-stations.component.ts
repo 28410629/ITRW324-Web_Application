@@ -8,7 +8,6 @@ import {ToastService} from '../../../services/toast.service';
   styleUrls: ['manage-your-stations.component.scss'],
 })
 export class ManageYourStationsComponent {
-  // location
   countries;
   selectedCountry;
   provinces;
@@ -34,7 +33,7 @@ export class ManageYourStationsComponent {
     this.cities = this.locationUtil.getCityList(this.countries[0], this.selectedProvince);
     this.selectedCity = this.cities[0];
   }
-  saveStation() {
+  updateStation() {
     if (!this.loading) {
       this.loading = true;
       this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
