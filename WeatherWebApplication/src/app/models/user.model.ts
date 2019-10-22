@@ -6,6 +6,7 @@ export interface User {
   emailVerified: boolean;
   favStations: number[];
   checkBoxArray: boolean[];
+  myStations: number[];
   theme: string;
 }
 

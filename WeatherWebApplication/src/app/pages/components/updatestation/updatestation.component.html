@@ -1,6 +1,9 @@
 <div class="col-md-4">
   <nb-card status="info" style=" width: 290px">
-    <nb-card-header>Station ID: {{myStation.stationId}}</nb-card-header>
+    <nb-card-header>Station ID: {{myStation.stationId}}
+      <button (click)="deleteStation()" nbButton shape="round" size="small" status="danger" outline style="float: right"
+               [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="small" nbSpinnerMessage="">Delete</button>
+    </nb-card-header>
     <nb-card-body style="padding-bottom: 6px; width: 265px">
       <div class="col-sm-6">
         <div class="test row">
@@ -27,8 +30,8 @@
         </div>
         <p></p>
         <div class="test row" style="margin-left: auto; margin-right: auto;">
-          <button (click)="updateStation()" nbButton shape="round" size="medium" status="danger" outline style="float: right"
-                  [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="small" nbSpinnerMessage="">Update Station Details</button>
+          <button (click)="updateStation()" nbButton shape="round" size="small" status="success" outline style="float: right"
+                  [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="small" nbSpinnerMessage="">Update Station Details</button>
         </div>
       </div>
     </nb-card-body>

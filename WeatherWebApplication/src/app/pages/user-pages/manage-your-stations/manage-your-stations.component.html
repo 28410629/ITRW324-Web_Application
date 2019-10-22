@@ -7,7 +7,7 @@
 </div>
 <div class="row" >
   <div *ngFor="let station of userOwnedStations">
-    <ngx-updatestations [myStation]="station"></ngx-updatestations>
+    <ngx-updatestations [myStation]="station" (refresh)="refreshMyData($event)"></ngx-updatestations>
   </div>
 </div>
 

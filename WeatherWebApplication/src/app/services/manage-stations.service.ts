@@ -9,11 +9,10 @@ export class ManageStationsService {
   constructor(private common: FetchJsonUtilities) {
   }
 
-  public DeleteStation(province: string, city: string, stationid: string, nickname) {
+  public DeleteStation(stationid: string) {
     return this.common.FetchJson(
       'https://weatherstationapi.ddns.net:5001' +
-      '/api/get/managestations/delete?Province='
-      + province + '&City=' + city + '&StationId=' + stationid + '&Nickname=' + nickname)
+      '/api/get/managestations/delete?StationId=' + stationid)
       .pipe(map(responseData => {
         const data = {} as ManageStationsModel;
         for (const key in responseData) {

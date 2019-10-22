@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {ToastService} from '../../../services/toast.service';
@@ -26,6 +26,8 @@ export class UpdatestationComponent implements OnInit {
   myStation: Station;
   stationNickname = '';
   userSubscription;
+  deleteSubscription;
+  @Output() refresh = new EventEmitter();
   constructor(public router: Router,
               private locationUtil: LocationUtilities,
               private toastService: ToastService,
@@ -71,6 +73,27 @@ export class UpdatestationComponent implements OnInit {
         this.loading = false;
         this.userSubscription.unsubscribe();
       });
+    }
+
+    deleteStation() {
+      if (!this.loading)
+        this.toastService.ShowInfoToast('Delete Station', 'Deleting station...');
+      this.loading = true;
+      this.deleteSubscription = this.manageService.DeleteStation(this.myStation.stationId.toString())
+        .subscribe(data => {
+          if (data.success) {
+            this.toastService.ShowSuccessToast('Deleted Station Successfully', 'Successfully deleted your station.');
+            this.refreshData();
+          } else {
+            this.toastService.ShowFailedToast('Failed To Delete Station', 'Failed to delete your station.');
+          }
+          this.loading = false;
+          this.deleteSubscription.unsubscribe();
+        });
+    }
+
+    refreshData() {
+      this.refresh.emit(this.myStation.stationId);
     }
  }
 
