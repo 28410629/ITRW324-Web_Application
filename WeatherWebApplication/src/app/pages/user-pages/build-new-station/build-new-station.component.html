@@ -192,58 +192,69 @@
                     Solder female headers to veraboard, ensure pins do not connect next to each other when soldering
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
+                  <nb-list-item>
+                    To ensure no connectivety, break flow between two sides of pin through scratching copper plating of board,
+                    or other means and preferably from side to side *******
+                  </nb-list-item>
+                  <nb-list-item>
+                    Insert NodeMCU, making sure it fits comfortably *****
+                  </nb-list-item>
                 </nb-list>
                 <br>
                 <nb-card-header>
-                  <h3>Step 2-A: Connecting BME280-Sensors</h3>
+                  <h3>Step 3: Solder BME280-Sensor</h3>
                 </nb-card-header>
                 <br>
-                After connecting jumpers, on BME280 Sensor connect:
+                After soldering male header pins on BME280 Sensor:
                 <br>
                 <br>
                 <nb-list>
                   <nb-list-item>
-                    Connect VIN (VCC) pin on BME Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
+                    Insert 1x4 piece female header pins to veraboard, preferably on right on NodeMCU,
+                    allowing SDA and SCL pin on BME Sensor to connect to D1 and D0 pin on NodeMcu respectively and
+                    ensuring pins are perpendicular to veraboard.
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[18]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Connect GND pin on BME Sensor to GND pin on the right side of the NodeMCU
+                    Solder 1x4 piece female header pin to veraboard, ensuring pins dont connect next to each other
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[19]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Connect SCL pin on BME Sensor to D1 pin on the right side of the NodeMCU
+                    Insert BME Sensor, ensuring it fits comfortably
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[20]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU
+                    Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU [Not needed]
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[21]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
                 <nb-card-header>
-                  <h3>Step 2-B: Connecting TEMT6000 Light Sensor</h3>
+                  <h3>Step 4: Solder TEMT6000 Light Sensor</h3>
                 </nb-card-header>
                 <br>
-                Afterwards, on TEMT6000 Light Sensor connect:
+                After soldering male header pins on TEMT6000 Light Sensor:
                 <br>
                 <br>
                 <nb-list>
                   <nb-list-item>
-                    Connect S pin on TEMT Sensor to A000 pin on the left side of the NodeMCU
+                    Insert 1x3 piece female header pins to veraboard, preferably on left on NodeMCU,
+                    allowing S pin on TEMT Sensor to connect to A0 pin on NodeMcu respectively and
+                    ensuring pins are perpendicular to veraboard.
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[22]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Connect G pin on TEMT Sensor to GND pin on the right side of the NodeMCU
+                    Solder 1x3 piece female header pin to veraboard, ensuring pins dont connect next to each other
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[23]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Connect V pin on TEMT Sensor to 3V3 (3.3V) pin on the right side of the NodeMCU
+                    Insert TEMT Sensor, ensuring it fits comfortably
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[24]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
                 <nb-card-header>
-                  <h3>Step 2-C: Enabling Deepsleep</h3>
+                  <h3>Step 5: Enabling Deepsleep</h3>
                 </nb-card-header>
                 <br>
                 Afterwards, to enable deepsleep for minimizing battery consumption:
