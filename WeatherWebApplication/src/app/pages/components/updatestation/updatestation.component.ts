@@ -25,6 +25,7 @@ export class UpdatestationComponent implements OnInit {
   @Input()
   myStation: Station;
   stationNickname = '';
+  userSubscription;
   constructor(public router: Router,
               private locationUtil: LocationUtilities,
               private toastService: ToastService,
@@ -53,14 +54,23 @@ export class UpdatestationComponent implements OnInit {
     this.selectedCity = this.cities[0];
   }
   updateStation() {
-    if (!this.loading) {
-      this.loading = true;
-      this.manageService.EditStation(this.selectedProvince.replace(/ /g, '%20'),
-        this.selectedCity.replace(/ /g, '%20'),
-        this.myStation.stationId.toString(),
-        this.stationNickname.replace(/ /g, '%20'));
-      this.toastService.ShowSuccessToast('Updated Your Station', 'Successfully updated your station in the system.');
-      this.loading = false;
+
+    if (!this.loading)
+      this.toastService.ShowInfoToast('Edit Station', 'Sending data to system, please wait for response.');
+    this.loading = true;
+    this.userSubscription = this.manageService.EditStation(this.selectedProvince,
+      this.selectedCity,
+      this.myStation.stationId.toString(),
+      this.stationNickname)
+      .subscribe(data => {
+        if (data.success) {
+          this.toastService.ShowSuccessToast('Edit Your Station', 'Successfully edited your station.');
+        } else {
+          this.toastService.ShowFailedToast('Edit Your Station', 'Failed to edit your station.');
+        }
+        this.loading = false;
+        this.userSubscription.unsubscribe();
+      });
     }
-  }
-}
+ }
+
