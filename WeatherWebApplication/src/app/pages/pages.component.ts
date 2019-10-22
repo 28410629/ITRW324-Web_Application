@@ -61,7 +61,7 @@ export class PagesComponent {
       link: '/pages/build-new-station',
     },
     {
-      title: 'API Documentation',
+      title: 'API Routes',
       icon: 'flip-2-outline',
       link: '/pages/api-documentation',
     },

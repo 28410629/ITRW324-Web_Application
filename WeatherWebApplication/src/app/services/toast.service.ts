@@ -24,20 +24,20 @@ export class ToastService {
     this.toastService.show(
       message,
       title,
-      { position: position, status: 'success' });
+      { position: position, status: 'success', duration: 3500 });
   }
 
   private FailedToast(position, title, message) {
     this.toastService.show(
       message,
       title,
-      { position: position, status: 'warning' });
+      { position: position, status: 'warning', duration: 3500});
   }
 
   private InfoToast(position, title, message) {
     this.toastService.show(
       message,
       title,
-      { position: position, status: 'info' });
+      { position: position, status: 'info', duration: 3500 });
   }
 }
