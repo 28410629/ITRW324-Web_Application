@@ -44,7 +44,7 @@ export class RegisterNewStationComponent implements OnInit {
       .subscribe(
         responseData => {
           this.user = responseData;
-          this.myStationSubscription = this.user.myStations;
+          this.myStations = this.user.myStations;
         });
   }
   getLocationList() {
