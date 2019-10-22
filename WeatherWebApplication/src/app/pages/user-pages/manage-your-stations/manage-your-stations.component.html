@@ -8,42 +8,7 @@
 
 <div class="row" >
 
-  <div class="col-md-4">
-    <nb-card status="info" style=" width: 290px">
-      <nb-card-header>Station ID</nb-card-header>
-      <nb-card-body style="padding-bottom: 6px; width: 265px">
-        <div class="col-sm-6">
-            <div class="test row">
-              <span style="margin-right: 10px">Country :</span><p></p>
-              <nb-select style="margin-right: 10px" [selected]="selectedCountry" (selectedChange)="selectedCountry = $event">
-                <nb-option *ngFor="let s of countries" [value]="s">{{ s }}</nb-option>
-              </nb-select>
-            </div>
-            <div class="test row">
-              <span style="margin-right: 10px">Province :</span><p></p>
-              <nb-select style="margin-right: 10px" [selected]="selectedProvince" (selectedChange)="populateCities($event)">
-                <nb-option *ngFor="let s of provinces" [value]="s">{{ s }}</nb-option>
-              </nb-select>
-            </div>
-            <div class="test row">
-              <span style="margin-right: 10px">City :</span><p></p>
-              <nb-select style="margin-right: 10px" [(ngModel)] = "selectedCity" (selectedChange)="selectedCity = $event">
-                <nb-option *ngFor="let s of cities" [value]="s">{{ s }}</nb-option>
-              </nb-select>
-            </div>
-            <div class="test row">
-              <span style="margin-right: 10px">Nickname : </span><p></p>
-              <input type="text" nbInput shape="rectangle">
-            </div>
-              <p></p>
-            <div class="test row" style="margin-left: auto; margin-right: auto;">
-              <button (click)="updateStation()" nbButton shape="round" size="medium" status="danger" outline style="float: right"
-                      [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="small" nbSpinnerMessage="">Update Station Details</button>
-            </div>
-        </div>
-      </nb-card-body>
-    </nb-card>
-  </div>
+  <ngx-updatestations></ngx-updatestations>
 
 </div>
 
