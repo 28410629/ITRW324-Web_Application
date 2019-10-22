@@ -169,6 +169,9 @@ export class WeatherComponent implements OnInit {
   }
 
   openStationDetail() {
+    if (this.isStationOnline() === false)
+      this.toastService.ShowFailedToast('Offline Station',
+        'This station is offline and may not show the latest readings.');
     this.router.navigate(['pages/station-details/' + this.statusReadings.stationName + '/']);
   }
 
