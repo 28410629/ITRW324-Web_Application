@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {ToastService} from '../../../services/toast.service';
 import {ManageStationsService} from '../../../services/manage-stations.service';
 import {AuthService} from '../../../auth/auth-service.service';
+import {User} from '../../../models/user.model';
 
 @Component({
   selector: 'ngx-register-new-station',
   templateUrl: 'register-new-station.component.html',
   styleUrls: ['register-new-station.component.scss'],
 })
-export class RegisterNewStationComponent {
+export class RegisterNewStationComponent implements OnInit {
   // location
   countries;
   selectedCountry;
@@ -27,12 +28,24 @@ export class RegisterNewStationComponent {
   userSubscription;
   myStationSubscription;
   myStations: Number[] = [];
+  useruid;
+  user: User;
   constructor(private locationUtil: LocationUtilities,
               private toastService: ToastService,
               private manageStations: ManageStationsService,
               private authService: AuthService) {
+    const storageuser: User = JSON.parse(localStorage.getItem('user'));
+    this.useruid = storageuser.uid;
     // get available stations
     this.getLocationList();
+  }
+  ngOnInit() {
+    this.myStationSubscription = this.authService.GetUserProfileData(this.useruid)
+      .subscribe(
+        responseData => {
+          this.user = responseData;
+          this.myStationSubscription = this.user.myStations;
+        });
   }
   getLocationList() {
     this.countries = this.locationUtil.getCountry();
@@ -56,6 +69,7 @@ export class RegisterNewStationComponent {
         .subscribe(data => {
           if (data.success) {
             this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
+            this.addStationToFirebase(parseInt(this.stationid, 10));
           } else {
             this.toastService.ShowFailedToast('Register New Station', 'Failed to add station to system.');
           }

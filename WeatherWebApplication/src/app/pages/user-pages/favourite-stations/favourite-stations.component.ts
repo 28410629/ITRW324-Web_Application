@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StationStatusService} from '../../../services/station-status.service';
 import {AverageReadingEntity} from '../../../models/averagereadings.model';
 import {User} from '../../../models/user.model';
@@ -12,7 +12,7 @@ import {ToastService} from '../../../services/toast.service';
   templateUrl: 'favourite-stations.component.html',
   styleUrls: ['favourite-stations.component.scss'],
 })
-export class FavouriteStationsComponent implements OnInit, OnDestroy {
+export class FavouriteStationsComponent implements OnInit {
   userSubscription: Subscription;
   loaderMessage: string = 'Loading content.';
   statusReadings: AverageReadingEntity[] = [];
@@ -63,12 +63,6 @@ export class FavouriteStationsComponent implements OnInit, OnDestroy {
       );
     } else {
       this.isLoaded = true;
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.userSubscription != null) {
-      this.userSubscription.unsubscribe();
     }
   }
 
