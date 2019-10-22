@@ -55,15 +55,12 @@ export class UpdatestationComponent implements OnInit {
   updateStation() {
     if (!this.loading) {
       this.loading = true;
-      this.manageService.EditStation(this.selectedProvince,
-        this.selectedCity,
+      this.manageService.EditStation(this.selectedProvince.replace(/ /g, '%20'),
+        this.selectedCity.replace(/ /g, '%20'),
         this.myStation.stationId.toString(),
-        this.stationNickname);
+        this.stationNickname.replace(/ /g, '%20'));
       this.toastService.ShowSuccessToast('Updated Your Station', 'Successfully updated your station in the system.');
+      this.loading = false;
     }
   }
-  onClose() {
-    this.success = false;
-  }
-
 }
