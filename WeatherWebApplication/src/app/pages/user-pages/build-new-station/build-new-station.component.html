@@ -78,6 +78,10 @@
                   <nb-checkbox style="float: right"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
+                  4 jumper cables to be used for wiring *****
+                  <nb-checkbox style="float: right"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
                   1 jumper cables with male headers
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[7]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
@@ -94,7 +98,7 @@
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[10]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
-                  Computer thats not completely shyt
+                  Computer for software flashing
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[11]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
@@ -112,7 +116,6 @@
             <nb-accordion-item-body>
               <ul>
                 <li>Skill level needed: Beginner</li>
-                <li>Intelligence level: Slightly above primate</li>
                 <li>Technological hardware know-how</li>
                 <li>Should be able to read</li>
               </ul>
@@ -173,7 +176,7 @@
                 </nb-list>
                 <br>
                 <nb-card-header>
-                  <h3>Step 2: Connecting Sensors</h3>
+                  <h3>Step 2: Soldering NodMCU3</h3>
                 </nb-card-header>
                 <br>
                 After soldering is done:
@@ -181,11 +184,12 @@
                 <br>
                 <nb-list>
                   <nb-list-item>
-                    Connect 4 jumpers to BME Sensor and 3 to TEMT Light Sensor
+                    Insert 2x15 piece female headers to veraboard, ensure enough space for NodeMCu to and
+                    rest of the components to fit, as well as headers being perpendicular to veraboard
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[16]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Solder 3 male header pins to TEMT Light Sensor
+                    Solder female headers to veraboard, ensure pins do not connect next to each other when soldering
                     <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
