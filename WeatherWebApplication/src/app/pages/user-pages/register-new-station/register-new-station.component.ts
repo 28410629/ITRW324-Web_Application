@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {LocationUtilities} from '../../../common/location.utilities';
 import {ToastService} from '../../../services/toast.service';
 import {ManageStationsService} from '../../../services/manage-stations.service';
+import {AuthService} from '../../../auth/auth-service.service';
 
 @Component({
   selector: 'ngx-register-new-station',
@@ -24,9 +25,12 @@ export class RegisterNewStationComponent {
   loading: boolean = false;
   // subscription
   userSubscription;
+  myStationSubscription;
+  myStations: Number[] = [];
   constructor(private locationUtil: LocationUtilities,
               private toastService: ToastService,
-              private manageStations: ManageStationsService) {
+              private manageStations: ManageStationsService,
+              private authService: AuthService) {
     // get available stations
     this.getLocationList();
   }
@@ -61,6 +65,10 @@ export class RegisterNewStationComponent {
     } else {
       this.toastService.ShowFailedToast('Register New Station', 'Please enter a correct station id.');
     }
+  }
+  addStationToFirebase(newStation: number) {
+    this.myStations.push(newStation);
+    this.authService.UpdateUserOwnedStations(this.myStations);
   }
 }
 

@@ -17,7 +17,7 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
   user: User;
   myStations: Number[] = [];
   useruid: string;
-  stationlist: Station[];
+  stationlist: Station[] = [];
   userOwnedStations: Station[] = [];
   favStations: Number[] = [];
   constructor(private authService: AuthService,
@@ -40,8 +40,8 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
     this.userSubscription = this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
-          this.myStations = responseData.favStations; // change this to owned stations.
-          if (responseData.favStations.length > 0) {
+          this.myStations = responseData.myStations;
+          if (responseData.myStations) {
             this.getStationList();
           } else {
             this.toastService.ShowFailedToast('Your Stations', 'You have no stations.');

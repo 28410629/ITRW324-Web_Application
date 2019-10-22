@@ -34,7 +34,6 @@ export class UpdatestationComponent implements OnInit {
               private manageService: ManageStationsService) {
     this.getLocationList();
   }
-
   ngOnInit() {
     this.isLoaded = true;
     this.stationNickname = this.myStation.nickName;
@@ -42,7 +41,6 @@ export class UpdatestationComponent implements OnInit {
     this.populateCities(this.selectedProvince);
     this.selectedCity = this.myStation.city;
   }
-
   getLocationList() {
     this.countries = this.locationUtil.getCountry();
     this.selectedCountry = this.countries[0];
@@ -74,7 +72,6 @@ export class UpdatestationComponent implements OnInit {
         this.userSubscription.unsubscribe();
       });
     }
-
     deleteStation() {
       if (!this.loading)
         this.toastService.ShowInfoToast('Delete Station', 'Deleting station...');
@@ -91,7 +88,6 @@ export class UpdatestationComponent implements OnInit {
           this.deleteSubscription.unsubscribe();
         });
     }
-
     refreshData() {
       this.refresh.emit(this.myStation.stationId);
     }

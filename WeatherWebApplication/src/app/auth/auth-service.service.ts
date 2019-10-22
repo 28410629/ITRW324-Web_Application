@@ -94,6 +94,12 @@ export class AuthService {
       checkBoxArray: cbxProg,
     });
   }
+  UpdateUserOwnedStations(stations: Number[]) {
+    const userjson = JSON.parse(localStorage.getItem('user'));
+    this._firestore.doc('users/' + userjson.uid).update({
+      myStations: stations,
+    });
+  }
   // Send email verification when new user sign up
   SendVerificationMail() {
     return this._firebaseAuth.auth.currentUser.sendEmailVerification()
