@@ -63,47 +63,47 @@
                 </nb-list-item>
                 <nb-list-item>
                   2x15 piece female headers *****
-                  <nb-checkbox style="float: right"></nb-checkbox>
-                </nb-list-item>
-                <nb-list-item>
-                  1x4 piece female header *****
-                  <nb-checkbox style="float: right"></nb-checkbox>
-                </nb-list-item>
-                <nb-list-item>
-                  1x3 piece female header *****
-                  <nb-checkbox style="float: right"></nb-checkbox>
-                </nb-list-item>
-                <nb-list-item>
-                  4x1 female headers *****
-                  <nb-checkbox style="float: right"></nb-checkbox>
-                </nb-list-item>
-                <nb-list-item>
-                  4 jumper cables to be used for wiring *****
-                  <nb-checkbox style="float: right"></nb-checkbox>
-                </nb-list-item>
-                <nb-list-item>
-                  1 jumper cables with male headers
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[7]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
-                  4 copper wires
+                  1x4 piece female header *****
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[8]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
-                  7 male header pins
+                  1x3 piece female header *****
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[9]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
-                  Soldering Iron & Soldering
+                  4x1 female headers *****
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[10]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
-                  Computer for software flashing
+                  4 jumper cables to be used for wiring *****
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[11]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
                 <nb-list-item>
-                  Working Internet
+                  1 jumper cables with male headers
                   <nb-checkbox style="float: right" [(checked)]="checkBoxArray[12]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  4 copper wires
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[13]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  11 male header pins
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[14]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Soldering Iron & Soldering
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[15]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Computer for software flashing
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[16]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Working Internet
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
               </nb-list>
             </nb-accordion-item-body>
@@ -142,7 +142,7 @@
               <nb-list>
                 <nb-list-item>
                   Arduino IDE
-                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[13]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[18]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
               </nb-list>
             </nb-accordion-item-body>
@@ -158,7 +158,6 @@
               <br>
               <img src="https://www.roboshala.com/wp-content/uploads/2017/09/nodemcu-12E-pinout.png"
                    style="width: 350px; height: 350px">
-              <ul>
                 <br>
                 <br>
                 <nb-card-header>
@@ -167,11 +166,11 @@
                 <nb-list>
                   <nb-list-item>
                     Solder 4 male header pins to BME Sensor
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[14]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[19]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
                     Solder 3 male header pins to TEMT Light Sensor
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[15]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[20]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
@@ -186,18 +185,20 @@
                   <nb-list-item>
                     Insert 2x15 piece female headers to veraboard, ensure enough space for NodeMCu to and
                     rest of the components to fit, as well as headers being perpendicular to veraboard
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[16]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[21]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
                     Solder female headers to veraboard, ensure pins do not connect next to each other when soldering
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[17]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[22]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    To ensure no connectivety, break flow between two sides of pin through scratching copper plating of board,
-                    or other means and preferably from side to side *******
+                    To ensure no conncections are made, break flow between two sides of pin through scratching copper plating of board,
+                    or other means and preferably from side to side
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[23]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Insert NodeMCU, making sure it fits comfortably *****
+                    Insert NodeMCU, making sure it fits comfortably
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[24]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
@@ -213,19 +214,15 @@
                     Insert 1x4 piece female header pins to veraboard, preferably on right on NodeMCU,
                     allowing SDA and SCL pin on BME Sensor to connect to D1 and D0 pin on NodeMcu respectively and
                     ensuring pins are perpendicular to veraboard.
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[18]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[25]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
                     Solder 1x4 piece female header pin to veraboard, ensuring pins dont connect next to each other
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[19]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[26]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
                     Insert BME Sensor, ensuring it fits comfortably
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[20]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-                  </nb-list-item>
-                  <nb-list-item>
-                    Connect SDA pin on BME Sensor to D2 pin on the right side of the NodeMCU [Not needed]
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[21]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[27]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
@@ -241,15 +238,15 @@
                     Insert 1x3 piece female header pins to veraboard, preferably on left on NodeMCU,
                     allowing S pin on TEMT Sensor to connect to A0 pin on NodeMcu respectively and
                     ensuring pins are perpendicular to veraboard.
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[22]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[28]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
                     Solder 1x3 piece female header pin to veraboard, ensuring pins dont connect next to each other
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[23]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[29]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
                     Insert TEMT Sensor, ensuring it fits comfortably
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[24]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[30]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
@@ -265,10 +262,93 @@
                     Solder a male header jumper cable pin to a lane connecting to the D0 pin on the left side
                     of the NodeMCU and the other end to a lane connecting to a AST pin on the right side, test
                     connectivity
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[25]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[31]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
-              </ul>
+                <nb-card-header>
+                  <h3>Step 6: Solder Battery Charger</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    Solder 4 male header pins to the 4 edges of the battery charger
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[32]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Place 4x1 female header pins in the veraboard, matching the battery charger, ensuring
+                    enough space for wiring and it being perpendicular to the veraboard
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[33]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Solder the four female header pins to the veraboard, ensuring no connections are made to pins
+                    next to each other
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[34]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    To ensure no connections are made, break flow between the NodeMCU and battery charger through
+                    scratching copper plating of board, or other means and preferably from side to side
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[35]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Insert battery charger, ensuring it fits comfortably
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[36]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <nb-card-header>
+                  <h3>Step 7: Battery Installation</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    Connect two copper wire ends to both poles of the lithium battery
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[37]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                     Connect the two copper wires to the corresponding B poles on the battery charger
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[38]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <nb-card-header>
+                  <h3>Step 8: Solar Panel Installation</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    Connect two copper wire ends to both poles of the solar panel
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[39]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    Connect the two copper wires to the corresponding poles on the battery charger IN side
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[40]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <nb-card-header>
+                  <h3>Step 8: Connecting Sensors To NodeMCU</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    With copper wires, connect the VIN and GND pin on BME sensor to 3V3 and GND pins on
+                    NodeMCU respectively
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[41]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    With copper wires, connect the V and G pin on TEMT sensor to 3V3 and GND pins on
+                    NodeMCU respectively
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[42]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
+                <nb-card-header>
+                  <h3>Step 9: Connect Battery Charger and NodeMCU</h3>
+                </nb-card-header>
+                <nb-list>
+                  <nb-list-item>
+                    With a microUSB cable, connect the the poles of the wires to the corresponding OUT poles
+                    on the batter charger
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[43]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    With the microUSB, plug this in the microUSB port in the NodeMCU, providing power to
+                    the node MCU
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[44]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                </nb-list>
             </nb-accordion-item-body>
           </nb-accordion-item>
 
@@ -278,76 +358,68 @@
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               <ul>
-                <li>Install Arduino IDE, found here(link)</li>
-                <li>Download Weather Station Unit script found here(link)</li>
-                <li>Edit script with your personal bank account info, Account number, password, secrets and so on</li>
-                <li>Connect Unit and Computer with USB, having data over USB</li>
+                <li>Install Arduino IDE, found here (<a href="https://www.arduino.cc/en/main/software">Link</a>)</li>
+                <li>Download Weather Station Unit script found here
+                  (<a href="https://github.com/coenraadhuman/WeatherStation_Unit/tree/master/StationCode">Link</a>)</li>
+              </ul>
                 <br>
                 <nb-card-header>
                   <h3>ArduinoIDE flashing:</h3>
                 </nb-card-header>
                 <nb-list>
                   <nb-list-item>
-                    Set port to COM5
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[26]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    Connect your NodeMCU to your computer with a microUSB, enabling data to be sent over
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[45]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                   <nb-list-item>
-                    Download necessary libraries
-                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[27]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    In ArduinoIDE, edit script to contain your stations ID
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[46]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    In ArduinoIDE, set the port to COM5
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[47]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  </nb-list-item>
+                  <nb-list-item>
+                    In ArduinoIDE, download necessary libraries for the script (Libraries)
+                    <nb-checkbox style="float: right" [(checked)]="checkBoxArray[48]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <ul>
+                      <li>http://arduino.esp8266.com/stable/package_esp8266com_index.json</li>
+                      <li>https://github.com/tzapu/WiFiManager @0.14.0</li>
+                      <li>https://arduinojson.org/?utm_source=meta&utm_medium=library.properties @6.11.2</li>
+                    </ul>
                   </nb-list-item>
                   <nb-list-item>
                     Compile and upload script to Unit
-                    <nb-checkbox  style="float: right" [(checked)]="checkBoxArray[28]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                    <nb-checkbox  style="float: right" [(checked)]="checkBoxArray[49]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                   </nb-list-item>
                 </nb-list>
                 <br>
-                <li>Unit will now send JSON to our server</li>
-              </ul>
+                <br>
+                Unit will now send JSON to our server
             </nb-accordion-item-body>
           </nb-accordion-item>
 
           <nb-accordion-item>
             <nb-accordion-item-header>
-              Battery Installation
+              Case Installation
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               <nb-list>
+                <ul>
+                  <li>Download Weather Station Unit case design found here
+                    (<a href="https://github.com/coenraadhuman/WeatherStation_Unit/tree/master/Enclosure/New%20STL">Link</a>)</li>
+                </ul>
                 <nb-list-item>
-                  Install Battery
-                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[29]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                  Create and assemble casing
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[50]" (checkedChange)="saveToFirebase()"></nb-checkbox>
+                </nb-list-item>
+                <nb-list-item>
+                  Install veraboard to casing
+                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[51]" (checkedChange)="saveToFirebase()"></nb-checkbox>
                 </nb-list-item>
               </nb-list>
             </nb-accordion-item-body>
           </nb-accordion-item>
-
-          <nb-accordion-item>
-            <nb-accordion-item-header>
-              Veroboard Installation
-            </nb-accordion-item-header>
-            <nb-accordion-item-body>
-              <nb-list>
-                <nb-list-item>
-                  Install to Veraboard
-                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[30]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-                </nb-list-item>
-              </nb-list>
-            </nb-accordion-item-body>
-          </nb-accordion-item>
-
-          <nb-accordion-item>
-            <nb-accordion-item-header>
-              Casing Installation
-            </nb-accordion-item-header>
-            <nb-accordion-item-body>
-              <nb-list>
-                <nb-list-item>
-                  Install in Casing
-                  <nb-checkbox style="float: right" [(checked)]="checkBoxArray[31]" (checkedChange)="saveToFirebase()"></nb-checkbox>
-                </nb-list-item>
-              </nb-list>
-            </nb-accordion-item-body>
-          </nb-accordion-item>
-
         </nb-accordion>
       </nb-card-body>
     </nb-card>
