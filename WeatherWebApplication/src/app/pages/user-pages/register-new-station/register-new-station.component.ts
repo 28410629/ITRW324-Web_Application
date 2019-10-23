@@ -69,6 +69,7 @@ export class RegisterNewStationComponent implements OnInit {
         .subscribe(data => {
           if (data.success) {
             this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to the system.');
+            this.toastService.ShowInfoToast('Register New Station', 'Adding it to your user account.');
             this.addStationToFirebase(parseInt(this.stationid, 10));
           } else {
             this.toastService.ShowFailedToast('Register New Station', 'Failed to add station to system.');
@@ -83,6 +84,7 @@ export class RegisterNewStationComponent implements OnInit {
   addStationToFirebase(newStation: number) {
     this.myStations.push(newStation);
     this.authService.UpdateUserOwnedStations(this.myStations);
+    this.toastService.ShowSuccessToast('Register New Station', 'Successfully added station to your user account.');
   }
 }
 
