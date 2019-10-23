@@ -45,7 +45,7 @@ export class AuthService {
     const num: number[] = [];
     const myStationArray: number[] = [];
     const cbxArray: boolean[] = [];
-    for (let i = 0; i < 33; i++) {
+    for (let i = 0; i < 52; i++) {
       cbxArray[i] = false;
     }
     const userData: User = {

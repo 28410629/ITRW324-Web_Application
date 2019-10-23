@@ -21,6 +21,7 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
   userOwnedStations: Station[] = [];
   favStations: Number[] = [];
   myStationsMaintain: Number[] = [];
+  isMainLoaded: boolean = false;
   constructor(private authService: AuthService,
               private toastService: ToastService,
               private stationService: StationListService) {
@@ -28,13 +29,15 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
     this.useruid = storageuser.uid;
   }
   ngOnInit(): void {
-  this.getData();
+    this.getData();
   }
   ngOnDestroy() {
-    if (this.userSubscription != null)
+    if (this.userSubscription != null) {
       this.userSubscription.unsubscribe();
-    if (this.favSubscription != null)
+    }
+    if (this.favSubscription != null) {
       this.favSubscription.unsubscribe();
+    }
   }
 
   getData() {
@@ -43,9 +46,10 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
         responseData => {
           this.myStations = responseData.myStations;
           if (responseData.myStations.length > 0) {
+            this.toastService.ShowInfoToast('Manage Your Stations', 'Found your stations, getting their data.');
             this.getStationList();
           } else {
-            this.toastService.ShowFailedToast('Your Stations', 'You have no stations.');
+            this.toastService.ShowFailedToast('Manage Your Stations', 'You have no stations.');
           }
         });
   }
@@ -55,6 +59,7 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
         this.stationlist = data.stations;
         if (data.stations != null) {
           this.setUserStations();
+          this.isMainLoaded = true;
         } else {
           this.getStationList();
         }
@@ -84,8 +89,9 @@ export class ManageYourStationsComponent implements OnInit, OnDestroy {
     this.updateFavStations(event);
   }
   updateFavStations(newFav: Number) {
-    if (this.favSubscription != null)
+    if (this.favSubscription != null) {
       this.favSubscription.unsubscribe();
+    }
     this.favSubscription = this.authService.GetUserProfileData(this.useruid)
       .subscribe(
         responseData => {
