@@ -39,18 +39,23 @@ export class RegisterComponent {
     this.loadingMediumGroup = true;
     this.errors = this.messages = [];
     this.submitted = true;
-
-    this.auth.register(this.user.email, this.user.password, this.user.fullName)
-      .then(() => {
+    if (this.user.terms) {
+      this.auth.register(this.user.email, this.user.password, this.user.fullName)
+        .then(() => {
           this.submitted = false;
           this.messages = [];
           this.redirectToDashboard();
-      })
-      .catch((err) => {
-        this.loadingMediumGroup = false;
-        this.submitted = false;
-        this.errors = [err];
-      });
+        })
+        .catch((err) => {
+          this.loadingMediumGroup = false;
+          this.submitted = false;
+          this.errors = [err];
+        });
+    } else {
+      this.loadingMediumGroup = false;
+      this.submitted = false;
+      this.errors = ['Please agree to the Terms & Conditions.'];
+    }
   }
 
   redirectToDashboard() {
