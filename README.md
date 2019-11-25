@@ -1,4 +1,4 @@
-# ITRW324 University Project
+# ITRW324 Semester Project
 Other repositories for project.
 * [ESP8266 Weather Station](https://github.com/coenraadhuman/WeatherStation_Unit)
 * [.Net Core Web API](https://github.com/coenraadhuman/WeatherStation_API)
