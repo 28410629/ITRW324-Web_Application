@@ -1,4 +1,9 @@
-# WeatherStation_Angular
+# ITRW324 University Project
+Other repositories for project.
+* [ESP8266 Weather Station](https://github.com/coenraadhuman/WeatherStation_Unit)
+* [.Net Core Web API](https://github.com/coenraadhuman/WeatherStation_API)
+
+## WeatherStation_Angular
 This is the front-end for next semester project module.
 
 Node.js details
